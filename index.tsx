@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 
 export function useToggle(defaultValue = false) {
   const [on, setIsOn] = useState(defaultValue);
@@ -44,4 +44,27 @@ export function useWindowDimensions(): WindowDimensions {
   }, []); // Empty array ensures that effect is only run on mount
 
   return windowSize;
+}
+
+export function useScrollLock(condition = true) {
+  useLayoutEffect(() => {
+    if (!condition) return;
+
+    const html = document.querySelector("html") as HTMLElement;
+    const body = document.body;
+
+    // Get original overflows
+    const originalBodyOverflow = window.getComputedStyle(body).overflow;
+    const originalHtmlOverflow = window.getComputedStyle(html).overflow;
+
+    // Prevent scrolling on mount
+    body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
+
+    // Re-enable scrolling when component unmounts
+    return () => {
+      body.style.overflow = originalBodyOverflow;
+      html.style.overflow = originalHtmlOverflow;
+    };
+  }, [condition]);
 }

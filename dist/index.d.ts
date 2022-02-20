@@ -10,3 +10,4 @@ export declare type WindowDimensions = {
     height: number | undefined;
 };
 export declare function useWindowDimensions(): WindowDimensions;
+export declare function useScrollLock(condition?: boolean): void;
