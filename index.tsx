@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 
 export function useToggle(defaultValue = false) {
   const [on, setIsOn] = useState(defaultValue);
@@ -67,4 +67,14 @@ export function useScrollLock(condition = true) {
       html.style.overflow = originalHtmlOverflow;
     };
   }, [condition]);
+}
+
+export function usePreviousValue<T>(value: T) {
+  const previousValue = useRef<T | null>(null);
+
+  useEffect(() => {
+    previousValue.current = value;
+  });
+
+  return previousValue.current;
 }

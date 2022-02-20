@@ -11,3 +11,4 @@ export declare type WindowDimensions = {
 };
 export declare function useWindowDimensions(): WindowDimensions;
 export declare function useScrollLock(condition?: boolean): void;
+export declare function usePreviousValue<T>(value: T): T | null;
