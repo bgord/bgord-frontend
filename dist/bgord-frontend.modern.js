@@ -1,2 +1,2 @@
-import{useState as o}from"react";function e(e=!1){const[t,n]=o(e);return{on:t,off:!t,enable:()=>n(!0),disable:()=>n(!1),toggle:()=>n(o=>!o)}}export{e as useToggle};
+import{useState as e,useEffect as n}from"react";function i(n=!1){const[i,t]=e(n);return{on:i,off:!i,enable:()=>t(!0),disable:()=>t(!1),toggle:()=>t(e=>!e)}}function t(){const[i,t]=e({width:void 0,height:void 0});return n(()=>{function e(){t({width:window.innerWidth,height:window.innerHeight})}return window.addEventListener("resize",e),e(),()=>window.removeEventListener("resize",e)},[]),i}export{i as useToggle,t as useWindowDimensions};
 //# sourceMappingURL=bgord-frontend.modern.js.map

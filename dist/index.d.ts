@@ -5,3 +5,8 @@ export declare function useToggle(defaultValue?: boolean): {
     disable: () => void;
     toggle: () => void;
 };
+export declare type WindowDimensions = {
+    width: number | undefined;
+    height: number | undefined;
+};
+export declare function useWindowDimensions(): WindowDimensions;
