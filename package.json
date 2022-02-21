@@ -12,7 +12,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "microbundle"
+    "build": "microbundle --jsx React.createElement"
   },
   "keywords": [],
   "author": "Bartosz Gordon",
