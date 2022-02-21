@@ -1,7 +1,7 @@
 import React from "react";
 import type { PolymorphicPropsWithoutRef } from "react-polymorphic-types";
 
-export const OutboundLinkDefaultElement = "a";
+const OutboundLinkDefaultElement = "a";
 
 export function OutboundLink<
   T extends React.ElementType = typeof OutboundLinkDefaultElement
