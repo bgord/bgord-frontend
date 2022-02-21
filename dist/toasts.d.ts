@@ -18,5 +18,5 @@ export declare function ToastsContextProvider(props: {
     children: JSX.Element | JSX.Element[];
 } & ToastsConfigType): JSX.Element;
 export declare function useToastsContext<ToastType extends BaseToastType = BaseToastType>(): ToastsContextDataType<ToastType>;
-export declare function useToastTrigger(): (toast: Omit<BaseToastType, "id">) => void;
+export declare function useToastTrigger<ToastType extends BaseToastType = BaseToastType>(): (toast: Omit<ToastType, "id">) => void;
 export {};

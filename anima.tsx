@@ -54,3 +54,103 @@ export function Anima(props: AnimaConfigType) {
     style: { "--duration": `${duration}ms`, ...props.children.props.style },
   });
 }
+
+export function getAnimaProps(props: Record<string, any>) {
+  return {
+    "data-anima": props["data-anima"] as AnimaState | undefined,
+    "data-anima-effect": props["data-anima-effect"] as
+      | AnimaEffectType
+      | undefined,
+    style: props.style as React.CSSProperties,
+  };
+}
+
+export type AnimaListPropsType = {
+  children: JSX.Element[];
+} & JSX.IntrinsicElements["ul"];
+
+export function AnimaList(props: AnimaListPropsType) {
+  const { children, ...rest } = props;
+
+  const [isInitial, setIsInitial] = React.useState<boolean>(true);
+
+  React.useEffect(() => setIsInitial(false), []);
+
+  return (
+    <ul {...rest}>
+      {props.children.map((child) => React.cloneElement(child, { isInitial }))}
+    </ul>
+  );
+}
+
+export type UseAnimaListDirectionType = "head" | "tail";
+
+type UseAnimaListItemType<T> = { item: T; props: { visible: boolean } };
+
+type UseAnimaListReturnType<T> = {
+  items: { item: T; props: { visible: boolean } }[];
+  count: number;
+};
+
+export function useAnimaList<T extends { id: string }>(
+  list: T[],
+  direction: UseAnimaListDirectionType = "head"
+): UseAnimaListReturnType<T> {
+  const [officialList, setOfficialList] = React.useState<
+    UseAnimaListItemType<T>[]
+  >(list.map((item) => ({ item, props: { visible: true } })));
+
+  const added: T[] = [];
+
+  for (const item of list) {
+    const wasAdded = !officialList
+      .map((x) => x.item)
+      .some((x) => item.id === x.id);
+
+    if (wasAdded) added.push(item);
+  }
+
+  React.useEffect(() => {
+    if (added.length === 0) return;
+
+    if (direction === "head") {
+      setOfficialList((officialList) => [
+        ...added.map((item) => ({ item, props: { visible: true } })),
+        ...officialList,
+      ]);
+    } else {
+      setOfficialList((officialList) => [
+        ...officialList,
+        ...added.map((item) => ({ item, props: { visible: true } })),
+      ]);
+    }
+  }, [added.length, direction]);
+
+  const deleted: T[] = [];
+
+  for (const { item } of officialList) {
+    const wasDeleted = list.every((x) => x.id !== item.id);
+
+    if (wasDeleted) deleted.push(item);
+  }
+
+  React.useEffect(() => {
+    if (deleted.length === 0) return;
+
+    setOfficialList((officialList) =>
+      officialList.map((x) => {
+        const wasDeleted = deleted.some((item) => item.id === x.item.id);
+
+        return wasDeleted ? { ...x, props: { visible: false } } : x;
+      })
+    );
+  }, [deleted.length]);
+
+  return {
+    items: officialList.map((item) => {
+      const updated = list.find((y) => y.id === item.item.id);
+      return updated ? { ...item, item: updated } : item;
+    }),
+    count: officialList.filter((x) => x.props.visible).length,
+  };
+}

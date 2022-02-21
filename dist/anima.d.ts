@@ -14,3 +14,26 @@ export declare type AnimaConfigType = {
     isInitial?: boolean;
 };
 export declare function Anima(props: AnimaConfigType): React.FunctionComponentElement<any> | null;
+export declare function getAnimaProps(props: Record<string, any>): {
+    "data-anima": AnimaState | undefined;
+    "data-anima-effect": string | undefined;
+    style: React.CSSProperties;
+};
+export declare type AnimaListPropsType = {
+    children: JSX.Element[];
+} & JSX.IntrinsicElements["ul"];
+export declare function AnimaList(props: AnimaListPropsType): JSX.Element;
+export declare type UseAnimaListDirectionType = "head" | "tail";
+declare type UseAnimaListReturnType<T> = {
+    items: {
+        item: T;
+        props: {
+            visible: boolean;
+        };
+    }[];
+    count: number;
+};
+export declare function useAnimaList<T extends {
+    id: string;
+}>(list: T[], direction?: UseAnimaListDirectionType): UseAnimaListReturnType<T>;
+export {};
