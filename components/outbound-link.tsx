@@ -10,5 +10,5 @@ export function OutboundLink<
 
   const Element = as || OutboundLinkDefaultElement;
 
-  return <Element target="_blank" ref="noreferer noopener" {...rest} />;
+  return <Element target="_blank" rel="noreferer noopener" {...rest} />;
 }
