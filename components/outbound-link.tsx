@@ -3,16 +3,12 @@ import type { PolymorphicPropsWithoutRef } from "react-polymorphic-types";
 
 export const OutboundLinkDefaultElement = "a";
 
-// Extend own props with others inherited from the underlying element type
-// Own props take precedence over the inherited ones
-export type HeadingProps<
+export function OutboundLink<
   T extends React.ElementType = typeof OutboundLinkDefaultElement
-> = PolymorphicPropsWithoutRef<{}, T>;
+>(props: PolymorphicPropsWithoutRef<{}, T>) {
+  const { as, ...rest } = props;
 
-export function Heading<
-  T extends React.ElementType = typeof OutboundLinkDefaultElement
->({ as, ...props }: HeadingProps<T>) {
-  const Element: React.ElementType = as || OutboundLinkDefaultElement;
+  const Element = as || OutboundLinkDefaultElement;
 
-  return <Element target="_blank" ref="noreferer noopener" {...props} />;
+  return <Element target="_blank" ref="noreferer noopener" {...rest} />;
 }
