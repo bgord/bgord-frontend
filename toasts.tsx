@@ -70,8 +70,10 @@ export function useToastsContext<
   return context;
 }
 
-export function useToastTrigger() {
-  const [, actions] = useToastsContext();
+export function useToastTrigger<
+  ToastType extends BaseToastType = BaseToastType
+>() {
+  const [, actions] = useToastsContext<ToastType>();
 
   return actions.add;
 }
