@@ -28,7 +28,12 @@ export function useTranslations() {
   }
 
   function translate(key: string) {
-    return translations[key] ?? key;
+    const result = translations[key];
+
+    if (!result)
+      console.warn(`[@bgord/frontend] missing translation for key ${key}.`);
+
+    return result ?? key;
   }
 
   return translate;
