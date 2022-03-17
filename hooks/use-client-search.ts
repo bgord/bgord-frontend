@@ -1,18 +1,18 @@
 import { useState } from "react";
 
-export type UseSearchQueryType = string;
+export type UseClientSearchQueryType = string;
 
-export type UseSearchReturnType = {
-  query: UseSearchQueryType;
+export type UseClientSearchReturnType = {
+  query: UseClientSearchQueryType;
   clear: VoidFunction;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   filterFn: (value: string) => boolean;
 };
 
-export function useSearch(): UseSearchReturnType {
-  const emptyQuery: UseSearchQueryType = "";
+export function useClientSearch(): UseClientSearchReturnType {
+  const emptyQuery: UseClientSearchQueryType = "";
 
-  const [query, setValue] = useState<UseSearchQueryType>(emptyQuery);
+  const [query, setValue] = useState<UseClientSearchQueryType>(emptyQuery);
 
   function clear() {
     setValue(emptyQuery);
