@@ -1,4 +1,4 @@
-export declare type UseFilterQueryType = string;
+export declare type UseFilterQueryType = string | undefined;
 export declare type UseFilterConfigType<T> = {
     enum: {
         [key: string]: UseFilterQueryType;
@@ -7,7 +7,7 @@ export declare type UseFilterConfigType<T> = {
     filterFn?: (value: T) => boolean;
 };
 export declare function useClientFilter<T = string>(config: UseFilterConfigType<T>): {
-    query: string;
+    query: UseFilterQueryType;
     clear: () => void;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     filterFn: (value: T) => boolean;

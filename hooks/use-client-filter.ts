@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export type UseFilterQueryType = string;
+export type UseFilterQueryType = string | undefined;
 
 export type UseFilterConfigType<T> = {
   enum: { [key: string]: UseFilterQueryType };
@@ -9,7 +9,7 @@ export type UseFilterConfigType<T> = {
 };
 
 export function useClientFilter<T = string>(config: UseFilterConfigType<T>) {
-  const defaultQuery = config.defaultQuery ?? "all";
+  const defaultQuery = config.defaultQuery ?? undefined;
 
   const [query, setQuery] = useState<UseFilterQueryType>(defaultQuery);
 
@@ -22,11 +22,11 @@ export function useClientFilter<T = string>(config: UseFilterConfigType<T>) {
 
     const isNewQueryInEnum = Boolean(config.enum[String(newQuery)]);
 
-    if (newQuery === "all" || isNewQueryInEnum) setQuery(newQuery);
+    setQuery(isNewQueryInEnum ? newQuery : defaultQuery);
   }
 
   function filterFn(value: T) {
-    if (query === "all") return true;
+    if (query === undefined) return true;
 
     return query === String(value);
   }
