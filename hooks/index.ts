@@ -4,6 +4,6 @@ export * from "./use-list";
 export * from "./use-previous-value";
 export * from "./use-scroll-lock";
 export * from "./use-client-search";
-export * from "./use-client-filter";
+export * from "./use-filter";
 export * from "./use-toggle";
 export * from "./use-window-dimensions";

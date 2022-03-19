@@ -14,7 +14,7 @@ export type UseFilterConfigType<T> = {
   ) => void;
 };
 
-export function useClientFilter<T = string>(config: UseFilterConfigType<T>) {
+export function useFilter<T = string>(config: UseFilterConfigType<T>) {
   const defaultQuery = config.defaultQuery ?? undefined;
   const filterFn = config.filterFn ?? defaultFilterFn;
   const options = Object.keys(config.enum);
