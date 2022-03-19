@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePreviousValue } from "./use-previous-value";
+import { noop } from "../noop";
 
 export type UseFilterQueryType = string | undefined;
 
@@ -6,12 +8,20 @@ export type UseFilterConfigType<T> = {
   enum: { [key: string]: UseFilterQueryType };
   defaultQuery?: UseFilterQueryType;
   filterFn?: (value: T) => boolean;
+  onUpdate?: (
+    current: UseFilterQueryType,
+    previous: UseFilterQueryType
+  ) => void;
 };
 
 export function useClientFilter<T = string>(config: UseFilterConfigType<T>) {
   const defaultQuery = config.defaultQuery ?? undefined;
+  const filterFn = config.filterFn ?? defaultFilterFn;
+  const options = Object.keys(config.enum);
+  const onUpdate = config?.onUpdate ?? noop;
 
   const [query, setQuery] = useState<UseFilterQueryType>(defaultQuery);
+  const previousQuery = usePreviousValue(query);
 
   function clear() {
     setQuery(defaultQuery);
@@ -22,20 +32,18 @@ export function useClientFilter<T = string>(config: UseFilterConfigType<T>) {
 
     const isNewQueryInEnum = Boolean(config.enum[String(newQuery)]);
 
-    setQuery(isNewQueryInEnum ? newQuery : defaultQuery);
+    setQuery(isNewQueryInEnum ? newQuery : undefined);
   }
 
-  function filterFn(value: T) {
+  function defaultFilterFn(value: T) {
     if (query === undefined) return true;
 
     return query === String(value);
   }
 
-  return {
-    query,
-    clear,
-    onChange,
-    filterFn: config.filterFn ?? filterFn,
-    options: Object.keys(config.enum),
-  };
+  useEffect(() => {
+    onUpdate(query, previousQuery);
+  }, [previousQuery, query]);
+
+  return { query, clear, onChange, filterFn, options, onUpdate };
 }
