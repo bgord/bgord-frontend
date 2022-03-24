@@ -24,6 +24,10 @@ export declare type AnimaListPropsType = {
 } & JSX.IntrinsicElements["ul"];
 export declare function AnimaList(props: AnimaListPropsType): JSX.Element;
 export declare type UseAnimaListDirectionType = "head" | "tail";
+export declare type UseAnimaListConfigType = {
+    direction?: UseAnimaListDirectionType;
+    duration?: number;
+};
 declare type UseAnimaListReturnType<T> = {
     items: {
         item: T;
@@ -35,5 +39,5 @@ declare type UseAnimaListReturnType<T> = {
 };
 export declare function useAnimaList<T extends {
     id: string;
-}>(list: T[], direction?: UseAnimaListDirectionType): UseAnimaListReturnType<T>;
+}>(list: T[], config: UseAnimaListConfigType): UseAnimaListReturnType<T>;
 export {};
