@@ -106,7 +106,7 @@ export function useAnimaList<T extends { id: string }>(
     UseAnimaListItemType<T>[]
   >(list.map((item) => ({ item, props: { visible: true } })));
 
-  const added: T[] = [];
+  let added: T[] = [];
 
   for (const item of list) {
     const wasAdded = !officialList
@@ -130,9 +130,11 @@ export function useAnimaList<T extends { id: string }>(
         ...added.map((item) => ({ item, props: { visible: true } })),
       ]);
     }
+
+    added = [];
   }, [added.length, direction]);
 
-  const deleted: T[] = [];
+  let deleted: T[] = [];
 
   for (const { item } of officialList) {
     const wasDeleted = list.every((x) => x.id !== item.id);
@@ -150,6 +152,8 @@ export function useAnimaList<T extends { id: string }>(
         return wasDeleted ? { ...x, props: { visible: false } } : x;
       })
     );
+
+    deleted = [];
   }, [deleted.length]);
 
   return {
