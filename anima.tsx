@@ -85,6 +85,10 @@ export function AnimaList(props: AnimaListPropsType) {
 
 export type UseAnimaListDirectionType = "head" | "tail";
 
+export type UseAnimaListConfigType = {
+  direction?: UseAnimaListDirectionType;
+};
+
 type UseAnimaListItemType<T> = { item: T; props: { visible: boolean } };
 
 type UseAnimaListReturnType<T> = {
@@ -94,8 +98,10 @@ type UseAnimaListReturnType<T> = {
 
 export function useAnimaList<T extends { id: string }>(
   list: T[],
-  direction: UseAnimaListDirectionType = "head"
+  config: UseAnimaListConfigType
 ): UseAnimaListReturnType<T> {
+  const direction = config.direction ?? "head";
+
   const [officialList, setOfficialList] = React.useState<
     UseAnimaListItemType<T>[]
   >(list.map((item) => ({ item, props: { visible: true } })));
