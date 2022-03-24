@@ -87,6 +87,7 @@ export type UseAnimaListDirectionType = "head" | "tail";
 
 export type UseAnimaListConfigType = {
   direction?: UseAnimaListDirectionType;
+  duration?: number;
 };
 
 type UseAnimaListItemType<T> = { item: T; props: { visible: boolean } };
@@ -100,6 +101,7 @@ export function useAnimaList<T extends { id: string }>(
   list: T[],
   config: UseAnimaListConfigType
 ): UseAnimaListReturnType<T> {
+  const duration = config?.duration ?? 300;
   const direction = config.direction ?? "head";
 
   const [officialList, setOfficialList] = React.useState<
@@ -151,6 +153,14 @@ export function useAnimaList<T extends { id: string }>(
 
         return wasDeleted ? { ...x, props: { visible: false } } : x;
       })
+    );
+
+    setTimeout(
+      () =>
+        setOfficialList(
+          list.map((item) => ({ item, props: { visible: true } }))
+        ),
+      duration + 25 // 25 ms buffer
     );
 
     deleted = [];
