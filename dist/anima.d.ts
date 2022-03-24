@@ -39,5 +39,5 @@ declare type UseAnimaListReturnType<T> = {
 };
 export declare function useAnimaList<T extends {
     id: string;
-}>(list: T[], config: UseAnimaListConfigType): UseAnimaListReturnType<T>;
+}>(list: T[], config?: UseAnimaListConfigType): UseAnimaListReturnType<T>;
 export {};

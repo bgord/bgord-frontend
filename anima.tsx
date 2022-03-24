@@ -99,10 +99,10 @@ type UseAnimaListReturnType<T> = {
 
 export function useAnimaList<T extends { id: string }>(
   list: T[],
-  config: UseAnimaListConfigType
+  config?: UseAnimaListConfigType
 ): UseAnimaListReturnType<T> {
   const duration = config?.duration ?? 300;
-  const direction = config.direction ?? "head";
+  const direction = config?.direction ?? "head";
 
   const [officialList, setOfficialList] = React.useState<
     UseAnimaListItemType<T>[]
