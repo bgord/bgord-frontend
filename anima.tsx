@@ -155,14 +155,6 @@ export function useAnimaList<T extends { id: string }>(
       })
     );
 
-    setTimeout(
-      () =>
-        setOfficialList(
-          list.map((item) => ({ item, props: { visible: true } }))
-        ),
-      duration + 25 // 25 ms buffer
-    );
-
     deleted = [];
   }, [deleted.length]);
 
