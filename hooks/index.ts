@@ -1,3 +1,4 @@
+export * from "./use-breakpoint";
 export * from "./use-client-search";
 export * from "./use-expandable-list";
 export * from "./use-field";
