@@ -1,6 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 
-export function useField<T>(defaultValue: T | (() => T)) {
+export type UseFieldDefaultValueType<T> = T | (() => T);
+export type UseFieldReturnType<T> = {
+  value: T;
+  set: Dispatch<SetStateAction<T>>;
+  clear: VoidFunction;
+};
+
+export function useField<T>(
+  defaultValue: UseFieldDefaultValueType<T>
+): UseFieldReturnType<T> {
   const [value, setValue] = useState<T>(defaultValue);
 
   const evaluatedDefaultValue =
