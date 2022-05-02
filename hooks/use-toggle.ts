@@ -1,6 +1,14 @@
 import { useState } from "react";
 
-export function useToggle(defaultValue = false) {
+export type UseToggleReturnType = {
+  on: boolean;
+  off: boolean;
+  enable: VoidFunction;
+  disable: VoidFunction;
+  toggle: VoidFunction;
+};
+
+export function useToggle(defaultValue = false): UseToggleReturnType {
   const [on, setIsOn] = useState(defaultValue);
 
   const enable = () => setIsOn(true);

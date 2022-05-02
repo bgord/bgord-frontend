@@ -1,7 +1,8 @@
-export declare function useToggle(defaultValue?: boolean): {
+export declare type UseToggleReturnType = {
     on: boolean;
     off: boolean;
-    enable: () => void;
-    disable: () => void;
-    toggle: () => void;
+    enable: VoidFunction;
+    disable: VoidFunction;
+    toggle: VoidFunction;
 };
+export declare function useToggle(defaultValue?: boolean): UseToggleReturnType;
