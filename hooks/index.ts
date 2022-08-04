@@ -4,6 +4,7 @@ export * from "./use-expandable-list";
 export * from "./use-field";
 export * from "./use-file";
 export * from "./use-filter";
+export * from "./use-keyboard-shortcuts";
 export * from "./use-list";
 export * from "./use-previous-value";
 export * from "./use-scroll-lock";
