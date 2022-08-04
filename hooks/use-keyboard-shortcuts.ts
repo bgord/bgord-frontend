@@ -1,11 +1,11 @@
 import React from "react";
 import tinykeys from "tinykeys";
 
-export interface KeyBindingMap {
+export interface UseKeyboardShortcurtsConfigType {
   [keybinding: string]: (event: KeyboardEvent) => void;
 }
 
-export function useKeyboardShortcurts(config: KeyBindingMap) {
+export function useKeyboardShortcurts(config: UseKeyboardShortcurtsConfigType) {
   React.useEffect(() => {
     const unsubscribeShortcuts = tinykeys(window, config);
 
