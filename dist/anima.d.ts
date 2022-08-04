@@ -28,6 +28,12 @@ export declare type UseAnimaListConfigType = {
     direction?: UseAnimaListDirectionType;
     duration?: number;
 };
+export declare type UseAnimaListItemType<T> = {
+    item: T;
+    props: {
+        visible: boolean;
+    };
+};
 declare type UseAnimaListReturnType<T> = {
     items: {
         item: T;

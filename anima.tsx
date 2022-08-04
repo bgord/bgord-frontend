@@ -90,7 +90,7 @@ export type UseAnimaListConfigType = {
   duration?: number;
 };
 
-type UseAnimaListItemType<T> = { item: T; props: { visible: boolean } };
+export type UseAnimaListItemType<T> = { item: T; props: { visible: boolean } };
 
 type UseAnimaListReturnType<T> = {
   items: { item: T; props: { visible: boolean } }[];
