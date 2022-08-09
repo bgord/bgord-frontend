@@ -1,3 +1,4 @@
+export * from "./use-autofocus";
 export * from "./use-breakpoint";
 export * from "./use-click-outside";
 export * from "./use-client-search";
