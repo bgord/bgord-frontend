@@ -14,6 +14,7 @@ export function Dialog(props: DialogPropsType) {
   hooks.useKeyboardShortcurts({ Escape: disable });
   hooks.useClickOutside(ref, disable);
   hooks.useAutofocus({ ref, condition: props.on });
+  hooks.useScrollLock(props.on)
 
   if (props.off) return null;
 
