@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import * as hooks from "../hooks";
-export declare type DialogPropsType = hooks.UseToggleReturnType & JSX.IntrinsicElements["dialog"] & {
+export declare type DialogPropsType = hooks.UseToggleReturnType & JSX.IntrinsicElements["div"] & {
     DialogOverlay?: JSX.Element;
 };
 export declare function Dialog(props: DialogPropsType): JSX.Element | null;
