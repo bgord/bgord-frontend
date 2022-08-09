@@ -3,13 +3,13 @@ import React from "react";
 import * as hooks from "../hooks";
 
 export type DialogPropsType = hooks.UseToggleReturnType &
-  JSX.IntrinsicElements["div"] & {
+  JSX.IntrinsicElements["dialog"] & {
     DialogOverlay?: JSX.Element;
   };
 
 export function Dialog(props: DialogPropsType) {
   const { DialogOverlay, disable, enable, on, off, toggle, ...rest } = props;
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = React.useRef<HTMLDialogElement>(null);
 
   hooks.useKeyboardShortcurts({ Escape: disable });
   hooks.useClickOutside(ref, disable);
@@ -22,9 +22,10 @@ export function Dialog(props: DialogPropsType) {
     <>
       {DialogOverlay ?? <DefaultDialogOverlay />}
 
-      <div
+      <dialog
         ref={ref}
         tabIndex={0}
+        open={props.on}
         data-display="flex"
         data-direction="column"
         data-position="absolute"
