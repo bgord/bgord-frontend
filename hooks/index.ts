@@ -7,6 +7,7 @@ export * from "./use-expandable-list";
 export * from "./use-field";
 export * from "./use-file";
 export * from "./use-filter";
+export * from "./use-is-online";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-leaving-prompt";
 export * from "./use-list";
