@@ -33,6 +33,6 @@ export function useUrlFilter<T>(config: UseUrlFilterConfigType<T>) {
       }
     },
     ...config,
-    defaultQuery: currentQuery ?? config.defaultQuery,
+    defaultQuery: config.defaultQuery,
   });
 }
