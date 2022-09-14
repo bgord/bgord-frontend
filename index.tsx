@@ -1,5 +1,6 @@
 export * from "./anima";
 export * from "./components";
+export * from "./copy-to-clipboard";
 export * from "./dates";
 export * from "./filter-url";
 export * from "./hooks";
