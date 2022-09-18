@@ -1,5 +1,6 @@
 import React from "react";
 import type { TranslationsType, Schema } from "@bgord/node";
+import { pluralize, PluralizeOptionsType } from "./pluralize";
 
 type TranslationsContextValueType = {
   translations: TranslationsType;
@@ -47,7 +48,7 @@ export function useTranslations() {
   return translate;
 }
 
-export function useLanguage() {
+export function useLanguage(): TranslationsContextValueType["language"] {
   const value = React.useContext(TranslationsContext);
 
   if (value === undefined) {
@@ -55,4 +56,11 @@ export function useLanguage() {
   }
 
   return value.language;
+}
+
+export function usePluralize() {
+  const language = useLanguage();
+
+  return (options: Omit<PluralizeOptionsType, "language">) =>
+    pluralize({ ...options, language });
 }
