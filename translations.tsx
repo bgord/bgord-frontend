@@ -1,34 +1,40 @@
 import React from "react";
 import type { TranslationsType } from "@bgord/node";
 
-const TranslationsContext = React.createContext<TranslationsType>({});
+type TranslationsContextValueType = {
+  translations: TranslationsType;
+};
+
+const TranslationsContext = React.createContext<TranslationsContextValueType>({
+  translations: {},
+});
 
 type TranslationsContextPropsType = {
   children: JSX.Element | JSX.Element[];
-  translations: TranslationsType;
+  value: TranslationsContextValueType;
 };
 
 export function TranslationsContextProvider(
   props: TranslationsContextPropsType
 ) {
   return (
-    <TranslationsContext.Provider value={props.translations}>
+    <TranslationsContext.Provider value={props.value}>
       {props.children}
     </TranslationsContext.Provider>
   );
 }
 
 export function useTranslations() {
-  const translations = React.useContext(TranslationsContext);
+  const value = React.useContext(TranslationsContext);
 
-  if (translations === undefined) {
+  if (value === undefined) {
     throw new Error(
       `useTranslations must be used within the TranslationsContext`
     );
   }
 
   function translate(key: string) {
-    const result = translations[key];
+    const result = value.translations[key];
 
     if (!result)
       console.warn(`[@bgord/frontend] missing translation for key ${key}.`);
