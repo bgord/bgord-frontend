@@ -6,6 +6,7 @@ export * from "./filter-url";
 export * from "./hooks";
 export * from "./noop";
 export * from "./pagination";
+export * from "./pluralize";
 export * from "./safe-window";
 export * from "./server-error";
 export * from "./time";
