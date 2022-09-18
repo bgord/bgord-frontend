@@ -1,12 +1,14 @@
 import React from "react";
-import type { TranslationsType } from "@bgord/node";
+import type { TranslationsType, Schema } from "@bgord/node";
 
 type TranslationsContextValueType = {
   translations: TranslationsType;
+  language: Schema.LanguageType;
 };
 
 const TranslationsContext = React.createContext<TranslationsContextValueType>({
   translations: {},
+  language: "en",
 });
 
 type TranslationsContextPropsType = {
@@ -43,4 +45,14 @@ export function useTranslations() {
   }
 
   return translate;
+}
+
+export function useLanguage() {
+  const value = React.useContext(TranslationsContext);
+
+  if (value === undefined) {
+    throw new Error(`useLanguage must be used within the TranslationsContext`);
+  }
+
+  return value.language;
 }
