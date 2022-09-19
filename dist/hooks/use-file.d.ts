@@ -21,7 +21,7 @@ declare type UseFileSelected = {
     actions: {
         selectFile(event: React.ChangeEvent<HTMLInputElement>): void;
         clearFile: VoidFunction;
-        previewFile: () => ReturnType<typeof URL.createObjectURL> | null;
+        previewFile: () => ReturnType<typeof URL.createObjectURL> | undefined;
     };
 };
 declare type UseFileError = {

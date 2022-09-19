@@ -25,7 +25,7 @@ type UseFileSelected = {
   actions: {
     selectFile(event: React.ChangeEvent<HTMLInputElement>): void;
     clearFile: VoidFunction;
-    previewFile: () => ReturnType<typeof URL.createObjectURL> | null;
+    previewFile: () => ReturnType<typeof URL.createObjectURL> | undefined;
   };
 };
 
@@ -66,7 +66,7 @@ export function useFile(
   }
 
   function previewFile() {
-    if (!file) return null;
+    if (!file) return undefined;
     return URL.createObjectURL(file);
   }
 
