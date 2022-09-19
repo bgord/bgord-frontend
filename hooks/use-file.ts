@@ -47,7 +47,7 @@ export function useFile(
 
   const [file, setFile] = useState<File | null>(null);
 
-  function selectFile(event: React.ChangeEvent<HTMLInputElement>) {
+  function selectFile(event: React.ChangeEvent<HTMLInputElement>): File | void {
     const files = event.currentTarget.files;
 
     if (!files || !files[0]) return;
@@ -58,6 +58,8 @@ export function useFile(
 
     setFile(file);
     setState(UseFileState.selected);
+
+    return file;
   }
 
   function clearFile() {
