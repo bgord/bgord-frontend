@@ -14,7 +14,7 @@ type UseFileIdle = {
   state: UseFileState.idle;
   data: null;
   actions: {
-    selectFile(event: React.ChangeEvent<HTMLInputElement>): void;
+    selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
     clearFile: VoidFunction;
   };
 };
@@ -23,7 +23,7 @@ type UseFileSelected = {
   state: UseFileState.selected;
   data: File;
   actions: {
-    selectFile(event: React.ChangeEvent<HTMLInputElement>): void;
+    selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
     clearFile: VoidFunction;
     previewFile: () => ReturnType<typeof URL.createObjectURL> | undefined;
   };
@@ -33,7 +33,7 @@ type UseFileError = {
   state: UseFileState.error;
   data: null;
   actions: {
-    selectFile(event: React.ChangeEvent<HTMLInputElement>): void;
+    selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
     clearFile: VoidFunction;
   };
 };
@@ -47,14 +47,17 @@ export function useFile(
 
   const [file, setFile] = useState<File | null>(null);
 
-  function selectFile(event: React.ChangeEvent<HTMLInputElement>): File | void {
+  function selectFile(event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.currentTarget.files;
 
     if (!files || !files[0]) return;
 
     const file = files[0];
 
-    if (file.size > maxSize) return setState(UseFileState.error);
+    if (file.size > maxSize) {
+      setState(UseFileState.error);
+      return undefined;
+    }
 
     setFile(file);
     setState(UseFileState.selected);

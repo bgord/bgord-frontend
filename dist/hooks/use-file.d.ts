@@ -11,7 +11,7 @@ declare type UseFileIdle = {
     state: UseFileState.idle;
     data: null;
     actions: {
-        selectFile(event: React.ChangeEvent<HTMLInputElement>): void;
+        selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
         clearFile: VoidFunction;
     };
 };
@@ -19,7 +19,7 @@ declare type UseFileSelected = {
     state: UseFileState.selected;
     data: File;
     actions: {
-        selectFile(event: React.ChangeEvent<HTMLInputElement>): void;
+        selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
         clearFile: VoidFunction;
         previewFile: () => ReturnType<typeof URL.createObjectURL> | undefined;
     };
@@ -28,7 +28,7 @@ declare type UseFileError = {
     state: UseFileState.error;
     data: null;
     actions: {
-        selectFile(event: React.ChangeEvent<HTMLInputElement>): void;
+        selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
         clearFile: VoidFunction;
     };
 };
