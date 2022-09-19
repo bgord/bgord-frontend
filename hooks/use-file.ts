@@ -25,6 +25,7 @@ type UseFileSelected = {
   actions: {
     selectFile(event: React.ChangeEvent<HTMLInputElement>): void;
     clearFile: VoidFunction;
+    previewFile: () => ReturnType<typeof URL.createObjectURL> | null;
   };
 };
 
@@ -64,15 +65,22 @@ export function useFile(
     setState(UseFileState.idle);
   }
 
-  const actions = { selectFile, clearFile };
+  function previewFile() {
+    if (!file) return null;
+    return URL.createObjectURL(file);
+  }
 
   if (state === UseFileState.idle) {
-    return { state, data: null, actions };
+    return { state, data: null, actions: { selectFile, clearFile } };
   }
 
   if (state === UseFileState.selected) {
-    return { state, data: file as File, actions };
+    return {
+      state,
+      data: file as File,
+      actions: { selectFile, clearFile, previewFile },
+    };
   }
 
-  return { state, data: null, actions };
+  return { state, data: null, actions: { selectFile, clearFile } };
 }
