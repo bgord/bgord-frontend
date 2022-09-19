@@ -1,6 +1,6 @@
 type ImagePath = string | undefined;
 
-type ImageResolutionType = {
+export type ImageResolutionType = {
   width: number | null;
   height: number | null;
 };

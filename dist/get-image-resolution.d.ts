@@ -1,5 +1,5 @@
 declare type ImagePath = string | undefined;
-declare type ImageResolutionType = {
+export declare type ImageResolutionType = {
     width: number | null;
     height: number | null;
 };
