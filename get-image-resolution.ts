@@ -5,7 +5,10 @@ export type ImageResolutionType = {
   height: number | null;
 };
 
-const emptyImageResolution: ImageResolutionType = { width: null, height: null };
+export const emptyImageResolution: ImageResolutionType = {
+  width: null,
+  height: null,
+};
 
 export async function getImageResolution(
   path: ImagePath
