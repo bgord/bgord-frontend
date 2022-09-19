@@ -32,5 +32,6 @@ declare type UseFileError = {
         clearFile: VoidFunction;
     };
 };
-export declare function useFile(config?: UseFileConfigType): UseFileIdle | UseFileSelected | UseFileError;
+export declare type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
+export declare function useFile(config?: UseFileConfigType): UseFileReturnType;
 export {};

@@ -38,9 +38,9 @@ type UseFileError = {
   };
 };
 
-export function useFile(
-  config?: UseFileConfigType
-): UseFileIdle | UseFileSelected | UseFileError {
+export type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
+
+export function useFile(config?: UseFileConfigType): UseFileReturnType {
   const maxSize = config?.maxSize ?? Infinity;
 
   const [state, setState] = useState<UseFileState>(UseFileState.idle);
