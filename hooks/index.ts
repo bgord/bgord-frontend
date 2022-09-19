@@ -16,3 +16,4 @@ export * from "./use-scroll-lock";
 export * from "./use-toggle";
 export * from "./use-url-filter";
 export * from "./use-window-dimensions";
+export * from "./use-image-file-resolution";
