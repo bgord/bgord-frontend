@@ -6,4 +6,14 @@ export class DateFormatter {
 
     return new Date(date).toLocaleString();
   }
+
+  static form(date: Date | null): string {
+    if (!date) return DateFormatter.form(new Date());
+
+    const year = String(date.getFullYear()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  }
 }
