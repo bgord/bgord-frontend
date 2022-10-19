@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { useField } from "./use-field";
-import { useFile, UseFileReturnType, UseFileState } from "./use-file";
+import { UseFileReturnType, UseFileState } from "./use-file";
 import {
   getImageResolution,
   ImageResolutionType,
@@ -35,7 +35,7 @@ export function useImageFileResolution(
     }
 
     execute();
-  }, [file.state]);
+  }, [file.state, file.data?.name]);
 
   return resolution.value;
 }
