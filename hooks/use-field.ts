@@ -1,4 +1,4 @@
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { useState, Dispatch, SetStateAction } from "react";
 
 export type UseFieldDefaultValueType<T> = T | (() => T);
 export type UseFieldReturnType<T> = {
@@ -10,18 +10,14 @@ export type UseFieldReturnType<T> = {
 export function useField<T>(
   defaultValue: UseFieldDefaultValueType<T>
 ): UseFieldReturnType<T> {
-  const [value, setValue] = useState<T>(defaultValue);
-
   const evaluatedDefaultValue =
     // @ts-ignore
     typeof defaultValue === "function" ? defaultValue() : defaultValue;
 
-  useEffect(() => {
-    setValue(evaluatedDefaultValue);
-  }, [evaluatedDefaultValue]);
+  const [value, setValue] = useState(evaluatedDefaultValue);
 
   function clear() {
-    setValue(defaultValue);
+    setValue(evaluatedDefaultValue);
   }
 
   return { value, set: setValue, clear };
