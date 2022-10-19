@@ -7,7 +7,11 @@ export const AUDIO_DEFAULT_VOLUME = 1;
 
 export type UseAudioSrcType = string;
 
+export type UseAudioStateType = "initial" | "ready" | "playing" | "paused";
+
 export function useAudio(src: UseAudioSrcType) {
+  const [state, setState] = React.useState<UseAudioStateType>("initial");
+
   const ref = React.useRef<HTMLAudioElement | null>(null);
 
   const duration = useField<number>(0);
@@ -19,12 +23,14 @@ export function useAudio(src: UseAudioSrcType) {
   function play() {
     if (ref.current) {
       ref.current.play();
+      setState("playing");
     }
   }
 
   function pause() {
     if (ref.current) {
       ref.current.pause();
+      setState("paused");
     }
   }
 
@@ -33,6 +39,7 @@ export function useAudio(src: UseAudioSrcType) {
       ref.current.currentTime = 0;
       ref.current.pause();
       currentTime.set(0);
+      setState("paused");
     }
   }
 
@@ -67,6 +74,7 @@ export function useAudio(src: UseAudioSrcType) {
     duration.set(Math.round(target.duration));
     currentTime.set(target.currentTime);
     volume.set(target.volume);
+    setState("ready");
   }
 
   function onTimeUpdate(event: Event) {
@@ -97,6 +105,7 @@ export function useAudio(src: UseAudioSrcType) {
     },
     actions: { play, pause, mute, unmute, reset, seek, changeVolume },
     meta: {
+      state,
       currentTime: {
         raw: currentTime.value,
         formatted: DurationFormatter.format(currentTime.value),
