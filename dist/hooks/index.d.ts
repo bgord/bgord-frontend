@@ -1,3 +1,4 @@
+export * from "./use-audio";
 export * from "./use-autofocus";
 export * from "./use-breakpoint";
 export * from "./use-click-outside";
@@ -7,6 +8,7 @@ export * from "./use-expandable-list";
 export * from "./use-field";
 export * from "./use-file";
 export * from "./use-filter";
+export * from "./use-image-file-resolution";
 export * from "./use-is-online";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-leaving-prompt";
@@ -16,4 +18,3 @@ export * from "./use-scroll-lock";
 export * from "./use-toggle";
 export * from "./use-url-filter";
 export * from "./use-window-dimensions";
-export * from "./use-image-file-resolution";
