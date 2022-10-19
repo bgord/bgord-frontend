@@ -82,6 +82,10 @@ export function useAudio(src: UseAudioSrcType) {
     currentTime.set(Math.round(target.currentTime));
   }
 
+  function onEnded() {
+    setState("paused");
+  }
+
   function changeVolume(event: Event) {
     const target = event.currentTarget as HTMLInputElement;
 
@@ -93,7 +97,7 @@ export function useAudio(src: UseAudioSrcType) {
 
   return {
     props: {
-      audio: { src, onTimeUpdate, onLoadedMetadata, controls: false },
+      audio: { src, onTimeUpdate, onLoadedMetadata, onEnded, controls: false },
       player: {
         min: 0,
         step: 1,

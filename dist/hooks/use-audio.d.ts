@@ -7,6 +7,7 @@ export declare function useAudio(src: UseAudioSrcType): {
             src: string;
             onTimeUpdate: (event: Event) => void;
             onLoadedMetadata: (event: Event) => void;
+            onEnded: () => void;
             controls: boolean;
         };
         player: {
