@@ -20,6 +20,11 @@ export function useAudio(src: UseAudioSrcType) {
 
   const muted = volume.value === 0;
 
+  const percentage =
+    duration.value === 0
+      ? 0
+      : Math.round((currentTime.value / duration.value) * 100);
+
   function play() {
     if (ref.current) {
       ref.current.play();
@@ -110,6 +115,7 @@ export function useAudio(src: UseAudioSrcType) {
     actions: { play, pause, mute, unmute, reset, seek, changeVolume },
     meta: {
       state,
+      percentage,
       currentTime: {
         raw: currentTime.value,
         formatted: DurationFormatter.format(currentTime.value),
