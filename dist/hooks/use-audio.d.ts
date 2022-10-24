@@ -16,12 +16,18 @@ export declare function useAudio(src: UseAudioSrcType): {
             max: number;
             value: number;
             onInput: (event: Event) => void;
+            style: {
+                "--percentage": string;
+            };
         };
         volume: {
             min: number;
             max: number;
             value: number;
             onInput: (event: Event) => void;
+            style: {
+                "--percentage": string;
+            };
         };
     };
     actions: {

@@ -109,8 +109,15 @@ export function useAudio(src: UseAudioSrcType) {
         max: duration.value,
         value: currentTime.value,
         onInput: seek,
+        style: { "--percentage": `${percentage}%` },
       },
-      volume: { min: 0, max: 1, value: volume.value, onInput: changeVolume },
+      volume: {
+        min: 0,
+        max: 1,
+        value: volume.value,
+        onInput: changeVolume,
+        style: { "--percentage": `${Math.floor(volume.value * 100)}%` },
+      },
     },
     actions: { play, pause, mute, unmute, reset, seek, changeVolume },
     meta: {
