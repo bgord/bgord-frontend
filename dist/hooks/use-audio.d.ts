@@ -35,7 +35,10 @@ export declare function useAudio(src: UseAudioSrcType): {
     };
     meta: {
         state: UseAudioStateType;
-        percentage: number;
+        percentage: {
+            raw: number;
+            formatted: string;
+        };
         currentTime: {
             raw: number;
             formatted: string;

@@ -115,7 +115,10 @@ export function useAudio(src: UseAudioSrcType) {
     actions: { play, pause, mute, unmute, reset, seek, changeVolume },
     meta: {
       state,
-      percentage,
+      percentage: {
+        raw: percentage,
+        formatted: `${percentage}%`,
+      },
       currentTime: {
         raw: currentTime.value,
         formatted: DurationFormatter.format(currentTime.value),
