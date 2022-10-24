@@ -48,8 +48,9 @@ export declare function useAudio(src: UseAudioSrcType): {
             formatted: string;
         };
         volume: {
+            value: number;
             raw: number;
-            formatted: number;
+            formatted: string;
         };
         muted: boolean;
     };

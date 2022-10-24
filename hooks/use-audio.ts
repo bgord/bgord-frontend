@@ -128,8 +128,9 @@ export function useAudio(src: UseAudioSrcType) {
         formatted: DurationFormatter.format(duration.value),
       },
       volume: {
-        raw: volume.value,
-        formatted: Math.floor(volume.value * 100),
+        value: volume.value,
+        raw: Math.floor(volume.value * 100),
+        formatted: `${Math.floor(volume.value * 100)}%`,
       },
       muted,
     },
