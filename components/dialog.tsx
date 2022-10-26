@@ -9,19 +9,25 @@ export function Dialog(props: DialogPropsType) {
   const { disable, enable, on, off, toggle, ...rest } = props;
   const ref = React.useRef<HTMLDialogElement>(null);
 
+  React.useEffect(() => {
+    if (props.on) {
+      // @ts-ignore
+      ref.current?.showModal();
+    } else {
+      // @ts-ignore
+      ref.current?.close();
+    }
+  }, [props.on]);
+
   hooks.useKeyboardShortcurts({ Escape: disable });
-  hooks.useClickOutside(ref, disable);
   hooks.useAutofocus({ ref, condition: props.on });
   hooks.useScrollLock(props.on);
-
-  if (props.off) return null;
 
   return (
     <dialog
       ref={ref}
       tabIndex={0}
-      open={props.on}
-      data-display="flex"
+      data-display={props.on ? "flex" : "none"}
       data-direction="column"
       data-position="absolute"
       data-z="2"
