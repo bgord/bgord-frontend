@@ -29,14 +29,15 @@ export function Dialog(props: DialogPropsType) {
       tabIndex={0}
       data-display={props.on ? "flex" : "none"}
       data-direction="column"
+      data-mx="auto"
+      data-p="24"
       data-position="absolute"
       data-z="2"
       data-bg="white"
       data-br="4"
       data-bc="gray-300"
       data-bw="1"
-      data-p="24"
-      data-mx="auto"
+      data-backdrop="black"
       {...rest}
     />
   );
