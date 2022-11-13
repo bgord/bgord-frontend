@@ -10,6 +10,7 @@ export * from "./use-file";
 export * from "./use-filter";
 export * from "./use-image-file-resolution";
 export * from "./use-is-online";
+export * from "./use-is-visible";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-leaving-prompt";
 export * from "./use-list";
