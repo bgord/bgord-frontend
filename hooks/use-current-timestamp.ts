@@ -1,10 +1,22 @@
 import { useState, useEffect } from "react";
+import { Time } from "../time";
 
-export function useCurrentTimestamp() {
-  const [timestamp, setTimestamp] = useState<number>(0);
+export type CurrentTimestampType = number;
+
+export function getCurrentTimestamp(): CurrentTimestampType {
+  return Date.now();
+}
+
+export function useCurrentTimestamp(): CurrentTimestampType {
+  const [timestamp, setTimestamp] =
+    useState<CurrentTimestampType>(getCurrentTimestamp);
 
   useEffect(() => {
-    const timer = setInterval(() => setTimestamp(Date.now()), 1000);
+    const timer = setInterval(
+      () => setTimestamp(getCurrentTimestamp()),
+      new Time.Seconds(1).toMs()
+    );
+
     return () => clearInterval(timer);
   }, []);
 
