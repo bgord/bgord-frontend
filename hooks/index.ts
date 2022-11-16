@@ -17,6 +17,7 @@ export * from "./use-leaving-prompt";
 export * from "./use-list";
 export * from "./use-previous-value";
 export * from "./use-scroll-lock";
+export * from "./use-sound";
 export * from "./use-toggle";
 export * from "./use-url-filter";
 export * from "./use-window-dimensions";
