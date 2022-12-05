@@ -10,10 +10,24 @@ export class DateFormatter {
   static form(date: Date | null): string {
     if (!date) return DateFormatter.form(new Date());
 
-    const year = String(date.getFullYear()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
+    const year = DateFormatter._pad(date.getFullYear());
+    const month = DateFormatter._pad(date.getMonth() + 1);
+    const day = DateFormatter._pad(date.getDate());
 
     return `${year}-${month}-${day}`;
+  }
+
+  static clock(timestamp: number) {
+    const date = new Date(timestamp);
+
+    const hours = DateFormatter._pad(date.getHours());
+    const minutes = DateFormatter._pad(date.getMinutes());
+    const seconds = DateFormatter._pad(date.getSeconds());
+
+    return `${hours}:${minutes}:${seconds}`;
+  }
+
+  static _pad(value: number) {
+    return String(value).padStart(2, "0");
   }
 }
