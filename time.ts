@@ -70,4 +70,16 @@ export class Seconds {
   }
 }
 
+export class MiliSeconds {
+  value: number;
+
+  constructor(value: number) {
+    this.value = value;
+  }
+
+  toMs() {
+    return this.value;
+  }
+}
+
 export const Time = { Days, Hours, Minutes, Seconds };

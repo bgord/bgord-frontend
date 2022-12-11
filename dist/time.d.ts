@@ -24,6 +24,11 @@ export declare class Seconds {
     constructor(value: number);
     toMs(): number;
 }
+export declare class MiliSeconds {
+    value: number;
+    constructor(value: number);
+    toMs(): number;
+}
 export declare const Time: {
     Days: typeof Days;
     Hours: typeof Hours;
