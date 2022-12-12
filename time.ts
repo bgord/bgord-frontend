@@ -59,9 +59,9 @@ export class Hours {
 export class Minutes {
   value: number;
 
-  static seconds = 60 * 1000;
+  static seconds = 60;
 
-  static ms = 1000;
+  static ms = 60 * 1000;
 
   constructor(value: number) {
     this.value = value;
