@@ -27,6 +27,16 @@ export class DateFormatter {
     return `${hours}:${minutes}:${seconds}`;
   }
 
+  static clockLocal(timestamp: number) {
+    const date = new Date(timestamp);
+
+    const hours = DateFormatter._pad(date.getHours());
+    const minutes = DateFormatter._pad(date.getMinutes());
+    const seconds = DateFormatter._pad(date.getSeconds());
+
+    return `${hours}:${minutes}:${seconds}`;
+  }
+
   static countdown(timestamp: number) {
     const date = new Date(timestamp);
 
