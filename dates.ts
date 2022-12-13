@@ -20,9 +20,9 @@ export class DateFormatter {
   static clock(timestamp: number) {
     const date = new Date(timestamp);
 
-    const hours = DateFormatter._pad(date.getHours());
-    const minutes = DateFormatter._pad(date.getMinutes());
-    const seconds = DateFormatter._pad(date.getSeconds());
+    const hours = DateFormatter._pad(date.getUTCHours());
+    const minutes = DateFormatter._pad(date.getUTCMinutes());
+    const seconds = DateFormatter._pad(date.getUTCSeconds());
 
     return `${hours}:${minutes}:${seconds}`;
   }
