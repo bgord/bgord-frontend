@@ -17,7 +17,7 @@ export class DateFormatter {
     return `${year}-${month}-${day}`;
   }
 
-  static clock(timestamp: number) {
+  static clockUTC(timestamp: number) {
     const date = new Date(timestamp);
 
     const hours = DateFormatter._pad(date.getUTCHours());
