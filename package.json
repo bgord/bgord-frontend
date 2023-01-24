@@ -13,7 +13,7 @@
   "description": "",
   "scripts": {
     "build": "microbundle --jsx React.createElement",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "keywords": [],
   "author": "Bartosz Gordon",
