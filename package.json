@@ -13,7 +13,8 @@
   "description": "",
   "scripts": {
     "build": "microbundle --jsx React.createElement",
-    "test": "vitest run"
+    "test": "vitest run",
+    "preinstall": "npx only-allow npm"
   },
   "keywords": [],
   "author": "Bartosz Gordon",
@@ -30,6 +31,7 @@
     "@vitejs/plugin-react": "^3.0.1",
     "jsdom": "^21.1.0",
     "microbundle": "^0.14.2",
+    "only-allow": "^1.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-polymorphic-types": "^2.0.0",
