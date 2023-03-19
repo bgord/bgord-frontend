@@ -40,7 +40,7 @@ export function useTranslations() {
     const result = value.translations[key];
 
     if (!result)
-      console.warn(`[@bgord/frontend] missing translation for key ${key}.`);
+      console.warn(`[@bgord/frontend] missing translation for key ${key}`);
 
     return result ?? key;
   }
