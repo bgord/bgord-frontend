@@ -1,11 +1,22 @@
 import React from "react";
-import type { TranslationsType, Schema } from "@bgord/node";
+import type {
+  TranslationsType,
+  TranslationsKeyType,
+  Schema,
+} from "@bgord/node";
 import { pluralize, PluralizeOptionsType } from "./pluralize";
 
 type TranslationsContextValueType = {
   translations: TranslationsType;
   language: Schema.LanguageType;
 };
+
+type TranslationPlaceholderType = string;
+type TranslationPlaceholderValueType = string | number;
+type TranslationVariableType = Record<
+  TranslationPlaceholderType,
+  TranslationPlaceholderValueType
+>;
 
 const TranslationsContext = React.createContext<TranslationsContextValueType>({
   translations: {},
@@ -36,13 +47,24 @@ export function useTranslations() {
     );
   }
 
-  function translate(key: string) {
-    const result = value.translations[key];
+  function translate(
+    key: TranslationsKeyType,
+    variables?: TranslationVariableType
+  ) {
+    const translation = value.translations[key];
 
-    if (!result)
-      console.warn(`[@bgord/frontend] missing translation for key ${key}`);
+    if (!translation) {
+      console.warn(`[@bgord/frontend] missing translation for key: ${key}`);
+      return key;
+    }
 
-    return result ?? key;
+    if (!variables) return translation;
+
+    return Object.entries(variables).reduce(
+      (result, [placeholder, value]) =>
+        result.replace(`{{${placeholder}}}`, String(value)),
+      translation
+    );
   }
 
   return translate;
