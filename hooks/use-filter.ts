@@ -5,6 +5,7 @@ import { noop } from "../noop";
 export type UseFilterQueryType = string | undefined;
 
 export type UseFilterConfigType<T> = {
+  label: string;
   enum: { [key: string]: UseFilterQueryType };
   defaultQuery?: UseFilterQueryType;
   currentQuery?: UseFilterQueryType;
@@ -50,5 +51,13 @@ export function useFilter<T = string>(config: UseFilterConfigType<T>) {
     onUpdate(query, previousQuery);
   }, [previousQuery, query]);
 
-  return { query, clear, onChange, filterFn, options, onUpdate };
+  return {
+    query,
+    clear,
+    onChange,
+    filterFn,
+    options,
+    onUpdate,
+    label: config.label,
+  };
 }

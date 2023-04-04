@@ -1,5 +1,6 @@
 export declare type UseFilterQueryType = string | undefined;
 export declare type UseFilterConfigType<T> = {
+    label: string;
     enum: {
         [key: string]: UseFilterQueryType;
     };
@@ -15,4 +16,5 @@ export declare function useFilter<T = string>(config: UseFilterConfigType<T>): {
     filterFn: (value: T) => boolean;
     options: string[];
     onUpdate: (current: UseFilterQueryType, previous: UseFilterQueryType) => void;
+    label: string;
 };

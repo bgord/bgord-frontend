@@ -1,9 +1,7 @@
 import { useFilter, UseFilterConfigType } from "./use-filter";
 import { getSafeWindow } from "../safe-window";
 
-export type UseUrlFilterConfigType<T> = UseFilterConfigType<T> & {
-  label: string;
-};
+export type UseUrlFilterConfigType<T> = UseFilterConfigType<T>;
 
 export function useUrlFilter<T>(config: UseUrlFilterConfigType<T>) {
   const safeWindow = getSafeWindow();
