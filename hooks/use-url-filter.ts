@@ -34,5 +34,6 @@ export function useUrlFilter<T>(config: UseUrlFilterConfigType<T>) {
     },
     ...config,
     defaultQuery: config.defaultQuery,
+    currentQuery: currentQuery,
   });
 }

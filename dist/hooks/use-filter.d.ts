@@ -4,6 +4,7 @@ export declare type UseFilterConfigType<T> = {
         [key: string]: UseFilterQueryType;
     };
     defaultQuery?: UseFilterQueryType;
+    currentQuery?: UseFilterQueryType;
     filterFn?: (value: T) => boolean;
     onUpdate?: (current: UseFilterQueryType, previous: UseFilterQueryType) => void;
 };

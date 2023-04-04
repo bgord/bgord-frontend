@@ -7,6 +7,7 @@ export type UseFilterQueryType = string | undefined;
 export type UseFilterConfigType<T> = {
   enum: { [key: string]: UseFilterQueryType };
   defaultQuery?: UseFilterQueryType;
+  currentQuery?: UseFilterQueryType;
   filterFn?: (value: T) => boolean;
   onUpdate?: (
     current: UseFilterQueryType,
@@ -16,11 +17,15 @@ export type UseFilterConfigType<T> = {
 
 export function useFilter<T = string>(config: UseFilterConfigType<T>) {
   const defaultQuery = config.defaultQuery ?? undefined;
+  const currentQuery = config.currentQuery ?? undefined;
+
   const filterFn = config.filterFn ?? defaultFilterFn;
   const options = Object.keys(config.enum);
   const onUpdate = config?.onUpdate ?? noop;
 
-  const [query, setQuery] = useState<UseFilterQueryType>(defaultQuery);
+  const [query, setQuery] = useState<UseFilterQueryType>(
+    currentQuery ?? defaultQuery
+  );
   const previousQuery = usePreviousValue(query);
 
   function clear() {
