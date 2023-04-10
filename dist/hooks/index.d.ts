@@ -17,6 +17,7 @@ export * from "./use-keyboard-shortcuts";
 export * from "./use-leaving-prompt";
 export * from "./use-list";
 export * from "./use-previous-value";
+export * from "./use-scroll";
 export * from "./use-scroll-lock";
 export * from "./use-sound";
 export * from "./use-toggle";
