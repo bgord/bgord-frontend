@@ -1,3 +1,12 @@
 export declare function useScroll(): {
-    toTop: () => void;
+    actions: {
+        goToTop: () => void;
+    };
+    position: {
+        value: number;
+        isInitial: boolean;
+        hasChanged: boolean;
+    };
+    visible: boolean;
+    hidden: boolean;
 };
