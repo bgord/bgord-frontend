@@ -14,9 +14,9 @@ export function useAudio(src: UseAudioSrcType) {
 
   const ref = React.useRef<HTMLAudioElement | null>(null);
 
-  const duration = useField<number>(0);
-  const currentTime = useField<number>(0);
-  const volume = useField<number>(AUDIO_DEFAULT_VOLUME);
+  const duration = useField<number>("duration", 0);
+  const currentTime = useField<number>("currentTime", 0);
+  const volume = useField<number>("volume", AUDIO_DEFAULT_VOLUME);
 
   const muted = volume.value === 0;
 

@@ -11,7 +11,10 @@ import {
 export function useImageFileResolution(
   file: UseFileReturnType
 ): ImageResolutionType {
-  const resolution = useField<ImageResolutionType>(emptyImageResolution);
+  const resolution = useField<ImageResolutionType>(
+    "resolution",
+    emptyImageResolution
+  );
 
   React.useEffect(() => {
     async function execute() {
