@@ -7,6 +7,15 @@ export class DateFormatter {
     return new Date(date).toLocaleString();
   }
 
+  static monthDay(timestamp: number) {
+    const date = new Date(timestamp);
+
+    const days = DateFormatter._pad(date.getDay());
+    const months = DateFormatter._pad(date.getMonth());
+
+    return `${months}/${days}`;
+  }
+
   static form(date: Date | null): string {
     if (!date) return DateFormatter.form(new Date());
 
