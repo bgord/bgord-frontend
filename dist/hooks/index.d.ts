@@ -10,6 +10,7 @@ export * from "./use-expandable-list";
 export * from "./use-field";
 export * from "./use-file";
 export * from "./use-filter";
+export * from "./use-hover";
 export * from "./use-image-file-resolution";
 export * from "./use-is-online";
 export * from "./use-is-visible";
