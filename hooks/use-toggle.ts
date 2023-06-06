@@ -1,8 +1,10 @@
 import { useState } from "react";
 
+export type UseToggleValueType = boolean;
+
 export type UseToggleReturnType = {
-  on: boolean;
-  off: boolean;
+  on: UseToggleValueType;
+  off: UseToggleValueType;
   enable: VoidFunction;
   disable: VoidFunction;
   toggle: VoidFunction;
