@@ -19,6 +19,7 @@ export * from "./use-keyboard-handler";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-leaving-prompt";
 export * from "./use-list";
+export * from "./use-persistent-toggle";
 export * from "./use-previous-value";
 export * from "./use-rate-limiter";
 export * from "./use-scroll";
