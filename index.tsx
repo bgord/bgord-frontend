@@ -15,3 +15,4 @@ export * from "./server-error";
 export * from "./time";
 export * from "./toasts";
 export * from "./translations";
+export * from "./safe-local-storage";
