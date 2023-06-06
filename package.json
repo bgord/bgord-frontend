@@ -41,6 +41,7 @@
   },
   "typings": "./dist/index.d.ts",
   "dependencies": {
-    "tinykeys": "^1.4.0"
+    "tinykeys": "^1.4.0",
+    "ts-storage": "^5.0.1"
   }
 }
