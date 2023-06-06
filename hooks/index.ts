@@ -15,6 +15,7 @@ export * from "./use-hover";
 export * from "./use-image-file-resolution";
 export * from "./use-is-online";
 export * from "./use-is-visible";
+export * from "./use-keyboard-handler";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-leaving-prompt";
 export * from "./use-list";
