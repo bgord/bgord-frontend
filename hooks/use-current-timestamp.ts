@@ -14,7 +14,7 @@ export function useCurrentTimestamp(): CurrentTimestampType {
   useEffect(() => {
     const timer = setInterval(
       () => setTimestamp(getCurrentTimestamp()),
-      new Time.Seconds(1).toMs()
+      Time.Seconds(1).toMs()
     );
 
     return () => clearInterval(timer);
