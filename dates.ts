@@ -10,8 +10,8 @@ export class DateFormatter {
   static monthDay(timestamp: number) {
     const date = new Date(timestamp);
 
-    const days = DateFormatter._pad(date.getDay());
-    const months = DateFormatter._pad(date.getMonth());
+    const days = DateFormatter._pad(date.getDate());
+    const months = DateFormatter._pad(date.getMonth() + 1);
 
     return `${months}/${days}`;
   }
