@@ -11,8 +11,10 @@ export class Rhythm {
           px: `${result}px`,
           raw: result,
           height: { height: `${result}px` },
+          minHeight: { minHeight: `${result}px` },
           maxHeight: { maxHeight: `${result}px` },
           width: { width: `${result}px` },
+          minWidth: { minWidth: `${result}px` },
           maxWidth: { maxWidth: `${result}px` },
         };
       },

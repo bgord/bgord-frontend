@@ -8,11 +8,17 @@ export declare class Rhythm {
             height: {
                 height: string;
             };
+            minHeight: {
+                minHeight: string;
+            };
             maxHeight: {
                 maxHeight: string;
             };
             width: {
                 width: string;
+            };
+            minWidth: {
+                minWidth: string;
             };
             maxWidth: {
                 maxWidth: string;
