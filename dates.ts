@@ -10,8 +10,8 @@ export class DateFormatter {
   static monthDay(timestamp: number) {
     const date = new Date(timestamp);
 
-    const days = DateFormatter._pad(date.getDate());
-    const months = DateFormatter._pad(date.getMonth() + 1);
+    const days = DateFormatter._padDatePart(date.getDate());
+    const months = DateFormatter._padDatePart(date.getMonth() + 1);
 
     return `${months}/${days}`;
   }
@@ -19,9 +19,9 @@ export class DateFormatter {
   static form(date: Date | null): string {
     if (!date) return DateFormatter.form(new Date());
 
-    const year = DateFormatter._pad(date.getFullYear());
-    const month = DateFormatter._pad(date.getMonth() + 1);
-    const day = DateFormatter._pad(date.getDate());
+    const year = DateFormatter._padDatePart(date.getFullYear());
+    const month = DateFormatter._padDatePart(date.getMonth() + 1);
+    const day = DateFormatter._padDatePart(date.getDate());
 
     return `${year}-${month}-${day}`;
   }
@@ -29,9 +29,9 @@ export class DateFormatter {
   static clockUTC(timestamp: number) {
     const date = new Date(timestamp);
 
-    const hours = DateFormatter._pad(date.getUTCHours());
-    const minutes = DateFormatter._pad(date.getUTCMinutes());
-    const seconds = DateFormatter._pad(date.getUTCSeconds());
+    const hours = DateFormatter._padDatePart(date.getUTCHours());
+    const minutes = DateFormatter._padDatePart(date.getUTCMinutes());
+    const seconds = DateFormatter._padDatePart(date.getUTCSeconds());
 
     return `${hours}:${minutes}:${seconds}`;
   }
@@ -39,9 +39,9 @@ export class DateFormatter {
   static clockLocal(timestamp: number) {
     const date = new Date(timestamp);
 
-    const hours = DateFormatter._pad(date.getHours());
-    const minutes = DateFormatter._pad(date.getMinutes());
-    const seconds = DateFormatter._pad(date.getSeconds());
+    const hours = DateFormatter._padDatePart(date.getHours());
+    const minutes = DateFormatter._padDatePart(date.getMinutes());
+    const seconds = DateFormatter._padDatePart(date.getSeconds());
 
     return `${hours}:${minutes}:${seconds}`;
   }
@@ -49,14 +49,14 @@ export class DateFormatter {
   static countdown(timestamp: number) {
     const date = new Date(timestamp);
 
-    const hours = DateFormatter._pad(date.getHours());
-    const minutes = DateFormatter._pad(date.getMinutes());
-    const seconds = DateFormatter._pad(date.getSeconds());
+    const hours = DateFormatter._padDatePart(date.getHours());
+    const minutes = DateFormatter._padDatePart(date.getMinutes());
+    const seconds = DateFormatter._padDatePart(date.getSeconds());
 
     return `${hours}:${minutes}:${seconds}`;
   }
 
-  static _pad(value: number) {
+  static _padDatePart(value: number) {
     return String(value).padStart(2, "0");
   }
 }
