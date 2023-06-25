@@ -10,7 +10,7 @@ export declare class DateFormatter {
     static _padDatePart(value: number): string;
 }
 export declare class HourFormatter {
-    convertUtcToLocal(utcHour: HourType): {
+    static convertUtcToLocal(utcHour: HourType): {
         value: number;
         label: string;
     };

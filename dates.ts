@@ -66,7 +66,7 @@ export class DateFormatter {
 }
 
 export class HourFormatter {
-  convertUtcToLocal(utcHour: HourType) {
+  static convertUtcToLocal(utcHour: HourType) {
     const timeZoneOffsetInMins = new Date().getTimezoneOffset();
 
     const utcHourInMins = Time.Hours(utcHour).toMinutes();
