@@ -1,3 +1,7 @@
+import type { HourType } from "@bgord/node/dist/schema";
+
+import * as Time from "./time";
+
 export type DateType = Date | number | null | undefined;
 
 export class DateFormatter {
@@ -58,5 +62,19 @@ export class DateFormatter {
 
   static _padDatePart(value: number) {
     return String(value).padStart(2, "0");
+  }
+}
+
+export class HourFormatter {
+  convertUtcToLocal(utcHour: HourType) {
+    const timeZoneOffsetInMins = new Date().getTimezoneOffset();
+
+    const utcHourInMins = Time.Hours(utcHour).toMinutes();
+
+    const localHourInMins = utcHourInMins - timeZoneOffsetInMins;
+    const localHour = (localHourInMins / 60) % 24;
+    const formattedLocalHour = `${String(localHour).padStart(2, "0")}:00`;
+
+    return { value: localHour, label: formattedLocalHour };
   }
 }
