@@ -1,2 +1,5 @@
 import { UseToggleReturnType, UseToggleValueType } from "./use-toggle";
-export declare function usePersistentToggle(key: string, defaultValue?: UseToggleValueType): UseToggleReturnType;
+import { SafeLocalStorageKeyType } from "../safe-local-storage";
+export declare function usePersistentToggle(key: SafeLocalStorageKeyType, defaultValue?: UseToggleValueType): UseToggleReturnType & {
+    clear: VoidFunction;
+};

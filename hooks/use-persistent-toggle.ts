@@ -5,12 +5,15 @@ import {
   UseToggleReturnType,
   UseToggleValueType,
 } from "./use-toggle";
-import { SafeLocalStorage } from "../safe-local-storage";
+import {
+  SafeLocalStorage,
+  SafeLocalStorageKeyType,
+} from "../safe-local-storage";
 
 export function usePersistentToggle(
-  key: string,
+  key: SafeLocalStorageKeyType,
   defaultValue: UseToggleValueType = false
-): UseToggleReturnType {
+): UseToggleReturnType & { clear: VoidFunction } {
   const storedValue = SafeLocalStorage.get<UseToggleValueType>(
     key,
     defaultValue
@@ -20,5 +23,5 @@ export function usePersistentToggle(
 
   React.useEffect(() => SafeLocalStorage.set(key, toggle.on), [key, toggle.on]);
 
-  return toggle;
+  return { ...toggle, clear: () => SafeLocalStorage.clear(key) };
 }
