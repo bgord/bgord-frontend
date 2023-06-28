@@ -6,20 +6,20 @@ import {
   RateLimiter,
 } from "../rate-limiter";
 
-type UseRateLimiterOptionsType = RateLimiterOptionsType & {
-  action: Function;
+type UseRateLimiterOptionsType<T> = RateLimiterOptionsType & {
+  action: (...args: T[]) => void;
   fallback?: (remainingMs: RateLimiterResultErrorType["remainingMs"]) => void;
 };
 
-export function useRateLimiter(options: UseRateLimiterOptionsType) {
+export function useRateLimiter<T>(options: UseRateLimiterOptionsType<T>) {
   const rateLimiter = useRef<RateLimiter>(new RateLimiter(options));
 
-  function executor() {
+  function executor(...args: T[]) {
     const currentTimestamp = Date.now();
     const result = rateLimiter.current.verify(currentTimestamp);
 
     if (result.allowed) {
-      return options.action();
+      return options.action(...args);
     }
 
     return options.fallback?.(result.remainingMs);

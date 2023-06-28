@@ -9,6 +9,7 @@ export type UseFieldReturnType<T> = {
   clear: VoidFunction;
   label: { props: { htmlFor: UseFieldNameType } };
   input: { props: { id: UseFieldNameType; name: UseFieldNameType } };
+  hasChanged: boolean;
 };
 
 export function useField<T>(
@@ -31,5 +32,6 @@ export function useField<T>(
     clear,
     label: { props: { htmlFor: name } },
     input: { props: { id: name, name: name } },
+    hasChanged: value !== evaluatedDefaultValue,
   };
 }

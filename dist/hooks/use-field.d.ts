@@ -16,5 +16,6 @@ export declare type UseFieldReturnType<T> = {
             name: UseFieldNameType;
         };
     };
+    hasChanged: boolean;
 };
 export declare function useField<T>(name: UseFieldNameType, defaultValue: UseFieldDefaultValueType<T>): UseFieldReturnType<T>;
