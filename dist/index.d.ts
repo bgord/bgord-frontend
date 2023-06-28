@@ -3,6 +3,7 @@ export * from "./components";
 export * from "./copy-to-clipboard";
 export * from "./dates";
 export * from "./durations";
+export * from "./exec";
 export * from "./filter-url";
 export * from "./get-image-resolution";
 export * from "./hooks";
