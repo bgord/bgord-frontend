@@ -6,6 +6,7 @@ export declare type UseItemReturnType<T> = {
     value: UseItemValueType<T>;
     isDefault: boolean;
     exists: boolean;
+    compare: (a: UseItemValueType<T>) => boolean;
 };
 export declare type UseItemConfigType<T> = {
     defaultItem?: UseItemValueType<T>;

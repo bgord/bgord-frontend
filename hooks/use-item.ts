@@ -9,6 +9,7 @@ export type UseItemReturnType<T> = {
   value: UseItemValueType<T>;
   isDefault: boolean;
   exists: boolean;
+  compare: (a: UseItemValueType<T>) => boolean;
 };
 
 export type UseItemConfigType<T> = {
@@ -52,5 +53,7 @@ export function useItem<T>(
     isDefault: comparisonFn(item, defaultItem),
 
     exists: !comparisonFn(item, defaultItem),
+
+    compare: (given: UseItemValueType<T>) => comparisonFn(item, given),
   };
 }
