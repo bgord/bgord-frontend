@@ -9,5 +9,5 @@ export declare type UseItemConfigType<T> = {
     defaultItem?: UseItemValueType<T>;
     comparisonFn?: (a: UseItemValueType<T>, b: UseItemValueType<T>) => boolean;
 };
-export declare function useItem<T>(config: UseItemConfigType<T>): UseItemReturnType<T>;
+export declare function useItem<T>(config?: UseItemConfigType<T>): UseItemReturnType<T>;
 export {};
