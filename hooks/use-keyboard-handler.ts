@@ -5,9 +5,7 @@ export enum KeyNameEnum {
   Space = " ",
 }
 
-export type UseKeyHandlerConfigType = Partial<
-  Record<KeyNameEnum, VoidFunction>
->;
+export type UseKeyHandlerConfigType = Partial<Record<KeyNameEnum, Function>>;
 
 export function useKeyHandler(config: UseKeyHandlerConfigType) {
   const keys = Object.keys(config);
