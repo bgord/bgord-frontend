@@ -4,6 +4,8 @@ export declare type UseItemReturnType<T> = {
     set: (item: NonNullable<UseItemValueType<T>>) => void;
     toggle: (item: NonNullable<UseItemValueType<T>>) => any;
     value: UseItemValueType<T>;
+    isDefault: boolean;
+    exists: boolean;
 };
 export declare type UseItemConfigType<T> = {
     defaultItem?: UseItemValueType<T>;

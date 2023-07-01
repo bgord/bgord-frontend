@@ -7,6 +7,8 @@ export type UseItemReturnType<T> = {
   set: (item: NonNullable<UseItemValueType<T>>) => void;
   toggle: (item: NonNullable<UseItemValueType<T>>) => any;
   value: UseItemValueType<T>;
+  isDefault: boolean;
+  exists: boolean;
 };
 
 export type UseItemConfigType<T> = {
@@ -22,27 +24,33 @@ function defaultComparisonFn<T>(
   return a === b;
 }
 
+const defaultItem = null;
+
 export function useItem<T>(
   config?: UseItemConfigType<T>
 ): UseItemReturnType<T> {
   const comparisonFn = config?.comparisonFn ?? defaultComparisonFn;
 
   const [item, setItem] = useState<UseItemValueType<T>>(
-    config?.defaultItem ?? null
+    config?.defaultItem ?? defaultItem
   );
 
   return {
-    clear: () => setItem(null),
+    clear: () => setItem(defaultItem),
 
-    set: (updated) => setItem(updated),
+    set: (newer) => setItem(newer),
 
     toggle: (newer) =>
       setItem((current) => {
-        if (current === null) return newer;
+        if (current === defaultItem) return newer;
 
-        return comparisonFn(current, newer) ? null : newer;
+        return comparisonFn(current, newer) ? defaultItem : newer;
       }),
 
     value: item,
+
+    isDefault: comparisonFn(item, defaultItem),
+
+    exists: !comparisonFn(item, defaultItem),
   };
 }
