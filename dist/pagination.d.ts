@@ -7,6 +7,6 @@ export declare class Pagination {
             exhausted: boolean;
         };
     };
-    static extract<T>(infinite: UseInfiniteQueryResult<Paged<T>>): T[];
+    static infinite<T>(infinite: UseInfiniteQueryResult<Paged<T>>): T[];
 }
-export type { Paged } from "@bgord/node";
+export type { Paged, PageType } from "@bgord/node";
