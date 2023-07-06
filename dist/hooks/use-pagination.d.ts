@@ -1,33 +1,21 @@
-import { PagedMetaType } from "../pagination";
-export declare function usePagination(): {
-    current: number;
-    last: number | undefined;
-    buttons: {
-        firstPage: {
-            value: number;
-            exists: boolean;
-            active: boolean;
-            go: () => void;
-        };
-        previousPage: {
-            value: number | undefined;
-            exists: number | undefined;
-            disabled: boolean;
-            go: () => void;
-        };
-        nextPage: {
-            value: number | undefined;
-            exists: number | undefined;
-            disabled: boolean;
-            go: () => void;
-        };
-        lastPage: {
-            value: number | undefined;
-            exists: boolean;
-            active: boolean;
-            disabled: boolean;
-            go: () => void;
-        };
+import { PagedMetaType, PageType } from "../pagination";
+declare type UsePaginationControlType = {
+    active: boolean;
+    disabled: boolean;
+    exists: boolean;
+    go: VoidFunction;
+    value: PageType | undefined;
+};
+declare type UsePaginationReturnType = {
+    current: PageType;
+    last: PageType | undefined;
+    controls: {
+        firstPage: UsePaginationControlType;
+        previousPage: UsePaginationControlType;
+        nextPage: UsePaginationControlType;
+        lastPage: UsePaginationControlType;
     };
     update: (updated: PagedMetaType | null) => void;
 };
+export declare function usePagination(): UsePaginationReturnType;
+export {};

@@ -1,7 +1,29 @@
 import { useField } from "./use-field";
-import { PagedMetaType } from "../pagination";
+import { PagedMetaType, PageType } from "../pagination";
 
-export function usePagination() {
+type UsePaginationControlType = {
+  active: boolean;
+  disabled: boolean;
+  exists: boolean;
+  go: VoidFunction;
+  value: PageType | undefined;
+};
+
+type UsePaginationReturnType = {
+  current: PageType;
+  last: PageType | undefined;
+
+  controls: {
+    firstPage: UsePaginationControlType;
+    previousPage: UsePaginationControlType;
+    nextPage: UsePaginationControlType;
+    lastPage: UsePaginationControlType;
+  };
+
+  update: (updated: PagedMetaType | null) => void;
+};
+
+export function usePagination(): UsePaginationReturnType {
   const meta = useField<PagedMetaType | null>("meta", null);
 
   const firstPage = 1;
@@ -15,37 +37,40 @@ export function usePagination() {
     current: page.value,
     last: lastPage,
 
-    buttons: {
+    controls: {
       firstPage: {
-        value: firstPage,
-        exists: true,
         active: !previousPage,
+        disabled: false,
+        exists: true,
         go: () => page.set(firstPage),
+        value: firstPage,
       },
 
       previousPage: {
-        value: previousPage,
-        exists: previousPage,
+        active: false,
         disabled: !previousPage,
+        exists: Boolean(previousPage),
         go: () => page.set(previousPage ?? page.value),
+        value: previousPage,
       },
 
       nextPage: {
-        value: nextPage,
-        exists: nextPage,
+        active: false,
         disabled: !nextPage,
+        exists: Boolean(nextPage),
         go: () => page.set(nextPage ?? page.value),
+        value: nextPage,
       },
 
       lastPage: {
-        value: lastPage,
-        exists: true,
         active: page.value === lastPage,
         disabled: !nextPage,
+        exists: true,
         go: () => page.set(lastPage ?? page.value),
+        value: lastPage,
       },
     },
 
-    update: (updated: PagedMetaType | null) => meta.set(updated),
+    update: (updated) => meta.set(updated),
   };
 }
