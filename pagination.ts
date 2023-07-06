@@ -14,4 +14,4 @@ export class Pagination {
   }
 }
 
-export type { Paged } from "@bgord/node";
+export type { Paged, PageType } from "@bgord/node";
