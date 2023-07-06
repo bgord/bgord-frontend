@@ -29,3 +29,4 @@ export * from "./use-sound";
 export * from "./use-toggle";
 export * from "./use-url-filter";
 export * from "./use-window-dimensions";
+export * from "./use-pagination";

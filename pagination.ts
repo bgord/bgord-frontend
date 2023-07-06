@@ -15,3 +15,5 @@ export class Pagination {
 }
 
 export type { Paged, PageType } from "@bgord/node";
+
+export type PagedMetaType = Paged<unknown>["meta"];
