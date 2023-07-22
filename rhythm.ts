@@ -8,16 +8,20 @@ export class Rhythm {
         const result = base * times;
 
         return {
-          px: `${result}px`,
+          px: px(result),
           raw: result,
-          height: { height: `${result}px` },
-          minHeight: { minHeight: `${result}px` },
-          maxHeight: { maxHeight: `${result}px` },
-          width: { width: `${result}px` },
-          minWidth: { minWidth: `${result}px` },
-          maxWidth: { maxWidth: `${result}px` },
+          height: { height: px(result) },
+          minHeight: { minHeight: px(result) },
+          maxHeight: { maxHeight: px(result) },
+          width: { width: px(result) },
+          minWidth: { minWidth: px(result) },
+          maxWidth: { maxWidth: px(result) },
         };
       },
     };
   }
+}
+
+function px(number: number) {
+  return `${number}px`;
 }
