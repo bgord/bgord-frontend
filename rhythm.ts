@@ -2,7 +2,9 @@ export type RhythmBaseType = number;
 export type RhythmTimesType = number;
 
 export class Rhythm {
-  static base(base: RhythmBaseType = 12) {
+  static readonly DEFAULT_BASE_PX = 12;
+
+  static base(base: RhythmBaseType = Rhythm.DEFAULT_BASE_PX) {
     return {
       times(times: RhythmTimesType) {
         const result = base * times;
@@ -16,6 +18,7 @@ export class Rhythm {
           width: { width: px(result) },
           minWidth: { minWidth: px(result) },
           maxWidth: { maxWidth: px(result) },
+          square: { height: px(result), width: px(result) },
         };
       },
     };

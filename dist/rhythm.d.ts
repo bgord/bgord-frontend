@@ -1,6 +1,7 @@
 export declare type RhythmBaseType = number;
 export declare type RhythmTimesType = number;
 export declare class Rhythm {
+    static readonly DEFAULT_BASE_PX = 12;
     static base(base?: RhythmBaseType): {
         times(times: RhythmTimesType): {
             px: string;
@@ -22,6 +23,10 @@ export declare class Rhythm {
             };
             maxWidth: {
                 maxWidth: string;
+            };
+            square: {
+                height: string;
+                width: string;
             };
         };
     };
