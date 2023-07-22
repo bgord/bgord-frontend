@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+type UseFileNameType = string;
+
 export type UseFileConfigType = {
   maxSize?: number;
 };
@@ -17,6 +19,8 @@ type UseFileIdle = {
     selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
     clearFile: VoidFunction;
   };
+  label: { props: { htmlFor: UseFileNameType } };
+  input: { props: { id: UseFileNameType; name: UseFileNameType } };
 };
 
 type UseFileSelected = {
@@ -27,6 +31,8 @@ type UseFileSelected = {
     clearFile: VoidFunction;
     previewFile: () => ReturnType<typeof URL.createObjectURL> | undefined;
   };
+  label: { props: { htmlFor: UseFileNameType } };
+  input: { props: { id: UseFileNameType; name: UseFileNameType } };
 };
 
 type UseFileError = {
@@ -36,11 +42,16 @@ type UseFileError = {
     selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
     clearFile: VoidFunction;
   };
+  label: { props: { htmlFor: UseFileNameType } };
+  input: { props: { id: UseFileNameType; name: UseFileNameType } };
 };
 
 export type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
 
-export function useFile(config?: UseFileConfigType): UseFileReturnType {
+export function useFile(
+  name: UseFileNameType,
+  config?: UseFileConfigType
+): UseFileReturnType {
   const maxSize = config?.maxSize ?? Infinity;
 
   const [state, setState] = useState<UseFileState>(UseFileState.idle);
@@ -76,7 +87,13 @@ export function useFile(config?: UseFileConfigType): UseFileReturnType {
   }
 
   if (state === UseFileState.idle) {
-    return { state, data: null, actions: { selectFile, clearFile } };
+    return {
+      state,
+      data: null,
+      actions: { selectFile, clearFile },
+      label: { props: { htmlFor: name } },
+      input: { props: { id: name, name: name } },
+    };
   }
 
   if (state === UseFileState.selected) {
@@ -84,8 +101,16 @@ export function useFile(config?: UseFileConfigType): UseFileReturnType {
       state,
       data: file as File,
       actions: { selectFile, clearFile, previewFile },
+      label: { props: { htmlFor: name } },
+      input: { props: { id: name, name: name } },
     };
   }
 
-  return { state, data: null, actions: { selectFile, clearFile } };
+  return {
+    state,
+    data: null,
+    actions: { selectFile, clearFile },
+    label: { props: { htmlFor: name } },
+    input: { props: { id: name, name: name } },
+  };
 }

@@ -1,4 +1,5 @@
 /// <reference types="react" />
+declare type UseFileNameType = string;
 export declare type UseFileConfigType = {
     maxSize?: number;
 };
@@ -14,6 +15,17 @@ declare type UseFileIdle = {
         selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
         clearFile: VoidFunction;
     };
+    label: {
+        props: {
+            htmlFor: UseFileNameType;
+        };
+    };
+    input: {
+        props: {
+            id: UseFileNameType;
+            name: UseFileNameType;
+        };
+    };
 };
 declare type UseFileSelected = {
     state: UseFileState.selected;
@@ -23,6 +35,17 @@ declare type UseFileSelected = {
         clearFile: VoidFunction;
         previewFile: () => ReturnType<typeof URL.createObjectURL> | undefined;
     };
+    label: {
+        props: {
+            htmlFor: UseFileNameType;
+        };
+    };
+    input: {
+        props: {
+            id: UseFileNameType;
+            name: UseFileNameType;
+        };
+    };
 };
 declare type UseFileError = {
     state: UseFileState.error;
@@ -31,7 +54,18 @@ declare type UseFileError = {
         selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
         clearFile: VoidFunction;
     };
+    label: {
+        props: {
+            htmlFor: UseFileNameType;
+        };
+    };
+    input: {
+        props: {
+            id: UseFileNameType;
+            name: UseFileNameType;
+        };
+    };
 };
 export declare type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
-export declare function useFile(config?: UseFileConfigType): UseFileReturnType;
+export declare function useFile(name: UseFileNameType, config?: UseFileConfigType): UseFileReturnType;
 export {};

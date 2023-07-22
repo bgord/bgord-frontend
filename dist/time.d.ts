@@ -1,24 +1,24 @@
 export declare function Days(value: number): {
     value: number;
-    toHours(): number;
-    toMinutes(): number;
-    toSeconds(): number;
-    toMs(): number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+    ms: number;
 };
 export declare function Hours(value: number): {
     value: number;
-    toMinutes(): number;
-    toSeconds(): number;
-    toMs(): number;
+    minutes: number;
+    seconds: number;
+    ms: number;
 };
 export declare function Minutes(value: number): {
     value: number;
-    toSeconds(): number;
-    toMs(): number;
+    seconds: number;
+    ms: number;
 };
 export declare function Seconds(value: number): {
     value: number;
-    toMs(): number;
+    ms: number;
 };
 export declare const Time: {
     Days: typeof Days;
