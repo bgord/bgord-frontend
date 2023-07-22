@@ -1,33 +1,68 @@
 export declare type RhythmBaseType = number;
 export declare type RhythmTimesType = number;
-export declare class Rhythm {
-    static readonly DEFAULT_BASE_PX = 12;
-    static base(base?: RhythmBaseType): {
-        times(times: RhythmTimesType): {
-            px: string;
-            raw: number;
+export declare function Rhythm(base?: RhythmBaseType): {
+    times(times: RhythmTimesType): {
+        height: {
+            height: string;
+        };
+        minHeight: {
+            minHeight: string;
+        };
+        maxHeight: {
+            maxHeight: string;
+        };
+        width: {
+            width: string;
+        };
+        minWidth: {
+            minWidth: string;
+        };
+        maxWidth: {
+            maxWidth: string;
+        };
+        square: {
+            height: string;
+            width: string;
+        };
+        px: string;
+        raw: number;
+        style: {
             height: {
-                height: string;
+                style: {
+                    height: string;
+                };
             };
             minHeight: {
-                minHeight: string;
+                style: {
+                    minHeight: string;
+                };
             };
             maxHeight: {
-                maxHeight: string;
+                style: {
+                    maxHeight: string;
+                };
             };
             width: {
-                width: string;
+                style: {
+                    width: string;
+                };
             };
             minWidth: {
-                minWidth: string;
+                style: {
+                    minWidth: string;
+                };
             };
             maxWidth: {
-                maxWidth: string;
+                style: {
+                    maxWidth: string;
+                };
             };
             square: {
-                height: string;
-                width: string;
+                style: {
+                    height: string;
+                    width: string;
+                };
             };
         };
     };
-}
+};
