@@ -69,7 +69,7 @@ export class HourFormatter {
   static convertUtcToLocal(utcHour: HourType) {
     const timeZoneOffsetInMins = new Date().getTimezoneOffset();
 
-    const utcHourInMins = Time.Hours(utcHour).toMinutes();
+    const utcHourInMins = Time.Hours(utcHour).minutes;
 
     const localHourInMins = utcHourInMins - timeZoneOffsetInMins;
     const localHour = (localHourInMins / 60) % 24;
