@@ -129,6 +129,10 @@ export function useAudio(src: UseAudioSrcType) {
     actions: { play, pause, mute, unmute, reset, seek, changeVolume },
     meta: {
       state,
+      isInitial: state === UseAudioState.initial,
+      isReady: state === UseAudioState.ready,
+      isPlaying: state === UseAudioState.playing,
+      isPaused: state === UseAudioState.paused,
       percentage: {
         raw: percentage,
         formatted: `${percentage}%`,

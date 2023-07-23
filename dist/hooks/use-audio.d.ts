@@ -1,6 +1,11 @@
 export declare const AUDIO_DEFAULT_VOLUME = 1;
 export declare type UseAudioSrcType = string;
-export declare type UseAudioStateType = "initial" | "ready" | "playing" | "paused";
+export declare enum UseAudioState {
+    "initial" = "initial",
+    "ready" = "ready",
+    "playing" = "playing",
+    "paused" = "paused"
+}
 export declare function useAudio(src: UseAudioSrcType): {
     props: {
         audio: {
@@ -40,7 +45,11 @@ export declare function useAudio(src: UseAudioSrcType): {
         changeVolume: (event: Event) => void;
     };
     meta: {
-        state: UseAudioStateType;
+        state: UseAudioState;
+        isInitial: boolean;
+        isReady: boolean;
+        isPlaying: boolean;
+        isPaused: boolean;
         percentage: {
             raw: number;
             formatted: string;
