@@ -16,7 +16,21 @@ export type UseFilterConfigType<T> = {
   ) => void;
 };
 
-export function useFilter<T = string>(config: UseFilterConfigType<T>) {
+export type UseFilterReturnType<T> = {
+  query: UseFilterQueryType;
+  clear: VoidFunction;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  filterFn: UseFilterConfigType<T>["filterFn"];
+  options: UseFilterConfigType<T>["enum"][0][];
+  onUpdate: UseFilterConfigType<T>["onUpdate"];
+  label: UseFilterConfigType<T>["label"];
+  changed: boolean;
+  unchanged: boolean;
+};
+
+export function useFilter<T = string>(
+  config: UseFilterConfigType<T>
+): UseFilterReturnType<T> {
   const defaultQuery = config.defaultQuery ?? undefined;
   const currentQuery = config.currentQuery ?? undefined;
 

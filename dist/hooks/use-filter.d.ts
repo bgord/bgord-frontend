@@ -1,3 +1,4 @@
+/// <reference types="react" />
 export declare type UseFilterQueryType = string | undefined;
 export declare type UseFilterConfigType<T> = {
     label: string;
@@ -9,14 +10,15 @@ export declare type UseFilterConfigType<T> = {
     filterFn?: (value: T) => boolean;
     onUpdate?: (current: UseFilterQueryType, previous: UseFilterQueryType) => void;
 };
-export declare function useFilter<T = string>(config: UseFilterConfigType<T>): {
+export declare type UseFilterReturnType<T> = {
     query: UseFilterQueryType;
-    clear: () => void;
+    clear: VoidFunction;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    filterFn: (value: T) => boolean;
-    options: string[];
-    onUpdate: (current: UseFilterQueryType, previous: UseFilterQueryType) => void;
-    label: string;
+    filterFn: UseFilterConfigType<T>["filterFn"];
+    options: UseFilterConfigType<T>["enum"][0][];
+    onUpdate: UseFilterConfigType<T>["onUpdate"];
+    label: UseFilterConfigType<T>["label"];
     changed: boolean;
     unchanged: boolean;
 };
+export declare function useFilter<T = string>(config: UseFilterConfigType<T>): UseFilterReturnType<T>;
