@@ -9,4 +9,6 @@ export declare function useUrlFilter<T>(config: UseUrlFilterConfigType<T>): {
     options: string[];
     onUpdate: (current: import("./use-filter").UseFilterQueryType, previous: import("./use-filter").UseFilterQueryType) => void;
     label: string;
+    changed: boolean;
+    unchanged: boolean;
 };

@@ -14,6 +14,8 @@ export type UseFilterConfigType<T> = {
     current: UseFilterQueryType,
     previous: UseFilterQueryType
   ) => void;
+  changed: boolean;
+  unchanged: boolean;
 };
 
 export function useFilter<T = string>(config: UseFilterConfigType<T>) {
@@ -59,5 +61,7 @@ export function useFilter<T = string>(config: UseFilterConfigType<T>) {
     options,
     onUpdate,
     label: config.label,
+    changed: query !== defaultQuery,
+    unchanged: query === defaultQuery,
   };
 }

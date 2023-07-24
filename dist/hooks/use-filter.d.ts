@@ -8,6 +8,8 @@ export declare type UseFilterConfigType<T> = {
     currentQuery?: UseFilterQueryType;
     filterFn?: (value: T) => boolean;
     onUpdate?: (current: UseFilterQueryType, previous: UseFilterQueryType) => void;
+    changed: boolean;
+    unchanged: boolean;
 };
 export declare function useFilter<T = string>(config: UseFilterConfigType<T>): {
     query: UseFilterQueryType;
@@ -17,4 +19,6 @@ export declare function useFilter<T = string>(config: UseFilterConfigType<T>): {
     options: string[];
     onUpdate: (current: UseFilterQueryType, previous: UseFilterQueryType) => void;
     label: string;
+    changed: boolean;
+    unchanged: boolean;
 };
