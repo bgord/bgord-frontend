@@ -10,6 +10,9 @@ export declare enum UseFileState {
 }
 declare type UseFileIdle = {
     state: UseFileState.idle;
+    isIdle: true;
+    isSelected: false;
+    isError: false;
     data: null;
     actions: {
         selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
@@ -30,6 +33,9 @@ declare type UseFileIdle = {
 declare type UseFileSelected = {
     state: UseFileState.selected;
     data: File;
+    isIdle: false;
+    isSelected: true;
+    isError: false;
     actions: {
         selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
         clearFile: VoidFunction;
@@ -50,6 +56,9 @@ declare type UseFileSelected = {
 declare type UseFileError = {
     state: UseFileState.error;
     data: null;
+    isIdle: false;
+    isSelected: false;
+    isError: true;
     actions: {
         selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
         clearFile: VoidFunction;

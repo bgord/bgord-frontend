@@ -14,6 +14,9 @@ export enum UseFileState {
 
 type UseFileIdle = {
   state: UseFileState.idle;
+  isIdle: true;
+  isSelected: false;
+  isError: false;
   data: null;
   actions: {
     selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
@@ -26,6 +29,9 @@ type UseFileIdle = {
 type UseFileSelected = {
   state: UseFileState.selected;
   data: File;
+  isIdle: false;
+  isSelected: true;
+  isError: false;
   actions: {
     selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
     clearFile: VoidFunction;
@@ -38,6 +44,9 @@ type UseFileSelected = {
 type UseFileError = {
   state: UseFileState.error;
   data: null;
+  isIdle: false;
+  isSelected: false;
+  isError: true;
   actions: {
     selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
     clearFile: VoidFunction;
@@ -89,6 +98,9 @@ export function useFile(
   if (state === UseFileState.idle) {
     return {
       state,
+      isIdle: true,
+      isSelected: false,
+      isError: false,
       data: null,
       actions: { selectFile, clearFile },
       label: { props: { htmlFor: name } },
@@ -100,6 +112,9 @@ export function useFile(
     return {
       state,
       data: file as File,
+      isIdle: false,
+      isSelected: true,
+      isError: false,
       actions: { selectFile, clearFile, previewFile },
       label: { props: { htmlFor: name } },
       input: { props: { id: name, name: name } },
@@ -109,6 +124,9 @@ export function useFile(
   return {
     state,
     data: null,
+    isIdle: false,
+    isSelected: false,
+    isError: true,
     actions: { selectFile, clearFile },
     label: { props: { htmlFor: name } },
     input: { props: { id: name, name: name } },
