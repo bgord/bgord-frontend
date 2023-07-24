@@ -50,6 +50,7 @@ export declare function useAudio(src: UseAudioSrcType): {
         isReady: boolean;
         isPlaying: boolean;
         isPaused: boolean;
+        matches: (states: UseAudioState[]) => boolean;
         percentage: {
             raw: number;
             formatted: string;

@@ -133,6 +133,8 @@ export function useAudio(src: UseAudioSrcType) {
       isReady: state === UseAudioState.ready,
       isPlaying: state === UseAudioState.playing,
       isPaused: state === UseAudioState.paused,
+      matches: (states: UseAudioState[]) =>
+        states.some((given) => given === state),
       percentage: {
         raw: percentage,
         formatted: `${percentage}%`,

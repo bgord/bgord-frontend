@@ -10,6 +10,7 @@ export declare enum UseFileState {
 }
 declare type UseFileIdle = {
     state: UseFileState.idle;
+    matches: (states: UseFileState[]) => boolean;
     isIdle: true;
     isSelected: false;
     isError: false;
@@ -32,6 +33,7 @@ declare type UseFileIdle = {
 };
 declare type UseFileSelected = {
     state: UseFileState.selected;
+    matches: (states: UseFileState[]) => boolean;
     data: File;
     isIdle: false;
     isSelected: true;
@@ -55,6 +57,7 @@ declare type UseFileSelected = {
 };
 declare type UseFileError = {
     state: UseFileState.error;
+    matches: (states: UseFileState[]) => boolean;
     data: null;
     isIdle: false;
     isSelected: false;
