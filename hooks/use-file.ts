@@ -14,6 +14,7 @@ export enum UseFileState {
 
 type UseFileIdle = {
   state: UseFileState.idle;
+  matches: (states: UseFileState[]) => boolean;
   isIdle: true;
   isSelected: false;
   isError: false;
@@ -28,6 +29,7 @@ type UseFileIdle = {
 
 type UseFileSelected = {
   state: UseFileState.selected;
+  matches: (states: UseFileState[]) => boolean;
   data: File;
   isIdle: false;
   isSelected: true;
@@ -43,6 +45,7 @@ type UseFileSelected = {
 
 type UseFileError = {
   state: UseFileState.error;
+  matches: (states: UseFileState[]) => boolean;
   data: null;
   isIdle: false;
   isSelected: false;
@@ -95,9 +98,14 @@ export function useFile(
     return URL.createObjectURL(file);
   }
 
+  function matches(states: UseFileState[]) {
+    return states.some((given) => given === state);
+  }
+
   if (state === UseFileState.idle) {
     return {
       state,
+      matches,
       isIdle: true,
       isSelected: false,
       isError: false,
@@ -111,6 +119,7 @@ export function useFile(
   if (state === UseFileState.selected) {
     return {
       state,
+      matches,
       data: file as File,
       isIdle: false,
       isSelected: true,
@@ -123,6 +132,7 @@ export function useFile(
 
   return {
     state,
+    matches,
     data: null,
     isIdle: false,
     isSelected: false,
