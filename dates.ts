@@ -60,6 +60,19 @@ export class DateFormatter {
     return `${hours}:${minutes}:${seconds}`;
   }
 
+  static formDatetimeLocal(timestamp: number) {
+    const date = new Date(timestamp);
+
+    const year = DateFormatter._padDatePart(date.getFullYear());
+    const month = DateFormatter._padDatePart(date.getMonth() + 1);
+    const day = DateFormatter._padDatePart(date.getDate());
+
+    const hours = DateFormatter._padDatePart(date.getHours());
+    const minutes = DateFormatter._padDatePart(date.getMinutes());
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  }
+
   static _padDatePart(value: number) {
     return String(value).padStart(2, "0");
   }

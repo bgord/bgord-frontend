@@ -7,6 +7,7 @@ export declare class DateFormatter {
     static clockUTC(timestamp: number): string;
     static clockLocal(timestamp: number): string;
     static countdown(timestamp: number): string;
+    static formDatetimeLocal(timestamp: number): string;
     static _padDatePart(value: number): string;
 }
 export declare class HourFormatter {
