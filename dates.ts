@@ -61,16 +61,10 @@ export class DateFormatter {
   }
 
   static formDatetimeLocal(timestamp: number) {
-    const date = new Date(timestamp);
+    const localTimestamp =
+      timestamp - Time.Minutes(new Date().getTimezoneOffset()).ms;
 
-    const year = DateFormatter._padDatePart(date.getFullYear());
-    const month = DateFormatter._padDatePart(date.getMonth() + 1);
-    const day = DateFormatter._padDatePart(date.getDate());
-
-    const hours = DateFormatter._padDatePart(date.getHours());
-    const minutes = DateFormatter._padDatePart(date.getMinutes());
-
-    return `${year}-${month}-${day}T${hours}:${minutes}`;
+    return new Date(localTimestamp).toISOString().slice(0, 16);
   }
 
   static _padDatePart(value: number) {
