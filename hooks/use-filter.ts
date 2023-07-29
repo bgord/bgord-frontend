@@ -3,9 +3,10 @@ import { usePreviousValue } from "./use-previous-value";
 import { noop } from "../noop";
 
 export type UseFilterQueryType = string | undefined;
+export type UseFilterNameType = string;
 
 export type UseFilterConfigType<T> = {
-  label: string;
+  name: string;
   enum: { [key: string]: UseFilterQueryType };
   defaultQuery?: UseFilterQueryType;
   currentQuery?: UseFilterQueryType;
@@ -23,7 +24,7 @@ export type UseFilterReturnType<T> = {
   filterFn: UseFilterConfigType<T>["filterFn"];
   options: UseFilterConfigType<T>["enum"][0][];
   onUpdate: UseFilterConfigType<T>["onUpdate"];
-  label: UseFilterConfigType<T>["label"];
+  name: UseFilterConfigType<T>["name"];
   changed: boolean;
   unchanged: boolean;
 };
@@ -72,7 +73,7 @@ export function useFilter<T = string>(
     filterFn,
     options,
     onUpdate,
-    label: config.label,
+    name: config.name,
     changed: query !== defaultQuery,
     unchanged: query === defaultQuery,
   };

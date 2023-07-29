@@ -12,7 +12,7 @@ export function useLanguageSelector(
   return useFilter({
     enum: supportedLanguages,
     currentQuery: language,
-    label: "language",
+    name: "language",
     onUpdate: (current, previous) => {
       const safeWindow = getSafeWindow();
 

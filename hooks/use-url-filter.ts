@@ -7,7 +7,7 @@ export function useUrlFilter<T>(config: UseUrlFilterConfigType<T>) {
   const safeWindow = getSafeWindow();
 
   const currentQuery =
-    new URLSearchParams(safeWindow?.location.search).get(config.label) ??
+    new URLSearchParams(safeWindow?.location.search).get(config.name) ??
     undefined;
 
   return useFilter({
@@ -18,9 +18,9 @@ export function useUrlFilter<T>(config: UseUrlFilterConfigType<T>) {
       const params = new URLSearchParams(url.search);
 
       if (current === undefined) {
-        params.delete(config.label);
+        params.delete(config.name);
       } else {
-        params.set(config.label, current);
+        params.set(config.name, current);
       }
 
       if (current === previous) return;
