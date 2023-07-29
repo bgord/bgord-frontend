@@ -5,6 +5,7 @@ export declare type PluralizeOptionsType = {
     value: PluralizeValueType;
     singular: PluralizeWordType;
     plural?: PluralizeWordType;
+    genitive?: PluralizeWordType;
     language: Schema.LanguageType;
 };
 export declare function pluralize(options: PluralizeOptionsType): PluralizeWordType;

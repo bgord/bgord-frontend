@@ -41,6 +41,7 @@
   },
   "typings": "./dist/index.d.ts",
   "dependencies": {
+    "polish-plurals": "^1.1.0",
     "tinykeys": "^1.4.0",
     "ts-storage": "^5.0.1"
   }

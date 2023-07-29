@@ -1,3 +1,4 @@
+import { polishPlurals } from "polish-plurals";
 import type { Falsy, Schema } from "@bgord/node";
 
 type PluralizeWordType = string;
@@ -7,20 +8,40 @@ export type PluralizeOptionsType = {
   value: PluralizeValueType;
   singular: PluralizeWordType;
   plural?: PluralizeWordType;
+  genitive?: PluralizeWordType;
   language: Schema.LanguageType;
 };
 
-export function pluralize(options: PluralizeOptionsType): PluralizeWordType {
-  if (options.language !== "en") {
-    console.warn(
-      `[@bgord/frontend] missing pluralization fuction for language ${options.language}.`
-    );
+enum PluralizationSupportedLanguages {
+  en = "en",
+  pl = "pl",
+}
 
-    return options.singular;
+export function pluralize(options: PluralizeOptionsType): PluralizeWordType {
+  if (options.language === PluralizationSupportedLanguages.en) {
+    const plural = options.plural ?? `${options.singular}s`;
+
+    if (options.value === 1) return options.singular;
+
+    return plural;
   }
 
-  const plural = options.plural ?? `${options.singular}s`;
+  if (options.language === PluralizationSupportedLanguages.pl) {
+    const value = options.value ?? 1;
 
-  if (options.value === 1) return options.singular;
-  return plural;
+    if (value === 1) return options.singular;
+
+    return polishPlurals(
+      options.singular,
+      String(options.plural),
+      String(options.genitive),
+      value
+    );
+  }
+
+  console.warn(
+    `[@bgord/frontend] missing pluralization fuction for language ${options.language}.`
+  );
+
+  return options.singular;
 }
