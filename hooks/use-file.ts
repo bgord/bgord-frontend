@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 type UseFileNameType = string;
 
@@ -37,8 +37,8 @@ type UseFileSelected = {
   actions: {
     selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
     clearFile: VoidFunction;
-    previewFile: () => ReturnType<typeof URL.createObjectURL> | undefined;
   };
+  preview: ReturnType<typeof URL.createObjectURL> | undefined;
   label: { props: { htmlFor: UseFileNameType } };
   input: { props: { id: UseFileNameType; name: UseFileNameType } };
 };
@@ -93,10 +93,10 @@ export function useFile(
     setState(UseFileState.idle);
   }
 
-  function previewFile() {
-    if (!file) return undefined;
-    return URL.createObjectURL(file);
-  }
+  const preview = useMemo(
+    () => (file ? URL.createObjectURL(file) : undefined),
+    [file]
+  );
 
   function matches(states: UseFileState[]) {
     return states.some((given) => given === state);
@@ -124,7 +124,8 @@ export function useFile(
       isIdle: false,
       isSelected: true,
       isError: false,
-      actions: { selectFile, clearFile, previewFile },
+      actions: { selectFile, clearFile },
+      preview,
       label: { props: { htmlFor: name } },
       input: { props: { id: name, name: name } },
     };

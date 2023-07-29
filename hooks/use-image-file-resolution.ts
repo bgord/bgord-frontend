@@ -20,7 +20,7 @@ export function useImageFileResolution(
     async function execute() {
       if (file.state === UseFileState.selected) {
         try {
-          const result = await getImageResolution(file.actions.previewFile());
+          const result = await getImageResolution(file.preview);
 
           return resolution.set(result);
         } catch (error) {

@@ -41,8 +41,8 @@ declare type UseFileSelected = {
     actions: {
         selectFile(event: React.ChangeEvent<HTMLInputElement>): File | undefined;
         clearFile: VoidFunction;
-        previewFile: () => ReturnType<typeof URL.createObjectURL> | undefined;
     };
+    preview: ReturnType<typeof URL.createObjectURL> | undefined;
     label: {
         props: {
             htmlFor: UseFileNameType;
