@@ -1,7 +1,8 @@
 /// <reference types="react" />
 export declare type UseFilterQueryType = string | undefined;
+export declare type UseFilterNameType = string;
 export declare type UseFilterConfigType<T> = {
-    label: string;
+    name: string;
     enum: {
         [key: string]: UseFilterQueryType;
     };
@@ -17,8 +18,19 @@ export declare type UseFilterReturnType<T> = {
     filterFn: UseFilterConfigType<T>["filterFn"];
     options: UseFilterConfigType<T>["enum"][0][];
     onUpdate: UseFilterConfigType<T>["onUpdate"];
-    label: UseFilterConfigType<T>["label"];
+    name: UseFilterConfigType<T>["name"];
     changed: boolean;
     unchanged: boolean;
+    label: {
+        props: {
+            htmlFor: UseFilterNameType;
+        };
+    };
+    input: {
+        props: {
+            id: UseFilterNameType;
+            name: UseFilterNameType;
+        };
+    };
 };
 export declare function useFilter<T = string>(config: UseFilterConfigType<T>): UseFilterReturnType<T>;

@@ -27,6 +27,8 @@ export type UseFilterReturnType<T> = {
   name: UseFilterConfigType<T>["name"];
   changed: boolean;
   unchanged: boolean;
+  label: { props: { htmlFor: UseFilterNameType } };
+  input: { props: { id: UseFilterNameType; name: UseFilterNameType } };
 };
 
 export function useFilter<T = string>(
@@ -76,5 +78,7 @@ export function useFilter<T = string>(
     name: config.name,
     changed: query !== defaultQuery,
     unchanged: query === defaultQuery,
+    label: { props: { htmlFor: config.name } },
+    input: { props: { id: config.name, name: config.name } },
   };
 }
