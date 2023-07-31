@@ -30,4 +30,5 @@ export * from "./use-scroll-lock";
 export * from "./use-sound";
 export * from "./use-toggle";
 export * from "./use-url-filter";
+export * from "./use-video";
 export * from "./use-window-dimensions";

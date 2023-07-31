@@ -1,15 +1,15 @@
-export declare type UseAudioSrcType = string;
-declare type AudioVolumeType = number;
-export declare const AUDIO_DEFAULT_VOLUME: AudioVolumeType;
-export declare enum UseAudioState {
+export declare type UseVideoSrcType = string;
+declare type VideoVolumeType = number;
+export declare const VIDEO_DEFAULT_VOLUME: VideoVolumeType;
+export declare enum UseVideoState {
     "initial" = "initial",
     "ready" = "ready",
     "playing" = "playing",
     "paused" = "paused"
 }
-export declare function useAudio(src: UseAudioSrcType): {
+export declare function useVideo(src: UseVideoSrcType): {
     props: {
-        audio: {
+        video: {
             src: string;
             onTimeUpdate: (event: Event) => void;
             onLoadedMetadata: (event: Event) => void;
@@ -44,14 +44,15 @@ export declare function useAudio(src: UseAudioSrcType): {
         reset: () => void;
         seek: (event: Event) => void;
         changeVolume: (event: Event) => void;
+        triggerFullscreen: () => void;
     };
     meta: {
-        state: UseAudioState;
+        state: UseVideoState;
         isInitial: boolean;
         isReady: boolean;
         isPlaying: boolean;
         isPaused: boolean;
-        matches: (states: UseAudioState[]) => boolean;
+        matches: (states: UseVideoState[]) => boolean;
         percentage: {
             raw: number;
             formatted: string;
