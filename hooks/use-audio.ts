@@ -3,9 +3,13 @@ import * as React from "react";
 import { DurationFormatter } from "../durations";
 import { useField } from "./use-field";
 
-export const AUDIO_DEFAULT_VOLUME = 1;
-
 export type UseAudioSrcType = string;
+
+type AudioDurationType = number;
+type AudioCurrentTimeType = number;
+type AudioVolumeType = number;
+
+export const AUDIO_DEFAULT_VOLUME: AudioVolumeType = 1;
 
 export enum UseAudioState {
   "initial" = "initial",
@@ -21,9 +25,9 @@ export function useAudio(src: UseAudioSrcType) {
 
   const ref = React.useRef<HTMLAudioElement | null>(null);
 
-  const duration = useField<number>("duration", 0);
-  const currentTime = useField<number>("currentTime", 0);
-  const volume = useField<number>("volume", AUDIO_DEFAULT_VOLUME);
+  const duration = useField<AudioDurationType>("duration", 0);
+  const currentTime = useField<AudioCurrentTimeType>("currentTime", 0);
+  const volume = useField<AudioVolumeType>("volume", AUDIO_DEFAULT_VOLUME);
 
   const muted = volume.value === 0;
 
