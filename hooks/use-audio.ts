@@ -18,7 +18,70 @@ export enum UseAudioState {
   "paused" = "paused",
 }
 
-export function useAudio(src: UseAudioSrcType) {
+export type UseAudioReturnType = {
+  props: {
+    audio: {
+      src: UseAudioSrcType;
+      onTimeUpdate: (event: Event) => void;
+      onLoadedMetadata: (event: Event) => void;
+      onEnded: (event: Event) => void;
+      controls: false;
+    };
+    player: {
+      min: 0;
+      step: 1;
+      max: AudioDurationType;
+      value: AudioDurationType;
+      onInput: (event: Event) => void;
+      style: { "--percentage": string };
+    };
+    volume: {
+      min: 0;
+      max: 1;
+      value: AudioVolumeType;
+      onInput: (event: Event) => void;
+      style: { "--percentage": string };
+    };
+  };
+  actions: {
+    play: VoidFunction;
+    pause: VoidFunction;
+    mute: VoidFunction;
+    unmute: VoidFunction;
+    reset: VoidFunction;
+    seek: (event: Event) => void;
+    changeVolume: (event: Event) => void;
+  };
+
+  meta: {
+    state: UseAudioState;
+    isInitial: boolean;
+    isReady: boolean;
+    isPlaying: boolean;
+    isPaused: boolean;
+    matches: (states: UseAudioState[]) => boolean;
+    percentage: {
+      raw: number;
+      formatted: string;
+    };
+    currentTime: {
+      raw: AudioCurrentTimeType;
+      formatted: string;
+    };
+    duration: {
+      raw: AudioDurationType;
+      formatted: string;
+    };
+    volume: {
+      value: AudioVolumeType;
+      raw: number;
+      formatted: string;
+    };
+    muted: boolean;
+  };
+};
+
+export function useAudio(src: UseAudioSrcType): UseAudioReturnType {
   const [state, setState] = React.useState<UseAudioState>(
     UseAudioState.initial
   );
