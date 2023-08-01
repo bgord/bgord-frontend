@@ -4,4 +4,5 @@ export declare enum KeyNameEnum {
     Space = " "
 }
 export declare type UseKeyHandlerConfigType = Partial<Record<KeyNameEnum, Function>>;
-export declare function useKeyHandler(config: UseKeyHandlerConfigType): (event: React.KeyboardEvent<HTMLElement>) => void;
+export declare type UseKeyHandlerReturnType = (event: React.KeyboardEvent<HTMLElement>) => void;
+export declare function useKeyHandler(config: UseKeyHandlerConfigType): UseKeyHandlerReturnType;

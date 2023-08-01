@@ -1,4 +1,6 @@
 export declare type UseVideoSrcType = string;
+declare type VideoDurationType = number;
+declare type VideoCurrentTimeType = number;
 declare type VideoVolumeType = number;
 export declare const VIDEO_DEFAULT_VOLUME: VideoVolumeType;
 export declare enum UseVideoState {
@@ -7,29 +9,29 @@ export declare enum UseVideoState {
     "playing" = "playing",
     "paused" = "paused"
 }
-export declare function useVideo(src: UseVideoSrcType): {
+export declare type UseVideoReturnType = {
     props: {
         video: {
-            src: string;
+            src: UseVideoSrcType;
             onTimeUpdate: (event: Event) => void;
             onLoadedMetadata: (event: Event) => void;
-            onEnded: () => void;
-            controls: boolean;
+            onEnded: (event: Event) => void;
+            controls: false;
         };
         player: {
-            min: number;
-            step: number;
-            max: number;
-            value: number;
+            min: 0;
+            step: 1;
+            max: VideoDurationType;
+            value: VideoDurationType;
             onInput: (event: Event) => void;
             style: {
                 "--percentage": string;
             };
         };
         volume: {
-            min: number;
-            max: number;
-            value: number;
+            min: 0;
+            max: 1;
+            value: VideoVolumeType;
             onInput: (event: Event) => void;
             style: {
                 "--percentage": string;
@@ -37,14 +39,14 @@ export declare function useVideo(src: UseVideoSrcType): {
         };
     };
     actions: {
-        play: () => void;
-        pause: () => void;
-        mute: () => void;
-        unmute: () => void;
-        reset: () => void;
+        play: VoidFunction;
+        pause: VoidFunction;
+        mute: VoidFunction;
+        unmute: VoidFunction;
+        reset: VoidFunction;
         seek: (event: Event) => void;
         changeVolume: (event: Event) => void;
-        triggerFullscreen: () => void;
+        triggerFullscreen: VoidFunction;
     };
     meta: {
         state: UseVideoState;
@@ -58,19 +60,20 @@ export declare function useVideo(src: UseVideoSrcType): {
             formatted: string;
         };
         currentTime: {
-            raw: number;
+            raw: VideoCurrentTimeType;
             formatted: string;
         };
         duration: {
-            raw: number;
+            raw: VideoDurationType;
             formatted: string;
         };
         volume: {
-            value: number;
+            value: VideoVolumeType;
             raw: number;
             formatted: string;
         };
         muted: boolean;
     };
 };
+export declare function useVideo(src: UseVideoSrcType): UseVideoReturnType;
 export {};

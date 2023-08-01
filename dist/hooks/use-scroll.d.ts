@@ -1,12 +1,15 @@
-export declare function useScroll(): {
+import { UseToggleReturnType } from "./use-toggle";
+export declare type ScrollPositionType = number;
+export declare type UseScrollReturnType = {
     actions: {
-        goToTop: () => void;
+        goToTop: VoidFunction;
     };
     position: {
-        value: number;
+        value: ScrollPositionType;
         isInitial: boolean;
         hasChanged: boolean;
     };
-    visible: boolean;
-    hidden: boolean;
+    visible: UseToggleReturnType["on"];
+    hidden: UseToggleReturnType["off"];
 };
+export declare function useScroll(): UseScrollReturnType;

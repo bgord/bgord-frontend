@@ -1,3 +1,3 @@
-export declare type CurrentTimestampType = number;
-export declare function getCurrentTimestamp(): CurrentTimestampType;
-export declare function useCurrentTimestamp(): CurrentTimestampType;
+import type { TimestampType } from "@bgord/node/dist/schema";
+export declare function getCurrentTimestamp(): TimestampType;
+export declare function useCurrentTimestamp(): TimestampType;

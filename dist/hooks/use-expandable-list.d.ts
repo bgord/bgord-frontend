@@ -1,17 +1,20 @@
-export declare type UseExpandableListConfigType = {
-    max: number;
-    length: number;
-};
 export declare enum UseExpandableListState {
     contracted = "contracted",
     expanded = "expanded"
 }
-export declare function useExpandableList(config: UseExpandableListConfigType): {
+export declare type UseExpandableListConfigType = {
+    max: number;
+    length: number;
+};
+export declare type UseExpandableListReturnType = {
     state: UseExpandableListState;
     displayShowMore: boolean;
     displayShowLess: boolean;
-    showMore: () => void;
-    showLess: () => void;
+    actions: {
+        showMore: VoidFunction;
+        showLess: VoidFunction;
+    };
     numberOfExcessiveElements: number;
-    filterFn: (_element: any, index: number) => boolean;
+    filterFn: (element: unknown, index: number) => void;
 };
+export declare function useExpandableList(config: UseExpandableListConfigType): UseExpandableListReturnType;

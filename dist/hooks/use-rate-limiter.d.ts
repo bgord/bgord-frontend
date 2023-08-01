@@ -1,7 +1,8 @@
 import { RateLimiterOptionsType, RateLimiterResultErrorType } from "../rate-limiter";
-declare type UseRateLimiterOptionsType<T> = RateLimiterOptionsType & {
-    action: (...args: T[]) => void;
+export declare type UseRateLimiterActionType<T> = (...args: T[]) => void;
+export declare type UseRateLimiterOptionsType<T> = RateLimiterOptionsType & {
+    action: UseRateLimiterActionType<T>;
     fallback?: (remainingMs: RateLimiterResultErrorType["remainingMs"]) => void;
 };
-export declare function useRateLimiter<T>(options: UseRateLimiterOptionsType<T>): (...args: T[]) => void;
-export {};
+export declare type UseRateLimiterReturnType<T> = UseRateLimiterActionType<T>;
+export declare function useRateLimiter<T>(options: UseRateLimiterOptionsType<T>): UseRateLimiterReturnType<T>;

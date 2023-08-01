@@ -1,4 +1,6 @@
 export declare type UseAudioSrcType = string;
+declare type AudioDurationType = number;
+declare type AudioCurrentTimeType = number;
 declare type AudioVolumeType = number;
 export declare const AUDIO_DEFAULT_VOLUME: AudioVolumeType;
 export declare enum UseAudioState {
@@ -7,29 +9,29 @@ export declare enum UseAudioState {
     "playing" = "playing",
     "paused" = "paused"
 }
-export declare function useAudio(src: UseAudioSrcType): {
+export declare type UseAudioReturnType = {
     props: {
         audio: {
-            src: string;
+            src: UseAudioSrcType;
             onTimeUpdate: (event: Event) => void;
             onLoadedMetadata: (event: Event) => void;
-            onEnded: () => void;
-            controls: boolean;
+            onEnded: (event: Event) => void;
+            controls: false;
         };
         player: {
-            min: number;
-            step: number;
-            max: number;
-            value: number;
+            min: 0;
+            step: 1;
+            max: AudioDurationType;
+            value: AudioDurationType;
             onInput: (event: Event) => void;
             style: {
                 "--percentage": string;
             };
         };
         volume: {
-            min: number;
-            max: number;
-            value: number;
+            min: 0;
+            max: 1;
+            value: AudioVolumeType;
             onInput: (event: Event) => void;
             style: {
                 "--percentage": string;
@@ -37,11 +39,11 @@ export declare function useAudio(src: UseAudioSrcType): {
         };
     };
     actions: {
-        play: () => void;
-        pause: () => void;
-        mute: () => void;
-        unmute: () => void;
-        reset: () => void;
+        play: VoidFunction;
+        pause: VoidFunction;
+        mute: VoidFunction;
+        unmute: VoidFunction;
+        reset: VoidFunction;
         seek: (event: Event) => void;
         changeVolume: (event: Event) => void;
     };
@@ -57,19 +59,20 @@ export declare function useAudio(src: UseAudioSrcType): {
             formatted: string;
         };
         currentTime: {
-            raw: number;
+            raw: AudioCurrentTimeType;
             formatted: string;
         };
         duration: {
-            raw: number;
+            raw: AudioDurationType;
             formatted: string;
         };
         volume: {
-            value: number;
+            value: AudioVolumeType;
             raw: number;
             formatted: string;
         };
         muted: boolean;
     };
 };
+export declare function useAudio(src: UseAudioSrcType): UseAudioReturnType;
 export {};
