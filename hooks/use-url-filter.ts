@@ -1,9 +1,15 @@
-import { useFilter, UseFilterConfigType } from "./use-filter";
+import {
+  useFilter,
+  UseFilterConfigType,
+  UseFilterReturnType,
+} from "./use-filter";
 import { getSafeWindow } from "../safe-window";
 
 export type UseUrlFilterConfigType<T> = UseFilterConfigType<T>;
 
-export function useUrlFilter<T>(config: UseUrlFilterConfigType<T>) {
+export function useUrlFilter<T>(
+  config: UseUrlFilterConfigType<T>
+): UseFilterReturnType<T> {
   const safeWindow = getSafeWindow();
 
   const currentQuery =
