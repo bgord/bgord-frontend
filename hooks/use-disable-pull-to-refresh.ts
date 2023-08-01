@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 
-export function useDisablePullToRefresh(condition = true) {
+export function useDisablePullToRefresh(condition = true): void {
   useLayoutEffect(() => {
     if (!condition) return;
 

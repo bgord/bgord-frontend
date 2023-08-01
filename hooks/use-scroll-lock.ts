@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 
-export function useScrollLock(condition = true) {
+export function useScrollLock(condition = true): void {
   useLayoutEffect(() => {
     if (!condition) return;
 

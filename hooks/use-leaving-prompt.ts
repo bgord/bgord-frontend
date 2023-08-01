@@ -4,7 +4,7 @@ export type UseLeavingPromptConditionType = boolean;
 
 export function useLeavingPrompt(
   condition: UseLeavingPromptConditionType = false
-) {
+): void {
   React.useEffect(() => {
     if (!condition) return;
 

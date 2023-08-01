@@ -5,7 +5,7 @@ export type UseAutofocusConfigType = {
   condition: boolean;
 };
 
-export function useAutofocus(config: UseAutofocusConfigType) {
+export function useAutofocus(config: UseAutofocusConfigType): void {
   React.useEffect(() => {
     if (!config.condition) return;
 

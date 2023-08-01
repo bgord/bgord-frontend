@@ -1,15 +1,14 @@
+import type { TimestampType } from "@bgord/node/dist/schema";
 import { useState, useEffect } from "react";
 import { Time } from "../time";
 
-export type CurrentTimestampType = number;
-
-export function getCurrentTimestamp(): CurrentTimestampType {
+export function getCurrentTimestamp(): TimestampType {
   return Date.now();
 }
 
-export function useCurrentTimestamp(): CurrentTimestampType {
+export function useCurrentTimestamp(): TimestampType {
   const [timestamp, setTimestamp] =
-    useState<CurrentTimestampType>(getCurrentTimestamp);
+    useState<TimestampType>(getCurrentTimestamp);
 
   useEffect(() => {
     const timer = setInterval(

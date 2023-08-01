@@ -4,7 +4,7 @@ export function useClickOutside(
   ref: React.RefObject<HTMLElement>,
   onClickOutside: VoidFunction,
   exclude?: React.RefObject<HTMLElement>[]
-) {
+): void {
   React.useEffect(() => {
     if (!ref.current) return;
 

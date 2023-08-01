@@ -5,7 +5,9 @@ export interface UseKeyboardShortcurtsConfigType {
   [keybinding: string]: (event: KeyboardEvent) => void;
 }
 
-export function useKeyboardShortcurts(config: UseKeyboardShortcurtsConfigType) {
+export function useKeyboardShortcurts(
+  config: UseKeyboardShortcurtsConfigType
+): void {
   React.useEffect(() => {
     const unsubscribeShortcuts = tinykeys(window, config);
 

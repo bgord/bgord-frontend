@@ -10,10 +10,14 @@ import {
   SafeLocalStorageKeyType,
 } from "../safe-local-storage";
 
+export type UsePersistentToggleReturnType = UseToggleReturnType & {
+  clear: VoidFunction;
+};
+
 export function usePersistentToggle(
   key: SafeLocalStorageKeyType,
   defaultValue: UseToggleValueType = false
-): UseToggleReturnType & { clear: VoidFunction } {
+): UsePersistentToggleReturnType {
   const storedValue = SafeLocalStorage.get<UseToggleValueType>(
     key,
     defaultValue

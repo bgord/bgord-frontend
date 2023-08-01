@@ -2,7 +2,11 @@ import { useWindowDimensions } from "./use-window-dimensions";
 
 export type BreakpointType = number;
 
-export function useBreakpoint(breakpoint: BreakpointType): boolean {
+export type UseBreakpointReturnType = boolean;
+
+export function useBreakpoint(
+  breakpoint: BreakpointType
+): UseBreakpointReturnType {
   const dimensions = useWindowDimensions();
   const width = dimensions?.width ?? 0;
 
