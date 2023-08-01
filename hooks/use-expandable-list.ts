@@ -1,13 +1,27 @@
 import { useState, useEffect } from "react";
 
-export type UseExpandableListConfigType = { max: number; length: number };
-
 export enum UseExpandableListState {
   contracted = "contracted",
   expanded = "expanded",
 }
 
-export function useExpandableList(config: UseExpandableListConfigType) {
+export type UseExpandableListConfigType = { max: number; length: number };
+
+export type UseExpandableListReturnType = {
+  state: UseExpandableListState;
+  displayShowMore: boolean;
+  displayShowLess: boolean;
+  actions: {
+    showMore: VoidFunction;
+    showLess: VoidFunction;
+  };
+  numberOfExcessiveElements: number;
+  filterFn: (element: unknown, index: number) => void;
+};
+
+export function useExpandableList(
+  config: UseExpandableListConfigType
+): UseExpandableListReturnType {
   const numberOfExcessiveElements = config.length - config.max;
   const areThereExcessiveElements = config.length > config.max;
 
@@ -33,7 +47,7 @@ export function useExpandableList(config: UseExpandableListConfigType) {
     }
   }
 
-  function filterFn(_element: any, index: number) {
+  function filterFn(_element: unknown, index: number) {
     if (state === UseExpandableListState.expanded) return true;
     return index < config.max;
   }
@@ -43,8 +57,10 @@ export function useExpandableList(config: UseExpandableListConfigType) {
     displayShowMore: state === UseExpandableListState.contracted,
     displayShowLess:
       state === UseExpandableListState.expanded && areThereExcessiveElements,
-    showMore,
-    showLess,
+    actions: {
+      showMore,
+      showLess,
+    },
     numberOfExcessiveElements,
     filterFn,
   };
