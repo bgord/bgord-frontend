@@ -1,12 +1,13 @@
+import type { LanguageType } from "@bgord/node/dist/schema";
 import Cookies from "js-cookie";
 
 import { getSafeWindow } from "../safe-window";
 import { useLanguage } from "../translations";
-import { useFilter } from "./use-filter";
+import { useFilter, UseFilterReturnType } from "./use-filter";
 
 export function useLanguageSelector(
-  supportedLanguages: Record<string, string>
-) {
+  supportedLanguages: Record<LanguageType, LanguageType>
+): UseFilterReturnType<LanguageType> {
   const language = useLanguage();
 
   return useFilter({
