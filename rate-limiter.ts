@@ -5,12 +5,14 @@ export type RateLimiterOptionsType = {
   limitMs: TimestampType;
 };
 
-type RateLimiterResultSuccessType = { allowed: true };
+export type RateLimiterResultSuccessType = { allowed: true };
+
 export type RateLimiterResultErrorType = {
   allowed: false;
   remainingMs: TimestampType;
 };
-type RateLimiterResultType =
+
+export type RateLimiterResultType =
   | RateLimiterResultSuccessType
   | RateLimiterResultErrorType;
 
