@@ -1,15 +1,28 @@
 import React from "react";
-import { getSafeWindow } from "../safe-window";
-import { useToggle } from "./use-toggle";
 
-export function useScroll() {
+import { getSafeWindow } from "../safe-window";
+import { useToggle, UseToggleReturnType } from "./use-toggle";
+
+export type ScrollPositionType = number;
+
+export type UseScrollReturnType = {
+  actions: { goToTop: VoidFunction };
+  position: {
+    value: ScrollPositionType;
+    isInitial: boolean;
+    hasChanged: boolean;
+  };
+  visible: UseToggleReturnType["on"];
+  hidden: UseToggleReturnType["off"];
+};
+
+export function useScroll(): UseScrollReturnType {
   const safeWindow = getSafeWindow();
 
   // Scroll position always set at the top of the page
   const defaultScrollPosition = 0;
-  const [scrollPosition, setScrollPosition] = React.useState<number>(
-    defaultScrollPosition
-  );
+  const [scrollPosition, setScrollPosition] =
+    React.useState<ScrollPositionType>(defaultScrollPosition);
 
   // Assuming scrollbar is hidden by default
   const scrollbarVisibility = useToggle(false);
