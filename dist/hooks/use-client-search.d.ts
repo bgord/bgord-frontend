@@ -5,5 +5,7 @@ export declare type UseClientSearchReturnType = {
     clear: VoidFunction;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     filterFn: (value: string) => boolean;
+    changed: boolean;
+    unchanged: boolean;
 };
 export declare function useClientSearch(): UseClientSearchReturnType;

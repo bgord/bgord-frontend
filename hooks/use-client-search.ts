@@ -7,6 +7,8 @@ export type UseClientSearchReturnType = {
   clear: VoidFunction;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   filterFn: (value: string) => boolean;
+  changed: boolean;
+  unchanged: boolean;
 };
 
 export function useClientSearch(): UseClientSearchReturnType {
@@ -28,5 +30,12 @@ export function useClientSearch(): UseClientSearchReturnType {
     return value?.toLowerCase().includes(query.toLowerCase());
   }
 
-  return { query, clear, onChange, filterFn };
+  return {
+    query,
+    clear,
+    onChange,
+    filterFn,
+    changed: query !== emptyQuery,
+    unchanged: query === emptyQuery,
+  };
 }
