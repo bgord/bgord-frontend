@@ -1,4 +1,4 @@
-import { useState, useMemo, Key } from "react";
+import { useState, useMemo } from "react";
 
 type UseFileNameType = string;
 
@@ -87,8 +87,8 @@ export function useFile(
 ): UseFileReturnType {
   const maxSize = config?.maxSize ?? Infinity;
 
+  const [key, setKey] = useState(0);
   const [state, setState] = useState<UseFileState>(UseFileState.idle);
-
   const [file, setFile] = useState<File | null>(null);
 
   function selectFile(event: React.ChangeEvent<HTMLInputElement>) {
@@ -110,6 +110,7 @@ export function useFile(
   }
 
   function clearFile() {
+    setKey((key) => key + 1);
     setFile(null);
     setState(UseFileState.idle);
   }
@@ -134,7 +135,7 @@ export function useFile(
       actions: { selectFile, clearFile },
       label: { props: { htmlFor: name } },
       input: {
-        props: { id: name, name, multiple: false, key: file?.name ?? "" },
+        props: { id: name, name, multiple: false, key },
       },
     };
   }
@@ -151,7 +152,7 @@ export function useFile(
       preview,
       label: { props: { htmlFor: name } },
       input: {
-        props: { id: name, name, multiple: false, key: file?.name ?? "" },
+        props: { id: name, name, multiple: false, key },
       },
     };
   }
@@ -166,7 +167,7 @@ export function useFile(
     actions: { selectFile, clearFile },
     label: { props: { htmlFor: name } },
     input: {
-      props: { id: name, name, multiple: false, key: file?.name ?? "" },
+      props: { id: name, name, multiple: false, key },
     },
   };
 }
