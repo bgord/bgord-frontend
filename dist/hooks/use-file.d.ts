@@ -28,6 +28,8 @@ declare type UseFileIdle = {
         props: {
             id: UseFileNameType;
             name: UseFileNameType;
+            multiple: false;
+            key: React.Key;
         };
     };
 };
@@ -52,6 +54,8 @@ declare type UseFileSelected = {
         props: {
             id: UseFileNameType;
             name: UseFileNameType;
+            multiple: false;
+            key: React.Key;
         };
     };
 };
@@ -75,6 +79,8 @@ declare type UseFileError = {
         props: {
             id: UseFileNameType;
             name: UseFileNameType;
+            multiple: false;
+            key: React.Key;
         };
     };
 };

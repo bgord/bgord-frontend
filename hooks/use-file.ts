@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, Key } from "react";
 
 type UseFileNameType = string;
 
@@ -24,7 +24,14 @@ type UseFileIdle = {
     clearFile: VoidFunction;
   };
   label: { props: { htmlFor: UseFileNameType } };
-  input: { props: { id: UseFileNameType; name: UseFileNameType } };
+  input: {
+    props: {
+      id: UseFileNameType;
+      name: UseFileNameType;
+      multiple: false;
+      key: React.Key;
+    };
+  };
 };
 
 type UseFileSelected = {
@@ -40,7 +47,14 @@ type UseFileSelected = {
   };
   preview: ReturnType<typeof URL.createObjectURL> | undefined;
   label: { props: { htmlFor: UseFileNameType } };
-  input: { props: { id: UseFileNameType; name: UseFileNameType } };
+  input: {
+    props: {
+      id: UseFileNameType;
+      name: UseFileNameType;
+      multiple: false;
+      key: React.Key;
+    };
+  };
 };
 
 type UseFileError = {
@@ -55,7 +69,14 @@ type UseFileError = {
     clearFile: VoidFunction;
   };
   label: { props: { htmlFor: UseFileNameType } };
-  input: { props: { id: UseFileNameType; name: UseFileNameType } };
+  input: {
+    props: {
+      id: UseFileNameType;
+      name: UseFileNameType;
+      multiple: false;
+      key: React.Key;
+    };
+  };
 };
 
 export type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
@@ -112,7 +133,9 @@ export function useFile(
       data: null,
       actions: { selectFile, clearFile },
       label: { props: { htmlFor: name } },
-      input: { props: { id: name, name: name } },
+      input: {
+        props: { id: name, name, multiple: false, key: file?.name ?? "" },
+      },
     };
   }
 
@@ -127,7 +150,9 @@ export function useFile(
       actions: { selectFile, clearFile },
       preview,
       label: { props: { htmlFor: name } },
-      input: { props: { id: name, name: name } },
+      input: {
+        props: { id: name, name, multiple: false, key: file?.name ?? "" },
+      },
     };
   }
 
@@ -140,6 +165,8 @@ export function useFile(
     isError: true,
     actions: { selectFile, clearFile },
     label: { props: { htmlFor: name } },
-    input: { props: { id: name, name: name } },
+    input: {
+      props: { id: name, name, multiple: false, key: file?.name ?? "" },
+    },
   };
 }
