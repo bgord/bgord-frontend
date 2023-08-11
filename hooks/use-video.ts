@@ -38,6 +38,7 @@ export type UseVideoReturnType = {
     volume: {
       min: 0;
       max: 1;
+      step: 0.01;
       value: VideoVolumeType;
       onInput: (event: Event) => void;
       style: { "--percentage": string };
@@ -187,6 +188,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
       volume: {
         min: 0,
         max: 1,
+        step: 0.01,
         value: volume.value,
         onInput: changeVolume,
         style: { "--percentage": `${Math.floor(volume.value * 100)}%` },

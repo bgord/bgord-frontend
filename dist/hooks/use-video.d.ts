@@ -31,6 +31,7 @@ export declare type UseVideoReturnType = {
         volume: {
             min: 0;
             max: 1;
+            step: 0.01;
             value: VideoVolumeType;
             onInput: (event: Event) => void;
             style: {

@@ -38,6 +38,7 @@ export type UseAudioReturnType = {
     volume: {
       min: 0;
       max: 1;
+      step: 0.01;
       value: AudioVolumeType;
       onInput: (event: Event) => void;
       style: { "--percentage": string };
@@ -188,6 +189,7 @@ export function useAudio(src: UseAudioSrcType): UseAudioReturnType {
       volume: {
         min: 0,
         max: 1,
+        step: 0.01,
         value: volume.value,
         onInput: changeVolume,
         style: { "--percentage": `${Math.floor(volume.value * 100)}%` },
