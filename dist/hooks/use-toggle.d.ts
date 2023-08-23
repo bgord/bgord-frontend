@@ -1,4 +1,5 @@
 export declare type UseToggleValueType = boolean;
+export declare type UseToggleConfigType = UseToggleValueType;
 export declare type UseToggleReturnType = {
     on: UseToggleValueType;
     off: UseToggleValueType;
@@ -6,4 +7,4 @@ export declare type UseToggleReturnType = {
     disable: VoidFunction;
     toggle: VoidFunction;
 };
-export declare function useToggle(defaultValue?: boolean): UseToggleReturnType;
+export declare function useToggle(defaultValue?: UseToggleConfigType): UseToggleReturnType;
