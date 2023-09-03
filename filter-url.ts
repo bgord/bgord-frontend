@@ -4,7 +4,8 @@ export class FilterUrl {
   value: string;
 
   constructor(url: string, filters?: FilterType) {
-    const query = new URLSearchParams(this.getNonEmptyFilters(filters));
+    const nonEmptyFilters = this.getNonEmptyFilters(filters);
+    const query = new URLSearchParams(nonEmptyFilters);
 
     if (query.toString() === "") {
       this.value = url;
