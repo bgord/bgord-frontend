@@ -16,6 +16,7 @@ export * from "./rhythm";
 export * from "./safe-local-storage";
 export * from "./safe-window";
 export * from "./server-error";
+export * from "./thousands-separator";
 export * from "./time";
 export * from "./toasts";
 export * from "./translations";
