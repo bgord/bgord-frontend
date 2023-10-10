@@ -40,7 +40,7 @@ export function pluralize(options: PluralizeOptionsType): PluralizeWordType {
   }
 
   console.warn(
-    `[@bgord/frontend] missing pluralization fuction for language ${options.language}.`
+    `[@bgord/frontend] missing pluralization function for language ${options.language}.`
   );
 
   return options.singular;

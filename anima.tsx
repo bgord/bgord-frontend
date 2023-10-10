@@ -5,7 +5,7 @@ import { usePreviousValue } from "./hooks/use-previous-value";
 export enum AnimaState {
   appearing = "appearing",
   appeared = "appeared",
-  hidding = "hidding",
+  hiding = "hiding",
   hidden = "hidden",
 }
 
@@ -41,7 +41,7 @@ export function Anima(props: AnimaConfigType) {
       setTimeout(() => setState(AnimaState.appeared), 100);
     } else {
       if (!previousState) return;
-      setState(AnimaState.hidding);
+      setState(AnimaState.hiding);
       setTimeout(() => setState(AnimaState.hidden), duration);
     }
   }, [props.visible]);
