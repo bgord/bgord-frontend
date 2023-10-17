@@ -5,6 +5,7 @@ export * from "./copy-to-clipboard";
 export * from "./dates";
 export * from "./durations";
 export * from "./exec";
+export * from "./feature-flags";
 export * from "./filter-url";
 export * from "./get-image-resolution";
 export * from "./hooks";

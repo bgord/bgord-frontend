@@ -2,7 +2,7 @@ import React from "react";
 export declare enum AnimaState {
     appearing = "appearing",
     appeared = "appeared",
-    hidding = "hidding",
+    hiding = "hiding",
     hidden = "hidden"
 }
 export declare type AnimaEffectType = string;

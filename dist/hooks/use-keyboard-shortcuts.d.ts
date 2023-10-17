@@ -1,4 +1,4 @@
-export interface UseKeyboardShortcurtsConfigType {
+export interface UseKeyboardShortcutsConfigType {
     [keybinding: string]: (event: KeyboardEvent) => void;
 }
-export declare function useKeyboardShortcurts(config: UseKeyboardShortcurtsConfigType): void;
+export declare function useKeyboardShortcuts(config: UseKeyboardShortcutsConfigType): void;
