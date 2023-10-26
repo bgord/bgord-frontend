@@ -13,6 +13,7 @@ export * from "./is-client";
 export * from "./noop";
 export * from "./pagination";
 export * from "./pluralize";
+export * from "./reordering";
 export * from "./rhythm";
 export * from "./safe-local-storage";
 export * from "./safe-window";
