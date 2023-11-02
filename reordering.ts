@@ -35,7 +35,7 @@ export function useReordering<
   callback: (transfer: ReorderingTransferType<T>) => void
 ): UseReorderingReturnType<T> {
   const [items, setItems] = React.useState<T[]>(initialItems);
-  React.useEffect(() => setItems(initialItems), [initialItems.length]);
+  React.useEffect(() => setItems(initialItems), [JSON.stringify(initialItems)]);
 
   const draggedItem = React.useRef<T | null>(null);
   const [toIndex, setToIndex] = React.useState<ReorderingIndexType | null>(
