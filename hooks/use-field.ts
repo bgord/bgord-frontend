@@ -1,4 +1,4 @@
-import { useState, Dispatch, SetStateAction } from "react";
+import { useEffect, useState, Dispatch, SetStateAction } from "react";
 
 export type UseFieldDefaultValueType<T> = T | (() => T);
 export type UseFieldNameType = string;
@@ -22,6 +22,8 @@ export function useField<T>(
     typeof defaultValue === "function" ? defaultValue() : defaultValue;
 
   const [value, setValue] = useState(evaluatedDefaultValue);
+
+  useEffect(() => setValue(evaluatedDefaultValue), [evaluatedDefaultValue]);
 
   function clear() {
     setValue(evaluatedDefaultValue);
