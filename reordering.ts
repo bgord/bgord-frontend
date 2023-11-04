@@ -13,8 +13,20 @@ export type ReorderingTransferType<
   to: ReorderingIndexType;
 };
 
-export type UseReorderingReturnType<T> = {
+export type UseReorderingConfigType<
+  T extends ReorderingBaseItemType = ReorderingBaseItemType
+> = {
+  correlationId: ReorderingCorrelationIdType;
+  initialItems: T[];
+  callback: (transfer: ReorderingTransferType<T>) => void;
+  enabled?: boolean;
+};
+
+export type UseReorderingReturnType<
+  T extends ReorderingBaseItemType = ReorderingBaseItemType
+> = {
   items: T[];
+  enabled: boolean;
   props: {
     item: (index: ReorderingIndexType) => {
       onDragOver: (event: React.DragEvent<HTMLElement>) => void;
@@ -22,20 +34,21 @@ export type UseReorderingReturnType<T> = {
     handle: (index: ReorderingIndexType) => {
       onDragStart: (event: React.DragEvent<HTMLElement>) => void;
       onDragEnd: (event: React.DragEvent<HTMLElement>) => void;
-      draggable: true;
+      draggable: UseReorderingConfigType<T>["enabled"];
     };
   };
 };
 
 export function useReordering<
   T extends ReorderingBaseItemType = ReorderingBaseItemType
->(
-  correlationId: ReorderingCorrelationIdType,
-  initialItems: T[],
-  callback: (transfer: ReorderingTransferType<T>) => void
-): UseReorderingReturnType<T> {
-  const [items, setItems] = React.useState<T[]>(initialItems);
-  React.useEffect(() => setItems(initialItems), [JSON.stringify(initialItems)]);
+>(config: UseReorderingConfigType<T>): UseReorderingReturnType<T> {
+  const enabled = config.enabled ?? true;
+
+  const [items, setItems] = React.useState<T[]>(config.initialItems);
+  React.useEffect(
+    () => setItems(config.initialItems),
+    [JSON.stringify(config.initialItems)]
+  );
 
   const draggedItem = React.useRef<T | null>(null);
   const [toIndex, setToIndex] = React.useState<ReorderingIndexType | null>(
@@ -87,8 +100,8 @@ export function useReordering<
     return function onDragEnd(_event: React.DragEvent<HTMLElement>) {
       draggedItem.current = null;
       setToIndex(null);
-      callback({
-        correlationId,
+      config.callback({
+        correlationId: config.correlationId,
         id: items[index]?.id as T["id"],
         item: items[index] as T,
         to: toIndex as ReorderingIndexType,
@@ -96,19 +109,20 @@ export function useReordering<
     };
   }
 
+  const cursor = enabled ? (draggedItem.current ? "grabbing" : "grab") : "auto";
+
   return {
     items,
-
+    enabled,
     props: {
       item: (index: ReorderingIndexType) => ({
         onDragOver: onDragOverFactory(index),
       }),
-
       handle: (index: ReorderingIndexType) => ({
         onDragStart: onDragStartFactory(index),
         onDragEnd: onDragEndFactory(index),
-        draggable: true,
-        style: { cursor: draggedItem.current ? "grabbing" : "grab" },
+        draggable: enabled,
+        style: { cursor },
       }),
     },
   };
