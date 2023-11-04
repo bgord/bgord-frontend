@@ -10,8 +10,15 @@ export declare type ReorderingTransferType<T extends ReorderingBaseItemType = Re
     item: T;
     to: ReorderingIndexType;
 };
-export declare type UseReorderingReturnType<T> = {
+export declare type UseReorderingConfigType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
+    correlationId: ReorderingCorrelationIdType;
+    initialItems: T[];
+    callback: (transfer: ReorderingTransferType<T>) => void;
+    enabled?: boolean;
+};
+export declare type UseReorderingReturnType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
     items: T[];
+    enabled: boolean;
     props: {
         item: (index: ReorderingIndexType) => {
             onDragOver: (event: React.DragEvent<HTMLElement>) => void;
@@ -19,9 +26,9 @@ export declare type UseReorderingReturnType<T> = {
         handle: (index: ReorderingIndexType) => {
             onDragStart: (event: React.DragEvent<HTMLElement>) => void;
             onDragEnd: (event: React.DragEvent<HTMLElement>) => void;
-            draggable: true;
+            draggable: UseReorderingConfigType<T>["enabled"];
         };
     };
 };
-export declare function useReordering<T extends ReorderingBaseItemType = ReorderingBaseItemType>(correlationId: ReorderingCorrelationIdType, initialItems: T[], callback: (transfer: ReorderingTransferType<T>) => void): UseReorderingReturnType<T>;
+export declare function useReordering<T extends ReorderingBaseItemType = ReorderingBaseItemType>(config: UseReorderingConfigType<T>): UseReorderingReturnType<T>;
 export {};
