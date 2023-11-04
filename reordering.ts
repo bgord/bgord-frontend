@@ -108,6 +108,7 @@ export function useReordering<
         onDragStart: onDragStartFactory(index),
         onDragEnd: onDragEndFactory(index),
         draggable: true,
+        style: { cursor: draggedItem.current ? "grabbing" : "grab" },
       }),
     },
   };
