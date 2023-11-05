@@ -51,12 +51,16 @@ export function useReordering<
   );
 
   const draggedItem = React.useRef<T | null>(null);
+
+  const [startIndex, setStartIndex] =
+    React.useState<ReorderingIndexType | null>(null);
   const [toIndex, setToIndex] = React.useState<ReorderingIndexType | null>(
     null
   );
 
   function onDragStartFactory(index: ReorderingIndexType) {
     return function onDragStart(event: React.DragEvent<HTMLElement>) {
+      setStartIndex(index);
       draggedItem.current = items[index] ?? null;
 
       if (!event?.dataTransfer || event.currentTarget.parentNode) return;
@@ -98,14 +102,18 @@ export function useReordering<
 
   function onDragEndFactory(index: ReorderingIndexType) {
     return function onDragEnd(_event: React.DragEvent<HTMLElement>) {
+      if (startIndex !== null && toIndex !== null && startIndex !== toIndex) {
+        config.callback({
+          correlationId: config.correlationId,
+          id: items[index]?.id as T["id"],
+          item: items[index] as T,
+          to: toIndex as ReorderingIndexType,
+        });
+      }
+
+      setStartIndex(null);
       draggedItem.current = null;
       setToIndex(null);
-      config.callback({
-        correlationId: config.correlationId,
-        id: items[index]?.id as T["id"],
-        item: items[index] as T,
-        to: toIndex as ReorderingIndexType,
-      });
     };
   }
 
