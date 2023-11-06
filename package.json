@@ -30,21 +30,21 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@vitejs/plugin-react": "^3.0.1",
-    "jsdom": "^21.1.0",
+    "jsdom": "^22.1.0",
     "microbundle": "^0.14.2",
-    "only-allow": "^1.1.1",
+    "only-allow": "^1.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-polymorphic-types": "^2.0.0",
-    "react-query": "^3.39.2",
+    "react-query": "^3.39.3",
     "typescript": "5.2.2",
-    "vitest": "^0.28.1"
+    "vitest": "^0.34.6"
   },
   "typings": "./dist/index.d.ts",
   "dependencies": {
     "js-cookie": "^3.0.5",
     "polish-plurals": "^1.1.0",
-    "tinykeys": "^1.4.0",
+    "tinykeys": "^2.1.0",
     "ts-storage": "^5.0.1"
   }
 }
