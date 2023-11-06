@@ -3,6 +3,7 @@
     "strict": true,
     "esModuleInterop": true,
     "jsx": "react",
+    "jsxFragmentFactory": "React.Fragment",
     "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
     "incremental": true
