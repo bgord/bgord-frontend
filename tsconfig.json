@@ -4,7 +4,8 @@
     "esModuleInterop": true,
     "jsx": "react",
     "noUncheckedIndexedAccess": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "incremental": true
   },
   "exclude": ["bgord-scripts"]
 }
