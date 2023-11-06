@@ -1,4 +1,4 @@
-export declare type WindowDimensions = {
+export type WindowDimensions = {
     width: number | undefined;
     height: number | undefined;
 };

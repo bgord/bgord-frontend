@@ -10,4 +10,4 @@ export declare class Pagination {
     static infinite<T>(infinite: UseInfiniteQueryResult<Paged<T>>): T[];
 }
 export type { Paged, PageType } from "@bgord/node";
-export declare type PagedMetaType = Paged<unknown>["meta"];
+export type PagedMetaType = Paged<unknown>["meta"];

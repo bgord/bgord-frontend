@@ -1,4 +1,4 @@
-export declare type ServerErrorConfigType = {
+export type ServerErrorConfigType = {
     message: string;
 };
 export declare class ServerError {

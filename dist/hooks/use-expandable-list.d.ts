@@ -2,11 +2,11 @@ export declare enum UseExpandableListState {
     contracted = "contracted",
     expanded = "expanded"
 }
-export declare type UseExpandableListConfigType = {
+export type UseExpandableListConfigType = {
     max: number;
     length: number;
 };
-export declare type UseExpandableListReturnType = {
+export type UseExpandableListReturnType = {
     state: UseExpandableListState;
     displayShowMore: boolean;
     displayShowLess: boolean;

@@ -1,4 +1,4 @@
-declare type UseDebounceConfigType<T> = {
+type UseDebounceConfigType<T> = {
     value: T;
     delayMs: number;
 };

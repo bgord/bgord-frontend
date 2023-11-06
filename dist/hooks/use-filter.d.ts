@@ -1,7 +1,7 @@
 /// <reference types="react" />
-export declare type UseFilterQueryType = string | undefined;
-export declare type UseFilterNameType = string;
-export declare type UseFilterConfigType<T> = {
+export type UseFilterQueryType = string | undefined;
+export type UseFilterNameType = string;
+export type UseFilterConfigType<T> = {
     name: string;
     enum: {
         [key: string]: UseFilterQueryType;
@@ -11,7 +11,7 @@ export declare type UseFilterConfigType<T> = {
     filterFn?: (value: T) => boolean;
     onUpdate?: (current: UseFilterQueryType, previous: UseFilterQueryType) => void;
 };
-export declare type UseFilterReturnType<T> = {
+export type UseFilterReturnType<T> = {
     query: UseFilterQueryType;
     clear: VoidFunction;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

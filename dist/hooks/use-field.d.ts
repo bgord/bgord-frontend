@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
-export declare type UseFieldDefaultValueType<T> = T | (() => T);
-export declare type UseFieldNameType = string;
-export declare type UseFieldReturnType<T> = {
+export type UseFieldDefaultValueType<T> = T | (() => T);
+export type UseFieldNameType = string;
+export type UseFieldReturnType<T> = {
     value: T;
     set: Dispatch<SetStateAction<T>>;
     clear: VoidFunction;

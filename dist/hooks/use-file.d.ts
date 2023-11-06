@@ -1,6 +1,6 @@
 /// <reference types="react" />
-declare type UseFileNameType = string;
-export declare type UseFileConfigType = {
+type UseFileNameType = string;
+export type UseFileConfigType = {
     maxSize?: number;
 };
 export declare enum UseFileState {
@@ -8,7 +8,7 @@ export declare enum UseFileState {
     "selected" = "selected",
     "error" = "error"
 }
-declare type UseFileIdle = {
+type UseFileIdle = {
     state: UseFileState.idle;
     matches: (states: UseFileState[]) => boolean;
     isIdle: true;
@@ -33,7 +33,7 @@ declare type UseFileIdle = {
         };
     };
 };
-declare type UseFileSelected = {
+type UseFileSelected = {
     state: UseFileState.selected;
     matches: (states: UseFileState[]) => boolean;
     data: File;
@@ -59,7 +59,7 @@ declare type UseFileSelected = {
         };
     };
 };
-declare type UseFileError = {
+type UseFileError = {
     state: UseFileState.error;
     matches: (states: UseFileState[]) => boolean;
     data: null;
@@ -84,6 +84,6 @@ declare type UseFileError = {
         };
     };
 };
-export declare type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
+export type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
 export declare function useFile(name: UseFileNameType, config?: UseFileConfigType): UseFileReturnType;
 export {};

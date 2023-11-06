@@ -1,12 +1,12 @@
 import { PagedMetaType, PageType } from "../pagination";
-declare type UsePaginationControlType = {
+type UsePaginationControlType = {
     active: boolean;
     disabled: boolean;
     exists: boolean;
     go: VoidFunction;
     value: PageType | undefined;
 };
-declare type UsePaginationReturnType = {
+type UsePaginationReturnType = {
     current: PageType;
     last: PageType | undefined;
     controls: {

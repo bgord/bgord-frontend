@@ -1,5 +1,5 @@
-export declare type RhythmBaseType = number;
-export declare type RhythmTimesType = number;
+export type RhythmBaseType = number;
+export type RhythmTimesType = number;
 export declare function Rhythm(base?: RhythmBaseType): {
     times(times: RhythmTimesType): {
         height: {

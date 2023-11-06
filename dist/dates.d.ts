@@ -1,5 +1,5 @@
 import type { HourType } from "@bgord/node/dist/schema";
-export declare type DateType = Date | number | null | undefined;
+export type DateType = Date | number | null | undefined;
 export declare class DateFormatter {
     static datetime(date: DateType, defaultValue?: string): string;
     static monthDay(timestamp: number): string;

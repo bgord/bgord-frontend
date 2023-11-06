@@ -1,15 +1,15 @@
 import type { TimestampType } from "@bgord/node/dist/schema";
-export declare type RateLimiterOptionsType = {
+export type RateLimiterOptionsType = {
     limitMs: TimestampType;
 };
-export declare type RateLimiterResultSuccessType = {
+export type RateLimiterResultSuccessType = {
     allowed: true;
 };
-export declare type RateLimiterResultErrorType = {
+export type RateLimiterResultErrorType = {
     allowed: false;
     remainingMs: TimestampType;
 };
-export declare type RateLimiterResultType = RateLimiterResultSuccessType | RateLimiterResultErrorType;
+export type RateLimiterResultType = RateLimiterResultSuccessType | RateLimiterResultErrorType;
 export declare class RateLimiter {
     private lastInvocationTimestamp;
     private options;

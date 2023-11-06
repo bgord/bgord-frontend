@@ -8,8 +8,8 @@ export declare const defaultUseIsVisibleConfig: {
     };
 };
 export declare function isIntersectionObserverSupported(): boolean;
-export declare type UseIsVisibleConfigType = IntersectionObserverInit & {
+export type UseIsVisibleConfigType = IntersectionObserverInit & {
     ref: RefObject<Element>;
 };
-export declare type UseIsVisibleReturnType = boolean;
+export type UseIsVisibleReturnType = boolean;
 export declare function useIsVisible(config?: UseIsVisibleConfigType): UseIsVisibleReturnType;

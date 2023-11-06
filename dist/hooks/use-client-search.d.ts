@@ -1,6 +1,6 @@
 /// <reference types="react" />
-export declare type UseClientSearchQueryType = string;
-export declare type UseClientSearchReturnType = {
+export type UseClientSearchQueryType = string;
+export type UseClientSearchReturnType = {
     query: UseClientSearchQueryType;
     clear: VoidFunction;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

@@ -5,8 +5,8 @@ export declare enum AnimaState {
     hiding = "hiding",
     hidden = "hidden"
 }
-export declare type AnimaEffectType = string;
-export declare type AnimaConfigType = {
+export type AnimaEffectType = string;
+export type AnimaConfigType = {
     children: JSX.Element;
     visible: boolean;
     effect: AnimaEffectType;
@@ -19,22 +19,22 @@ export declare function getAnimaProps(props: Record<string, any>): {
     "data-anima-effect": string | undefined;
     style: React.CSSProperties;
 };
-export declare type AnimaListPropsType = {
+export type AnimaListPropsType = {
     children: JSX.Element[];
 } & JSX.IntrinsicElements["ul"];
 export declare function AnimaList(props: AnimaListPropsType): JSX.Element;
-export declare type UseAnimaListDirectionType = "head" | "tail";
-export declare type UseAnimaListConfigType = {
+export type UseAnimaListDirectionType = "head" | "tail";
+export type UseAnimaListConfigType = {
     direction?: UseAnimaListDirectionType;
     duration?: number;
 };
-export declare type UseAnimaListItemType<T> = {
+export type UseAnimaListItemType<T> = {
     item: T;
     props: {
         visible: boolean;
     };
 };
-declare type UseAnimaListReturnType<T> = {
+type UseAnimaListReturnType<T> = {
     items: {
         item: T;
         props: {

@@ -1,7 +1,7 @@
 import type { Falsy, Schema } from "@bgord/node";
-declare type PluralizeWordType = string;
-declare type PluralizeValueType = Falsy<number>;
-export declare type PluralizeOptionsType = {
+type PluralizeWordType = string;
+type PluralizeValueType = Falsy<number>;
+export type PluralizeOptionsType = {
     value: PluralizeValueType;
     singular: PluralizeWordType;
     plural?: PluralizeWordType;

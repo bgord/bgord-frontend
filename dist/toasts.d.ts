@@ -1,12 +1,12 @@
 /// <reference types="react" />
-export declare type ToastsConfigType = {
+export type ToastsConfigType = {
     timeout?: number;
 };
-export declare type BaseToastType = {
+export type BaseToastType = {
     id: string;
     message: string;
 };
-declare type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> = [
+type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> = [
     ToastType[],
     {
         add: (toast: Omit<ToastType, "id">) => void;

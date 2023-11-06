@@ -1,5 +1,5 @@
-declare type UseItemValueType<T> = T | null;
-export declare type UseItemReturnType<T> = {
+type UseItemValueType<T> = T | null;
+export type UseItemReturnType<T> = {
     clear: VoidFunction;
     set: (item: NonNullable<UseItemValueType<T>>) => void;
     toggle: (item: NonNullable<UseItemValueType<T>>) => any;
@@ -8,7 +8,7 @@ export declare type UseItemReturnType<T> = {
     exists: boolean;
     compare: (a: UseItemValueType<T>) => boolean;
 };
-export declare type UseItemConfigType<T> = {
+export type UseItemConfigType<T> = {
     defaultItem?: UseItemValueType<T>;
     comparisonFn?: (a: UseItemValueType<T>, b: UseItemValueType<T>) => boolean;
 };

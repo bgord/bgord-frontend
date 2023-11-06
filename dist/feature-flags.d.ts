@@ -1,10 +1,10 @@
 /// <reference types="react" />
 import type { Schema } from "@bgord/node";
-export declare type FeatureFlagNameType = string;
-export declare type FeatureFlagsContextValueType = {
+export type FeatureFlagNameType = string;
+export type FeatureFlagsContextValueType = {
     flags: Record<FeatureFlagNameType, Schema.FeatureFlagType>;
 };
-declare type FeatureFlagsContextPropsType = {
+type FeatureFlagsContextPropsType = {
     children: JSX.Element | JSX.Element[];
     value: FeatureFlagsContextValueType["flags"];
 };

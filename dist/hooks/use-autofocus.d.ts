@@ -1,5 +1,5 @@
 import React from "react";
-export declare type UseAutofocusConfigType = {
+export type UseAutofocusConfigType = {
     ref: React.RefObject<HTMLElement>;
     condition: boolean;
 };

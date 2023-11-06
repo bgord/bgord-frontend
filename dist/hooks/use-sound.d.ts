@@ -1,5 +1,5 @@
-export declare type SoundSourceType = string;
-export declare type UseSoundReturnType = {
+export type SoundSourceType = string;
+export type UseSoundReturnType = {
     play: VoidFunction;
 };
 export declare function useSound(src: SoundSourceType): UseSoundReturnType;

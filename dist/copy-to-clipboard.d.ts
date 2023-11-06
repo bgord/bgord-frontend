@@ -1,7 +1,7 @@
-export declare type CopyToClipboardTextType = string;
-declare type OnCopyToClipboardFailureType = (error?: unknown) => void;
-declare type OnCopyToClipboardSuccessType = VoidFunction;
-export declare type CopyToClipboardOptionsType = {
+export type CopyToClipboardTextType = string;
+type OnCopyToClipboardFailureType = (error?: unknown) => void;
+type OnCopyToClipboardSuccessType = VoidFunction;
+export type CopyToClipboardOptionsType = {
     text: string;
     onFailure?: OnCopyToClipboardFailureType;
     onSuccess?: OnCopyToClipboardSuccessType;

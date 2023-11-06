@@ -1,7 +1,7 @@
-export declare type UseVideoSrcType = string;
-declare type VideoDurationType = number;
-declare type VideoCurrentTimeType = number;
-declare type VideoVolumeType = number;
+export type UseVideoSrcType = string;
+type VideoDurationType = number;
+type VideoCurrentTimeType = number;
+type VideoVolumeType = number;
 export declare const VIDEO_DEFAULT_VOLUME: VideoVolumeType;
 export declare enum UseVideoState {
     "initial" = "initial",
@@ -9,7 +9,7 @@ export declare enum UseVideoState {
     "playing" = "playing",
     "paused" = "paused"
 }
-export declare type UseVideoReturnType = {
+export type UseVideoReturnType = {
     props: {
         video: {
             src: UseVideoSrcType;

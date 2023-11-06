@@ -1,22 +1,22 @@
 import React from "react";
-declare type ReorderingBaseItemType = {
+type ReorderingBaseItemType = {
     id: string;
 };
-declare type ReorderingIndexType = number;
-declare type ReorderingCorrelationIdType = string;
-export declare type ReorderingTransferType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
+type ReorderingIndexType = number;
+type ReorderingCorrelationIdType = string;
+export type ReorderingTransferType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
     correlationId: ReorderingCorrelationIdType;
     id: T["id"];
     item: T;
     to: ReorderingIndexType;
 };
-export declare type UseReorderingConfigType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
+export type UseReorderingConfigType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
     correlationId: ReorderingCorrelationIdType;
     initialItems: T[];
     callback: (transfer: ReorderingTransferType<T>) => void;
     enabled?: boolean;
 };
-export declare type UseReorderingReturnType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
+export type UseReorderingReturnType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
     items: T[];
     enabled: boolean;
     props: {

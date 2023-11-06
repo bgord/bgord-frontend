@@ -1,9 +1,9 @@
 import React from "react";
 import { UseToggleReturnType } from "./use-toggle";
-export declare type UseHoverConfigType = {
+export type UseHoverConfigType = {
     enabled: boolean;
 };
-export declare type UseHoverReturnType = {
+export type UseHoverReturnType = {
     attach: {
         ref: React.RefObject<any>;
     };

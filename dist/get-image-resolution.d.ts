@@ -1,5 +1,5 @@
-export declare type ImagePathType = string | undefined;
-export declare type ImageResolutionType = {
+export type ImagePathType = string | undefined;
+export type ImageResolutionType = {
     width: number | null;
     height: number | null;
 };

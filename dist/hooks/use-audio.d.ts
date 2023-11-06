@@ -1,7 +1,7 @@
-export declare type UseAudioSrcType = string;
-declare type AudioDurationType = number;
-declare type AudioCurrentTimeType = number;
-declare type AudioVolumeType = number;
+export type UseAudioSrcType = string;
+type AudioDurationType = number;
+type AudioCurrentTimeType = number;
+type AudioVolumeType = number;
 export declare const AUDIO_DEFAULT_VOLUME: AudioVolumeType;
 export declare enum UseAudioState {
     "initial" = "initial",
@@ -9,7 +9,7 @@ export declare enum UseAudioState {
     "playing" = "playing",
     "paused" = "paused"
 }
-export declare type UseAudioReturnType = {
+export type UseAudioReturnType = {
     props: {
         audio: {
             src: UseAudioSrcType;
