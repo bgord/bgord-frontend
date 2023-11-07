@@ -22,7 +22,7 @@ export declare function getAnimaProps(props: Record<string, any>): {
 export type AnimaListPropsType = {
     children: JSX.Element[];
 } & JSX.IntrinsicElements["ul"];
-export declare function AnimaList(props: AnimaListPropsType): JSX.Element;
+export declare function AnimaList(props: AnimaListPropsType): React.JSX.Element;
 export type UseAnimaListDirectionType = "head" | "tail";
 export type UseAnimaListConfigType = {
     direction?: UseAnimaListDirectionType;

@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from "react";
 export type ToastsConfigType = {
     timeout?: number;
 };
@@ -16,7 +16,7 @@ type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> = [
 ];
 export declare function ToastsContextProvider(props: {
     children: JSX.Element | JSX.Element[];
-} & ToastsConfigType): JSX.Element;
+} & ToastsConfigType): React.JSX.Element;
 export declare function useToastsContext<ToastType extends BaseToastType = BaseToastType>(): ToastsContextDataType<ToastType>;
 export declare function useToastTrigger<ToastType extends BaseToastType = BaseToastType>(): (toast: Omit<ToastType, "id">) => void;
 export {};

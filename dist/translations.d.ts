@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from "react";
 import type { TranslationsType, TranslationsKeyType, Schema } from "@bgord/node";
 import { PluralizeOptionsType } from "./pluralize";
 type TranslationsContextValueType = {
@@ -12,7 +12,7 @@ type TranslationsContextPropsType = {
     children: JSX.Element | JSX.Element[];
     value: TranslationsContextValueType;
 };
-export declare function TranslationsContextProvider(props: TranslationsContextPropsType): JSX.Element;
+export declare function TranslationsContextProvider(props: TranslationsContextPropsType): React.JSX.Element;
 export declare function useTranslations(): (key: TranslationsKeyType, variables?: TranslationVariableType) => string;
 export declare function useLanguage(): TranslationsContextValueType["language"];
 export declare function usePluralize(): (options: Omit<PluralizeOptionsType, "language">) => string;
