@@ -9,5 +9,5 @@
     "skipLibCheck": true,
     "incremental": true
   },
-  "exclude": ["bgord-scripts"]
+  "exclude": ["bgord-scripts", "tests", "vite.config.ts"]
 }
