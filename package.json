@@ -23,28 +23,28 @@
     "react": "*"
   },
   "devDependencies": {
-    "@bgord/node": "^0.58.152",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^12.1.5",
-    "@types/js-cookie": "^3.0.6",
-    "@types/react": "^17.0.39",
-    "@types/react-dom": "^17.0.11",
-    "@vitejs/plugin-react": "^4.1.1",
-    "jsdom": "^22.1.0",
-    "microbundle": "^0.15.1",
-    "only-allow": "^1.2.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-polymorphic-types": "^2.0.0",
-    "react-query": "^3.39.3",
+    "@bgord/node": "0.58.152",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "12.1.5",
+    "@types/js-cookie": "3.0.6",
+    "@types/react": "17.0.39",
+    "@types/react-dom": "17.0.11",
+    "@vitejs/plugin-react": "4.1.1",
+    "jsdom": "22.1.0",
+    "microbundle": "0.15.1",
+    "only-allow": "1.2.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-polymorphic-types": "2.0.0",
+    "react-query": "3.39.3",
     "typescript": "5.2.2",
-    "vitest": "^0.34.6"
+    "vitest": "0.34.6"
   },
   "typings": "./dist/index.d.ts",
   "dependencies": {
-    "js-cookie": "^3.0.5",
-    "polish-plurals": "^1.1.0",
-    "tinykeys": "^1.4.0",
-    "ts-storage": "^5.0.1"
+    "js-cookie": "3.0.5",
+    "polish-plurals": "1.1.0",
+    "tinykeys": "1.4.0",
+    "ts-storage": "5.0.1"
   }
 }
