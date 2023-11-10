@@ -4,6 +4,7 @@
     "esModuleInterop": true,
     "jsx": "react",
     "jsxFragmentFactory": "React.Fragment",
+    "jsxFactory": "React.createElement",
     "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
     "incremental": true
