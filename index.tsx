@@ -10,6 +10,7 @@ export * from "./filter-url";
 export * from "./get-image-resolution";
 export * from "./hooks";
 export * from "./is-client";
+export * from "./min-max-scaler";
 export * from "./noop";
 export * from "./pagination";
 export * from "./pluralize";
