@@ -1,6 +1,19 @@
-export type MinMaxScalerValueType = number;
+type ApproximationValueType = number;
+type ApproximationResultType = number;
+type ApproximationDecimalPlacesType = number;
 
-export type MinMaxScalerConfigType = {
+export class Approximation {
+  static float(
+    value: ApproximationValueType,
+    decimalPlaces: ApproximationDecimalPlacesType = 2
+  ): ApproximationResultType {
+    return parseFloat(value.toFixed(decimalPlaces));
+  }
+}
+
+type MinMaxScalerValueType = number;
+
+type MinMaxScalerConfigType = {
   min: MinMaxScalerValueType;
   max: MinMaxScalerValueType;
   bound?: {
@@ -42,7 +55,7 @@ export class MinMaxScaler {
 
     if (min === max)
       return {
-        actual: value,
+        original: value,
         scaled: (lower + upper) / 2,
         isMin: value === min,
         isMax: value === max,
@@ -51,10 +64,27 @@ export class MinMaxScaler {
     const result = ((value - min) / (max - min)) * (upper - lower) + lower;
 
     return {
-      actual: value,
-      scaled: Number(result.toFixed(2)),
+      original: value,
+      scaled: Approximation.float(result, 2),
       isMin: value === min,
       isMax: value === max,
+    };
+  }
+
+  descale(scaled: MinMaxScalerValueType) {
+    const { min, max, lower, upper } = this;
+
+    if (scaled < lower || scaled > upper) {
+      throw new Error("Scaled value out of bounds");
+    }
+
+    const result = ((scaled - lower) / (upper - lower)) * (max - min) + min;
+
+    return {
+      original: Approximation.float(result, 2),
+      scaled,
+      isLowerBound: scaled === lower,
+      isUpperBound: scaled === upper,
     };
   }
 

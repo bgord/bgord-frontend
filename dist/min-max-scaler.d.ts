@@ -1,5 +1,11 @@
-export type MinMaxScalerValueType = number;
-export type MinMaxScalerConfigType = {
+type ApproximationValueType = number;
+type ApproximationResultType = number;
+type ApproximationDecimalPlacesType = number;
+export declare class Approximation {
+    static float(value: ApproximationValueType, decimalPlaces?: ApproximationDecimalPlacesType): ApproximationResultType;
+}
+type MinMaxScalerValueType = number;
+type MinMaxScalerConfigType = {
     min: MinMaxScalerValueType;
     max: MinMaxScalerValueType;
     bound?: {
@@ -14,13 +20,20 @@ export declare class MinMaxScaler {
     private readonly upper;
     constructor(config: MinMaxScalerConfigType);
     scale(value: MinMaxScalerValueType): {
-        actual: number;
+        original: number;
         scaled: number;
         isMin: boolean;
         isMax: boolean;
+    };
+    descale(scaled: MinMaxScalerValueType): {
+        original: number;
+        scaled: number;
+        isLowerBound: boolean;
+        isUpperBound: boolean;
     };
     static getMinMax(values: MinMaxScalerValueType[]): {
         min: number;
         max: number;
     };
 }
+export {};
