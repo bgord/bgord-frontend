@@ -4,6 +4,7 @@ export * from "./components";
 export * from "./copy-to-clipboard";
 export * from "./dates";
 export * from "./durations";
+export * from "./etag";
 export * from "./exec";
 export * from "./feature-flags";
 export * from "./filter-url";
