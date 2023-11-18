@@ -7,6 +7,7 @@ export const API: typeof fetch = (input, init) =>
       "Content-Type": "application/json",
 
       "time-zone-offset": new Date().getTimezoneOffset().toString(),
+      ...init?.headers,
     },
     redirect: "follow",
     ...init,
