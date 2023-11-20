@@ -32,7 +32,7 @@ export function Dialog(props: DialogPropsType) {
       data-direction="column"
       data-mx="auto"
       data-p="24"
-      data-position="absolute"
+      data-position="fixed"
       data-z="2"
       data-bg="white"
       data-br="4"
