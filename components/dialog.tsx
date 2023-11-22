@@ -6,7 +6,7 @@ export type DialogPropsType = hooks.UseToggleReturnType &
   JSX.IntrinsicElements["dialog"];
 
 export function Dialog(props: DialogPropsType) {
-  const { disable, enable, on, off, toggle, ...rest } = props;
+  const { toggle: dialog, rest } = hooks.extractUseToggle(props);
   const ref = React.useRef<HTMLDialogElement>(null);
 
   React.useEffect(() => {
@@ -19,10 +19,10 @@ export function Dialog(props: DialogPropsType) {
     }
   }, [props.on]);
 
-  hooks.useKeyboardShortcuts({ Escape: disable });
+  hooks.useKeyboardShortcuts({ Escape: dialog.disable });
   hooks.useAutofocus({ ref, condition: props.on });
   hooks.useScrollLock(props.on);
-  hooks.useClickOutside(ref, disable);
+  hooks.useClickOutside(ref, dialog.disable);
 
   return (
     <dialog
