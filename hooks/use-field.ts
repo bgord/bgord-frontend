@@ -39,3 +39,15 @@ export function useField<T>(
     unchanged: value == evaluatedDefaultValue,
   };
 }
+
+export function extractUseField<T>(
+  props: UseFieldReturnType<T> & Record<string, unknown>
+): { field: UseFieldReturnType<T>; rest: Record<string, unknown> } {
+  const { value, set, clear, label, input, changed, unchanged, ...rest } =
+    props;
+
+  return {
+    field: { value, set, clear, label, input, changed, unchanged },
+    rest,
+  };
+}
