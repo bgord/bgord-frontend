@@ -22,6 +22,7 @@ export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
 export * from "./use-leaving-prompt";
 export * from "./use-list";
+export * from "./use-meta-enter-submit";
 export * from "./use-pagination";
 export * from "./use-persistent-toggle";
 export * from "./use-previous-value";
