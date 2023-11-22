@@ -8,3 +8,7 @@ export type UseToggleReturnType = {
     toggle: VoidFunction;
 };
 export declare function useToggle(defaultValue?: UseToggleConfigType): UseToggleReturnType;
+export declare function extractUseToggle(props: UseToggleReturnType & Record<string, unknown>): {
+    toggle: UseToggleReturnType;
+    rest: Record<string, unknown>;
+};
