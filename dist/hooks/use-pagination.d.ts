@@ -8,7 +8,7 @@ type UsePaginationControlType = {
 };
 type UsePaginationReturnType = {
     current: PageType;
-    last: PageType | undefined;
+    last: PageType;
     controls: {
         firstPage: UsePaginationControlType;
         previousPage: UsePaginationControlType;

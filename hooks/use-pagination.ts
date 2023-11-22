@@ -11,7 +11,7 @@ type UsePaginationControlType = {
 
 type UsePaginationReturnType = {
   current: PageType;
-  last: PageType | undefined;
+  last: PageType;
 
   controls: {
     firstPage: UsePaginationControlType;
@@ -29,7 +29,7 @@ export function usePagination(): UsePaginationReturnType {
   const firstPage = 1;
   const previousPage = meta.value?.previousPage;
   const nextPage = meta.value?.nextPage;
-  const lastPage = meta.value?.lastPage;
+  const lastPage = meta.value?.lastPage || firstPage;
 
   const page = useField("page", firstPage);
 
