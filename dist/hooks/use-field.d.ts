@@ -20,7 +20,7 @@ export type UseFieldReturnType<T> = {
     unchanged: boolean;
 };
 export declare function useField<T>(name: UseFieldNameType, defaultValue: UseFieldDefaultValueType<T>): UseFieldReturnType<T>;
-export declare function extractUseField<T>(props: UseFieldReturnType<T> & Record<string, unknown>): {
+export declare function extractUseField<T, X>(props: UseFieldReturnType<T> & X): {
     field: UseFieldReturnType<T>;
-    rest: Record<string, unknown>;
+    rest: X;
 };

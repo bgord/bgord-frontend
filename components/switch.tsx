@@ -6,7 +6,10 @@ export function Switch(
   props: UseFieldReturnType<boolean> &
     Omit<JSX.IntrinsicElements["input"], "label" | "value">
 ) {
-  const { field, rest } = extractUseField(props);
+  const { field, rest } = extractUseField<
+    boolean,
+    Omit<JSX.IntrinsicElements["input"], "label" | "value">
+  >(props);
 
   return (
     <Fragment>

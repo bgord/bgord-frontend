@@ -40,14 +40,14 @@ export function useField<T>(
   };
 }
 
-export function extractUseField<T>(
-  props: UseFieldReturnType<T> & Record<string, unknown>
-): { field: UseFieldReturnType<T>; rest: Record<string, unknown> } {
+export function extractUseField<T, X>(
+  props: UseFieldReturnType<T> & X
+): { field: UseFieldReturnType<T>; rest: X } {
   const { value, set, clear, label, input, changed, unchanged, ...rest } =
     props;
 
   return {
     field: { value, set, clear, label, input, changed, unchanged },
-    rest,
+    rest: rest as X,
   };
 }
