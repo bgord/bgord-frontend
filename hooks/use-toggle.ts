@@ -23,3 +23,14 @@ export function useToggle(
 
   return { on, off: !on, enable, disable, toggle };
 }
+
+export function extractUseToggle(
+  props: UseToggleReturnType & Record<string, unknown>
+): { toggle: UseToggleReturnType; rest: Record<string, unknown> } {
+  const { on, off, enable, disable, toggle, ...rest } = props;
+
+  return {
+    toggle: { on, off, enable, disable, toggle },
+    rest,
+  };
+}
