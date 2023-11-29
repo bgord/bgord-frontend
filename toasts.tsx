@@ -42,7 +42,7 @@ export function ToastsContextProvider(
     }
 
     return [
-      [...toasts].reverse(),
+      toasts.toReversed(),
       { add, remove: actions.remove, clear: actions.clear },
     ];
   }

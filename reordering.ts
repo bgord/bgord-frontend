@@ -91,12 +91,12 @@ export function useReordering<
       }
 
       // filter out the currently dragged item
-      let updated = items.filter((item) => item !== draggedItem.current);
-
       // add the dragged item after the dragged over item
-      updated.splice(index, 0, draggedItem.current);
-
-      setItems(updated);
+      setItems(
+        items
+          .filter((item) => item !== draggedItem.current)
+          .toSpliced(index, 0, draggedItem.current)
+      );
     };
   }
 
