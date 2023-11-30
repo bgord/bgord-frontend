@@ -17,7 +17,7 @@ export class DateFormatter {
     const days = DateFormatter._padDatePart(date.getDate());
     const months = DateFormatter._padDatePart(date.getMonth() + 1);
 
-    return `${months}/${days}`;
+    return `${days}/${months}`;
   }
 
   static form(date: Date | null): string {
