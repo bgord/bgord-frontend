@@ -1,9 +1,12 @@
 # Changelog
+- 2023-12-07 14:27 abeef54 **Merge pull request #36 from bgord/dependabot/npm_and_yarn/vitest-1.0.2**
 - 2023-12-07 14:26 f6b01e4 **Merge pull request #31 from bgord/dependabot/npm_and_yarn/adobe/css-tools-4.3.2**
 - 2023-12-07 14:26 b23de9e **Merge pull request #35 from bgord/dependabot/npm_and_yarn/vite-5.0.5**
 - 2023-12-07 14:26 7226876 **Merge pull request #33 from bgord/dependabot/npm_and_yarn/vitejs/plugin-react-4.2.1**
 - 2023-12-07 14:26 5246b7a **Merge pull request #32 from bgord/dependabot/npm_and_yarn/testing-library/jest-dom-6.1.5**
 - 2023-12-07 14:25 26775c6 **feature: add skipping ci flag to changelog commit**
+- 2023-12-07 13:27 9976df2 **build(deps-dev): bump vitest from 0.34.6 to 1.0.2**
+- 2023-12-07 13:26 eaa4ac0 **docs: generate CHANGELOG [skip ci]**
 - 2023-12-07 13:25 15a76be **docs: generate CHANGELOG [skip ci]**
 - 2023-12-07 11:08 09d7be9 **step: add changelog workflow**
 - 2023-12-07 11:03 a90fdd7 **step: add changelog workflow**
