@@ -1,9 +1,18 @@
 # Changelog
+- 2023-12-07 14:26 f6b01e4 **Merge pull request #31 from bgord/dependabot/npm_and_yarn/adobe/css-tools-4.3.2**
+- 2023-12-07 14:26 b23de9e **Merge pull request #35 from bgord/dependabot/npm_and_yarn/vite-5.0.5**
+- 2023-12-07 14:26 7226876 **Merge pull request #33 from bgord/dependabot/npm_and_yarn/vitejs/plugin-react-4.2.1**
+- 2023-12-07 14:26 5246b7a **Merge pull request #32 from bgord/dependabot/npm_and_yarn/testing-library/jest-dom-6.1.5**
 - 2023-12-07 14:25 26775c6 **feature: add skipping ci flag to changelog commit**
+- 2023-12-07 13:25 15a76be **docs: generate CHANGELOG [skip ci]**
 - 2023-12-07 11:08 09d7be9 **step: add changelog workflow**
 - 2023-12-07 11:03 a90fdd7 **step: add changelog workflow**
 - 2023-12-07 11:02 c37c77c **step: bump bgord/scripts**
 - 2023-12-07 10:08 3488675 **docs: generate CHANGELOG**
+- 2023-12-06 00:04 d46ff0a **build(deps-dev): bump vite from 4.5.0 to 5.0.5**
+- 2023-12-05 12:44 3c1a8e8 **build(deps-dev): bump @vitejs/plugin-react from 4.2.0 to 4.2.1**
+- 2023-12-01 13:07 32e3299 **build(deps-dev): bump @testing-library/jest-dom from 6.1.4 to 6.1.5**
+- 2023-12-01 06:28 69f7dbc **build(deps-dev): bump @adobe/css-tools from 4.3.1 to 4.3.2**
 - 2023-11-30 15:31 038960c **fix: monthday formatter**
 - 2023-11-30 15:08 0589214 **Merge pull request #30 from bgord/dependabot/npm_and_yarn/jsdom-23.0.1**
 - 2023-11-30 13:09 bb22d19 **build(deps-dev): bump jsdom from 22.1.0 to 23.0.1**
