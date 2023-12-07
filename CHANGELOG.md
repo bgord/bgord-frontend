@@ -1,7 +1,9 @@
 # Changelog
+- 2023-12-07 14:25 26775c6 **feature: add skipping ci flag to changelog commit**
 - 2023-12-07 11:08 09d7be9 **step: add changelog workflow**
 - 2023-12-07 11:03 a90fdd7 **step: add changelog workflow**
 - 2023-12-07 11:02 c37c77c **step: bump bgord/scripts**
+- 2023-12-07 10:08 3488675 **docs: generate CHANGELOG**
 - 2023-11-30 15:31 038960c **fix: monthday formatter**
 - 2023-11-30 15:08 0589214 **Merge pull request #30 from bgord/dependabot/npm_and_yarn/jsdom-23.0.1**
 - 2023-11-30 13:09 bb22d19 **build(deps-dev): bump jsdom from 22.1.0 to 23.0.1**
