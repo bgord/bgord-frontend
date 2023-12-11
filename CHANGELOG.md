@@ -1,6 +1,9 @@
 # Changelog
+- 2023-12-11 17:25 5c75fdc **Merge pull request #37 from bgord/dependabot/npm_and_yarn/typescript-5.3.3**
 - 2023-12-11 17:24 fc149b8 **Merge pull request #39 from bgord/dependabot/npm_and_yarn/vitest-1.0.4**
 - 2023-12-11 17:24 45879f6 **Merge pull request #40 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.249**
+- 2023-12-11 16:24 c4be08b **build(deps-dev): bump typescript from 5.3.2 to 5.3.3**
+- 2023-12-11 16:24 bca198d **docs: generate CHANGELOG [skip ci]**
 - 2023-12-11 12:20 e203d47 **build(deps-dev): bump @bgord/node from 0.58.244 to 0.58.249**
 - 2023-12-11 12:20 cb9367b **build(deps-dev): bump vitest from 1.0.2 to 1.0.4**
 - 2023-12-07 14:27 abeef54 **Merge pull request #36 from bgord/dependabot/npm_and_yarn/vitest-1.0.2**
