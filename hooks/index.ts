@@ -3,6 +3,7 @@ export * from "./use-autofocus";
 export * from "./use-breakpoint";
 export * from "./use-click-outside";
 export * from "./use-client-search";
+export * from "./use-client-sort";
 export * from "./use-current-timestamp";
 export * from "./use-debounce";
 export * from "./use-design-mode";
