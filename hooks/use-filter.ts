@@ -64,9 +64,7 @@ export function useFilter<T = string>(
     return query === String(value);
   }
 
-  useEffect(() => {
-    onUpdate(query, previousQuery);
-  }, [previousQuery, query]);
+  useEffect(() => onUpdate(query, previousQuery), [previousQuery, query]);
 
   return {
     query,
