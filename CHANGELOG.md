@@ -1,5 +1,7 @@
 # Changelog
+- 2023-12-15 16:40 49d78f3 **step: add onChange to returned use-field value**
 - 2023-12-14 21:39 acb5667 **feature: add use client sort hook**
+- 2023-12-14 20:40 ce9605d **docs: generate CHANGELOG [skip ci]**
 - 2023-12-14 15:42 b3ba1ff **refactor: improve readability**
 - 2023-12-11 17:25 5c75fdc **Merge pull request #37 from bgord/dependabot/npm_and_yarn/typescript-5.3.3**
 - 2023-12-11 17:24 fc149b8 **Merge pull request #39 from bgord/dependabot/npm_and_yarn/vitest-1.0.4**
