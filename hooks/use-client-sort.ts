@@ -36,14 +36,14 @@ export function useClientSort<T>(
     return {
       sortFn: defaultSortFn,
       options: Object.keys(config.options),
-      onChange,
       ...state,
+      onChange,
     };
   }
   return {
     sortFn: config.options[state.value] ?? defaultSortFn,
     options: Object.keys(config.options),
-    onChange,
     ...state,
+    onChange,
   };
 }
