@@ -3,14 +3,14 @@ import Cookies from "js-cookie";
 
 import { getSafeWindow } from "../safe-window";
 import { useLanguage } from "../translations";
-import { useFilter, UseFilterReturnType } from "./use-filter";
+import { useClientFilter, UseClientFilterReturnType } from "./use-client-filter";
 
 export function useLanguageSelector(
   supportedLanguages: Record<LanguageType, LanguageType>
-): UseFilterReturnType<LanguageType> {
+): UseClientFilterReturnType<LanguageType> {
   const language = useLanguage();
 
-  return useFilter({
+  return useClientFilter({
     enum: supportedLanguages,
     currentQuery: language,
     name: "language",

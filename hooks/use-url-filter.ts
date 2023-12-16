@@ -1,22 +1,22 @@
 import {
-  useFilter,
-  UseFilterConfigType,
-  UseFilterReturnType,
-} from "./use-filter";
+  useClientFilter,
+  UseClientFilterConfigType,
+  UseClientFilterReturnType,
+} from "./use-client-filter";
 import { getSafeWindow } from "../safe-window";
 
-export type UseUrlFilterConfigType<T> = UseFilterConfigType<T>;
+export type UseUrlFilterConfigType<T> = UseClientFilterConfigType<T>;
 
 export function useUrlFilter<T>(
   config: UseUrlFilterConfigType<T>
-): UseFilterReturnType<T> {
+): UseClientFilterReturnType<T> {
   const safeWindow = getSafeWindow();
 
   const currentQuery =
     new URLSearchParams(safeWindow?.location.search).get(config.name) ??
     undefined;
 
-  return useFilter({
+  return useClientFilter({
     onUpdate: (current, previous) => {
       if (!safeWindow) return;
 

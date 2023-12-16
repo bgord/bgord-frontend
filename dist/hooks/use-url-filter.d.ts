@@ -1,3 +1,3 @@
-import { UseFilterConfigType, UseFilterReturnType } from "./use-filter";
-export type UseUrlFilterConfigType<T> = UseFilterConfigType<T>;
-export declare function useUrlFilter<T>(config: UseUrlFilterConfigType<T>): UseFilterReturnType<T>;
+import { UseClientFilterConfigType, UseClientFilterReturnType } from "./use-client-filter";
+export type UseUrlFilterConfigType<T> = UseClientFilterConfigType<T>;
+export declare function useUrlFilter<T>(config: UseUrlFilterConfigType<T>): UseClientFilterReturnType<T>;

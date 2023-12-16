@@ -2,38 +2,40 @@ import { useState, useEffect } from "react";
 import { usePreviousValue } from "./use-previous-value";
 import { noop } from "../noop";
 
-export type UseFilterQueryType = string | undefined;
-export type UseFilterNameType = string;
+export type UseClientFilterQueryType = string | undefined;
+export type UseClientFilterNameType = string;
 
-export type UseFilterConfigType<T> = {
+export type UseClientFilterConfigType<T> = {
   name: string;
-  enum: { [key: string]: UseFilterQueryType };
-  defaultQuery?: UseFilterQueryType;
-  currentQuery?: UseFilterQueryType;
+  enum: { [key: string]: UseClientFilterQueryType };
+  defaultQuery?: UseClientFilterQueryType;
+  currentQuery?: UseClientFilterQueryType;
   filterFn?: (value: T) => boolean;
   onUpdate?: (
-    current: UseFilterQueryType,
-    previous: UseFilterQueryType
+    current: UseClientFilterQueryType,
+    previous: UseClientFilterQueryType
   ) => void;
 };
 
-export type UseFilterReturnType<T> = {
-  query: UseFilterQueryType;
+export type UseClientFilterReturnType<T> = {
+  query: UseClientFilterQueryType;
   clear: VoidFunction;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  filterFn: NonNullable<UseFilterConfigType<T>["filterFn"]>;
-  options: UseFilterConfigType<T>["enum"][0][];
-  onUpdate: UseFilterConfigType<T>["onUpdate"];
-  name: UseFilterConfigType<T>["name"];
+  filterFn: NonNullable<UseClientFilterConfigType<T>["filterFn"]>;
+  options: UseClientFilterConfigType<T>["enum"][0][];
+  onUpdate: UseClientFilterConfigType<T>["onUpdate"];
+  name: UseClientFilterConfigType<T>["name"];
   changed: boolean;
   unchanged: boolean;
-  label: { props: { htmlFor: UseFilterNameType } };
-  input: { props: { id: UseFilterNameType; name: UseFilterNameType } };
+  label: { props: { htmlFor: UseClientFilterNameType } };
+  input: {
+    props: { id: UseClientFilterNameType; name: UseClientFilterNameType };
+  };
 };
 
-export function useFilter<T = string>(
-  config: UseFilterConfigType<T>
-): UseFilterReturnType<T> {
+export function useClientFilter<T = string>(
+  config: UseClientFilterConfigType<T>
+): UseClientFilterReturnType<T> {
   const defaultQuery = config.defaultQuery ?? undefined;
   const currentQuery = config.currentQuery ?? undefined;
 
@@ -41,7 +43,7 @@ export function useFilter<T = string>(
   const options = Object.keys(config.enum);
   const onUpdate = config?.onUpdate ?? noop;
 
-  const [query, setQuery] = useState<UseFilterQueryType>(
+  const [query, setQuery] = useState<UseClientFilterQueryType>(
     currentQuery ?? defaultQuery
   );
   const previousQuery = usePreviousValue(query);
