@@ -8,6 +8,7 @@ export * from "./etag";
 export * from "./exec";
 export * from "./feature-flags";
 export * from "./filter-url";
+export * from "./form";
 export * from "./get-image-resolution";
 export * from "./hooks";
 export * from "./is-client";
