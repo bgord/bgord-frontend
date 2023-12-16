@@ -1,5 +1,8 @@
 # Changelog
+- 2023-12-16 23:00 59dff5e **feature: add form validations**
+- 2023-12-16 16:13 e4baed2 **refactor: rename use filter to use client filter**
 - 2023-12-16 13:42 ce475e0 **fix: use filter filterFn return type**
+- 2023-12-16 12:43 90af353 **docs: generate CHANGELOG [skip ci]**
 - 2023-12-15 16:40 49d78f3 **step: add onChange to returned use-field value**
 - 2023-12-15 15:46 d7faab4 **docs: generate CHANGELOG [skip ci]**
 - 2023-12-14 21:39 acb5667 **feature: add use client sort hook**
