@@ -15,7 +15,7 @@ export type UseFilterReturnType<T> = {
     query: UseFilterQueryType;
     clear: VoidFunction;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    filterFn: UseFilterConfigType<T>["filterFn"];
+    filterFn: NonNullable<UseFilterConfigType<T>["filterFn"]>;
     options: UseFilterConfigType<T>["enum"][0][];
     onUpdate: UseFilterConfigType<T>["onUpdate"];
     name: UseFilterConfigType<T>["name"];
