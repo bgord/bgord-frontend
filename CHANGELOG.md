@@ -1,6 +1,9 @@
 # Changelog
+- 2023-12-18 19:00 0576e0e **Merge pull request #42 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.252**
 - 2023-12-18 17:43 78b2f56 **fix: rename use field on change to handle change**
 - 2023-12-18 17:43 2269f1f **fix: rename use field on change to handle change**
+- 2023-12-18 16:43 74a23f3 **docs: generate CHANGELOG [skip ci]**
+- 2023-12-18 12:22 b627c88 **build(deps-dev): bump @bgord/node from 0.58.249 to 0.58.252**
 - 2023-12-16 23:00 59dff5e **feature: add form validations**
 - 2023-12-16 22:01 fe37dd8 **docs: generate CHANGELOG [skip ci]**
 - 2023-12-16 16:13 e4baed2 **refactor: rename use filter to use client filter**
