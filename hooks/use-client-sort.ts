@@ -5,7 +5,7 @@ export type UseClientSortFnType<T> = (a: T, b: T) => number;
 export type UseClientSortReturnType<T> = {
   sortFn: UseClientSortFnType<T>;
   options: UseClientSortOptionType[];
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } & UseFieldReturnType<UseClientSortOptionType>;
 
 export type UseClientSortOptionType = string;
@@ -25,7 +25,7 @@ export function useClientSort<T>(
 ): UseClientSortReturnType<T> {
   const state = useField<UseClientSortOptionType>(name, config.enum.default);
 
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const newSort = event.currentTarget.value;
     const isNewSortInEnum = Boolean(config.enum[String(newSort)]);
 
@@ -37,13 +37,13 @@ export function useClientSort<T>(
       sortFn: defaultSortFn,
       options: Object.keys(config.options),
       ...state,
-      onChange,
+      handleChange,
     };
   }
   return {
     sortFn: config.options[state.value] ?? defaultSortFn,
     options: Object.keys(config.options),
     ...state,
-    onChange,
+    handleChange,
   };
 }

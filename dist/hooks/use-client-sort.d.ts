@@ -4,7 +4,7 @@ export type UseClientSortFnType<T> = (a: T, b: T) => number;
 export type UseClientSortReturnType<T> = {
     sortFn: UseClientSortFnType<T>;
     options: UseClientSortOptionType[];
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } & UseFieldReturnType<UseClientSortOptionType>;
 export type UseClientSortOptionType = string;
 type UseClientSortConfigType<T> = {

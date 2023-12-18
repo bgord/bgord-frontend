@@ -7,7 +7,7 @@ export type UseFieldReturnType<T> = {
   value: T;
   set: Dispatch<SetStateAction<T>>;
   clear: VoidFunction;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   label: { props: { htmlFor: UseFieldNameType } };
   input: { props: { id: UseFieldNameType; name: UseFieldNameType } };
   changed: boolean;
@@ -29,7 +29,7 @@ export function useField<T>(
   return {
     value,
     set: setValue,
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) =>
       setValue(event.currentTarget.value),
     clear: () => setValue(evaluatedDefaultValue),
     label: { props: { htmlFor: name } },
@@ -43,10 +43,11 @@ export function extractUseField<T, X>(
   props: UseFieldReturnType<T> & X
 ): { field: UseFieldReturnType<T>; rest: X } {
   // prettier-ignore
-  const { value, set, clear, label, input, changed, unchanged, onChange, ...rest } = props;
+  const { value, set, clear, label, input, changed, unchanged, handleChange, ...rest } = props;
 
+  // prettier-ignore
   return {
-    field: { value, set, clear, label, input, changed, unchanged, onChange },
+    field: { value, set, clear, label, input, changed, unchanged, handleChange },
     rest: rest as X,
   };
 }

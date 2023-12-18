@@ -5,7 +5,7 @@ export type UseFieldReturnType<T> = {
     value: T;
     set: Dispatch<SetStateAction<T>>;
     clear: VoidFunction;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     label: {
         props: {
             htmlFor: UseFieldNameType;
