@@ -1,5 +1,8 @@
 # Changelog
+- 2023-12-18 17:43 78b2f56 **fix: rename use field on change to handle change**
+- 2023-12-18 17:43 2269f1f **fix: rename use field on change to handle change**
 - 2023-12-16 23:00 59dff5e **feature: add form validations**
+- 2023-12-16 22:01 fe37dd8 **docs: generate CHANGELOG [skip ci]**
 - 2023-12-16 16:13 e4baed2 **refactor: rename use filter to use client filter**
 - 2023-12-16 13:42 ce475e0 **fix: use filter filterFn return type**
 - 2023-12-16 12:43 90af353 **docs: generate CHANGELOG [skip ci]**
