@@ -26,4 +26,12 @@ export class Sorts {
   ): number {
     return a.createdAt.raw > b.createdAt.raw ? 1 : -1;
   }
+
+  static aToZ(a: string, b: string): number {
+    return a.localeCompare(b);
+  }
+
+  static zToA(a: string, b: string): number {
+    return b.localeCompare(a);
+  }
 }

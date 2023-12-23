@@ -19,4 +19,6 @@ export declare class Sorts {
             raw: number;
         };
     }>(a: T, b: T): number;
+    static aToZ(a: string, b: string): number;
+    static zToA(a: string, b: string): number;
 }
