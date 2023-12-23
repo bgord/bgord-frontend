@@ -1,5 +1,7 @@
 # Changelog
+- 2023-12-23 12:59 028c156 **feature: add common sorts**
 - 2023-12-18 19:00 0576e0e **Merge pull request #42 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.252**
+- 2023-12-18 18:01 c6190ab **docs: generate CHANGELOG [skip ci]**
 - 2023-12-18 17:43 78b2f56 **fix: rename use field on change to handle change**
 - 2023-12-18 17:43 2269f1f **fix: rename use field on change to handle change**
 - 2023-12-18 16:43 74a23f3 **docs: generate CHANGELOG [skip ci]**
