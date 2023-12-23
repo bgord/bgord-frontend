@@ -25,3 +25,4 @@ export * from "./thousands-separator";
 export * from "./time";
 export * from "./toasts";
 export * from "./translations";
+export * from "./sorts";
