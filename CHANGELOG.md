@@ -1,9 +1,12 @@
 # Changelog
+- 2023-12-28 13:09 59c7521 **Merge pull request #43 from bgord/dependabot/npm_and_yarn/vitest-1.1.0**
 - 2023-12-28 13:04 8bd6c0f **feature: add line clamp**
+- 2023-12-28 12:06 e1dc9fa **docs: generate CHANGELOG [skip ci]**
 - 2023-12-23 19:53 e2b35f8 **feature: add a-z and z-a sorts**
 - 2023-12-23 18:55 aa44bb2 **docs: generate CHANGELOG [skip ci]**
 - 2023-12-23 12:59 028c156 **feature: add common sorts**
 - 2023-12-23 11:59 ab753c1 **docs: generate CHANGELOG [skip ci]**
+- 2023-12-20 12:12 6daf4dd **build(deps-dev): bump vitest from 1.0.4 to 1.1.0**
 - 2023-12-18 19:00 0576e0e **Merge pull request #42 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.252**
 - 2023-12-18 18:01 c6190ab **docs: generate CHANGELOG [skip ci]**
 - 2023-12-18 17:43 78b2f56 **fix: rename use field on change to handle change**
