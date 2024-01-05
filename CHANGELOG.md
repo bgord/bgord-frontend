@@ -1,6 +1,11 @@
 # Changelog
+- 2024-01-05 13:06 be5ebcd **Merge pull request #46 from bgord/dependabot/npm_and_yarn/vitest-1.1.1**
+- 2024-01-05 13:05 52de16d **Merge pull request #45 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.254**
+- 2024-01-01 12:34 56d4315 **build(deps-dev): bump vitest from 1.1.0 to 1.1.1**
+- 2023-12-29 12:11 fdc147d **build(deps-dev): bump @bgord/node from 0.58.252 to 0.58.254**
 - 2023-12-28 13:09 59c7521 **Merge pull request #43 from bgord/dependabot/npm_and_yarn/vitest-1.1.0**
 - 2023-12-28 13:04 8bd6c0f **feature: add line clamp**
+- 2023-12-28 12:09 1598f49 **docs: generate CHANGELOG [skip ci]**
 - 2023-12-28 12:06 e1dc9fa **docs: generate CHANGELOG [skip ci]**
 - 2023-12-23 19:53 e2b35f8 **feature: add a-z and z-a sorts**
 - 2023-12-23 18:55 aa44bb2 **docs: generate CHANGELOG [skip ci]**
