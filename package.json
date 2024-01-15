@@ -23,7 +23,7 @@
     "react": "*"
   },
   "devDependencies": {
-    "@bgord/node": "0.58.254",
+    "@bgord/node": "0.58.256",
     "@testing-library/jest-dom": "6.2.0",
     "@testing-library/react": "12.1.5",
     "@types/js-cookie": "3.0.6",
