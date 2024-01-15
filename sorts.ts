@@ -34,4 +34,12 @@ export class Sorts {
   static zToA(a: string, b: string): number {
     return b.localeCompare(a);
   }
+
+  static ascending(a: number, b: number): number {
+    return a > b ? 1 : 0;
+  }
+
+  static descending(a: number, b: number): number {
+    return a < b ? 1 : 0;
+  }
 }
