@@ -1,6 +1,9 @@
 # Changelog
+- 2024-01-15 12:38 b220e77 **feature: add sorts ascending/descending**
+- 2024-01-15 12:38 2228fc7 **refactor: rewrite complex sorts with ascdendng and descending**
 - 2024-01-11 22:08 7720c8e **Merge pull request #48 from bgord/dependabot/npm_and_yarn/vitest-1.1.3**
 - 2024-01-11 22:07 de3c057 **Merge pull request #49 from bgord/dependabot/npm_and_yarn/jsdom-23.2.0**
+- 2024-01-11 21:10 26b3e27 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-11 21:07 0054723 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-08 12:54 126cd17 **build(deps-dev): bump jsdom from 23.0.1 to 23.2.0**
 - 2024-01-05 13:07 9ef0618 **Merge pull request #47 from bgord/dependabot/npm_and_yarn/testing-library/jest-dom-6.2.0**
