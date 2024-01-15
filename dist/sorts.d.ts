@@ -21,4 +21,6 @@ export declare class Sorts {
     }>(a: T, b: T): number;
     static aToZ(a: string, b: string): number;
     static zToA(a: string, b: string): number;
+    static ascending(a: number, b: number): number;
+    static descending(a: number, b: number): number;
 }

@@ -3,28 +3,28 @@ export class Sorts {
     a: T,
     b: T
   ): number {
-    return a.updatedAt.raw < b.updatedAt.raw ? 1 : -1;
+    return Sorts.descending(a.updatedAt.raw, b.updatedAt.raw);
   }
 
   static updatedAtLeastRecent<T extends { updatedAt: { raw: number } }>(
     a: T,
     b: T
   ): number {
-    return a.updatedAt.raw > b.updatedAt.raw ? 1 : -1;
+    return Sorts.ascending(a.updatedAt.raw, b.updatedAt.raw);
   }
 
   static createdAtMostRecent<T extends { createdAt: { raw: number } }>(
     a: T,
     b: T
   ): number {
-    return a.createdAt.raw < b.createdAt.raw ? 1 : -1;
+    return Sorts.descending(a.createdAt.raw, b.createdAt.raw);
   }
 
   static createdAtLeastRecent<T extends { createdAt: { raw: number } }>(
     a: T,
     b: T
   ): number {
-    return a.createdAt.raw > b.createdAt.raw ? 1 : -1;
+    return Sorts.ascending(a.createdAt.raw, b.createdAt.raw);
   }
 
   static aToZ(a: string, b: string): number {
