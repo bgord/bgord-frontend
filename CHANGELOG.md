@@ -1,6 +1,9 @@
 # Changelog
+- 2024-01-22 14:04 02f2850 **Merge pull request #52 from bgord/dependabot/npm_and_yarn/vitest-1.2.1**
+- 2024-01-18 12:16 3d858b5 **build(deps-dev): bump vitest from 1.2.0 to 1.2.1**
 - 2024-01-18 08:46 2068cc4 **Merge pull request #51 from bgord/dependabot/npm_and_yarn/vitest-1.2.0**
 - 2024-01-18 08:46 0d73ce2 **Merge pull request #50 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.256**
+- 2024-01-18 07:46 210e5b2 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-15 12:38 b220e77 **feature: add sorts ascending/descending**
 - 2024-01-15 12:38 2228fc7 **refactor: rewrite complex sorts with ascdendng and descending**
 - 2024-01-15 12:32 6024a79 **build(deps-dev): bump vitest from 1.1.3 to 1.2.0**
