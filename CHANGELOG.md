@@ -1,9 +1,11 @@
 # Changelog
+- 2024-01-22 15:19 a4c1372 **feature: add enabled option to use keyboard shortcuts hook**
 - 2024-01-22 14:05 795a35c **Merge pull request #55 from bgord/dependabot/npm_and_yarn/jsdom-24.0.0**
 - 2024-01-22 14:05 3d4dd18 **Merge pull request #54 from bgord/dependabot/npm_and_yarn/vite-5.0.12**
 - 2024-01-22 14:04 e56b26f **Merge pull request #53 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.258**
 - 2024-01-22 14:04 02f2850 **Merge pull request #52 from bgord/dependabot/npm_and_yarn/vitest-1.2.1**
 - 2024-01-22 13:05 cdc133b **build(deps-dev): bump vite from 5.0.5 to 5.0.12**
+- 2024-01-22 13:05 91861bb **docs: generate CHANGELOG [skip ci]**
 - 2024-01-22 13:04 e2b69c9 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-22 12:20 5511468 **build(deps-dev): bump jsdom from 23.2.0 to 24.0.0**
 - 2024-01-19 12:20 d2c01db **build(deps-dev): bump @bgord/node from 0.58.256 to 0.58.258**
