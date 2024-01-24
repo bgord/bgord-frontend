@@ -1,5 +1,7 @@
 # Changelog
+- 2024-01-24 12:27 cfe5634 **feature: add use delayed loader hook**
 - 2024-01-22 15:19 a4c1372 **feature: add enabled option to use keyboard shortcuts hook**
+- 2024-01-22 14:28 2b4c9b9 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-22 14:05 795a35c **Merge pull request #55 from bgord/dependabot/npm_and_yarn/jsdom-24.0.0**
 - 2024-01-22 14:05 3d4dd18 **Merge pull request #54 from bgord/dependabot/npm_and_yarn/vite-5.0.12**
 - 2024-01-22 14:04 e56b26f **Merge pull request #53 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.258**
