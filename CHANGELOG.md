@@ -1,5 +1,7 @@
 # Changelog
+- 2024-01-28 11:31 8884fe0 **feature: add use focus keyboard shortcut hook**
 - 2024-01-24 12:27 cfe5634 **feature: add use delayed loader hook**
+- 2024-01-24 11:28 cef6359 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-22 15:19 a4c1372 **feature: add enabled option to use keyboard shortcuts hook**
 - 2024-01-22 14:28 2b4c9b9 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-22 14:05 795a35c **Merge pull request #55 from bgord/dependabot/npm_and_yarn/jsdom-24.0.0**
