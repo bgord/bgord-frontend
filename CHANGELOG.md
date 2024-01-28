@@ -1,6 +1,8 @@
 # Changelog
+- 2024-01-28 16:13 7c91102 **step: bump bgord/scripts**
 - 2024-01-28 11:39 71d264c **refactor: return ref object from use focus keyboard shortcut**
 - 2024-01-28 11:31 8884fe0 **feature: add use focus keyboard shortcut hook**
+- 2024-01-28 10:40 3fbd635 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-28 10:32 3d0ca5f **docs: generate CHANGELOG [skip ci]**
 - 2024-01-24 12:27 cfe5634 **feature: add use delayed loader hook**
 - 2024-01-24 11:28 cef6359 **docs: generate CHANGELOG [skip ci]**
