@@ -1,5 +1,7 @@
 # Changelog
+- 2024-01-28 11:39 71d264c **refactor: return ref object from use focus keyboard shortcut**
 - 2024-01-28 11:31 8884fe0 **feature: add use focus keyboard shortcut hook**
+- 2024-01-28 10:32 3d0ca5f **docs: generate CHANGELOG [skip ci]**
 - 2024-01-24 12:27 cfe5634 **feature: add use delayed loader hook**
 - 2024-01-24 11:28 cef6359 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-22 15:19 a4c1372 **feature: add enabled option to use keyboard shortcuts hook**
