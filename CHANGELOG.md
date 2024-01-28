@@ -1,5 +1,8 @@
 # Changelog
+- 2024-01-28 16:50 68c568a **feature: add code scanning gh workflows**
+- 2024-01-28 16:49 5bbfc0d **step: bump bgord/scripts**
 - 2024-01-28 16:13 7c91102 **step: bump bgord/scripts**
+- 2024-01-28 15:13 95a9f82 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-28 11:39 71d264c **refactor: return ref object from use focus keyboard shortcut**
 - 2024-01-28 11:31 8884fe0 **feature: add use focus keyboard shortcut hook**
 - 2024-01-28 10:40 3fbd635 **docs: generate CHANGELOG [skip ci]**
