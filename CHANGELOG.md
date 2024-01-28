@@ -1,7 +1,12 @@
 # Changelog
+- 2024-01-28 17:03 f5392ed **Merge pull request #60 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.263**
+- 2024-01-28 17:03 7344232 **Merge pull request #59 from bgord/dependabot/npm_and_yarn/vitest-1.2.2**
 - 2024-01-28 16:50 68c568a **feature: add code scanning gh workflows**
 - 2024-01-28 16:49 5bbfc0d **step: bump bgord/scripts**
 - 2024-01-28 16:13 7c91102 **step: bump bgord/scripts**
+- 2024-01-28 15:51 e3315f3 **build(deps-dev): bump vitest from 1.2.1 to 1.2.2**
+- 2024-01-28 15:51 6170c7b **build(deps-dev): bump @bgord/node from 0.58.258 to 0.58.263**
+- 2024-01-28 15:50 39ef823 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-28 15:13 95a9f82 **docs: generate CHANGELOG [skip ci]**
 - 2024-01-28 11:39 71d264c **refactor: return ref object from use focus keyboard shortcut**
 - 2024-01-28 11:31 8884fe0 **feature: add use focus keyboard shortcut hook**
