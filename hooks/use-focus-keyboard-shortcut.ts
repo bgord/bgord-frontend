@@ -2,11 +2,11 @@ import { useRef, Ref } from "react";
 
 import { useKeyboardShortcuts } from "./use-keyboard-shortcuts";
 
-export function useFocusKeyboardShortcut(
-  shortcut: string
-): Ref<HTMLInputElement> {
+export function useFocusKeyboardShortcut(shortcut: string): {
+  ref: Ref<HTMLInputElement>;
+} {
   const ref = useRef<HTMLInputElement>(null);
   useKeyboardShortcuts({ [shortcut]: () => ref.current?.focus() });
 
-  return ref;
+  return { ref };
 }
