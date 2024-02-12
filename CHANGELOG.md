@@ -1,6 +1,9 @@
 # Changelog
+- 2024-02-12 08:15 ed1e514 **Merge pull request #65 from bgord/dependabot/npm_and_yarn/testing-library/jest-dom-6.4.2**
+- 2024-02-06 12:07 e734e9b **build(deps-dev): bump @testing-library/jest-dom from 6.4.1 to 6.4.2**
 - 2024-02-05 08:22 1243b39 **Merge pull request #63 from bgord/dependabot/npm_and_yarn/testing-library/jest-dom-6.4.1**
 - 2024-02-05 08:20 0b15da1 **Merge pull request #64 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.271**
+- 2024-02-05 07:23 f15ef76 **docs: generate CHANGELOG [skip ci]**
 - 2024-02-05 07:21 8eed086 **build(deps-dev): bump @testing-library/jest-dom from 6.4.0 to 6.4.1**
 - 2024-02-05 07:20 9306888 **docs: generate CHANGELOG [skip ci]**
 - 2024-02-02 12:42 69b331b **build(deps-dev): bump @bgord/node from 0.58.263 to 0.58.271**
