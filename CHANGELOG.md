@@ -1,5 +1,8 @@
 # Changelog
+- 2024-02-26 22:05 2ae3421 **Merge pull request #69 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.273**
+- 2024-02-26 12:56 2e06c2d **build(deps-dev): bump @bgord/node from 0.58.272 to 0.58.273**
 - 2024-02-24 20:00 f63952a **Merge pull request #68 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.272**
+- 2024-02-24 19:01 80dd3ab **docs: generate CHANGELOG [skip ci]**
 - 2024-02-23 12:23 5789a72 **build(deps-dev): bump @bgord/node from 0.58.271 to 0.58.272**
 - 2024-02-23 08:36 6ec858c **Merge pull request #67 from bgord/dependabot/npm_and_yarn/vitest-1.3.1**
 - 2024-02-23 07:36 b610f43 **docs: generate CHANGELOG [skip ci]**
