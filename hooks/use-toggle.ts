@@ -12,10 +12,10 @@ export type UseToggleReturnType = {
   toggle: VoidFunction;
   props: {
     controller: {
-      "aria-expanded": string;
-      "aria-controls": string | undefined;
+      "aria-expanded": JSX.IntrinsicElements["div"]["aria-expanded"];
+      "aria-controls": JSX.IntrinsicElements["div"]["aria-controls"];
     };
-    target: { id: string | undefined };
+    target: { id: JSX.IntrinsicElements["div"]["id"] };
   };
 };
 
@@ -36,7 +36,10 @@ export function useToggle(
     disable,
     toggle,
     props: {
-      controller: { "aria-expanded": String(on), "aria-controls": name },
+      controller: {
+        "aria-expanded": on ? "true" : "false",
+        "aria-controls": name,
+      },
       target: { id: name },
     },
   };

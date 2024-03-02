@@ -1,3 +1,4 @@
+/// <reference types="react" />
 export type UseToggleValueType = boolean;
 export type UseToggleConfigType = UseToggleValueType;
 export type UseToggleReturnType = {
@@ -8,11 +9,11 @@ export type UseToggleReturnType = {
     toggle: VoidFunction;
     props: {
         controller: {
-            "aria-expanded": string;
-            "aria-controls": string | undefined;
+            "aria-expanded": JSX.IntrinsicElements["div"]["aria-expanded"];
+            "aria-controls": JSX.IntrinsicElements["div"]["aria-controls"];
         };
         target: {
-            id: string | undefined;
+            id: JSX.IntrinsicElements["div"]["id"];
         };
     };
 };
