@@ -1,6 +1,8 @@
 # Changelog
+- 2024-03-02 19:07 40aa254 **fix: aria-* types**
 - 2024-03-02 18:59 74d33fd **feature: add aria-expanded related props to use toggle**
 - 2024-03-02 18:59 3430e8c **feature: add aria-expanded related props to use toggle**
+- 2024-03-02 18:00 ccbcfc7 **docs: generate CHANGELOG [skip ci]**
 - 2024-03-02 17:59 52d44b0 **docs: generate CHANGELOG [skip ci]**
 - 2024-02-26 22:05 2ae3421 **Merge pull request #69 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.273**
 - 2024-02-26 21:05 0ed3230 **docs: generate CHANGELOG [skip ci]**
