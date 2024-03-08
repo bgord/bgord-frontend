@@ -1,6 +1,9 @@
 # Changelog
+- 2024-03-08 08:45 0c9f56e **Merge pull request #70 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.274**
 - 2024-03-08 08:43 2205761 **Merge pull request #71 from bgord/dependabot/npm_and_yarn/typescript-5.4.2**
+- 2024-03-08 07:43 d66b9b3 **docs: generate CHANGELOG [skip ci]**
 - 2024-03-07 12:21 b2d36fd **build(deps-dev): bump typescript from 5.3.3 to 5.4.2**
+- 2024-03-05 12:19 23f6b25 **build(deps-dev): bump @bgord/node from 0.58.273 to 0.58.274**
 - 2024-03-02 19:07 40aa254 **fix: aria-* types**
 - 2024-03-02 18:59 74d33fd **feature: add aria-expanded related props to use toggle**
 - 2024-03-02 18:59 3430e8c **feature: add aria-expanded related props to use toggle**
