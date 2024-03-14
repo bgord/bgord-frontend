@@ -1,6 +1,9 @@
 # Changelog
+- 2024-03-14 08:27 a814516 **Merge pull request #72 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.277**
+- 2024-03-11 12:43 86eef5f **build(deps-dev): bump @bgord/node from 0.58.274 to 0.58.277**
 - 2024-03-08 08:45 0c9f56e **Merge pull request #70 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.274**
 - 2024-03-08 08:43 2205761 **Merge pull request #71 from bgord/dependabot/npm_and_yarn/typescript-5.4.2**
+- 2024-03-08 07:45 b4de34c **docs: generate CHANGELOG [skip ci]**
 - 2024-03-08 07:43 d66b9b3 **docs: generate CHANGELOG [skip ci]**
 - 2024-03-07 12:21 b2d36fd **build(deps-dev): bump typescript from 5.3.3 to 5.4.2**
 - 2024-03-05 12:19 23f6b25 **build(deps-dev): bump @bgord/node from 0.58.273 to 0.58.274**
