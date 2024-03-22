@@ -1,6 +1,11 @@
 # Changelog
+- 2024-03-22 08:12 b132e68 **Merge pull request #75 from bgord/dependabot/npm_and_yarn/typescript-5.4.3**
+- 2024-03-22 08:12 08b5386 **Merge pull request #76 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.279**
+- 2024-03-21 12:12 b9edd34 **build(deps-dev): bump @bgord/node from 0.58.278 to 0.58.279**
+- 2024-03-21 12:12 29534e3 **build(deps-dev): bump typescript from 5.4.2 to 5.4.3**
 - 2024-03-16 07:58 9e2e838 **Merge pull request #73 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.278**
 - 2024-03-16 07:58 940a0d9 **Merge pull request #74 from bgord/dependabot/npm_and_yarn/vitest-1.4.0**
+- 2024-03-16 06:58 e15a2a1 **docs: generate CHANGELOG [skip ci]**
 - 2024-03-16 06:58 c2f90d7 **docs: generate CHANGELOG [skip ci]**
 - 2024-03-15 12:28 8d906af **build(deps-dev): bump vitest from 1.3.1 to 1.4.0**
 - 2024-03-14 13:07 b6e7058 **build(deps-dev): bump @bgord/node from 0.58.277 to 0.58.278**
