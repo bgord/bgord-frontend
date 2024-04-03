@@ -1,6 +1,8 @@
 # Changelog
+- 2024-04-03 12:40 0cf4cf0 **feature: fields any unchanged**
 - 2024-04-03 12:38 1b96f95 **feature: fields clear all**
 - 2024-04-03 12:33 d202010 **feature: add fields methods**
+- 2024-04-03 10:38 072e2b2 **docs: generate CHANGELOG [skip ci]**
 - 2024-04-03 10:34 9746d4f **docs: generate CHANGELOG [skip ci]**
 - 2024-03-22 08:12 b132e68 **Merge pull request #75 from bgord/dependabot/npm_and_yarn/typescript-5.4.3**
 - 2024-03-22 08:12 08b5386 **Merge pull request #76 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.279**
