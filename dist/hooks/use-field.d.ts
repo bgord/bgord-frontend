@@ -25,3 +25,11 @@ export declare function extractUseField<T, X>(props: UseFieldReturnType<T> & X):
     field: UseFieldReturnType<T>;
     rest: X;
 };
+export declare class Fields {
+    static allUnchanged(fields: {
+        unchanged: boolean;
+    }[]): boolean;
+    static anyChanged(fields: {
+        changed: boolean;
+    }[]): boolean;
+}
