@@ -29,6 +29,9 @@ export declare class Fields {
     static allUnchanged(fields: {
         unchanged: boolean;
     }[]): boolean;
+    static anyUnchanged(fields: {
+        unchanged: boolean;
+    }[]): boolean;
     static anyChanged(fields: {
         changed: boolean;
     }[]): boolean;

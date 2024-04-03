@@ -57,6 +57,10 @@ export class Fields {
     return fields.every((field) => field.unchanged);
   }
 
+  static anyUnchanged(fields: { unchanged: boolean }[]): boolean {
+    return fields.some((field) => field.unchanged);
+  }
+
   static anyChanged(fields: { changed: boolean }[]): boolean {
     return fields.some((field) => field.changed);
   }
