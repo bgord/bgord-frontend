@@ -65,7 +65,7 @@ export class Fields {
     return fields.some((field) => field.changed);
   }
 
-  static clearAll(fields: { clear: VoidFunction }[]): boolean {
-    return fields.some((field) => field.clear());
+  static clearAll(fields: { clear: VoidFunction }[]) {
+    return () => fields.forEach((field) => field.clear());
   }
 }

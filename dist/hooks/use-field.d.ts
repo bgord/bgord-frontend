@@ -37,5 +37,5 @@ export declare class Fields {
     }[]): boolean;
     static clearAll(fields: {
         clear: VoidFunction;
-    }[]): boolean;
+    }[]): () => void;
 }
