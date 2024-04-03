@@ -60,4 +60,8 @@ export class Fields {
   static anyChanged(fields: { changed: boolean }[]): boolean {
     return fields.some((field) => field.changed);
   }
+
+  static clearAll(fields: { clear: VoidFunction }[]): boolean {
+    return fields.some((field) => field.clear());
+  }
 }

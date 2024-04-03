@@ -32,4 +32,7 @@ export declare class Fields {
     static anyChanged(fields: {
         changed: boolean;
     }[]): boolean;
+    static clearAll(fields: {
+        clear: VoidFunction;
+    }[]): boolean;
 }
