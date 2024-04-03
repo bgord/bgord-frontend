@@ -1,6 +1,8 @@
 # Changelog
+- 2024-04-03 12:33 d202010 **feature: add fields methods**
 - 2024-03-22 08:12 b132e68 **Merge pull request #75 from bgord/dependabot/npm_and_yarn/typescript-5.4.3**
 - 2024-03-22 08:12 08b5386 **Merge pull request #76 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.279**
+- 2024-03-22 07:13 d19aad7 **docs: generate CHANGELOG [skip ci]**
 - 2024-03-21 12:12 b9edd34 **build(deps-dev): bump @bgord/node from 0.58.278 to 0.58.279**
 - 2024-03-21 12:12 29534e3 **build(deps-dev): bump typescript from 5.4.2 to 5.4.3**
 - 2024-03-16 07:58 9e2e838 **Merge pull request #73 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.278**
