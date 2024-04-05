@@ -1,8 +1,11 @@
 # Changelog
+- 2024-04-05 08:15 0cf191e **Merge pull request #77 from bgord/dependabot/npm_and_yarn/vite-5.2.8**
+- 2024-04-03 17:58 b7cfe39 **build(deps-dev): bump vite from 5.0.12 to 5.2.8**
 - 2024-04-03 12:47 59f704d **fix: fields clear all**
 - 2024-04-03 12:40 0cf4cf0 **feature: fields any unchanged**
 - 2024-04-03 12:38 1b96f95 **feature: fields clear all**
 - 2024-04-03 12:33 d202010 **feature: add fields methods**
+- 2024-04-03 10:49 67346a9 **docs: generate CHANGELOG [skip ci]**
 - 2024-04-03 10:41 c8a729a **docs: generate CHANGELOG [skip ci]**
 - 2024-04-03 10:38 072e2b2 **docs: generate CHANGELOG [skip ci]**
 - 2024-04-03 10:34 9746d4f **docs: generate CHANGELOG [skip ci]**
