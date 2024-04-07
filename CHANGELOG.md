@@ -1,5 +1,8 @@
 # Changelog
+- 2024-04-07 09:02 75e8e1d **Merge pull request #78 from bgord/dependabot/npm_and_yarn/typescript-5.4.4**
+- 2024-04-05 12:36 d8ed42d **build(deps-dev): bump typescript from 5.4.3 to 5.4.4**
 - 2024-04-05 08:15 0cf191e **Merge pull request #77 from bgord/dependabot/npm_and_yarn/vite-5.2.8**
+- 2024-04-05 06:15 6b5d0e5 **docs: generate CHANGELOG [skip ci]**
 - 2024-04-03 17:58 b7cfe39 **build(deps-dev): bump vite from 5.0.12 to 5.2.8**
 - 2024-04-03 12:47 59f704d **fix: fields clear all**
 - 2024-04-03 12:40 0cf4cf0 **feature: fields any unchanged**
