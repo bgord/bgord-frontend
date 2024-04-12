@@ -38,7 +38,7 @@
     "react-polymorphic-types": "2.0.0",
     "react-query": "3.39.3",
     "typescript": "5.4.4",
-    "vitest": "1.4.0"
+    "vitest": "1.5.0"
   },
   "typings": "./dist/index.d.ts",
   "dependencies": {
