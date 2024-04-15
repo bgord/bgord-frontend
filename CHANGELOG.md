@@ -1,5 +1,8 @@
 # Changelog
+- 2024-04-15 08:28 3ca03e9 **Merge pull request #79 from bgord/dependabot/npm_and_yarn/typescript-5.4.5**
 - 2024-04-15 08:27 6816b4e **Merge pull request #80 from bgord/dependabot/npm_and_yarn/vitest-1.5.0**
+- 2024-04-15 06:28 6c667d8 **build(deps-dev): bump typescript from 5.4.4 to 5.4.5**
+- 2024-04-15 06:27 2299cbd **docs: generate CHANGELOG [skip ci]**
 - 2024-04-12 12:34 b7f1a6e **build(deps-dev): bump vitest from 1.4.0 to 1.5.0**
 - 2024-04-07 09:02 75e8e1d **Merge pull request #78 from bgord/dependabot/npm_and_yarn/typescript-5.4.4**
 - 2024-04-07 07:02 37dd2c2 **docs: generate CHANGELOG [skip ci]**
