@@ -1,5 +1,8 @@
 # Changelog
+- 2024-05-02 12:51 70783b7 **Merge pull request #83 from bgord/dependabot/npm_and_yarn/vitest-1.5.3**
+- 2024-04-30 13:04 41f50ff **build(deps-dev): bump vitest from 1.5.2 to 1.5.3**
 - 2024-04-28 09:11 49e7f92 **Merge pull request #82 from bgord/dependabot/npm_and_yarn/vitest-1.5.2**
+- 2024-04-28 07:11 34b9c76 **docs: generate CHANGELOG [skip ci]**
 - 2024-04-25 12:40 ac5e5de **build(deps-dev): bump vitest from 1.5.1 to 1.5.2**
 - 2024-04-25 08:12 e2f019f **Merge pull request #81 from bgord/dependabot/npm_and_yarn/vitest-1.5.1**
 - 2024-04-25 06:12 60e0d3c **docs: generate CHANGELOG [skip ci]**
