@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@bgord/node": "0.58.279",
-    "@testing-library/jest-dom": "6.4.3",
+    "@testing-library/jest-dom": "6.4.5",
     "@testing-library/react": "12.1.5",
     "@types/js-cookie": "3.0.6",
     "@types/react": "17.0.39",
