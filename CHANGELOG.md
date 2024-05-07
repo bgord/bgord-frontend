@@ -1,6 +1,9 @@
 # Changelog
+- 2024-05-07 08:16 17d78ab **Merge pull request #86 from bgord/dependabot/npm_and_yarn/testing-library/jest-dom-6.4.5**
 - 2024-05-07 08:14 69bc3d1 **Merge pull request #87 from bgord/dependabot/npm_and_yarn/vitest-1.6.0**
+- 2024-05-07 06:15 a35ab93 **docs: generate CHANGELOG [skip ci]**
 - 2024-05-06 12:34 181d454 **build(deps-dev): bump vitest from 1.5.3 to 1.6.0**
+- 2024-05-06 12:33 f3561d9 **build(deps-dev): bump @testing-library/jest-dom from 6.4.3 to 6.4.5**
 - 2024-05-05 10:17 debfe24 **Merge pull request #84 from bgord/dependabot/npm_and_yarn/ejs-3.1.10**
 - 2024-05-05 10:17 58e0ea6 **Merge pull request #85 from bgord/dependabot/npm_and_yarn/testing-library/jest-dom-6.4.3**
 - 2024-05-05 08:17 a63a3d6 **docs: generate CHANGELOG [skip ci]**
