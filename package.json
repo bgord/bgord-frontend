@@ -23,6 +23,7 @@
     "react": "*"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.7.3",
     "@bgord/node": "0.58.279",
     "@testing-library/jest-dom": "6.4.5",
     "@testing-library/react": "12.1.5",
