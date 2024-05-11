@@ -5,6 +5,7 @@ export enum KeyNameEnum {
   Space = " ",
 }
 
+// biome-ignore lint: lint/complexity/noBannedTypes
 export type UseKeyHandlerConfigType = Partial<Record<KeyNameEnum, Function>>;
 
 export type UseKeyHandlerReturnType = (

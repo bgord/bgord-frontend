@@ -66,6 +66,10 @@ export class Fields {
   }
 
   static clearAll(fields: { clear: VoidFunction }[]) {
-    return () => fields.forEach((field) => field.clear());
+    return () => {
+      for (const field of fields) {
+        field.clear();
+      }
+    };
   }
 }

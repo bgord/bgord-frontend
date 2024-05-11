@@ -16,9 +16,9 @@ export class ServerError {
       value &&
       typeof value === "object" &&
       value === Object(value) &&
-      /* eslint-disable no-prototype-builtins */
+      // biome-ignore lint: lint/suspicious/noPrototypeBuiltins
       value.hasOwnProperty("_known") &&
-      /* eslint-disable no-prototype-builtins */
+      // biome-ignore lint: lint/suspicious/noPrototypeBuiltins
       value.hasOwnProperty("message")
     ) {
       return true;
