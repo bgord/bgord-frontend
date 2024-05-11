@@ -35,7 +35,7 @@ export function useField<T>(
     label: { props: { htmlFor: name } },
     input: { props: { id: name, name: name } },
     changed: value !== evaluatedDefaultValue,
-    unchanged: value == evaluatedDefaultValue,
+    unchanged: value === evaluatedDefaultValue,
   };
 }
 

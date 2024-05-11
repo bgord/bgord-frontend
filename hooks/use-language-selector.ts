@@ -19,7 +19,7 @@ export function useLanguageSelector(
 
       if (!safeWindow) return;
 
-      if (!current || !previous || previous === current) return;
+      if (!(current && previous ) || previous === current) return;
 
       Cookies.set("accept-language", current);
       safeWindow.document.location.reload();

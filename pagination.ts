@@ -8,8 +8,7 @@ export class Pagination {
     return (
       infinite.data?.pages
         ?.flat()
-        .map((data) => data.result)
-        .flat() ?? []
+        .flatMap((data) => data.result) ?? []
     );
   }
 }

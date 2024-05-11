@@ -43,7 +43,7 @@ export function useTranslations() {
 
   if (value === undefined) {
     throw new Error(
-      `useTranslations must be used within the TranslationsContext`
+      "useTranslations must be used within the TranslationsContext"
     );
   }
 
@@ -74,7 +74,7 @@ export function useLanguage(): TranslationsContextValueType["language"] {
   const value = React.useContext(TranslationsContext);
 
   if (value === undefined) {
-    throw new Error(`useLanguage must be used within the TranslationsContext`);
+    throw new Error("useLanguage must be used within the TranslationsContext");
   }
 
   return value.language;

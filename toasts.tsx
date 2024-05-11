@@ -64,7 +64,7 @@ export function useToastsContext<
   );
 
   if (context === undefined) {
-    throw new Error(`useToasts must be used within the ToastsContextProvider`);
+    throw new Error("useToasts must be used within the ToastsContextProvider");
   }
 
   return context;

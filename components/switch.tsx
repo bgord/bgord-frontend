@@ -12,7 +12,7 @@ export function Switch(
   >(props);
 
   return (
-    <Fragment>
+    <>
       <input
         className="c-switch-checkbox c-visually-hidden"
         type="checkbox"
@@ -23,8 +23,8 @@ export function Switch(
       />
 
       <label className="c-switch-label" {...field.label.props}>
-        <div className="c-switch-slider"></div>
+        <div className="c-switch-slider" />
       </label>
-    </Fragment>
+    </>
   );
 }

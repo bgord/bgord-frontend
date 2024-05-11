@@ -31,7 +31,7 @@ export function useFeatureFlags() {
 
   if (value === undefined) {
     throw new Error(
-      `useFeatureFlags must be used within the FeatureFlagsContext`
+      "useFeatureFlags must be used within the FeatureFlagsContext"
     );
   }
 
@@ -43,7 +43,7 @@ export function useFeatureFlag(name: FeatureFlagNameType): boolean {
 
   if (value === undefined) {
     throw new Error(
-      `useFeatureFlag must be used within the FeatureFlagsContext`
+      "useFeatureFlag must be used within the FeatureFlagsContext"
     );
   }
 

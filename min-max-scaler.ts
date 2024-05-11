@@ -7,7 +7,7 @@ export class Approximation {
     value: ApproximationValueType,
     decimalPlaces: ApproximationDecimalPlacesType = 2
   ): ApproximationResultType {
-    return parseFloat(value.toFixed(decimalPlaces));
+    return Number.parseFloat(value.toFixed(decimalPlaces));
   }
 }
 

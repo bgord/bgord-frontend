@@ -12,10 +12,10 @@ type VideoVolumeType = number;
 export const VIDEO_DEFAULT_VOLUME: VideoVolumeType = 1;
 
 export enum UseVideoState {
-  "initial" = "initial",
-  "ready" = "ready",
-  "playing" = "playing",
-  "paused" = "paused",
+  initial = "initial",
+  ready = "ready",
+  playing = "playing",
+  paused = "paused",
 }
 
 export type UseVideoReturnType = {

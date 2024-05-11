@@ -29,7 +29,7 @@ export function useIsVisible(
   useEffect(() => {
     const element = config.ref.current;
 
-    if (!isIntersectionObserverSupported() || !element) return;
+    if (!(isIntersectionObserverSupported() && element)) return;
 
     const observer = new IntersectionObserver(
       (entry) => setVisible(Boolean(entry[0]?.isIntersecting)),

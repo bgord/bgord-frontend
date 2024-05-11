@@ -7,9 +7,9 @@ export type UseFileConfigType = {
 };
 
 export enum UseFileState {
-  "idle" = "idle",
-  "selected" = "selected",
-  "error" = "error",
+  idle = "idle",
+  selected = "selected",
+  error = "error",
 }
 
 type UseFileIdle = {
@@ -85,7 +85,7 @@ export function useFile(
   name: UseFileNameType,
   config?: UseFileConfigType
 ): UseFileReturnType {
-  const maxSize = config?.maxSize ?? Infinity;
+  const maxSize = config?.maxSize ?? Number.POSITIVE_INFINITY;
 
   const [key, setKey] = useState(0);
   const [state, setState] = useState<UseFileState>(UseFileState.idle);
@@ -94,7 +94,7 @@ export function useFile(
   function selectFile(event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.currentTarget.files;
 
-    if (!files || !files[0]) return;
+    if (!(files?.[0])) return;
 
     const file = files[0];
 

@@ -26,6 +26,7 @@ function Truncates() {
 
     const updatedCache = new Map(cache);
 
+    // biome-ignore lint: lint/complexity/noForEach
     elements.forEach((element) => {
       const originalText = element.textContent;
 

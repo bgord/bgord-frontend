@@ -12,10 +12,10 @@ type AudioVolumeType = number;
 export const AUDIO_DEFAULT_VOLUME: AudioVolumeType = 1;
 
 export enum UseAudioState {
-  "initial" = "initial",
-  "ready" = "ready",
-  "playing" = "playing",
-  "paused" = "paused",
+  initial = "initial",
+  ready = "ready",
+  playing = "playing",
+  paused = "paused",
 }
 
 export type UseAudioReturnType = {
