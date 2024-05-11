@@ -4,10 +4,10 @@ type VideoCurrentTimeType = number;
 type VideoVolumeType = number;
 export declare const VIDEO_DEFAULT_VOLUME: VideoVolumeType;
 export declare enum UseVideoState {
-    "initial" = "initial",
-    "ready" = "ready",
-    "playing" = "playing",
-    "paused" = "paused"
+    initial = "initial",
+    ready = "ready",
+    playing = "playing",
+    paused = "paused"
 }
 export type UseVideoReturnType = {
     props: {

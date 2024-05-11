@@ -9,6 +9,6 @@ type FeatureFlagsContextPropsType = {
     value: FeatureFlagsContextValueType["flags"];
 };
 export declare function FeatureFlagsContextProvider(props: FeatureFlagsContextPropsType): JSX.Element;
-export declare function useFeatureFlags(): Record<string, "yes" | "no">;
+export declare function useFeatureFlags(): Record<string, Schema.FeatureFlagEnum>;
 export declare function useFeatureFlag(name: FeatureFlagNameType): boolean;
 export {};

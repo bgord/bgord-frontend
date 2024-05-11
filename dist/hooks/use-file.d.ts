@@ -4,9 +4,9 @@ export type UseFileConfigType = {
     maxSize?: number;
 };
 export declare enum UseFileState {
-    "idle" = "idle",
-    "selected" = "selected",
-    "error" = "error"
+    idle = "idle",
+    selected = "selected",
+    error = "error"
 }
 type UseFileIdle = {
     state: UseFileState.idle;

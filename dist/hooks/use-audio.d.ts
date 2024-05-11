@@ -4,10 +4,10 @@ type AudioCurrentTimeType = number;
 type AudioVolumeType = number;
 export declare const AUDIO_DEFAULT_VOLUME: AudioVolumeType;
 export declare enum UseAudioState {
-    "initial" = "initial",
-    "ready" = "ready",
-    "playing" = "playing",
-    "paused" = "paused"
+    initial = "initial",
+    ready = "ready",
+    playing = "playing",
+    paused = "paused"
 }
 export type UseAudioReturnType = {
     props: {
