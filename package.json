@@ -40,7 +40,7 @@
     "react-query": "3.39.3",
     "typescript": "5.4.5",
     "vitest": "1.6.0",
-    "cspell": "8.8.1",
+    "cspell": "8.8.3",
     "shellcheck": "2.2.0"
   },
   "typings": "./dist/index.d.ts",
