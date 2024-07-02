@@ -38,7 +38,7 @@
     "react-dom": "17.0.2",
     "react-polymorphic-types": "2.0.0",
     "react-query": "3.39.3",
-    "typescript": "5.5.2",
+    "typescript": "5.5.3",
     "vitest": "1.6.0",
     "cspell": "8.9.1",
     "shellcheck": "3.0.0"
