@@ -39,7 +39,7 @@
     "react-polymorphic-types": "2.0.0",
     "react-query": "3.39.3",
     "typescript": "5.5.3",
-    "vitest": "2.0.2",
+    "vitest": "2.0.3",
     "cspell": "8.10.4",
     "shellcheck": "3.0.0"
   },
