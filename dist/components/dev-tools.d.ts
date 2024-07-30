@@ -1,4 +1,3 @@
-/// <reference types="react" />
 declare function Dimensions(props: JSX.IntrinsicElements["div"]): JSX.Element;
 declare function Truncates(): JSX.Element;
 export declare const DevTools: {

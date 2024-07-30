@@ -1,4 +1,3 @@
-/// <reference types="react" />
 type UseFileNameType = string;
 export type UseFileConfigType = {
     maxSize?: number;

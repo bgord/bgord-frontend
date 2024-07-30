@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import type { TranslationsType, TranslationsKeyType, Schema } from "@bgord/node";
 import { PluralizeOptionsType } from "./pluralize";
 type TranslationsContextValueType = {

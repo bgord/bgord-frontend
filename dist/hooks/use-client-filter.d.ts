@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export type UseClientFilterQueryType = string | undefined;
 export type UseClientFilterNameType = string;
 export type UseClientFilterConfigType<T> = {

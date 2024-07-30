@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import type { Schema } from "@bgord/node";
 export type FeatureFlagNameType = string;
 export type FeatureFlagsContextValueType = {

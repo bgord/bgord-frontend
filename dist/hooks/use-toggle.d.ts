@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export type UseToggleValueType = boolean;
 export type UseToggleConfigType = UseToggleValueType;
 export type UseToggleReturnType = {

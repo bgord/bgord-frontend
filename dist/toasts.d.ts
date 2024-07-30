@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export type ToastsConfigType = {
     timeout?: number;
 };

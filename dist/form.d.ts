@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export type PatternConfigType = {
     min?: number;
     max?: number;

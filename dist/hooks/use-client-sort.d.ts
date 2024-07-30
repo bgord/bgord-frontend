@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { UseFieldNameType, UseFieldReturnType } from "./use-field";
 export type UseClientSortFnType<T> = (a: T, b: T) => number;
 export type UseClientSortReturnType<T> = {

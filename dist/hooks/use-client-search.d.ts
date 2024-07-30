@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export type UseClientSearchQueryType = string;
 export type UseClientSearchReturnType = {
     query: UseClientSearchQueryType;
