@@ -13,7 +13,7 @@ export type UseClientFilterConfigType<T> = {
   filterFn?: (value: T) => boolean;
   onUpdate?: (
     current: UseClientFilterQueryType,
-    previous: UseClientFilterQueryType
+    previous: UseClientFilterQueryType,
   ) => void;
 };
 
@@ -34,7 +34,7 @@ export type UseClientFilterReturnType<T> = {
 };
 
 export function useClientFilter<T = string>(
-  config: UseClientFilterConfigType<T>
+  config: UseClientFilterConfigType<T>,
 ): UseClientFilterReturnType<T> {
   const defaultQuery = config.defaultQuery ?? undefined;
   const currentQuery = config.currentQuery ?? undefined;
@@ -44,7 +44,7 @@ export function useClientFilter<T = string>(
   const onUpdate = config?.onUpdate ?? noop;
 
   const [query, setQuery] = useState<UseClientFilterQueryType>(
-    currentQuery ?? defaultQuery
+    currentQuery ?? defaultQuery,
   );
   const previousQuery = usePreviousValue(query);
 
@@ -66,6 +66,7 @@ export function useClientFilter<T = string>(
     return query === String(value);
   }
 
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => onUpdate(query, previousQuery), [previousQuery, query]);
 
   return {

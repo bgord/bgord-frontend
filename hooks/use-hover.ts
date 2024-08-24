@@ -20,6 +20,7 @@ export function useHover(config?: UseHoverConfigType): UseHoverReturnType {
   const handleMouseEnter = isHovering.enable;
   const handleMouseLeave = isHovering.disable;
 
+  // biome-ignore lint: lint/complexity/noForEach
   React.useEffect(() => {
     const node = ref.current;
 

@@ -22,10 +22,11 @@ export type UseIsVisibleConfigType = IntersectionObserverInit & {
 export type UseIsVisibleReturnType = boolean;
 
 export function useIsVisible(
-  config: UseIsVisibleConfigType = defaultUseIsVisibleConfig
+  config: UseIsVisibleConfigType = defaultUseIsVisibleConfig,
 ): UseIsVisibleReturnType {
   const [isVisible, setVisible] = useState<UseIsVisibleReturnType>(false);
 
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => {
     const element = config.ref.current;
 
@@ -33,7 +34,7 @@ export function useIsVisible(
 
     const observer = new IntersectionObserver(
       (entry) => setVisible(Boolean(entry[0]?.isIntersecting)),
-      config
+      config,
     );
 
     observer.observe(element);

@@ -6,6 +6,7 @@ type OnlineStatusType = boolean;
 export const useIsOnline = (): OnlineStatusType => {
   const onlineStatus = useToggle(getOnlineStatus());
 
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   React.useEffect(() => {
     function handleOnline() {
       onlineStatus.enable();

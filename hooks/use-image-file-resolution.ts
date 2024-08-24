@@ -9,13 +9,14 @@ import {
 } from "../get-image-resolution";
 
 export function useImageFileResolution(
-  file: UseFileReturnType
+  file: UseFileReturnType,
 ): ImageResolutionType {
   const resolution = useField<ImageResolutionType>(
     "resolution",
-    emptyImageResolution
+    emptyImageResolution,
   );
 
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   React.useEffect(() => {
     async function execute() {
       if (file.state === UseFileState.selected) {

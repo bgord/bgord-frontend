@@ -6,6 +6,7 @@ export type UseAutofocusConfigType = {
 };
 
 export function useAutofocus(config: UseAutofocusConfigType): void {
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   React.useEffect(() => {
     if (!config.condition) return;
 

@@ -20,7 +20,7 @@ export type UseExpandableListReturnType = {
 };
 
 export function useExpandableList(
-  config: UseExpandableListConfigType
+  config: UseExpandableListConfigType,
 ): UseExpandableListReturnType {
   const numberOfExcessiveElements = config.length - config.max;
   const areThereExcessiveElements = config.length > config.max;
@@ -33,6 +33,7 @@ export function useExpandableList(
 
   const [state, setState] = useState<UseExpandableListState>(getState);
 
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => setState(getState()), [config.length, config.max]);
 
   function showMore() {

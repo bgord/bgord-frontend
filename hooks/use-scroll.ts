@@ -32,6 +32,7 @@ export function useScroll(): UseScrollReturnType {
     safeWindow.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }
 
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   React.useLayoutEffect(() => {
     function measure() {
       if (!safeWindow) return;
