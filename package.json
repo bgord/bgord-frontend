@@ -14,7 +14,8 @@
   "scripts": {
     "build": "microbundle --jsx React.createElement",
     "test": "vitest run",
-    "preinstall": "npx only-allow npm"
+    "preinstall": "npx only-allow npm",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "Bartosz Gordon",
@@ -23,14 +24,18 @@
     "react": "*"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.3",
     "@bgord/node": "0.58.292",
+    "@biomejs/biome": "1.8.3",
+    "@commitlint/cli": "19.4.0",
+    "@commitlint/config-conventional": "19.2.2",
     "@testing-library/jest-dom": "6.4.8",
     "@testing-library/react": "12.1.5",
     "@types/js-cookie": "3.0.6",
     "@types/react": "17.0.39",
     "@types/react-dom": "17.0.11",
     "@vitejs/plugin-react": "4.3.1",
+    "cspell": "8.14.2",
+    "husky": "^9.1.5",
     "jsdom": "24.1.1",
     "microbundle": "0.15.1",
     "only-allow": "1.2.1",
@@ -38,10 +43,9 @@
     "react-dom": "17.0.2",
     "react-polymorphic-types": "2.0.0",
     "react-query": "3.39.3",
+    "shellcheck": "3.0.0",
     "typescript": "5.5.4",
-    "vitest": "2.0.5",
-    "cspell": "8.14.2",
-    "shellcheck": "3.0.0"
+    "vitest": "2.0.5"
   },
   "typings": "./dist/index.d.ts",
   "dependencies": {
