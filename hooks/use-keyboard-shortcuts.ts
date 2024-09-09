@@ -1,5 +1,5 @@
 import React from "react";
-import tinykeys from "tinykeys";
+import { tinykeys } from "tinykeys";
 
 export interface UseKeyboardShortcutsConfigType {
   [keybinding: string]: (event: KeyboardEvent) => void;
@@ -9,7 +9,7 @@ export type UseKeyboardShortcutsOptionsType = { enabled?: boolean };
 
 export function useKeyboardShortcuts(
   config: UseKeyboardShortcutsConfigType,
-  options?: UseKeyboardShortcutsOptionsType
+  options?: UseKeyboardShortcutsOptionsType,
 ): void {
   const enabled = options?.enabled ?? true;
 
