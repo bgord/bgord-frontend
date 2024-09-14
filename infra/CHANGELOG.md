@@ -1,7 +1,9 @@
 # Changelog
+- 2024-09-14 17:14 c8703ee **step: bump bgord/scripts**
 - 2024-09-14 17:11 1641033 **step: update gh workflow actions**
 - 2024-09-14 16:38 1430310 **step: infra dir**
 - 2024-09-14 16:33 181f8f7 **step: bump bgord/scripts**
+- 2024-09-14 15:11 b1eab6c **docs: generate CHANGELOG**
 - 2024-09-14 14:18 641a0df **step: build**
 - 2024-09-14 14:16 8c3522a **step: update scripts**
 - 2024-09-13 11:37 c9f8695 **Merge pull request #138 from bgord/dependabot/npm_and_yarn/husky-9.1.6**
