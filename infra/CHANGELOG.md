@@ -1,6 +1,9 @@
 # Changelog
+- 2024-09-17 10:00 fc0cda2 **Merge pull request #143 from bgord/dependabot/npm_and_yarn/biomejs/biome-1.9.1**
 - 2024-09-17 09:59 2c80655 **Merge pull request #142 from bgord/dependabot/npm_and_yarn/vitest-2.1.1**
 - 2024-09-17 09:59 1664622 **Merge pull request #141 from bgord/dependabot/npm_and_yarn/bgord/node-0.58.294**
+- 2024-09-17 08:00 a07f8ee **build(deps-dev): bump @biomejs/biome from 1.9.0 to 1.9.1**
+- 2024-09-17 07:59 43b0d80 **docs: generate CHANGELOG**
 - 2024-09-17 07:59 20485a6 **docs: generate CHANGELOG**
 - 2024-09-16 12:53 b90ddd2 **build(deps-dev): bump @bgord/node from 0.58.293 to 0.58.294**
 - 2024-09-16 12:53 6a15e09 **build(deps-dev): bump vitest from 2.1.0 to 2.1.1**
