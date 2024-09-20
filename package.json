@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@bgord/node": "0.59.0",
-    "@biomejs/biome": "1.9.1",
+    "@biomejs/biome": "1.9.2",
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
     "@testing-library/jest-dom": "6.5.0",
