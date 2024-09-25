@@ -1,5 +1,10 @@
 # Changelog
+- 2024-09-25 09:57 cf6d10d **Merge pull request #149 from bgord/dependabot/npm_and_yarn/bgord/node-0.60.0**
+- 2024-09-25 09:56 eb2bbb4 **Merge pull request #148 from bgord/dependabot/npm_and_yarn/jsdom-25.0.1**
+- 2024-09-23 12:37 d8df595 **build(deps-dev): bump @bgord/node from 0.59.0 to 0.60.0**
+- 2024-09-23 12:37 b80be8a **build(deps-dev): bump jsdom from 25.0.0 to 25.0.1**
 - 2024-09-21 16:16 ebbb826 **Merge pull request #147 from bgord/dependabot/npm_and_yarn/biomejs/biome-1.9.2**
+- 2024-09-21 14:17 8ed61fa **docs: generate CHANGELOG**
 - 2024-09-20 12:33 5dc54fd **build(deps-dev): bump @biomejs/biome from 1.9.1 to 1.9.2**
 - 2024-09-19 11:19 a4e66f6 **Merge pull request #145 from bgord/dependabot/npm_and_yarn/vite-5.4.6**
 - 2024-09-19 11:19 853b6b7 **Merge pull request #146 from bgord/dependabot/npm_and_yarn/cspell-8.14.4**
