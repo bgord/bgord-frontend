@@ -1,5 +1,10 @@
 # Changelog
+- 2024-10-07 08:53 d7530c6 **Merge pull request #154 from bgord/dependabot/npm_and_yarn/bgord/node-0.73.0**
+- 2024-10-07 08:52 5eeaa6b **Merge pull request #153 from bgord/dependabot/npm_and_yarn/vitest-2.1.2**
+- 2024-10-03 12:58 d96fa0e **build(deps-dev): bump @bgord/node from 0.70.0 to 0.73.0**
+- 2024-10-03 12:58 030b091 **build(deps-dev): bump vitest from 2.1.1 to 2.1.2**
 - 2024-10-03 00:04 4a57540 **Merge pull request #152 from bgord/dependabot/npm_and_yarn/biomejs/biome-1.9.3**
+- 2024-10-02 22:04 c592b8e **docs: generate CHANGELOG**
 - 2024-10-02 12:32 259ff26 **build(deps-dev): bump @biomejs/biome from 1.9.2 to 1.9.3**
 - 2024-10-01 11:02 acf53d8 **Merge pull request #150 from bgord/dependabot/npm_and_yarn/vitejs/plugin-react-4.3.2**
 - 2024-10-01 11:02 30b72b3 **Merge pull request #151 from bgord/dependabot/npm_and_yarn/bgord/node-0.70.0**
