@@ -1,6 +1,8 @@
 # Changelog
+- 2024-10-07 20:31 a65c911 **step: improve dialog a11y**
 - 2024-10-07 08:53 d7530c6 **Merge pull request #154 from bgord/dependabot/npm_and_yarn/bgord/node-0.73.0**
 - 2024-10-07 08:52 5eeaa6b **Merge pull request #153 from bgord/dependabot/npm_and_yarn/vitest-2.1.2**
+- 2024-10-07 06:53 b5f97d0 **docs: generate CHANGELOG**
 - 2024-10-03 12:58 d96fa0e **build(deps-dev): bump @bgord/node from 0.70.0 to 0.73.0**
 - 2024-10-03 12:58 030b091 **build(deps-dev): bump vitest from 2.1.1 to 2.1.2**
 - 2024-10-03 00:04 4a57540 **Merge pull request #152 from bgord/dependabot/npm_and_yarn/biomejs/biome-1.9.3**
@@ -24,6 +26,7 @@
 - 2024-09-19 11:19 66815a6 **Merge pull request #144 from bgord/dependabot/npm_and_yarn/bgord/node-0.59.0**
 - 2024-09-19 09:19 d2efd09 **docs: generate CHANGELOG**
 - 2024-09-18 12:39 5c199e2 **build(deps-dev): bump cspell from 8.14.2 to 8.14.4**
+- 2024-09-18 11:22 cbea561 **fix: codedql workflow**
 - 2024-09-18 00:01 29e0a44 **build(deps): bump vite from 5.2.8 to 5.4.6**
 - 2024-09-17 13:54 fbdb8fa **step: build**
 - 2024-09-17 13:54 ddc9920 **step: build**
