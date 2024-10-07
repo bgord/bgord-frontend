@@ -28,6 +28,7 @@ export function Dialog(props: DialogPropsType) {
     <dialog
       ref={ref}
       tabIndex={0}
+      aria-modal="true"
       data-display={props.on ? "flex" : "none"}
       data-direction="column"
       data-mx="auto"
