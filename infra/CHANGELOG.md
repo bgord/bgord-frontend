@@ -1,6 +1,9 @@
 # Changelog
+- 2024-10-15 17:43 d67e53f **Merge pull request #160 from bgord/dependabot/npm_and_yarn/vitest-2.1.3**
 - 2024-10-15 17:38 11f263d **Merge pull request #159 from bgord/dependabot/npm_and_yarn/cspell-8.15.2**
 - 2024-10-15 17:37 bf112a3 **Merge pull request #155 from bgord/dependabot/npm_and_yarn/typescript-5.6.3**
+- 2024-10-15 15:39 add7de9 **build(deps-dev): bump vitest from 2.1.2 to 2.1.3**
+- 2024-10-15 15:38 ce2f5e0 **docs: generate CHANGELOG**
 - 2024-10-15 14:18 1de5c42 **step: bump bgord/node**
 - 2024-10-15 12:20 7fe043b **build(deps-dev): bump cspell from 8.14.4 to 8.15.2**
 - 2024-10-15 12:19 6094ff9 **docs: generate CHANGELOG**
