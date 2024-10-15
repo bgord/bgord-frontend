@@ -1,5 +1,10 @@
 # Changelog
+- 2024-10-15 17:38 11f263d **Merge pull request #159 from bgord/dependabot/npm_and_yarn/cspell-8.15.2**
+- 2024-10-15 17:37 bf112a3 **Merge pull request #155 from bgord/dependabot/npm_and_yarn/typescript-5.6.3**
 - 2024-10-15 14:18 1de5c42 **step: bump bgord/node**
+- 2024-10-15 12:20 7fe043b **build(deps-dev): bump cspell from 8.14.4 to 8.15.2**
+- 2024-10-15 12:19 6094ff9 **docs: generate CHANGELOG**
+- 2024-10-09 13:06 3955726 **build(deps-dev): bump typescript from 5.6.2 to 5.6.3**
 - 2024-10-07 20:31 a65c911 **step: improve dialog a11y**
 - 2024-10-07 18:33 29f3661 **docs: generate CHANGELOG**
 - 2024-10-07 08:53 d7530c6 **Merge pull request #154 from bgord/dependabot/npm_and_yarn/bgord/node-0.73.0**
