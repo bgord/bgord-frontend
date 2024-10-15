@@ -1,5 +1,7 @@
 # Changelog
+- 2024-10-15 14:18 1de5c42 **step: bump bgord/node**
 - 2024-10-07 20:31 a65c911 **step: improve dialog a11y**
+- 2024-10-07 18:33 29f3661 **docs: generate CHANGELOG**
 - 2024-10-07 08:53 d7530c6 **Merge pull request #154 from bgord/dependabot/npm_and_yarn/bgord/node-0.73.0**
 - 2024-10-07 08:52 5eeaa6b **Merge pull request #153 from bgord/dependabot/npm_and_yarn/vitest-2.1.2**
 - 2024-10-07 06:53 b5f97d0 **docs: generate CHANGELOG**
