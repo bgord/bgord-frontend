@@ -1,7 +1,10 @@
 # Changelog
+- 2024-10-23 08:26 fd15f16 **Merge pull request #167 from bgord/dependabot/npm_and_yarn/bgord/node-0.83.0**
 - 2024-10-23 08:23 ce12b6f **Merge pull request #166 from bgord/dependabot/npm_and_yarn/biomejs/biome-1.9.4**
 - 2024-10-23 08:23 6307f78 **Merge pull request #165 from bgord/dependabot/npm_and_yarn/testing-library/jest-dom-6.6.2**
 - 2024-10-23 08:23 1f06db2 **Merge pull request #164 from bgord/dependabot/npm_and_yarn/cspell-8.15.4**
+- 2024-10-23 06:24 dada8d3 **docs: generate CHANGELOG**
+- 2024-10-23 06:24 63ef522 **build(deps-dev): bump @bgord/node from 0.82.0 to 0.83.0**
 - 2024-10-18 13:00 90230d9 **build(deps-dev): bump @biomejs/biome from 1.9.3 to 1.9.4**
 - 2024-10-18 13:00 7ef1cd0 **build(deps-dev): bump @testing-library/jest-dom from 6.5.0 to 6.6.2**
 - 2024-10-18 12:59 cbc372b **build(deps-dev): bump cspell from 8.15.2 to 8.15.4**
