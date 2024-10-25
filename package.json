@@ -24,7 +24,7 @@
     "react": "*"
   },
   "devDependencies": {
-    "@bgord/node": "0.83.0",
+    "@bgord/node": "0.83.2",
     "@biomejs/biome": "1.9.4",
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
