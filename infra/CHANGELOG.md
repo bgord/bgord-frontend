@@ -1,6 +1,9 @@
 # Changelog
+- 2024-10-29 08:03 9cbbf97 **Merge pull request #170 from bgord/dependabot/npm_and_yarn/bgord/node-0.83.3**
+- 2024-10-28 12:27 d941868 **build(deps-dev): bump @bgord/node from 0.83.2 to 0.83.3**
 - 2024-10-25 10:00 56b6301 **Merge pull request #169 from bgord/dependabot/npm_and_yarn/bgord/node-0.83.2**
 - 2024-10-25 10:00 23512af **Merge pull request #168 from bgord/dependabot/npm_and_yarn/vitejs/plugin-react-4.3.3**
+- 2024-10-25 08:00 1d04099 **docs: generate CHANGELOG**
 - 2024-10-23 12:52 8bf0a94 **build(deps-dev): bump @bgord/node from 0.83.0 to 0.83.2**
 - 2024-10-23 08:26 fd15f16 **Merge pull request #167 from bgord/dependabot/npm_and_yarn/bgord/node-0.83.0**
 - 2024-10-23 08:23 ce12b6f **Merge pull request #166 from bgord/dependabot/npm_and_yarn/biomejs/biome-1.9.4**
