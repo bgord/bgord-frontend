@@ -1,5 +1,8 @@
 # Changelog
+- 2024-10-31 08:55 8d687f8 **Merge pull request #171 from bgord/dependabot/npm_and_yarn/vitest-2.1.4**
+- 2024-10-29 12:24 ec63450 **build(deps-dev): bump vitest from 2.1.3 to 2.1.4**
 - 2024-10-29 08:03 9cbbf97 **Merge pull request #170 from bgord/dependabot/npm_and_yarn/bgord/node-0.83.3**
+- 2024-10-29 07:03 8192c70 **docs: generate CHANGELOG**
 - 2024-10-28 12:27 d941868 **build(deps-dev): bump @bgord/node from 0.83.2 to 0.83.3**
 - 2024-10-25 10:00 56b6301 **Merge pull request #169 from bgord/dependabot/npm_and_yarn/bgord/node-0.83.2**
 - 2024-10-25 10:00 23512af **Merge pull request #168 from bgord/dependabot/npm_and_yarn/vitejs/plugin-react-4.3.3**
