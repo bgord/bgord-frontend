@@ -1,5 +1,7 @@
 # Changelog
+- 2024-11-02 10:50 9d72663 **refactor: remove dist**
 - 2024-11-02 10:46 fc43697 **refactor: update types**
+- 2024-11-02 09:47 7f5cb8a **docs: generate CHANGELOG**
 - 2024-10-31 08:55 8d687f8 **Merge pull request #171 from bgord/dependabot/npm_and_yarn/vitest-2.1.4**
 - 2024-10-31 07:55 c1c924b **docs: generate CHANGELOG**
 - 2024-10-29 12:24 ec63450 **build(deps-dev): bump vitest from 2.1.3 to 2.1.4**
