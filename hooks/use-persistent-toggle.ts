@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect } from "react";
 
 import {
   useToggle,
@@ -25,7 +25,7 @@ export function usePersistentToggle(
 
   const toggle = useToggle(storedValue);
 
-  React.useEffect(() => SafeLocalStorage.set(key, toggle.on), [key, toggle.on]);
+  useEffect(() => SafeLocalStorage.set(key, toggle.on), [key, toggle.on]);
 
   return { ...toggle, clear: () => SafeLocalStorage.clear(key) };
 }

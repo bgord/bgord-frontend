@@ -3,9 +3,7 @@
     "lib": ["esnext", "dom"],
     "strict": true,
     "esModuleInterop": true,
-    "jsx": "react",
-    "jsxFragmentFactory": "React.Fragment",
-    "jsxFactory": "React.createElement",
+    "jsx": "react-jsx",
     "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
     "incremental": true

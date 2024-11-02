@@ -5,7 +5,7 @@ type ApproximationDecimalPlacesType = number;
 export class Approximation {
   static float(
     value: ApproximationValueType,
-    decimalPlaces: ApproximationDecimalPlacesType = 2
+    decimalPlaces: ApproximationDecimalPlacesType = 2,
   ): ApproximationResultType {
     return Number.parseFloat(value.toFixed(decimalPlaces));
   }

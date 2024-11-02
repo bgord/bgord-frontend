@@ -1,4 +1,4 @@
-import React from "react";
+import { useRef, useEffect } from "react";
 
 import { useToggle, UseToggleReturnType } from "./use-toggle";
 
@@ -14,14 +14,14 @@ export type UseHoverReturnType = {
 export function useHover(config?: UseHoverConfigType): UseHoverReturnType {
   const enabled = config?.enabled ?? true;
 
-  const ref = React.useRef<any>(null);
+  const ref = useRef<any>(null);
   const isHovering = useToggle(false);
 
   const handleMouseEnter = isHovering.enable;
   const handleMouseLeave = isHovering.disable;
 
   // biome-ignore lint: lint/complexity/noForEach
-  React.useEffect(() => {
+  useEffect(() => {
     const node = ref.current;
 
     if (node && enabled) {

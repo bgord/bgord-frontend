@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useRef } from "react";
 
 import { useField } from "./use-field";
 import { DurationFormatter } from "../durations";
@@ -84,11 +84,9 @@ export type UseVideoReturnType = {
 };
 
 export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
-  const [state, setState] = React.useState<UseVideoState>(
-    UseVideoState.initial
-  );
+  const [state, setState] = useState<UseVideoState>(UseVideoState.initial);
 
-  const ref = React.useRef<HTMLVideoElement | null>(null);
+  const ref = useRef<HTMLVideoElement | null>(null);
 
   const duration = useField<VideoDurationType>("duration", 0);
   const currentTime = useField<VideoCurrentTimeType>("currentTime", 0);

@@ -20,7 +20,9 @@ export class FilterUrl {
     if (filters === undefined) return {};
 
     return Object.fromEntries(
-      Object.entries(filters).filter(([_key, value]) => value !== undefined)
+      Object.entries(filters).filter(
+        ([_key, value]) => value !== undefined && value !== null,
+      ),
     ) as Record<string, string>;
   }
 }

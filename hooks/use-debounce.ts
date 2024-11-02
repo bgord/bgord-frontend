@@ -1,11 +1,11 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
 type UseDebounceConfigType<T> = { value: T; delayMs: number };
 
 export function useDebounce<T>(config: UseDebounceConfigType<T>): T {
-  const [debouncedValue, setDebouncedValue] = React.useState<T>(config.value);
+  const [debouncedValue, setDebouncedValue] = useState<T>(config.value);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(
       () => setDebouncedValue(config.value),
       config.delayMs

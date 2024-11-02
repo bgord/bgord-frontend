@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import {
   useClientFilter,
   UseClientFilterConfigType,
@@ -8,9 +9,11 @@ import { getSafeWindow } from "../safe-window";
 export type UseUrlFilterConfigType<T> = UseClientFilterConfigType<T>;
 
 export function useUrlFilter<T>(
-  config: UseUrlFilterConfigType<T>
+  config: UseUrlFilterConfigType<T>,
 ): UseClientFilterReturnType<T> {
   const safeWindow = getSafeWindow();
+
+  const [_searchParams, setSearchParams] = useSearchParams();
 
   const currentQuery =
     new URLSearchParams(safeWindow?.location.search).get(config.name) ??
@@ -32,8 +35,9 @@ export function useUrlFilter<T>(
       if (current === previous) return;
 
       if (current !== previous) {
-        url.search = params.toString();
-        history.pushState({}, "", url.toString());
+        // url.search = params.toString();
+        // history.pushState({}, "", url.toString());
+        setSearchParams(params);
       }
     },
     ...config,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import * as hooks from "../hooks";
 
@@ -7,14 +7,12 @@ export type DialogPropsType = hooks.UseToggleReturnType &
 
 export function Dialog(props: DialogPropsType) {
   const { toggle: dialog, rest } = hooks.extractUseToggle(props);
-  const ref = React.useRef<HTMLDialogElement>(null);
+  const ref = useRef<HTMLDialogElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (props.on) {
-      // @ts-ignore
       ref.current?.showModal();
     } else {
-      // @ts-ignore
       ref.current?.close();
     }
   }, [props.on]);

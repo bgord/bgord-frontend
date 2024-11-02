@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useLayoutEffect } from "react";
 
 import { getSafeWindow } from "../safe-window";
 import { useToggle, UseToggleReturnType } from "./use-toggle";
@@ -21,8 +21,9 @@ export function useScroll(): UseScrollReturnType {
 
   // Scroll position always set at the top of the page
   const defaultScrollPosition = 0;
-  const [scrollPosition, setScrollPosition] =
-    React.useState<ScrollPositionType>(defaultScrollPosition);
+  const [scrollPosition, setScrollPosition] = useState<ScrollPositionType>(
+    defaultScrollPosition
+  );
 
   // Assuming scrollbar is hidden by default
   const scrollbarVisibility = useToggle(false);
@@ -33,7 +34,7 @@ export function useScroll(): UseScrollReturnType {
   }
 
   // biome-ignore lint: lint/correctness/useExhaustiveDependencies
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     function measure() {
       if (!safeWindow) return;
 

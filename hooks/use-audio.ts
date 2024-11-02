@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useRef } from "react";
 
 import { DurationFormatter } from "../durations";
 import { useField } from "./use-field";
@@ -83,11 +83,9 @@ export type UseAudioReturnType = {
 };
 
 export function useAudio(src: UseAudioSrcType): UseAudioReturnType {
-  const [state, setState] = React.useState<UseAudioState>(
-    UseAudioState.initial
-  );
+  const [state, setState] = useState<UseAudioState>(UseAudioState.initial);
 
-  const ref = React.useRef<HTMLAudioElement | null>(null);
+  const ref = useRef<HTMLAudioElement | null>(null);
 
   const duration = useField<AudioDurationType>("duration", 0);
   const currentTime = useField<AudioCurrentTimeType>("currentTime", 0);

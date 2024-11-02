@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { useList } from "./hooks/use-list";
 
 export type ToastsConfigType = {
@@ -19,7 +19,7 @@ type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> = [
   }
 ];
 
-const ToastsContext = React.createContext<ToastsContextDataType | undefined>(
+const ToastsContext = createContext<ToastsContextDataType | undefined>(
   undefined
 );
 
@@ -59,7 +59,7 @@ export function ToastsContextProvider(
 export function useToastsContext<
   ToastType extends BaseToastType = BaseToastType
 >() {
-  const context = React.useContext<ToastsContextDataType<ToastType>>(
+  const context = useContext<ToastsContextDataType<ToastType>>(
     ToastsContext as unknown as React.Context<ToastsContextDataType<ToastType>>
   );
 

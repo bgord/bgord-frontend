@@ -25,11 +25,11 @@ type UseFileIdle = {
   };
   label: { props: { htmlFor: UseFileNameType } };
   input: {
+    key: React.Key;
     props: {
       id: UseFileNameType;
       name: UseFileNameType;
       multiple: false;
-      key: React.Key;
     };
   };
 };
@@ -48,11 +48,11 @@ type UseFileSelected = {
   preview: ReturnType<typeof URL.createObjectURL> | undefined;
   label: { props: { htmlFor: UseFileNameType } };
   input: {
+    key: React.Key;
     props: {
       id: UseFileNameType;
       name: UseFileNameType;
       multiple: false;
-      key: React.Key;
     };
   };
 };
@@ -71,10 +71,10 @@ type UseFileError = {
   label: { props: { htmlFor: UseFileNameType } };
   input: {
     props: {
+      key: React.Key;
       id: UseFileNameType;
       name: UseFileNameType;
       multiple: false;
-      key: React.Key;
     };
   };
 };
@@ -83,7 +83,7 @@ export type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
 
 export function useFile(
   name: UseFileNameType,
-  config?: UseFileConfigType
+  config?: UseFileConfigType,
 ): UseFileReturnType {
   const maxSize = config?.maxSize ?? Number.POSITIVE_INFINITY;
 
@@ -94,7 +94,7 @@ export function useFile(
   function selectFile(event: React.ChangeEvent<HTMLInputElement>) {
     const files = event.currentTarget.files;
 
-    if (!(files?.[0])) return;
+    if (!files?.[0]) return;
 
     const file = files[0];
 
@@ -117,7 +117,7 @@ export function useFile(
 
   const preview = useMemo(
     () => (file ? URL.createObjectURL(file) : undefined),
-    [file]
+    [file],
   );
 
   function matches(states: UseFileState[]) {
@@ -135,7 +135,8 @@ export function useFile(
       actions: { selectFile, clearFile },
       label: { props: { htmlFor: name } },
       input: {
-        props: { id: name, name, multiple: false, key },
+        key,
+        props: { id: name, name, multiple: false },
       },
     };
   }
@@ -152,7 +153,8 @@ export function useFile(
       preview,
       label: { props: { htmlFor: name } },
       input: {
-        props: { id: name, name, multiple: false, key },
+        key,
+        props: { id: name, name, multiple: false },
       },
     };
   }

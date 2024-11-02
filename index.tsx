@@ -14,7 +14,6 @@ export * from "./is-client";
 export * from "./line-clamp";
 export * from "./min-max-scaler";
 export * from "./noop";
-export * from "./pagination";
 export * from "./pluralize";
 export * from "./reordering";
 export * from "./rhythm";

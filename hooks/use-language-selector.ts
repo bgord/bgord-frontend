@@ -3,10 +3,13 @@ import Cookies from "js-cookie";
 
 import { getSafeWindow } from "../safe-window";
 import { useLanguage } from "../translations";
-import { useClientFilter, UseClientFilterReturnType } from "./use-client-filter";
+import {
+  useClientFilter,
+  UseClientFilterReturnType,
+} from "./use-client-filter";
 
 export function useLanguageSelector(
-  supportedLanguages: Record<LanguageType, LanguageType>
+  supportedLanguages: Record<LanguageType, LanguageType>,
 ): UseClientFilterReturnType<LanguageType> {
   const language = useLanguage();
 
@@ -19,7 +22,7 @@ export function useLanguageSelector(
 
       if (!safeWindow) return;
 
-      if (!(current && previous ) || previous === current) return;
+      if (!(current && previous) || previous === current) return;
 
       Cookies.set("accept-language", current);
       safeWindow.document.location.reload();

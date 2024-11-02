@@ -1,11 +1,11 @@
-import React from "react";
+import { useState, useEffect, useRef } from "react";
 
 type ReorderingBaseItemType = { id: string };
 type ReorderingIndexType = number;
 type ReorderingCorrelationIdType = string;
 
 export type ReorderingTransferType<
-  T extends ReorderingBaseItemType = ReorderingBaseItemType,
+  T extends ReorderingBaseItemType = ReorderingBaseItemType
 > = {
   correlationId: ReorderingCorrelationIdType;
   id: T["id"];
@@ -14,7 +14,7 @@ export type ReorderingTransferType<
 };
 
 export type UseReorderingConfigType<
-  T extends ReorderingBaseItemType = ReorderingBaseItemType,
+  T extends ReorderingBaseItemType = ReorderingBaseItemType
 > = {
   correlationId: ReorderingCorrelationIdType;
   initialItems: T[];
@@ -23,7 +23,7 @@ export type UseReorderingConfigType<
 };
 
 export type UseReorderingReturnType<
-  T extends ReorderingBaseItemType = ReorderingBaseItemType,
+  T extends ReorderingBaseItemType = ReorderingBaseItemType
 > = {
   items: T[];
   enabled: boolean;
@@ -40,25 +40,24 @@ export type UseReorderingReturnType<
 };
 
 export function useReordering<
-  T extends ReorderingBaseItemType = ReorderingBaseItemType,
+  T extends ReorderingBaseItemType = ReorderingBaseItemType
 >(config: UseReorderingConfigType<T>): UseReorderingReturnType<T> {
   const enabled = config.enabled ?? true;
 
-  const [items, setItems] = React.useState<T[]>(config.initialItems);
+  const [items, setItems] = useState<T[]>(config.initialItems);
 
   // biome-ignore lint: lint/complexity/noForEach
-  React.useEffect(
+  useEffect(
     () => setItems(config.initialItems),
-    [JSON.stringify(config.initialItems)],
+    [JSON.stringify(config.initialItems)]
   );
 
-  const draggedItem = React.useRef<T | null>(null);
+  const draggedItem = useRef<T | null>(null);
 
-  const [startIndex, setStartIndex] =
-    React.useState<ReorderingIndexType | null>(null);
-  const [toIndex, setToIndex] = React.useState<ReorderingIndexType | null>(
-    null,
+  const [startIndex, setStartIndex] = useState<ReorderingIndexType | null>(
+    null
   );
+  const [toIndex, setToIndex] = useState<ReorderingIndexType | null>(null);
 
   function onDragStartFactory(index: ReorderingIndexType) {
     return function onDragStart(event: React.DragEvent<HTMLElement>) {
@@ -70,12 +69,12 @@ export function useReordering<
       event.dataTransfer.effectAllowed = "move";
       event.dataTransfer.setData(
         "text/html",
-        event.currentTarget.parentNode as unknown as string,
+        event.currentTarget.parentNode as unknown as string
       );
       event.dataTransfer.setDragImage(
         event.currentTarget.parentNode as unknown as Element,
         20,
-        20,
+        20
       );
     };
   }
@@ -97,7 +96,7 @@ export function useReordering<
       setItems(
         items
           .filter((item) => item !== draggedItem.current)
-          .toSpliced(index, 0, draggedItem.current),
+          .toSpliced(index, 0, draggedItem.current)
       );
     };
   }

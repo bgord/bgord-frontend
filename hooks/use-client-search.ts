@@ -39,3 +39,15 @@ export function useClientSearch(): UseClientSearchReturnType {
     unchanged: query === emptyQuery,
   };
 }
+
+export function extractUseClientSearch<X>(
+  _props: UseClientSearchReturnType & X,
+): { clientSearch: UseClientSearchReturnType; rest: X } {
+  const { query, clear, onChange, filterFn, changed, unchanged, ...rest } =
+    _props;
+
+  return {
+    clientSearch: { query, clear, onChange, filterFn, changed, unchanged },
+    rest: rest as X,
+  };
+}

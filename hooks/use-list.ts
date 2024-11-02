@@ -17,7 +17,7 @@ export type UseListConfigType<T> = {
 };
 
 export function useList<T>(
-  config?: UseListConfigType<T>
+  config?: UseListConfigType<T>,
 ): UseListReturnType<T> {
   const defaultItems = config?.defaultItems ?? [];
 

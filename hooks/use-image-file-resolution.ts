@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect } from "react";
 
 import { useField } from "./use-field";
 import { UseFileReturnType, UseFileState } from "./use-file";
@@ -9,15 +9,15 @@ import {
 } from "../get-image-resolution";
 
 export function useImageFileResolution(
-  file: UseFileReturnType,
+  file: UseFileReturnType
 ): ImageResolutionType {
   const resolution = useField<ImageResolutionType>(
     "resolution",
-    emptyImageResolution,
+    emptyImageResolution
   );
 
   // biome-ignore lint: lint/correctness/useExhaustiveDependencies
-  React.useEffect(() => {
+  useEffect(() => {
     async function execute() {
       if (file.state === UseFileState.selected) {
         try {

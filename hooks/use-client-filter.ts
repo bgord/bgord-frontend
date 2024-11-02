@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { HTMLElementType } from "./use-field";
 import { usePreviousValue } from "./use-previous-value";
 import { noop } from "../noop";
 
@@ -20,7 +21,7 @@ export type UseClientFilterConfigType<T> = {
 export type UseClientFilterReturnType<T> = {
   query: UseClientFilterQueryType;
   clear: VoidFunction;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLElementType>) => void;
   filterFn: NonNullable<UseClientFilterConfigType<T>["filterFn"]>;
   options: UseClientFilterConfigType<T>["enum"][0][];
   onUpdate: UseClientFilterConfigType<T>["onUpdate"];
@@ -52,7 +53,7 @@ export function useClientFilter<T = string>(
     setQuery(defaultQuery);
   }
 
-  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function onChange(event: React.ChangeEvent<HTMLElementType>) {
     const newQuery = event.currentTarget.value;
 
     const isNewQueryInEnum = Boolean(config.enum[String(newQuery)]);

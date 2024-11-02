@@ -11,7 +11,7 @@ export const emptyImageResolution: ImageResolutionType = {
 };
 
 export async function getImageResolution(
-  path: ImagePathType
+  path: ImagePathType,
 ): Promise<ImageResolutionType> {
   if (!path) return emptyImageResolution;
 

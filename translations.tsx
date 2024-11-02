@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import type {
   TranslationsType,
   TranslationsKeyType,
@@ -18,7 +18,7 @@ type TranslationVariableType = Record<
   TranslationPlaceholderValueType
 >;
 
-const TranslationsContext = React.createContext<TranslationsContextValueType>({
+const TranslationsContext = createContext<TranslationsContextValueType>({
   translations: {},
   language: "en",
 });
@@ -39,7 +39,7 @@ export function TranslationsContextProvider(
 }
 
 export function useTranslations() {
-  const value = React.useContext(TranslationsContext);
+  const value = useContext(TranslationsContext);
 
   if (value === undefined) {
     throw new Error(
@@ -71,7 +71,7 @@ export function useTranslations() {
 }
 
 export function useLanguage(): TranslationsContextValueType["language"] {
-  const value = React.useContext(TranslationsContext);
+  const value = useContext(TranslationsContext);
 
   if (value === undefined) {
     throw new Error("useLanguage must be used within the TranslationsContext");

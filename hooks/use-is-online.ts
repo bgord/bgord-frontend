@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useToggle } from "./use-toggle";
 
 type OnlineStatusType = boolean;
@@ -7,7 +7,7 @@ export const useIsOnline = (): OnlineStatusType => {
   const onlineStatus = useToggle(getOnlineStatus());
 
   // biome-ignore lint: lint/correctness/useExhaustiveDependencies
-  React.useEffect(() => {
+  useEffect(() => {
     function handleOnline() {
       onlineStatus.enable();
     }

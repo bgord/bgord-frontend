@@ -1,12 +1,10 @@
 import { useEffect } from "react";
-import { UseQueryResult } from "react-query";
+import { Navigation } from "react-router-dom";
 
 import { useToggle, UseToggleReturnType } from "./use-toggle";
 
-export type UseDelayedLoaderConfig = Pick<UseQueryResult, "isLoading">;
-
 export function useDelayedLoader(
-  config: UseDelayedLoaderConfig,
+  navigation: Navigation,
   delayMs = 500,
 ): UseToggleReturnType {
   const delayedLoader = useToggle();
@@ -16,6 +14,7 @@ export function useDelayedLoader(
 
   // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => {
+    // @ts-ignore
     timeoutId = setTimeout(delayElapsed.enable, delayMs);
 
     return () => clearTimeout(timeoutId);
@@ -24,9 +23,9 @@ export function useDelayedLoader(
   // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => {
     if (delayElapsed.off) return;
-    if (config.isLoading) return delayedLoader.enable();
+    if (navigation.state === "loading") return delayedLoader.enable();
     return delayedLoader.disable();
-  }, [config.isLoading, delayElapsed.on]);
+  }, [navigation.state, delayElapsed.on]);
 
   return delayedLoader;
 }

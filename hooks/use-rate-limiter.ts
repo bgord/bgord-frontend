@@ -16,7 +16,7 @@ export type UseRateLimiterOptionsType<T> = RateLimiterOptionsType & {
 export type UseRateLimiterReturnType<T> = UseRateLimiterActionType<T>;
 
 export function useRateLimiter<T>(
-  options: UseRateLimiterOptionsType<T>
+  options: UseRateLimiterOptionsType<T>,
 ): UseRateLimiterReturnType<T> {
   const rateLimiter = useRef<RateLimiter>(new RateLimiter(options));
 

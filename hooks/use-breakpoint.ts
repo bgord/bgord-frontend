@@ -5,7 +5,7 @@ export type BreakpointType = number;
 export type UseBreakpointReturnType = boolean;
 
 export function useBreakpoint(
-  breakpoint: BreakpointType
+  breakpoint: BreakpointType,
 ): UseBreakpointReturnType {
   const dimensions = useWindowDimensions();
   const width = dimensions?.width ?? 0;

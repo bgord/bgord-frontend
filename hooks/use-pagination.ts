@@ -1,5 +1,11 @@
+import { useEffect } from "react";
+import * as rrd from "react-router-dom";
 import { useField } from "./use-field";
-import { PagedMetaType, PageType } from "../pagination";
+import type { Paged, PageType } from "@bgord/node";
+
+export type { Paged, PageType } from "@bgord/node";
+
+type PagedMetaType = Paged<unknown>["meta"];
 
 type UsePaginationControlType = {
   active: boolean;
@@ -24,14 +30,22 @@ type UsePaginationReturnType = {
 };
 
 export function usePagination(): UsePaginationReturnType {
+  const [searchParams, setSearchParams] = rrd.useSearchParams();
   const meta = useField<PagedMetaType | null>("meta", null);
 
-  const firstPage = 1;
+  const firstPage = Number(searchParams.get("page"))
+    ? Number(searchParams.get("page"))
+    : 1;
   const previousPage = meta.value?.previousPage;
   const nextPage = meta.value?.nextPage;
   const lastPage = meta.value?.lastPage || firstPage;
 
   const page = useField("page", firstPage);
+
+  useEffect(() => {
+    searchParams.set("page", String(page.value));
+    setSearchParams(searchParams);
+  }, [page.value]);
 
   return {
     current: page.value,

@@ -1,26 +1,32 @@
-import { useEffect, useState, Dispatch, SetStateAction } from "react";
+import { useEffect, useState } from "react";
+
+export type HTMLElementType =
+  | HTMLInputElement
+  | HTMLSelectElement
+  | HTMLTextAreaElement;
 
 export type UseFieldDefaultValueType<T> = T | (() => T);
 export type UseFieldNameType = string;
 
-export type UseFieldReturnType<T> = {
+export type FieldState<T> = {
   value: T;
-  set: Dispatch<SetStateAction<T>>;
-  clear: VoidFunction;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  label: { props: { htmlFor: UseFieldNameType } };
-  input: { props: { id: UseFieldNameType; name: UseFieldNameType } };
+  set: (value: T) => void;
+  handleChange: (event: React.ChangeEvent<HTMLElementType>) => void;
+  clear: () => void;
+  label: { props: { htmlFor: string } };
+  input: { props: { id: string; name: string } };
   changed: boolean;
   unchanged: boolean;
 };
 
 export function useField<T>(
   name: UseFieldNameType,
-  defaultValue: UseFieldDefaultValueType<T>
-): UseFieldReturnType<T> {
+  defaultValue: UseFieldDefaultValueType<T>,
+): FieldState<T> {
   const evaluatedDefaultValue =
-    // @ts-ignore
-    typeof defaultValue === "function" ? defaultValue() : defaultValue;
+    typeof defaultValue === "function"
+      ? (defaultValue as () => T)()
+      : defaultValue;
 
   const [value, setValue] = useState(evaluatedDefaultValue);
 
@@ -29,8 +35,8 @@ export function useField<T>(
   return {
     value,
     set: setValue,
-    handleChange: (event: React.ChangeEvent<HTMLInputElement>) =>
-      setValue(event.currentTarget.value),
+    handleChange: (event: React.ChangeEvent<HTMLElementType>) =>
+      setValue(event.currentTarget.value as unknown as T),
     clear: () => setValue(evaluatedDefaultValue),
     label: { props: { htmlFor: name } },
     input: { props: { id: name, name: name } },
@@ -40,8 +46,8 @@ export function useField<T>(
 }
 
 export function extractUseField<T, X>(
-  props: UseFieldReturnType<T> & X
-): { field: UseFieldReturnType<T>; rest: X } {
+  props: FieldState<T> & X,
+): { field: FieldState<T>; rest: X } {
   // prettier-ignore
   const { value, set, clear, label, input, changed, unchanged, handleChange, ...rest } = props;
 

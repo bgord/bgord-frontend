@@ -35,12 +35,12 @@ export function pluralize(options: PluralizeOptionsType): PluralizeWordType {
       options.singular,
       String(options.plural),
       String(options.genitive),
-      value
+      value,
     );
   }
 
   console.warn(
-    `[@bgord/frontend] missing pluralization function for language ${options.language}.`
+    `[@bgord/frontend] missing pluralization function for language ${options.language}.`,
   );
 
   return options.singular;

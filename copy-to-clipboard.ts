@@ -4,7 +4,7 @@ export type CopyToClipboardTextType = string;
 type OnCopyToClipboardFailureType = (error?: unknown) => void;
 type OnCopyToClipboardSuccessType = VoidFunction;
 
-const defaultOnCopyToClipboardFailure: OnCopyToClipboardFailureType = (error) =>
+const defaultOnCopyToClipboardFailure: OnCopyToClipboardFailureType = () =>
   console.warn("Copying to clipboard not supported");
 
 export type CopyToClipboardOptionsType = {

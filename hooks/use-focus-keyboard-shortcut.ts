@@ -1,12 +1,16 @@
 import { useRef, Ref } from "react";
-
 import { useKeyboardShortcuts } from "./use-keyboard-shortcuts";
 
-export function useFocusKeyboardShortcut(shortcut: string): {
-  ref: Ref<HTMLInputElement>;
-} {
-  const ref = useRef<HTMLInputElement>(null);
-  useKeyboardShortcuts({ [shortcut]: () => ref.current?.focus() });
+type FocusableElement = HTMLElement & { focus(): void };
+
+export function useFocusKeyboardShortcut<
+  T extends FocusableElement = HTMLInputElement,
+>(shortcut: string): { ref: Ref<T> } {
+  const ref = useRef<T>(null);
+
+  useKeyboardShortcuts({
+    [shortcut]: () => ref.current?.focus(),
+  });
 
   return { ref };
 }

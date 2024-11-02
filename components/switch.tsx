@@ -1,9 +1,8 @@
-import React, { Fragment } from "react";
-
-import { UseFieldReturnType, extractUseField } from "../hooks/use-field";
+import React from "react";
+import { FieldState, extractUseField } from "../hooks/use-field";
 
 export function Switch(
-  props: UseFieldReturnType<boolean> &
+  props: FieldState<boolean> &
     Omit<JSX.IntrinsicElements["input"], "label" | "value">
 ) {
   const { field, rest } = extractUseField<

@@ -6,7 +6,7 @@ export type PatternConfigType = {
 
 export class Form {
   static pattern(
-    config: PatternConfigType
+    config: PatternConfigType,
   ): JSX.IntrinsicElements["textarea"] & JSX.IntrinsicElements["input"] {
     const required = config.required ?? true;
 

@@ -12,43 +12,54 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "microbundle --jsx React.createElement",
+    "build": "microbundle --jsx React.createElement --jsxFragment React.Fragment --external react,react-router-dom --globals react=React,react-router-dom=ReactRouterDOM --format modern,cjs",
     "test": "vitest run",
     "preinstall": "npx only-allow npm",
     "prepare": "husky"
   },
+  "sideEffects": false,
   "keywords": [],
   "author": "Bartosz Gordon",
   "license": "ISC",
   "peerDependencies": {
-    "react": "*"
+    "react": "18.3.1",
+    "react-router-dom": "6.26.2"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-router-dom": {
+      "optional": false
+    }
   },
   "devDependencies": {
     "@bgord/node": "0.83.3",
     "@biomejs/biome": "1.9.4",
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
-    "@testing-library/jest-dom": "6.6.2",
-    "@testing-library/react": "12.1.5",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/react": "16.0.1",
     "@types/js-cookie": "3.0.6",
-    "@types/react": "17.0.39",
-    "@types/react-dom": "17.0.11",
+    "@types/react": "18.3.11",
+    "@types/react-dom": "18.3.0",
     "@vitejs/plugin-react": "4.3.3",
     "cspell": "8.15.4",
-    "husky": "^9.1.6",
+    "husky": "9.1.6",
     "jsdom": "25.0.1",
     "microbundle": "0.15.1",
     "only-allow": "1.2.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-polymorphic-types": "2.0.0",
-    "react-query": "3.39.3",
+    "react-router-dom": "6.26.2",
     "shellcheck": "3.0.0",
     "typescript": "5.6.3",
     "vitest": "2.1.4"
   },
   "typings": "./dist/index.d.ts",
   "dependencies": {
+    "@testing-library/jest-dom": "6.6.3",
     "js-cookie": "3.0.5",
     "polish-plurals": "1.1.0",
     "tinykeys": "3.0.0",

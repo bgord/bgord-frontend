@@ -1,11 +1,11 @@
-import React from "react";
+import { useEffect } from "react";
 
 export type UseLeavingPromptConditionType = boolean;
 
 export function useLeavingPrompt(
   condition: UseLeavingPromptConditionType = false
 ): void {
-  React.useEffect(() => {
+  useEffect(() => {
     if (!condition) return;
 
     function handler(e: BeforeUnloadEvent) {

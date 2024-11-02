@@ -21,7 +21,7 @@ export type UseToggleReturnType = {
 
 export function useToggle(
   defaultValue: UseToggleConfigType = false,
-  name?: string
+  name?: string,
 ): UseToggleReturnType {
   const [on, setIsOn] = useState(defaultValue);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useWindowDimensions } from "../hooks/use-window-dimensions";
 import { useToggle } from "../hooks/use-toggle";
@@ -19,7 +19,7 @@ function Truncates() {
   const enabled = useToggle();
   const length = useField("length", 128);
 
-  const [cache, setCache] = React.useState(new Map());
+  const [cache, setCache] = useState(new Map());
 
   const handleTruncateClick = () => {
     const elements = document.querySelectorAll('[data-transform="truncate"]');

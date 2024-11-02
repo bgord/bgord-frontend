@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { tinykeys } from "tinykeys";
 
 export interface UseKeyboardShortcutsConfigType {
@@ -9,11 +9,11 @@ export type UseKeyboardShortcutsOptionsType = { enabled?: boolean };
 
 export function useKeyboardShortcuts(
   config: UseKeyboardShortcutsConfigType,
-  options?: UseKeyboardShortcutsOptionsType,
+  options?: UseKeyboardShortcutsOptionsType
 ): void {
   const enabled = options?.enabled ?? true;
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!enabled) return;
 
     const unsubscribeShortcuts = tinykeys(window, config);

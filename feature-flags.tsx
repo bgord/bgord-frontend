@@ -1,5 +1,5 @@
 import type { Schema } from "@bgord/node";
-import React from "react";
+import React, { createContext, useContext } from "react";
 
 export type FeatureFlagNameType = string;
 
@@ -12,7 +12,7 @@ type FeatureFlagsContextPropsType = {
   value: FeatureFlagsContextValueType["flags"];
 };
 
-const FeatureFlagsContext = React.createContext<
+const FeatureFlagsContext = createContext<
   FeatureFlagsContextValueType["flags"]
 >({});
 
@@ -27,7 +27,7 @@ export function FeatureFlagsContextProvider(
 }
 
 export function useFeatureFlags() {
-  const value = React.useContext(FeatureFlagsContext);
+  const value = useContext(FeatureFlagsContext);
 
   if (value === undefined) {
     throw new Error(
@@ -39,7 +39,7 @@ export function useFeatureFlags() {
 }
 
 export function useFeatureFlag(name: FeatureFlagNameType): boolean {
-  const value = React.useContext(FeatureFlagsContext);
+  const value = useContext(FeatureFlagsContext);
 
   if (value === undefined) {
     throw new Error(
