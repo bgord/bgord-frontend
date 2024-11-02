@@ -1,8 +1,11 @@
 # Changelog
+- 2024-11-02 11:38 40534f3 **fix: update script**
+- 2024-11-02 11:37 9a80acd **step: add use response handler**
 - 2024-11-02 10:59 cd13183 **refactor: fix types**
 - 2024-11-02 10:50 e0216db **step: add update script**
 - 2024-11-02 10:50 9d72663 **refactor: remove dist**
 - 2024-11-02 10:46 fc43697 **refactor: update types**
+- 2024-11-02 10:00 53eaf7e **docs: generate CHANGELOG**
 - 2024-11-02 09:51 1bf60f4 **docs: generate CHANGELOG**
 - 2024-11-02 09:50 c4edb64 **docs: generate CHANGELOG**
 - 2024-11-02 09:47 7f5cb8a **docs: generate CHANGELOG**
