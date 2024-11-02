@@ -25,20 +25,19 @@ type UsePaginationReturnType = {
     nextPage: UsePaginationControlType;
     lastPage: UsePaginationControlType;
   };
-
-  update: (updated: PagedMetaType | null) => void;
 };
 
-export function usePagination(): UsePaginationReturnType {
+export function usePagination(
+  meta: PagedMetaType | null
+): UsePaginationReturnType {
   const [searchParams, setSearchParams] = rrd.useSearchParams();
-  const meta = useField<PagedMetaType | null>("meta", null);
 
   const firstPage = 1;
-  const previousPage = meta.value?.previousPage;
-  const nextPage = meta.value?.nextPage;
-  const lastPage = meta.value?.lastPage || firstPage;
+  const previousPage = meta?.previousPage;
+  const nextPage = meta?.nextPage;
+  const lastPage = meta?.lastPage || firstPage;
 
-  const page = useField("page", firstPage);
+  const page = useField("page", meta?.currentPage ?? firstPage);
 
   useEffect(() => {
     searchParams.set("page", String(page.value));
@@ -82,7 +81,5 @@ export function usePagination(): UsePaginationReturnType {
         value: lastPage,
       },
     },
-
-    update: (updated) => meta.set(updated),
   };
 }
