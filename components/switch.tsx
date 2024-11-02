@@ -1,4 +1,3 @@
-import React from "react";
 import { FieldState, extractUseField } from "../hooks/use-field";
 
 export function Switch(

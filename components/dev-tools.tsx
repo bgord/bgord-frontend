@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { useWindowDimensions } from "../hooks/use-window-dimensions";
 import { useToggle } from "../hooks/use-toggle";
