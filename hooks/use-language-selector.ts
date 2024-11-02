@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { getSafeWindow } from "../safe-window";
 import { useLanguage } from "../translations";
 import {
+  QueryValue,
   useClientFilter,
   UseClientFilterReturnType,
 } from "./use-client-filter";
@@ -15,17 +16,24 @@ export function useLanguageSelector(
 
   return useClientFilter({
     enum: supportedLanguages,
-    currentQuery: language,
+    givenQuery: language,
     name: "language",
-    onUpdate: (current, previous) => {
+    onUpdate: (_current, _previous) => {
       const safeWindow = getSafeWindow();
 
       if (!safeWindow) return;
 
-      if (!(current && previous) || previous === current) return;
+      const current = new QueryValue(_current);
+      const previous = new QueryValue(_previous);
 
-      Cookies.set("accept-language", current);
-      safeWindow.document.location.reload();
+      if (
+        !current.isEmpty() &&
+        !previous.isEmpty() &&
+        !previous.equals(current)
+      ) {
+        Cookies.set("accept-language", String(current.get()));
+        safeWindow.document.location.reload();
+      }
     },
   });
 }

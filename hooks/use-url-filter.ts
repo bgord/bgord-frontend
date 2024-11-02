@@ -3,6 +3,7 @@ import {
   useClientFilter,
   UseClientFilterConfigType,
   UseClientFilterReturnType,
+  QueryValue,
 } from "./use-client-filter";
 import { getSafeWindow } from "../safe-window";
 
@@ -13,35 +14,24 @@ export function useUrlFilter<T>(
 ): UseClientFilterReturnType<T> {
   const safeWindow = getSafeWindow();
 
-  const [_searchParams, setSearchParams] = useSearchParams();
+  const [params, setParams] = useSearchParams();
 
-  const currentQuery =
-    new URLSearchParams(safeWindow?.location.search).get(config.name) ??
-    undefined;
+  const givenQuery = new QueryValue(params.get(config.name) ?? undefined);
 
   return useClientFilter({
-    onUpdate: (current, previous) => {
+    onUpdate: (_current, _previous) => {
       if (!safeWindow) return;
 
-      const url = new URL(safeWindow.location.toString());
-      const params = new URLSearchParams(url.search);
+      const current = new QueryValue(_current);
+      const previous = new QueryValue(_previous);
 
-      if (current === undefined) {
-        params.delete(config.name);
-      } else {
-        params.set(config.name, current);
-      }
+      if (current.isEmpty()) params.delete(config.name);
+      else params.set(config.name, String(current.get()));
 
-      if (current === previous) return;
-
-      if (current !== previous) {
-        // url.search = params.toString();
-        // history.pushState({}, "", url.toString());
-        setSearchParams(params);
-      }
+      if (!current.equals(previous)) setParams(params);
     },
     ...config,
     defaultQuery: config.defaultQuery,
-    currentQuery: currentQuery,
+    givenQuery: givenQuery.get(),
   });
 }
