@@ -33,9 +33,7 @@ export function usePagination(): UsePaginationReturnType {
   const [searchParams, setSearchParams] = rrd.useSearchParams();
   const meta = useField<PagedMetaType | null>("meta", null);
 
-  const firstPage = Number(searchParams.get("page"))
-    ? Number(searchParams.get("page"))
-    : 1;
+  const firstPage = 1;
   const previousPage = meta.value?.previousPage;
   const nextPage = meta.value?.nextPage;
   const lastPage = meta.value?.lastPage || firstPage;
