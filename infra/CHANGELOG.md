@@ -1,4 +1,5 @@
 # Changelog
+- 2024-11-03 21:10 427e891 **refactor: remove use-url-filter**
 - 2024-11-03 21:02 be8e93b **fix: exports**
 - 2024-11-03 21:01 1638da4 **step: setup tests for params field**
 - 2024-11-03 20:57 278aa4e **step: add return type**
@@ -11,6 +12,7 @@
 - 2024-11-03 20:15 e28be67 **refactor: set current value**
 - 2024-11-03 20:14 95bbf87 **refactor: default value**
 - 2024-11-03 20:11 a600472 **refactor: given value**
+- 2024-11-03 20:03 edceddc **docs: generate CHANGELOG**
 - 2024-11-03 20:01 8a3c02b **docs: generate CHANGELOG**
 - 2024-11-03 19:48 c3ed230 **refactor: handle empty value cases**
 - 2024-11-03 19:46 c85b09a **docs: generate CHANGELOG**
