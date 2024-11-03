@@ -1,4 +1,5 @@
 # Changelog
+- 2024-11-03 21:15 649f9b9 **refactor: use params field in use pagination**
 - 2024-11-03 21:11 45f067b **fix: verified**
 - 2024-11-03 21:10 427e891 **refactor: remove use-url-filter**
 - 2024-11-03 21:02 be8e93b **fix: exports**
@@ -14,6 +15,7 @@
 - 2024-11-03 20:14 95bbf87 **refactor: default value**
 - 2024-11-03 20:11 a600472 **refactor: given value**
 - 2024-11-03 20:11 4780eb3 **docs: generate CHANGELOG**
+- 2024-11-03 20:11 18f7dbd **docs: generate CHANGELOG**
 - 2024-11-03 20:03 edceddc **docs: generate CHANGELOG**
 - 2024-11-03 20:01 8a3c02b **docs: generate CHANGELOG**
 - 2024-11-03 19:48 c3ed230 **refactor: handle empty value cases**
