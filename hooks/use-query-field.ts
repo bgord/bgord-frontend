@@ -58,11 +58,8 @@ export function useQueryField(config: UseQueryFieldConfigType) {
   );
 
   const setCurrentValue = (value: QueryFieldValueType) => {
-    if (QueryField.isEmpty(value)) {
-      _setCurrentValue(QueryField.emptyValue);
-    } else {
-      _setCurrentValue(value as string);
-    }
+    const candidate = new QueryField(value);
+    _setCurrentValue(candidate.get());
   };
 
   useEffect(() => {
