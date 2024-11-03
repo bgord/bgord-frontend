@@ -36,9 +36,23 @@ type UseQueryFieldConfigType = {
 export function useQueryField(config: UseQueryFieldConfigType) {
   const [params, setParams] = useSearchParams();
 
+  const givenValue = QueryField.isEmpty(params.get(config.name))
+    ? QueryField.emptyValue
+    : params.get(config.name);
+
   const defaultValue = config.defaultValue ?? QueryField.emptyValue;
 
-  const [currentValue, setCurrentValue] = useState(defaultValue);
+  const [currentValue, _setCurrentValue] = useState(
+    givenValue ? givenValue : defaultValue
+  );
+
+  const setCurrentValue = (value: QueryFieldValueType) => {
+    if (QueryField.isEmpty(value)) {
+      _setCurrentValue(QueryField.emptyValue);
+    } else {
+      _setCurrentValue(value as string);
+    }
+  };
 
   useEffect(() => {
     if (QueryField.isEmpty(currentValue)) {
