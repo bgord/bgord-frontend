@@ -39,8 +39,11 @@ export * from "./use-video";
 export * from "./use-window-dimensions";
 export * from "./use-response-handler";
 
-import { useQueryField } from "./use-query-field";
+// Experimental
+import { useParamsField } from "./use-params-field";
+import { ParamsField } from "./params-field";
 
 export const experimental = {
-  useQueryField,
+  useParamsField,
+  ParamsField,
 };
