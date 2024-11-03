@@ -29,8 +29,10 @@ type UseParamsReturnType = {
   empty: boolean;
 };
 
+// TODO validator function
+
 export function useParamsField(
-  config: UseParamsFieldConfigType
+  config: UseParamsFieldConfigType,
 ): UseParamsReturnType {
   const [params, setParams] = useSearchParams();
 
@@ -38,7 +40,7 @@ export function useParamsField(
   const defaultValue = new ParamsField(config.defaultValue);
 
   const [currentValue, _setCurrentValue] = useState(
-    givenValue.isEmpty() ? defaultValue.get() : givenValue.get()
+    givenValue.isEmpty() ? defaultValue.get() : givenValue.get(),
   );
 
   const setCurrentValue = (value: ParamsFieldValueType) => {
