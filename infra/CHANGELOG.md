@@ -1,4 +1,7 @@
 # Changelog
+- 2024-11-03 21:01 1638da4 **step: setup tests for params field**
+- 2024-11-03 20:57 278aa4e **step: add return type**
+- 2024-11-03 20:52 10f56bd **refactor: rename to use params field**
 - 2024-11-03 20:46 8402dc1 **fix: eslint errors**
 - 2024-11-03 20:45 6c83566 **refactor: add separate value for html components**
 - 2024-11-03 20:33 0ca50df **refactor: change empty value to undefned from null**
@@ -8,6 +11,7 @@
 - 2024-11-03 20:14 95bbf87 **refactor: default value**
 - 2024-11-03 20:11 a600472 **refactor: given value**
 - 2024-11-03 19:48 c3ed230 **refactor: handle empty value cases**
+- 2024-11-03 19:46 c85b09a **docs: generate CHANGELOG**
 - 2024-11-03 19:33 0b3ee55 **feature: implement use query field without taking default value from url**
 - 2024-11-03 19:33 0a884a1 **docs: generate CHANGELOG**
 - 2024-11-03 19:23 a355a03 **docs: generate CHANGELOG**
