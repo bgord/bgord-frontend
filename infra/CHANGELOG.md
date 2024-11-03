@@ -1,5 +1,13 @@
 # Changelog
+- 2024-11-03 20:17 be47afb **refactor: current**
+- 2024-11-03 20:15 e28be67 **refactor: set current value**
+- 2024-11-03 20:14 95bbf87 **refactor: default value**
+- 2024-11-03 20:11 a600472 **refactor: given value**
+- 2024-11-03 19:48 c3ed230 **refactor: handle empty value cases**
+- 2024-11-03 19:33 0b3ee55 **feature: implement use query field without taking default value from url**
+- 2024-11-03 18:49 598cd73 **step: use query field**
 - 2024-11-03 17:05 5f04dac **step: add useUrlField**
+- 2024-11-03 16:06 b98f5f2 **docs: generate CHANGELOG**
 - 2024-11-02 18:46 ea337f0 **fix: filters**
 - 2024-11-02 17:46 86ecfd0 **docs: generate CHANGELOG**
 - 2024-11-02 12:53 140092e **refactor: simplify pagination**
