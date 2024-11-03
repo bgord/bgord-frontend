@@ -15,7 +15,23 @@ type UseParamsFieldConfigType = {
   defaultValue?: ParamsFieldValueType;
 };
 
-export function useParamsField(config: UseParamsFieldConfigType) {
+type UseParamsReturnType = {
+  defaultValue: ParamsFieldValueType;
+  currentValue: ParamsFieldValueType;
+  value: string;
+  set: (value: ParamsFieldValueType) => void;
+  handleChange: (event: React.ChangeEvent<FieldElementType>) => void;
+  clear: () => void;
+  label: { props: { htmlFor: ParamsFieldNameType } };
+  input: { props: { id: ParamsFieldNameType; name: ParamsFieldNameType } };
+  changed: boolean;
+  unchanged: boolean;
+  empty: boolean;
+};
+
+export function useParamsField(
+  config: UseParamsFieldConfigType
+): UseParamsReturnType {
   const [params, setParams] = useSearchParams();
 
   const givenValue = new ParamsField(params.get(config.name));
@@ -46,7 +62,7 @@ export function useParamsField(config: UseParamsFieldConfigType) {
     defaultValue: defaultValue.get(),
     currentValue,
     // To account for React's controlled component's empty value.
-    value: ParamsField.isEmpty(currentValue) ? "" : currentValue,
+    value: ParamsField.isEmpty(currentValue) ? "" : (currentValue as string),
     set: setCurrentValue,
     handleChange: (event: React.ChangeEvent<FieldElementType>) =>
       setCurrentValue(event.currentTarget.value),
