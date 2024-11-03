@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export type FieldElementType =
   | HTMLInputElement
@@ -7,18 +8,18 @@ export type FieldElementType =
 
 type QueryFieldNameType = string;
 
-type QueryFieldValueType = string | undefined;
+type QueryFieldValueType = string | undefined | null;
 
-class QueryField {
-  static emptyValue = undefined;
+export class QueryField {
+  static emptyValue = null;
 
   static isEmpty(value: QueryFieldValueType): boolean {
-    return value === undefined || value === "";
+    return value === undefined || value === "" || value === null;
   }
 
   static compare(
     one: QueryFieldValueType,
-    another: QueryFieldValueType,
+    another: QueryFieldValueType
   ): boolean {
     if (QueryField.isEmpty(one) && QueryField.isEmpty(another)) {
       return true;
@@ -33,9 +34,21 @@ type UseQueryFieldConfigType = {
 };
 
 export function useQueryField(config: UseQueryFieldConfigType) {
+  const [params, setParams] = useSearchParams();
+
   const defaultValue = config.defaultValue ?? QueryField.emptyValue;
 
   const [currentValue, setCurrentValue] = useState(defaultValue);
+
+  useEffect(() => {
+    if (QueryField.isEmpty(currentValue)) {
+      params.delete(config.name);
+      setParams(params);
+    } else {
+      params.set(config.name, currentValue as string);
+      setParams(params);
+    }
+  }, [currentValue, setParams]);
 
   return {
     defaultValue,
