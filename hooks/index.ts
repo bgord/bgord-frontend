@@ -38,11 +38,11 @@ export * from "./use-video";
 export * from "./use-window-dimensions";
 export * from "./use-response-handler";
 
-// Experimental
+// VERIFIED ONLY
 import { useParamsField } from "./use-params-field";
 import { ParamsField } from "./params-field";
 
-export const experimental = {
+export const verified = {
   useParamsField,
   ParamsField,
 };
