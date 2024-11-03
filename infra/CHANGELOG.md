@@ -1,5 +1,7 @@
 # Changelog
+- 2024-11-03 17:05 5f04dac **step: add useUrlField**
 - 2024-11-02 18:46 ea337f0 **fix: filters**
+- 2024-11-02 17:46 86ecfd0 **docs: generate CHANGELOG**
 - 2024-11-02 12:53 140092e **refactor: simplify pagination**
 - 2024-11-02 12:33 5e5053a **fix: use pagination first page**
 - 2024-11-02 11:53 0e9c5c2 **docs: generate CHANGELOG**
