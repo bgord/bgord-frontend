@@ -19,6 +19,7 @@ describe("useQueryField", () => {
 
     expect(field.defaultValue).toEqual(QueryField.emptyValue);
     expect(field.currentValue).toEqual(QueryField.emptyValue);
+    expect(field.value).toEqual("");
     expect(typeof field.set).toEqual("function");
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
@@ -49,6 +50,7 @@ describe("useQueryField", () => {
 
     expect(field.defaultValue).toEqual(defaultValue);
     expect(field.currentValue).toEqual(defaultValue);
+    expect(field.value).toEqual(defaultValue);
     expect(typeof field.set).toEqual("function");
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
@@ -80,6 +82,7 @@ describe("useQueryField", () => {
 
     expect(first.defaultValue).toEqual(QueryField.emptyValue);
     expect(first.currentValue).toEqual(QueryField.emptyValue);
+    expect(first.value).toEqual("");
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
@@ -99,6 +102,7 @@ describe("useQueryField", () => {
 
     expect(second.defaultValue).toEqual(QueryField.emptyValue);
     expect(second.currentValue).toEqual(changedValue);
+    expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
@@ -130,6 +134,7 @@ describe("useQueryField", () => {
 
     expect(first.defaultValue).toEqual(QueryField.emptyValue);
     expect(first.currentValue).toEqual(QueryField.emptyValue);
+    expect(first.value).toEqual("");
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
@@ -149,6 +154,7 @@ describe("useQueryField", () => {
 
     expect(second.defaultValue).toEqual(QueryField.emptyValue);
     expect(second.currentValue).toEqual(changedValue);
+    expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
@@ -168,6 +174,7 @@ describe("useQueryField", () => {
 
     expect(third.defaultValue).toEqual(QueryField.emptyValue);
     expect(third.currentValue).toEqual(QueryField.emptyValue);
+    expect(third.value).toEqual("");
     expect(typeof third.set).toEqual("function");
     expect(typeof third.handleChange).toEqual("function");
     expect(typeof third.clear).toEqual("function");
@@ -200,6 +207,7 @@ describe("useQueryField", () => {
 
     expect(first.defaultValue).toEqual(defaultValue);
     expect(first.currentValue).toEqual(defaultValue);
+    expect(first.value).toEqual(defaultValue);
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
@@ -219,6 +227,7 @@ describe("useQueryField", () => {
 
     expect(second.defaultValue).toEqual(defaultValue);
     expect(second.currentValue).toEqual(changedValue);
+    expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
@@ -238,6 +247,7 @@ describe("useQueryField", () => {
 
     expect(third.defaultValue).toEqual(defaultValue);
     expect(third.currentValue).toEqual(defaultValue);
+    expect(third.value).toEqual(defaultValue);
     expect(typeof third.set).toEqual("function");
     expect(typeof third.handleChange).toEqual("function");
     expect(typeof third.clear).toEqual("function");
@@ -269,6 +279,7 @@ describe("useQueryField", () => {
 
     expect(first.defaultValue).toEqual(QueryField.emptyValue);
     expect(first.currentValue).toEqual(QueryField.emptyValue);
+    expect(first.value).toEqual("");
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
@@ -288,6 +299,7 @@ describe("useQueryField", () => {
 
     expect(second.defaultValue).toEqual(QueryField.emptyValue);
     expect(second.currentValue).toEqual(changedValue);
+    expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
@@ -307,6 +319,7 @@ describe("useQueryField", () => {
 
     expect(third.defaultValue).toEqual(QueryField.emptyValue);
     expect(third.currentValue).toEqual(QueryField.emptyValue);
+    expect(third.value).toEqual("");
     expect(typeof third.set).toEqual("function");
     expect(typeof third.handleChange).toEqual("function");
     expect(typeof third.clear).toEqual("function");
@@ -338,6 +351,7 @@ describe("useQueryField", () => {
 
     expect(first.defaultValue).toEqual(QueryField.emptyValue);
     expect(first.currentValue).toEqual(QueryField.emptyValue);
+    expect(first.value).toEqual("");
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
@@ -357,6 +371,7 @@ describe("useQueryField", () => {
 
     expect(second.defaultValue).toEqual(QueryField.emptyValue);
     expect(second.currentValue).toEqual(changedValue);
+    expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
@@ -376,6 +391,7 @@ describe("useQueryField", () => {
 
     expect(third.defaultValue).toEqual(QueryField.emptyValue);
     expect(third.currentValue).toEqual(QueryField.emptyValue);
+    expect(third.value).toEqual("");
     expect(typeof third.set).toEqual("function");
     expect(typeof third.handleChange).toEqual("function");
     expect(typeof third.clear).toEqual("function");
@@ -407,6 +423,7 @@ describe("useQueryField", () => {
 
     expect(first.defaultValue).toEqual(QueryField.emptyValue);
     expect(first.currentValue).toEqual(QueryField.emptyValue);
+    expect(first.value).toEqual("");
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
@@ -426,6 +443,7 @@ describe("useQueryField", () => {
 
     expect(second.defaultValue).toEqual(QueryField.emptyValue);
     expect(second.currentValue).toEqual(changedValue);
+    expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
@@ -446,6 +464,7 @@ describe("useQueryField", () => {
 
     expect(third.defaultValue).toEqual(QueryField.emptyValue);
     expect(third.currentValue).toEqual(QueryField.emptyValue);
+    expect(third.value).toEqual("");
     expect(typeof third.set).toEqual("function");
     expect(typeof third.handleChange).toEqual("function");
     expect(typeof third.clear).toEqual("function");
@@ -471,7 +490,7 @@ describe("useQueryField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=${givenValue}`]
+        [`/?${name}=${givenValue}`],
       ),
     });
 
@@ -479,6 +498,7 @@ describe("useQueryField", () => {
 
     expect(field.defaultValue).toEqual(QueryField.emptyValue);
     expect(field.currentValue).toEqual(givenValue);
+    expect(field.value).toEqual(givenValue);
     expect(typeof field.set).toEqual("function");
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
@@ -505,7 +525,7 @@ describe("useQueryField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=${givenValue}`]
+        [`/?${name}=${givenValue}`],
       ),
     });
 
@@ -513,6 +533,7 @@ describe("useQueryField", () => {
 
     expect(field.defaultValue).toEqual(defaultValue);
     expect(field.currentValue).toEqual(givenValue);
+    expect(field.value).toEqual(givenValue);
     expect(typeof field.set).toEqual("function");
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
@@ -538,7 +559,7 @@ describe("useQueryField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=${givenValue}`]
+        [`/?${name}=${givenValue}`],
       ),
     });
 
@@ -546,6 +567,7 @@ describe("useQueryField", () => {
 
     expect(field.defaultValue).toEqual(QueryField.emptyValue);
     expect(field.currentValue).toEqual(QueryField.emptyValue);
+    expect(field.value).toEqual("");
     expect(typeof field.set).toEqual("function");
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
@@ -570,7 +592,7 @@ describe("useQueryField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=`]
+        [`/?${name}=`],
       ),
     });
 
@@ -578,6 +600,7 @@ describe("useQueryField", () => {
 
     expect(field.defaultValue).toEqual(QueryField.emptyValue);
     expect(field.currentValue).toEqual(QueryField.emptyValue);
+    expect(field.value).toEqual("");
     expect(typeof field.set).toEqual("function");
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
@@ -605,7 +628,7 @@ describe("useQueryField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=${givenValue}`]
+        [`/?${name}=${givenValue}`],
       ),
     });
 
@@ -613,6 +636,7 @@ describe("useQueryField", () => {
 
     expect(first.defaultValue).toEqual(defaultValue);
     expect(first.currentValue).toEqual(givenValue);
+    expect(first.value).toEqual(givenValue);
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
@@ -632,6 +656,7 @@ describe("useQueryField", () => {
 
     expect(second.defaultValue).toEqual(defaultValue);
     expect(second.currentValue).toEqual(defaultValue);
+    expect(second.value).toEqual(defaultValue);
     expect(typeof second.set).toEqual("function");
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
@@ -658,7 +683,7 @@ describe("useQueryField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=${givenValue}&another=value`]
+        [`/?${name}=${givenValue}&another=value`],
       ),
     });
 
@@ -666,6 +691,7 @@ describe("useQueryField", () => {
 
     expect(first.defaultValue).toEqual(defaultValue);
     expect(first.currentValue).toEqual(givenValue);
+    expect(first.value).toEqual(givenValue);
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
@@ -686,6 +712,7 @@ describe("useQueryField", () => {
 
     expect(second.defaultValue).toEqual(defaultValue);
     expect(second.currentValue).toEqual(defaultValue);
+    expect(second.value).toEqual(defaultValue);
     expect(typeof second.set).toEqual("function");
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
@@ -710,7 +737,7 @@ function ParamsMonitor(props: { onChange: (value: URLSearchParams) => void }) {
 
 function createWrapper(
   onChange: (value: URLSearchParams) => void,
-  initialEntries = ["/"]
+  initialEntries = ["/"],
 ) {
   return ({ children }) => (
     <MemoryRouter initialEntries={initialEntries}>

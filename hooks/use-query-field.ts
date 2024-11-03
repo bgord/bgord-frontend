@@ -22,7 +22,7 @@ export class QueryField {
 
   static compare(
     one: QueryFieldValueType,
-    another: QueryFieldValueType
+    another: QueryFieldValueType,
   ): boolean {
     if (QueryField.isEmpty(one) && QueryField.isEmpty(another)) {
       return true;
@@ -59,7 +59,7 @@ export function useQueryField(config: UseQueryFieldConfigType) {
   const defaultValue = new QueryField(config.defaultValue);
 
   const [currentValue, _setCurrentValue] = useState(
-    givenValue.isEmpty() ? defaultValue.get() : givenValue.get()
+    givenValue.isEmpty() ? defaultValue.get() : givenValue.get(),
   );
 
   const setCurrentValue = (value: QueryFieldValueType) => {
@@ -82,6 +82,8 @@ export function useQueryField(config: UseQueryFieldConfigType) {
   return {
     defaultValue: defaultValue.get(),
     currentValue,
+    // To account for React's controlled component's empty value.
+    value: QueryField.isEmpty(currentValue) ? "" : currentValue,
     set: setCurrentValue,
     handleChange: (event: React.ChangeEvent<FieldElementType>) =>
       setCurrentValue(event.currentTarget.value),
