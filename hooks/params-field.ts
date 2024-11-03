@@ -4,7 +4,7 @@ export type ParamsFieldInputValueType = string | undefined | null;
 export class ParamsField {
   // Chose `undefined` here instead of `null`,
   // because HTML elements accept it as an empty value.
-  static emptyValue = undefined;
+  static readonly emptyValue = undefined;
 
   static isEmpty(value: ParamsFieldInputValueType): boolean {
     return value === undefined || value === "" || value === null;
@@ -12,7 +12,7 @@ export class ParamsField {
 
   static compare(
     one: ParamsFieldValueType,
-    another: ParamsFieldValueType
+    another: ParamsFieldValueType,
   ): boolean {
     if (ParamsField.isEmpty(one) && ParamsField.isEmpty(another)) {
       return true;
@@ -20,7 +20,7 @@ export class ParamsField {
     return one === another;
   }
 
-  private value: ParamsFieldValueType = ParamsField.emptyValue;
+  private readonly value: ParamsFieldValueType = ParamsField.emptyValue;
 
   constructor(value: ParamsFieldInputValueType) {
     this.value = ParamsField.isEmpty(value)
