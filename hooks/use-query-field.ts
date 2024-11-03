@@ -8,12 +8,15 @@ export type FieldElementType =
 
 type QueryFieldNameType = string;
 
-type QueryFieldValueType = string | undefined | null;
+type QueryFieldValueType = string | undefined;
+type QueryFieldInputValueType = string | undefined | null;
 
 export class QueryField {
-  static emptyValue = null;
+  // Chose `undefined` here instead of `null`,
+  // because HTML elements accept it as an empty value.
+  static emptyValue = undefined;
 
-  static isEmpty(value: QueryFieldValueType): boolean {
+  static isEmpty(value: QueryFieldInputValueType): boolean {
     return value === undefined || value === "" || value === null;
   }
 
@@ -29,8 +32,10 @@ export class QueryField {
 
   private value: QueryFieldValueType = QueryField.emptyValue;
 
-  constructor(value: QueryFieldValueType) {
-    this.value = QueryField.isEmpty(value) ? QueryField.emptyValue : value;
+  constructor(value: QueryFieldInputValueType) {
+    this.value = QueryField.isEmpty(value)
+      ? QueryField.emptyValue
+      : (value as QueryFieldValueType);
   }
 
   get(): QueryFieldValueType {

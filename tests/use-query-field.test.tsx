@@ -30,7 +30,7 @@ describe("useQueryField", () => {
     expect(field.unchanged).toEqual(true);
     expect(field.empty).toEqual(true);
 
-    expect(params?.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
   });
 
   test("non-empty default value", async () => {
@@ -60,7 +60,7 @@ describe("useQueryField", () => {
     expect(field.unchanged).toEqual(true);
     expect(field.empty).toEqual(false);
 
-    expect(params?.get(name)).toBe(defaultValue);
+    expect(params.get(name)).toBe(defaultValue);
   });
 
   test("updated empty default value", () => {
@@ -91,7 +91,7 @@ describe("useQueryField", () => {
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(true);
 
-    expect(params.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
 
     act(() => hook.result.current.set(changedValue));
 
@@ -141,7 +141,7 @@ describe("useQueryField", () => {
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(true);
 
-    expect(params.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
 
     act(() => hook.result.current.set(changedValue));
 
@@ -179,7 +179,7 @@ describe("useQueryField", () => {
     expect(third.unchanged).toEqual(true);
     expect(third.empty).toEqual(true);
 
-    expect(params.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
   });
 
   test("clear restores non-empty default value", () => {
@@ -280,7 +280,7 @@ describe("useQueryField", () => {
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(true);
 
-    expect(params.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
 
     act(() => hook.result.current.set(changedValue));
 
@@ -318,7 +318,7 @@ describe("useQueryField", () => {
     expect(third.unchanged).toEqual(true);
     expect(third.empty).toEqual(true);
 
-    expect(params.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
   });
 
   test("removes param when set to undefined - empty default value", () => {
@@ -349,7 +349,7 @@ describe("useQueryField", () => {
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(true);
 
-    expect(params.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
 
     act(() => hook.result.current.set(changedValue));
 
@@ -387,7 +387,7 @@ describe("useQueryField", () => {
     expect(third.unchanged).toEqual(true);
     expect(third.empty).toEqual(true);
 
-    expect(params.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
   });
 
   test("removes param when set to null - empty default value", () => {
@@ -418,7 +418,7 @@ describe("useQueryField", () => {
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(true);
 
-    expect(params.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
 
     act(() => hook.result.current.set(changedValue));
 
@@ -439,6 +439,7 @@ describe("useQueryField", () => {
 
     expect(params.get(name)).toEqual(changedValue);
 
+    // @ts-expect-error
     act(() => hook.result.current.set(null));
 
     const third = hook.result.current;
@@ -456,7 +457,7 @@ describe("useQueryField", () => {
     expect(third.unchanged).toEqual(true);
     expect(third.empty).toEqual(true);
 
-    expect(params.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
   });
 
   test("given value exists - empty default", () => {
@@ -489,7 +490,7 @@ describe("useQueryField", () => {
     expect(field.unchanged).toEqual(false);
     expect(field.empty).toEqual(false);
 
-    expect(params?.get(name)).toEqual(givenValue);
+    expect(params.get(name)).toEqual(givenValue);
   });
 
   test("given value exists - non-empty default", () => {
@@ -523,7 +524,7 @@ describe("useQueryField", () => {
     expect(field.unchanged).toEqual(false);
     expect(field.empty).toEqual(false);
 
-    expect(params?.get(name)).toEqual(givenValue);
+    expect(params.get(name)).toEqual(givenValue);
   });
 
   test("clears given value empty string - empty default", () => {
@@ -556,7 +557,7 @@ describe("useQueryField", () => {
     expect(field.unchanged).toEqual(true);
     expect(field.empty).toEqual(true);
 
-    expect(params?.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
     expect(params.toString()).toEqual("");
   });
 
@@ -588,7 +589,7 @@ describe("useQueryField", () => {
     expect(field.unchanged).toEqual(true);
     expect(field.empty).toEqual(true);
 
-    expect(params?.get(name)).toEqual(QueryField.emptyValue);
+    expect(params.get(name)).toEqual(null);
     expect(params.toString()).toEqual("");
   });
 
@@ -623,7 +624,7 @@ describe("useQueryField", () => {
     expect(first.unchanged).toEqual(false);
     expect(first.empty).toEqual(false);
 
-    expect(params?.get(name)).toEqual(givenValue);
+    expect(params.get(name)).toEqual(givenValue);
 
     act(() => hook.result.current.clear());
 
@@ -642,7 +643,7 @@ describe("useQueryField", () => {
     expect(second.unchanged).toEqual(true);
     expect(second.empty).toEqual(false);
 
-    expect(params?.get(name)).toEqual(defaultValue);
+    expect(params.get(name)).toEqual(defaultValue);
   });
 
   test("does not interfere with other params", () => {
@@ -676,8 +677,8 @@ describe("useQueryField", () => {
     expect(first.unchanged).toEqual(false);
     expect(first.empty).toEqual(false);
 
-    expect(params?.get(name)).toEqual(givenValue);
-    expect(params?.get("another")).toEqual("value");
+    expect(params.get(name)).toEqual(givenValue);
+    expect(params.get("another")).toEqual("value");
 
     act(() => hook.result.current.clear());
 
@@ -696,8 +697,8 @@ describe("useQueryField", () => {
     expect(second.unchanged).toEqual(true);
     expect(second.empty).toEqual(false);
 
-    expect(params?.get(name)).toEqual(defaultValue);
-    expect(params?.get("another")).toEqual("value");
+    expect(params.get(name)).toEqual(defaultValue);
+    expect(params.get("another")).toEqual("value");
   });
 });
 
