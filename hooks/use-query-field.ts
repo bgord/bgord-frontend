@@ -26,6 +26,20 @@ export class QueryField {
     }
     return one === another;
   }
+
+  private value: QueryFieldValueType = QueryField.emptyValue;
+
+  constructor(value: QueryFieldValueType) {
+    this.value = QueryField.isEmpty(value) ? QueryField.emptyValue : value;
+  }
+
+  get(): QueryFieldValueType {
+    return this.value;
+  }
+
+  isEmpty() {
+    return QueryField.isEmpty(this.value);
+  }
 }
 
 type UseQueryFieldConfigType = {
@@ -36,14 +50,12 @@ type UseQueryFieldConfigType = {
 export function useQueryField(config: UseQueryFieldConfigType) {
   const [params, setParams] = useSearchParams();
 
-  const givenValue = QueryField.isEmpty(params.get(config.name))
-    ? QueryField.emptyValue
-    : params.get(config.name);
+  const givenValue = new QueryField(params.get(config.name));
 
   const defaultValue = config.defaultValue ?? QueryField.emptyValue;
 
   const [currentValue, _setCurrentValue] = useState(
-    givenValue ? givenValue : defaultValue
+    givenValue.isEmpty() ? defaultValue : givenValue.get()
   );
 
   const setCurrentValue = (value: QueryFieldValueType) => {
