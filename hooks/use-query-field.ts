@@ -51,11 +51,10 @@ export function useQueryField(config: UseQueryFieldConfigType) {
   const [params, setParams] = useSearchParams();
 
   const givenValue = new QueryField(params.get(config.name));
-
-  const defaultValue = config.defaultValue ?? QueryField.emptyValue;
+  const defaultValue = new QueryField(config.defaultValue);
 
   const [currentValue, _setCurrentValue] = useState(
-    givenValue.isEmpty() ? defaultValue : givenValue.get()
+    givenValue.isEmpty() ? defaultValue.get() : givenValue.get()
   );
 
   const setCurrentValue = (value: QueryFieldValueType) => {
@@ -77,16 +76,16 @@ export function useQueryField(config: UseQueryFieldConfigType) {
   }, [currentValue, setParams]);
 
   return {
-    defaultValue,
+    defaultValue: defaultValue.get(),
     currentValue,
     set: setCurrentValue,
     handleChange: (event: React.ChangeEvent<FieldElementType>) =>
       setCurrentValue(event.currentTarget.value),
-    clear: () => setCurrentValue(defaultValue),
+    clear: () => setCurrentValue(defaultValue.get()),
     label: { props: { htmlFor: config.name } },
     input: { props: { id: config.name, name: config.name } },
-    changed: !QueryField.compare(currentValue, defaultValue),
-    unchanged: QueryField.compare(currentValue, defaultValue),
+    changed: !QueryField.compare(currentValue, defaultValue.get()),
+    unchanged: QueryField.compare(currentValue, defaultValue.get()),
     empty: QueryField.isEmpty(currentValue),
   };
 }
