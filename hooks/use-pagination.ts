@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import * as rrd from "react-router-dom";
-import { useField } from "./use-field";
+import { useParamsField } from "./use-params-field";
 import type { Paged, PageType } from "@bgord/node";
 
 export type { Paged, PageType } from "@bgord/node";
@@ -30,22 +28,18 @@ type UsePaginationReturnType = {
 export function usePagination(
   meta: PagedMetaType | null
 ): UsePaginationReturnType {
-  const [searchParams, setSearchParams] = rrd.useSearchParams();
-
   const firstPage = 1;
   const previousPage = meta?.previousPage;
   const nextPage = meta?.nextPage;
   const lastPage = meta?.lastPage || firstPage;
 
-  const page = useField("page", meta?.currentPage ?? firstPage);
-
-  useEffect(() => {
-    searchParams.set("page", String(page.value));
-    setSearchParams(searchParams);
-  }, [page.value]);
+  const page = useParamsField({
+    name: "page",
+    defaultValue: String(meta?.currentPage ?? firstPage),
+  });
 
   return {
-    current: page.value,
+    current: Number(page.value),
     last: lastPage,
 
     controls: {
@@ -53,7 +47,7 @@ export function usePagination(
         active: !previousPage,
         disabled: false,
         exists: true,
-        go: () => page.set(firstPage),
+        go: () => page.set(String(firstPage)),
         value: firstPage,
       },
 
@@ -61,7 +55,7 @@ export function usePagination(
         active: false,
         disabled: !previousPage,
         exists: Boolean(previousPage),
-        go: () => page.set(previousPage ?? page.value),
+        go: () => page.set(String(previousPage ?? page.value)),
         value: previousPage,
       },
 
@@ -69,15 +63,15 @@ export function usePagination(
         active: false,
         disabled: !nextPage,
         exists: Boolean(nextPage),
-        go: () => page.set(nextPage ?? page.value),
+        go: () => page.set(String(nextPage ?? page.value)),
         value: nextPage,
       },
 
       lastPage: {
-        active: page.value === lastPage,
+        active: Number(page.value) === lastPage,
         disabled: !nextPage,
         exists: true,
-        go: () => page.set(lastPage ?? page.value),
+        go: () => page.set(String(lastPage ?? page.value)),
         value: lastPage,
       },
     },
