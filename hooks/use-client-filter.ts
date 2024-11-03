@@ -34,7 +34,7 @@ export type UseClientFilterReturnType<T> = {
   };
 };
 
-type QueryValueType = string | undefined;
+export type QueryValueType = string | undefined;
 
 export class QueryValue {
   private value: QueryValueType;
