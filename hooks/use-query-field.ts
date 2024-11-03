@@ -63,11 +63,13 @@ export function useQueryField(config: UseQueryFieldConfigType) {
   };
 
   useEffect(() => {
-    if (QueryField.isEmpty(currentValue)) {
+    const current = new QueryField(currentValue);
+
+    if (current.isEmpty()) {
       params.delete(config.name);
       setParams(params);
     } else {
-      params.set(config.name, currentValue as string);
+      params.set(config.name, current.get() as string);
       setParams(params);
     }
   }, [currentValue, setParams]);
