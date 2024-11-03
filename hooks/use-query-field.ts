@@ -77,7 +77,7 @@ export function useQueryField(config: UseQueryFieldConfigType) {
       params.set(config.name, current.get() as string);
       setParams(params);
     }
-  }, [currentValue, setParams]);
+  }, [currentValue, params, setParams, config.name]);
 
   return {
     defaultValue: defaultValue.get(),
