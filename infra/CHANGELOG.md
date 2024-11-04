@@ -1,4 +1,5 @@
 # Changelog
+- 2024-11-04 08:06 9690193 **Merge pull request #172 from bgord/dependabot/npm_and_yarn/cspell-8.15.5**
 - 2024-11-03 21:15 649f9b9 **refactor: use params field in use pagination**
 - 2024-11-03 21:11 45f067b **fix: verified**
 - 2024-11-03 21:10 427e891 **refactor: remove use-url-filter**
@@ -12,6 +13,7 @@
 - 2024-11-03 20:22 960381b **refactor: export experimental hooks**
 - 2024-11-03 20:17 be47afb **refactor: current**
 - 2024-11-03 20:15 e28be67 **refactor: set current value**
+- 2024-11-03 20:15 c299f75 **docs: generate CHANGELOG**
 - 2024-11-03 20:14 95bbf87 **refactor: default value**
 - 2024-11-03 20:11 a600472 **refactor: given value**
 - 2024-11-03 20:11 4780eb3 **docs: generate CHANGELOG**
@@ -43,6 +45,7 @@
 - 2024-11-02 10:00 53eaf7e **docs: generate CHANGELOG**
 - 2024-11-02 09:51 1bf60f4 **docs: generate CHANGELOG**
 - 2024-11-02 09:50 c4edb64 **docs: generate CHANGELOG**
+- 2024-11-02 09:48 6de6b49 **build(deps-dev): bump cspell from 8.15.4 to 8.15.5**
 - 2024-11-02 09:47 7f5cb8a **docs: generate CHANGELOG**
 - 2024-10-31 08:55 8d687f8 **Merge pull request #171 from bgord/dependabot/npm_and_yarn/vitest-2.1.4**
 - 2024-10-31 07:55 c1c924b **docs: generate CHANGELOG**
