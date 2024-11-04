@@ -23,7 +23,7 @@
   "license": "ISC",
   "peerDependencies": {
     "react": "18.3.1",
-    "react-router-dom": "6.26.2"
+    "react-router-dom": "6.27.0"
   },
   "peerDependenciesMeta": {
     "react": {
@@ -52,7 +52,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-polymorphic-types": "2.0.0",
-    "react-router-dom": "6.26.2",
+    "react-router-dom": "6.27.0",
     "shellcheck": "3.0.0",
     "typescript": "5.6.3",
     "vitest": "2.1.4"
