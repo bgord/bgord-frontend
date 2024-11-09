@@ -178,7 +178,7 @@ describe("useNewField - local", () => {
 
     const changedValue = "def";
 
-    const hook = renderHook(() => useNewField({ name, defaultValue }), {
+    const hook = renderHook(() => useNewField<string>({ name, defaultValue }), {
       wrapper: createWrapper(),
     });
 

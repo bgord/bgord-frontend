@@ -238,7 +238,7 @@ describe("useNewField - params", () => {
 
     const hook = renderHook(
       () =>
-        useNewField({
+        useNewField<string>({
           name,
           defaultValue,
           strategy: UseNewFieldStrategyEnum.params,

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { Field, FieldValueType, FieldInputValueType } from "./field";
+import { Field, FieldValueAllowedTypes, FieldInputValueType } from "./field";
 
 type NewFieldNameType = string;
 
@@ -15,17 +15,17 @@ export enum UseNewFieldStrategyEnum {
   local = "local",
 }
 
-type UseNewFieldConfigType = {
+type UseNewFieldConfigType<T extends FieldValueAllowedTypes> = {
   name: NewFieldNameType;
-  defaultValue?: FieldInputValueType;
+  defaultValue?: FieldInputValueType<T>;
   strategy?: UseNewFieldStrategyEnum;
 };
 
-type UseNewFieldReturnType = {
-  defaultValue: FieldValueType;
-  currentValue: FieldValueType;
+type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
+  defaultValue: T;
+  currentValue: T;
   value: string;
-  set: (value: FieldValueType) => void;
+  set: (value: T) => void;
   handleChange: (event: React.ChangeEvent<FieldElementType>) => void;
   clear: () => void;
   label: { props: { htmlFor: NewFieldNameType } };
@@ -35,22 +35,22 @@ type UseNewFieldReturnType = {
   empty: boolean;
 };
 
-export function useNewField(
-  config: UseNewFieldConfigType,
-): UseNewFieldReturnType {
+export function useNewField<T extends FieldValueAllowedTypes>(
+  config: UseNewFieldConfigType<T>,
+): UseNewFieldReturnType<T> {
   const strategy = config.strategy ?? UseNewFieldStrategyEnum.local;
 
   const [params, setParams] = useSearchParams();
 
-  const givenValue = new Field(params.get(config.name));
-  const defaultValue = new Field(config.defaultValue);
+  const givenValue = new Field<T>(params.get(config.name) as T);
+  const defaultValue = new Field<T>(config.defaultValue as T);
 
   const [currentValue, _setCurrentValue] = useState(
     givenValue.isEmpty() ? defaultValue.get() : givenValue.get(),
   );
 
-  const setCurrentValue = (value: FieldValueType) => {
-    const candidate = new Field(value);
+  const setCurrentValue = (value: T) => {
+    const candidate = new Field<T>(value);
     _setCurrentValue(candidate.get());
   };
 
@@ -78,7 +78,7 @@ export function useNewField(
     value: Field.isEmpty(currentValue) ? "" : (currentValue as string),
     set: setCurrentValue,
     handleChange: (event: React.ChangeEvent<FieldElementType>) =>
-      setCurrentValue(event.currentTarget.value),
+      setCurrentValue(event.currentTarget.value as T),
     clear: () => setCurrentValue(defaultValue.get()),
     label: { props: { htmlFor: config.name } },
     input: { props: { id: config.name, name: config.name } },
