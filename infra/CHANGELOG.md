@@ -1,8 +1,10 @@
 # Changelog
+- 2024-11-09 23:03 c455cb1 **refactor: make use new field generic**
 - 2024-11-09 22:47 5f241e8 **refactor: allow null as default value**
 - 2024-11-09 22:36 8e6634c **fix: export verified UseNewFieldStrategyEnum**
 - 2024-11-09 22:33 f31335b **step: add tests for use new field local**
 - 2024-11-09 21:58 44852fe **fix: types**
+- 2024-11-09 21:54 dab646e **docs: generate CHANGELOG**
 - 2024-11-09 21:44 ca0acbc **fix: jsdom matchers types**
 - 2024-11-09 21:41 62b78e7 **fix: unify tests**
 - 2024-11-09 21:38 63aff71 **step: add use new field local tests**
