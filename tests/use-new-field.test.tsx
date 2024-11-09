@@ -2,7 +2,7 @@ import React from "react";
 import { describe, test, expect } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useSearchParams, MemoryRouter, Routes, Route } from "react-router-dom";
-import { useNewField } from "../hooks/use-new-field";
+import { useNewField, UseNewFieldStrategyEnum } from "../hooks/use-new-field";
 import { Field } from "../hooks/field";
 
 describe("useNewField", () => {
@@ -10,11 +10,14 @@ describe("useNewField", () => {
     const name = "search";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useNewField({ name }), {
-      wrapper: createWrapper((value) => {
-        params = value;
-      }),
-    });
+    const hook = renderHook(
+      () => useNewField({ name, strategy: UseNewFieldStrategyEnum.params }),
+      {
+        wrapper: createWrapper((value) => {
+          params = value;
+        }),
+      }
+    );
 
     const field = hook.result.current;
 
@@ -41,11 +44,19 @@ describe("useNewField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useNewField({ name, defaultValue }), {
-      wrapper: createWrapper((value) => {
-        params = value;
-      }),
-    });
+    const hook = renderHook(
+      () =>
+        useNewField({
+          name,
+          defaultValue,
+          strategy: UseNewFieldStrategyEnum.params,
+        }),
+      {
+        wrapper: createWrapper((value) => {
+          params = value;
+        }),
+      }
+    );
 
     const field = hook.result.current;
 
@@ -73,11 +84,14 @@ describe("useNewField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useNewField({ name }), {
-      wrapper: createWrapper((value) => {
-        params = value;
-      }),
-    });
+    const hook = renderHook(
+      () => useNewField({ name, strategy: UseNewFieldStrategyEnum.params }),
+      {
+        wrapper: createWrapper((value) => {
+          params = value;
+        }),
+      }
+    );
 
     const first = hook.result.current;
 
@@ -125,11 +139,14 @@ describe("useNewField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useNewField({ name }), {
-      wrapper: createWrapper((value) => {
-        params = value;
-      }),
-    });
+    const hook = renderHook(
+      () => useNewField({ name, strategy: UseNewFieldStrategyEnum.params }),
+      {
+        wrapper: createWrapper((value) => {
+          params = value;
+        }),
+      }
+    );
 
     const first = hook.result.current;
 
@@ -198,11 +215,19 @@ describe("useNewField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useNewField({ name, defaultValue }), {
-      wrapper: createWrapper((value) => {
-        params = value;
-      }),
-    });
+    const hook = renderHook(
+      () =>
+        useNewField({
+          name,
+          defaultValue,
+          strategy: UseNewFieldStrategyEnum.params,
+        }),
+      {
+        wrapper: createWrapper((value) => {
+          params = value;
+        }),
+      }
+    );
 
     const first = hook.result.current;
 
@@ -270,11 +295,14 @@ describe("useNewField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useNewField({ name }), {
-      wrapper: createWrapper((value) => {
-        params = value;
-      }),
-    });
+    const hook = renderHook(
+      () => useNewField({ name, strategy: UseNewFieldStrategyEnum.params }),
+      {
+        wrapper: createWrapper((value) => {
+          params = value;
+        }),
+      }
+    );
 
     const first = hook.result.current;
 
@@ -342,11 +370,14 @@ describe("useNewField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useNewField({ name }), {
-      wrapper: createWrapper((value) => {
-        params = value;
-      }),
-    });
+    const hook = renderHook(
+      () => useNewField({ name, strategy: UseNewFieldStrategyEnum.params }),
+      {
+        wrapper: createWrapper((value) => {
+          params = value;
+        }),
+      }
+    );
 
     const first = hook.result.current;
 
@@ -414,11 +445,14 @@ describe("useNewField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useNewField({ name }), {
-      wrapper: createWrapper((value) => {
-        params = value;
-      }),
-    });
+    const hook = renderHook(
+      () => useNewField({ name, strategy: UseNewFieldStrategyEnum.params }),
+      {
+        wrapper: createWrapper((value) => {
+          params = value;
+        }),
+      }
+    );
 
     const first = hook.result.current;
 
@@ -486,14 +520,17 @@ describe("useNewField", () => {
     const givenValue = "abc";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useNewField({ name }), {
-      wrapper: createWrapper(
-        (value) => {
-          params = value;
-        },
-        [`/?${name}=${givenValue}`],
-      ),
-    });
+    const hook = renderHook(
+      () => useNewField({ name, strategy: UseNewFieldStrategyEnum.params }),
+      {
+        wrapper: createWrapper(
+          (value) => {
+            params = value;
+          },
+          [`/?${name}=${givenValue}`]
+        ),
+      }
+    );
 
     const field = hook.result.current;
 
@@ -521,14 +558,22 @@ describe("useNewField", () => {
     const givenValue = "def";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useNewField({ name, defaultValue }), {
-      wrapper: createWrapper(
-        (value) => {
-          params = value;
-        },
-        [`/?${name}=${givenValue}`],
-      ),
-    });
+    const hook = renderHook(
+      () =>
+        useNewField({
+          name,
+          defaultValue,
+          strategy: UseNewFieldStrategyEnum.params,
+        }),
+      {
+        wrapper: createWrapper(
+          (value) => {
+            params = value;
+          },
+          [`/?${name}=${givenValue}`]
+        ),
+      }
+    );
 
     const field = hook.result.current;
 
@@ -555,14 +600,17 @@ describe("useNewField", () => {
     const givenValue = "";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useNewField({ name }), {
-      wrapper: createWrapper(
-        (value) => {
-          params = value;
-        },
-        [`/?${name}=${givenValue}`],
-      ),
-    });
+    const hook = renderHook(
+      () => useNewField({ name, strategy: UseNewFieldStrategyEnum.params }),
+      {
+        wrapper: createWrapper(
+          (value) => {
+            params = value;
+          },
+          [`/?${name}=${givenValue}`]
+        ),
+      }
+    );
 
     const field = hook.result.current;
 
@@ -588,14 +636,17 @@ describe("useNewField", () => {
     const name = "search";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useNewField({ name }), {
-      wrapper: createWrapper(
-        (value) => {
-          params = value;
-        },
-        [`/?${name}=`],
-      ),
-    });
+    const hook = renderHook(
+      () => useNewField({ name, strategy: UseNewFieldStrategyEnum.params }),
+      {
+        wrapper: createWrapper(
+          (value) => {
+            params = value;
+          },
+          [`/?${name}=`]
+        ),
+      }
+    );
 
     const field = hook.result.current;
 
@@ -624,14 +675,22 @@ describe("useNewField", () => {
     const givenValue = "def";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useNewField({ name, defaultValue }), {
-      wrapper: createWrapper(
-        (value) => {
-          params = value;
-        },
-        [`/?${name}=${givenValue}`],
-      ),
-    });
+    const hook = renderHook(
+      () =>
+        useNewField({
+          name,
+          defaultValue,
+          strategy: UseNewFieldStrategyEnum.params,
+        }),
+      {
+        wrapper: createWrapper(
+          (value) => {
+            params = value;
+          },
+          [`/?${name}=${givenValue}`]
+        ),
+      }
+    );
 
     const first = hook.result.current;
 
@@ -679,14 +738,22 @@ describe("useNewField", () => {
     const givenValue = "def";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useNewField({ name, defaultValue }), {
-      wrapper: createWrapper(
-        (value) => {
-          params = value;
-        },
-        [`/?${name}=${givenValue}&another=value`],
-      ),
-    });
+    const hook = renderHook(
+      () =>
+        useNewField({
+          name,
+          defaultValue,
+          strategy: UseNewFieldStrategyEnum.params,
+        }),
+      {
+        wrapper: createWrapper(
+          (value) => {
+            params = value;
+          },
+          [`/?${name}=${givenValue}&another=value`]
+        ),
+      }
+    );
 
     const first = hook.result.current;
 
@@ -742,7 +809,7 @@ function ParamsMonitor(props: { onChange: (value: URLSearchParams) => void }) {
 
 function createWrapper(
   onChange: (value: URLSearchParams) => void,
-  initialEntries = ["/"],
+  initialEntries = ["/"]
 ) {
   return ({ children }) => (
     <MemoryRouter initialEntries={initialEntries}>

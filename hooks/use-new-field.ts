@@ -10,9 +10,14 @@ export type FieldElementType =
   | HTMLSelectElement
   | HTMLTextAreaElement;
 
+export enum UseNewFieldStrategyEnum {
+  params = "params",
+}
+
 type UseNewFieldConfigType = {
   name: NewFieldNameType;
   defaultValue?: FieldValueType;
+  strategy: UseNewFieldStrategyEnum;
 };
 
 type UseNewFieldReturnType = {
@@ -32,7 +37,7 @@ type UseNewFieldReturnType = {
 // TODO validator function
 
 export function useNewField(
-  config: UseNewFieldConfigType,
+  config: UseNewFieldConfigType
 ): UseNewFieldReturnType {
   const [params, setParams] = useSearchParams();
 
@@ -40,7 +45,7 @@ export function useNewField(
   const defaultValue = new Field(config.defaultValue);
 
   const [currentValue, _setCurrentValue] = useState(
-    givenValue.isEmpty() ? defaultValue.get() : givenValue.get(),
+    givenValue.isEmpty() ? defaultValue.get() : givenValue.get()
   );
 
   const setCurrentValue = (value: FieldValueType) => {
@@ -51,12 +56,14 @@ export function useNewField(
   useEffect(() => {
     const current = new Field(currentValue);
 
-    if (current.isEmpty()) {
-      params.delete(config.name);
-      setParams(params);
-    } else {
-      params.set(config.name, current.get() as string);
-      setParams(params);
+    if (config.strategy === UseNewFieldStrategyEnum.params) {
+      if (current.isEmpty()) {
+        params.delete(config.name);
+        setParams(params);
+      } else {
+        params.set(config.name, current.get() as string);
+        setParams(params);
+      }
     }
   }, [currentValue, params, setParams, config.name]);
 
