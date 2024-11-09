@@ -45,7 +45,7 @@ export function useNewField<T extends FieldValueAllowedTypes>(
   const givenValue = new Field<T>(params.get(config.name) as T);
   const defaultValue = new Field<T>(config.defaultValue as T);
 
-  const [currentValue, _setCurrentValue] = useState(
+  const [currentValue, _setCurrentValue] = useState<T>(
     givenValue.isEmpty() ? defaultValue.get() : givenValue.get(),
   );
 
