@@ -2,7 +2,7 @@ import React from "react";
 import { describe, test, expect } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useSearchParams, MemoryRouter, Routes, Route } from "react-router-dom";
-import { useNewField } from "../hooks/use-params-field";
+import { useNewField } from "../hooks/use-new-field";
 import { Field } from "../hooks/field";
 
 describe("useNewField", () => {
