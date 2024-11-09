@@ -3,27 +3,27 @@ import { useSearchParams } from "react-router-dom";
 
 import { Field, FieldValueType } from "./field";
 
-type ParamsFieldNameType = string;
+type NewFieldNameType = string;
 
 export type FieldElementType =
   | HTMLInputElement
   | HTMLSelectElement
   | HTMLTextAreaElement;
 
-type UseParamsFieldConfigType = {
-  name: ParamsFieldNameType;
+type UseNewFieldConfigType = {
+  name: NewFieldNameType;
   defaultValue?: FieldValueType;
 };
 
-type UseParamsReturnType = {
+type UseNewFieldReturnType = {
   defaultValue: FieldValueType;
   currentValue: FieldValueType;
   value: string;
   set: (value: FieldValueType) => void;
   handleChange: (event: React.ChangeEvent<FieldElementType>) => void;
   clear: () => void;
-  label: { props: { htmlFor: ParamsFieldNameType } };
-  input: { props: { id: ParamsFieldNameType; name: ParamsFieldNameType } };
+  label: { props: { htmlFor: NewFieldNameType } };
+  input: { props: { id: NewFieldNameType; name: NewFieldNameType } };
   changed: boolean;
   unchanged: boolean;
   empty: boolean;
@@ -31,9 +31,9 @@ type UseParamsReturnType = {
 
 // TODO validator function
 
-export function useParamsField(
-  config: UseParamsFieldConfigType,
-): UseParamsReturnType {
+export function useNewField(
+  config: UseNewFieldConfigType,
+): UseNewFieldReturnType {
   const [params, setParams] = useSearchParams();
 
   const givenValue = new Field(params.get(config.name));

@@ -1,4 +1,4 @@
-import { useParamsField } from "./use-params-field";
+import { useNewField } from "./use-params-field";
 import type { Paged, PageType } from "@bgord/node";
 
 export type { Paged, PageType } from "@bgord/node";
@@ -33,7 +33,7 @@ export function usePagination(
   const nextPage = meta?.nextPage;
   const lastPage = meta?.lastPage || firstPage;
 
-  const page = useParamsField({
+  const page = useNewField({
     name: "page",
     defaultValue: String(meta?.currentPage ?? firstPage),
   });

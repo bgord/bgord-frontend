@@ -2,15 +2,15 @@ import React from "react";
 import { describe, test, expect } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useSearchParams, MemoryRouter, Routes, Route } from "react-router-dom";
-import { useParamsField } from "../hooks/use-params-field";
+import { useNewField } from "../hooks/use-params-field";
 import { Field } from "../hooks/field";
 
-describe("useParamsField", () => {
+describe("useNewField", () => {
   test("empty default value", () => {
     const name = "search";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useParamsField({ name }), {
+    const hook = renderHook(() => useNewField({ name }), {
       wrapper: createWrapper((value) => {
         params = value;
       }),
@@ -41,7 +41,7 @@ describe("useParamsField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useParamsField({ name, defaultValue }), {
+    const hook = renderHook(() => useNewField({ name, defaultValue }), {
       wrapper: createWrapper((value) => {
         params = value;
       }),
@@ -73,7 +73,7 @@ describe("useParamsField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useParamsField({ name }), {
+    const hook = renderHook(() => useNewField({ name }), {
       wrapper: createWrapper((value) => {
         params = value;
       }),
@@ -125,7 +125,7 @@ describe("useParamsField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useParamsField({ name }), {
+    const hook = renderHook(() => useNewField({ name }), {
       wrapper: createWrapper((value) => {
         params = value;
       }),
@@ -198,7 +198,7 @@ describe("useParamsField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useParamsField({ name, defaultValue }), {
+    const hook = renderHook(() => useNewField({ name, defaultValue }), {
       wrapper: createWrapper((value) => {
         params = value;
       }),
@@ -270,7 +270,7 @@ describe("useParamsField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useParamsField({ name }), {
+    const hook = renderHook(() => useNewField({ name }), {
       wrapper: createWrapper((value) => {
         params = value;
       }),
@@ -342,7 +342,7 @@ describe("useParamsField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useParamsField({ name }), {
+    const hook = renderHook(() => useNewField({ name }), {
       wrapper: createWrapper((value) => {
         params = value;
       }),
@@ -414,7 +414,7 @@ describe("useParamsField", () => {
 
     let params = null as unknown as URLSearchParams;
 
-    const hook = renderHook(() => useParamsField({ name }), {
+    const hook = renderHook(() => useNewField({ name }), {
       wrapper: createWrapper((value) => {
         params = value;
       }),
@@ -486,7 +486,7 @@ describe("useParamsField", () => {
     const givenValue = "abc";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useParamsField({ name }), {
+    const hook = renderHook(() => useNewField({ name }), {
       wrapper: createWrapper(
         (value) => {
           params = value;
@@ -521,7 +521,7 @@ describe("useParamsField", () => {
     const givenValue = "def";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useParamsField({ name, defaultValue }), {
+    const hook = renderHook(() => useNewField({ name, defaultValue }), {
       wrapper: createWrapper(
         (value) => {
           params = value;
@@ -555,7 +555,7 @@ describe("useParamsField", () => {
     const givenValue = "";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useParamsField({ name }), {
+    const hook = renderHook(() => useNewField({ name }), {
       wrapper: createWrapper(
         (value) => {
           params = value;
@@ -588,7 +588,7 @@ describe("useParamsField", () => {
     const name = "search";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useParamsField({ name }), {
+    const hook = renderHook(() => useNewField({ name }), {
       wrapper: createWrapper(
         (value) => {
           params = value;
@@ -624,7 +624,7 @@ describe("useParamsField", () => {
     const givenValue = "def";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useParamsField({ name, defaultValue }), {
+    const hook = renderHook(() => useNewField({ name, defaultValue }), {
       wrapper: createWrapper(
         (value) => {
           params = value;
@@ -679,7 +679,7 @@ describe("useParamsField", () => {
     const givenValue = "def";
 
     let params = null as unknown as URLSearchParams;
-    const hook = renderHook(() => useParamsField({ name, defaultValue }), {
+    const hook = renderHook(() => useNewField({ name, defaultValue }), {
       wrapper: createWrapper(
         (value) => {
           params = value;

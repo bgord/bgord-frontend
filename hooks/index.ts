@@ -39,10 +39,10 @@ export * from "./use-window-dimensions";
 export * from "./use-response-handler";
 
 // VERIFIED ONLY
-import { useParamsField } from "./use-params-field";
+import { useNewField } from "./use-params-field";
 import { Field } from "./field";
 
 export const verified = {
-  useParamsField,
+  useNewField,
   Field: Field,
 };
