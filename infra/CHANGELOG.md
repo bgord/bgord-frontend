@@ -1,5 +1,17 @@
 # Changelog
+- 2024-11-09 22:33 f31335b **step: add tests for use new field local**
+- 2024-11-09 21:58 44852fe **fix: types**
+- 2024-11-09 21:44 ca0acbc **fix: jsdom matchers types**
+- 2024-11-09 21:41 62b78e7 **fix: unify tests**
+- 2024-11-09 21:38 63aff71 **step: add use new field local tests**
+- 2024-11-09 21:28 ef668aa **step: introduce local noop strategy**
+- 2024-11-09 21:27 143ae28 **refactor: introduce use new field strategy**
+- 2024-11-09 21:23 19566d4 **refactor: rename use params field**
+- 2024-11-09 21:22 0003cc7 **refactor: rename use params field**
+- 2024-11-09 21:17 394ee0e **refactor: rename params field to field**
+- 2024-11-09 21:07 639ba05 **step: implement params field tests**
 - 2024-11-04 08:06 9690193 **Merge pull request #172 from bgord/dependabot/npm_and_yarn/cspell-8.15.5**
+- 2024-11-04 07:06 cfa654c **docs: generate CHANGELOG**
 - 2024-11-03 21:15 649f9b9 **refactor: use params field in use pagination**
 - 2024-11-03 21:11 45f067b **fix: verified**
 - 2024-11-03 21:10 427e891 **refactor: remove use-url-filter**
