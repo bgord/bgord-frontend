@@ -15,7 +15,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      },
+      }
     );
 
     const field = hook.result.current;
@@ -52,7 +52,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      },
+      }
     );
 
     const field = hook.result.current;
@@ -85,7 +85,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      },
+      }
     );
 
     const first = hook.result.current;
@@ -136,7 +136,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      },
+      }
     );
 
     const first = hook.result.current;
@@ -211,7 +211,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      },
+      }
     );
 
     const first = hook.result.current;
@@ -280,7 +280,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      },
+      }
     );
 
     const first = hook.result.current;
@@ -349,7 +349,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      },
+      }
     );
 
     const first = hook.result.current;
@@ -418,7 +418,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      },
+      }
     );
 
     const first = hook.result.current;
@@ -488,9 +488,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`],
+          [`/?${name}=${givenValue}`]
         ),
-      },
+      }
     );
 
     const field = hook.result.current;
@@ -529,9 +529,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`],
+          [`/?${name}=${givenValue}`]
         ),
-      },
+      }
     );
 
     const field = hook.result.current;
@@ -564,9 +564,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`],
+          [`/?${name}=${givenValue}`]
         ),
-      },
+      }
     );
 
     const field = hook.result.current;
@@ -598,9 +598,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=`],
+          [`/?${name}=`]
         ),
-      },
+      }
     );
 
     const field = hook.result.current;
@@ -640,9 +640,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`],
+          [`/?${name}=${givenValue}`]
         ),
-      },
+      }
     );
 
     const first = hook.result.current;
@@ -699,9 +699,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}&another=value`],
+          [`/?${name}=${givenValue}&another=value`]
         ),
-      },
+      }
     );
 
     const first = hook.result.current;
@@ -740,10 +740,6 @@ describe("useNewField - params", () => {
     expect(params.get(name)).toEqual(defaultValue);
     expect(params.get("another")).toEqual("value");
   });
-
-  test.todo("input field set");
-  test.todo("input field clear");
-  test.todo("input field handleChange");
 });
 
 function ParamsMonitor(props: { onChange: (value: URLSearchParams) => void }) {
@@ -754,7 +750,7 @@ function ParamsMonitor(props: { onChange: (value: URLSearchParams) => void }) {
 
 function createWrapper(
   onChange: (value: URLSearchParams) => void,
-  initialEntries = ["/"],
+  initialEntries = ["/"]
 ) {
   // @ts-ignore
   return ({ children }) => (

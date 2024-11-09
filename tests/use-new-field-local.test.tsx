@@ -1,5 +1,9 @@
 import { describe, test, expect } from "vitest";
 import { renderHook, act } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { MemoryRouter, Routes, Route } from "react-router-dom";
+
 import { useNewField } from "../hooks/use-new-field";
 import { Field } from "../hooks/field";
 
@@ -7,7 +11,9 @@ describe("useNewField - local", () => {
   test("empty default value", () => {
     const name = "search";
 
-    const hook = renderHook(() => useNewField({ name }));
+    const hook = renderHook(() => useNewField({ name }), {
+      wrapper: createWrapper(),
+    });
 
     const field = hook.result.current;
 
@@ -28,7 +34,9 @@ describe("useNewField - local", () => {
     const name = "search";
     const defaultValue = "abc";
 
-    const hook = renderHook(() => useNewField({ name, defaultValue }));
+    const hook = renderHook(() => useNewField({ name, defaultValue }), {
+      wrapper: createWrapper(),
+    });
 
     const field = hook.result.current;
 
@@ -50,7 +58,9 @@ describe("useNewField - local", () => {
 
     const changedValue = "abc";
 
-    const hook = renderHook(() => useNewField({ name }));
+    const hook = renderHook(() => useNewField({ name }), {
+      wrapper: createWrapper(),
+    });
 
     const first = hook.result.current;
 
@@ -88,7 +98,9 @@ describe("useNewField - local", () => {
 
     const changedValue = "abc";
 
-    const hook = renderHook(() => useNewField({ name }));
+    const hook = renderHook(() => useNewField({ name }), {
+      wrapper: createWrapper(),
+    });
 
     const first = hook.result.current;
 
@@ -143,7 +155,9 @@ describe("useNewField - local", () => {
 
     const changedValue = "def";
 
-    const hook = renderHook(() => useNewField({ name, defaultValue }));
+    const hook = renderHook(() => useNewField({ name, defaultValue }), {
+      wrapper: createWrapper(),
+    });
 
     const first = hook.result.current;
 
@@ -192,170 +206,136 @@ describe("useNewField - local", () => {
     expect(third.empty).toEqual(false);
   });
 
-  test("given value exists - empty default", () => {
-    const name = "search";
+  test("input field props - no default value", async () => {
+    const name = "fullname";
 
-    const givenValue = "abc";
+    function Testcase() {
+      const field = useNewField({ name });
 
-    const hook = renderHook(() => useNewField({ name }));
+      return (
+        <form>
+          <label {...field.label.props}>Fullname</label>
+          <input
+            type="text"
+            value={field.value}
+            onChange={field.handleChange}
+            {...field.input.props}
+          />
+        </form>
+      );
+    }
 
-    const field = hook.result.current;
+    render(<Testcase />, { wrapper: createWrapper() });
 
-    expect(field.defaultValue).toEqual(Field.emptyValue);
-    expect(field.currentValue).toEqual(givenValue);
-    expect(field.value).toEqual(givenValue);
-    expect(typeof field.set).toEqual("function");
-    expect(typeof field.handleChange).toEqual("function");
-    expect(typeof field.clear).toEqual("function");
-    expect(field.label).toEqual({ props: { htmlFor: name } });
-    expect(field.input).toEqual({ props: { id: name, name } });
-    expect(field.changed).toEqual(true);
-    expect(field.unchanged).toEqual(false);
-    expect(field.empty).toEqual(false);
+    expect(screen.getByText("Fullname")).toHaveProperty("htmlFor", name);
+
+    expect(screen.getByLabelText("Fullname")).toHaveProperty("id", name);
+    expect(screen.getByLabelText("Fullname")).toHaveProperty("name", name);
+    expect(screen.getByLabelText("Fullname")).toHaveValue("");
   });
 
-  test("given value exists - non-empty default", () => {
-    const name = "search";
+  test("input field props - default value", async () => {
+    const name = "fullname";
+    const defaultValue = "John";
 
-    const defaultValue = "abc";
-    const givenValue = "def";
+    function Testcase() {
+      const field = useNewField({ name, defaultValue });
 
-    const hook = renderHook(() => useNewField({ name, defaultValue }));
+      return (
+        <form>
+          <label {...field.label.props}>Fullname</label>
+          <input
+            type="text"
+            value={field.value}
+            onChange={field.handleChange}
+            {...field.input.props}
+          />
+        </form>
+      );
+    }
 
-    const field = hook.result.current;
+    render(<Testcase />, { wrapper: createWrapper() });
 
-    expect(field.defaultValue).toEqual(defaultValue);
-    expect(field.currentValue).toEqual(givenValue);
-    expect(field.value).toEqual(givenValue);
-    expect(typeof field.set).toEqual("function");
-    expect(typeof field.handleChange).toEqual("function");
-    expect(typeof field.clear).toEqual("function");
-    expect(field.label).toEqual({ props: { htmlFor: name } });
-    expect(field.input).toEqual({ props: { id: name, name } });
-    expect(field.changed).toEqual(true);
-    expect(field.unchanged).toEqual(false);
-    expect(field.empty).toEqual(false);
+    expect(screen.getByText("Fullname")).toHaveProperty("htmlFor", name);
+
+    expect(screen.getByLabelText("Fullname")).toHaveProperty("id", name);
+    expect(screen.getByLabelText("Fullname")).toHaveProperty("name", name);
+    expect(screen.getByLabelText("Fullname")).toHaveValue(defaultValue);
   });
 
-  test("clears given value empty string - empty default", () => {
-    const name = "search";
+  test("input field set", async () => {
+    const name = "fullname";
 
-    const hook = renderHook(() => useNewField({ name }));
+    function Testcase() {
+      const field = useNewField({ name });
 
-    const field = hook.result.current;
+      return (
+        <form>
+          <label {...field.label.props}>Fullname</label>
+          <input
+            type="text"
+            value={field.value}
+            onChange={field.handleChange}
+            {...field.input.props}
+          />
+        </form>
+      );
+    }
 
-    expect(field.defaultValue).toEqual(Field.emptyValue);
-    expect(field.currentValue).toEqual(Field.emptyValue);
-    expect(field.value).toEqual("");
-    expect(typeof field.set).toEqual("function");
-    expect(typeof field.handleChange).toEqual("function");
-    expect(typeof field.clear).toEqual("function");
-    expect(field.label).toEqual({ props: { htmlFor: name } });
-    expect(field.input).toEqual({ props: { id: name, name } });
-    expect(field.changed).toEqual(false);
-    expect(field.unchanged).toEqual(true);
-    expect(field.empty).toEqual(true);
+    render(<Testcase />, { wrapper: createWrapper() });
+
+    expect(screen.getByLabelText("Fullname")).toHaveValue("");
+
+    await userEvent.type(screen.getByLabelText("Fullname"), "John Doe");
+
+    expect(screen.getByLabelText("Fullname")).toHaveValue("John Doe");
   });
 
-  test("clears given value empty - empty default", () => {
-    const name = "search";
+  test("input field clear", async () => {
+    const user = userEvent.setup();
+    const name = "fullname";
 
-    const hook = renderHook(() => useNewField({ name }));
+    function Testcase() {
+      const field = useNewField({ name });
 
-    const field = hook.result.current;
+      return (
+        <form>
+          <label {...field.label.props}>Fullname</label>
+          <input
+            type="text"
+            value={field.value}
+            onChange={field.handleChange}
+            {...field.input.props}
+          />
 
-    expect(field.defaultValue).toEqual(Field.emptyValue);
-    expect(field.currentValue).toEqual(Field.emptyValue);
-    expect(field.value).toEqual("");
-    expect(typeof field.set).toEqual("function");
-    expect(typeof field.handleChange).toEqual("function");
-    expect(typeof field.clear).toEqual("function");
-    expect(field.label).toEqual({ props: { htmlFor: name } });
-    expect(field.input).toEqual({ props: { id: name, name } });
-    expect(field.changed).toEqual(false);
-    expect(field.unchanged).toEqual(true);
-    expect(field.empty).toEqual(true);
+          <button type="button" onClick={field.clear}>
+            Clear
+          </button>
+        </form>
+      );
+    }
+
+    render(<Testcase />, { wrapper: createWrapper() });
+
+    expect(screen.getByLabelText("Fullname")).toHaveValue("");
+
+    await userEvent.type(screen.getByLabelText("Fullname"), "John Doe");
+
+    expect(screen.getByLabelText("Fullname")).toHaveValue("John Doe");
+
+    await user.click(screen.getByText("Clear"));
+
+    expect(screen.getByLabelText("Fullname")).toHaveValue("");
   });
-
-  test("given value exists - clear restores default value", () => {
-    const name = "search";
-
-    const defaultValue = "abc";
-    const givenValue = "def";
-
-    const hook = renderHook(() => useNewField({ name, defaultValue }));
-
-    const first = hook.result.current;
-
-    expect(first.defaultValue).toEqual(defaultValue);
-    expect(first.currentValue).toEqual(givenValue);
-    expect(first.value).toEqual(givenValue);
-    expect(typeof first.set).toEqual("function");
-    expect(typeof first.handleChange).toEqual("function");
-    expect(typeof first.clear).toEqual("function");
-    expect(first.label).toEqual({ props: { htmlFor: name } });
-    expect(first.input).toEqual({ props: { id: name, name } });
-    expect(first.changed).toEqual(true);
-    expect(first.unchanged).toEqual(false);
-    expect(first.empty).toEqual(false);
-
-    act(() => hook.result.current.clear());
-
-    const second = hook.result.current;
-
-    expect(second.defaultValue).toEqual(defaultValue);
-    expect(second.currentValue).toEqual(defaultValue);
-    expect(second.value).toEqual(defaultValue);
-    expect(typeof second.set).toEqual("function");
-    expect(typeof second.handleChange).toEqual("function");
-    expect(typeof second.clear).toEqual("function");
-    expect(second.label).toEqual({ props: { htmlFor: name } });
-    expect(second.input).toEqual({ props: { id: name, name } });
-    expect(second.changed).toEqual(false);
-    expect(second.unchanged).toEqual(true);
-    expect(second.empty).toEqual(false);
-  });
-
-  test("does not interfere with other params", () => {
-    const name = "search";
-
-    const defaultValue = "abc";
-    const givenValue = "def";
-
-    const hook = renderHook(() => useNewField({ name, defaultValue }));
-
-    const first = hook.result.current;
-
-    expect(first.defaultValue).toEqual(defaultValue);
-    expect(first.currentValue).toEqual(givenValue);
-    expect(first.value).toEqual(givenValue);
-    expect(typeof first.set).toEqual("function");
-    expect(typeof first.handleChange).toEqual("function");
-    expect(typeof first.clear).toEqual("function");
-    expect(first.label).toEqual({ props: { htmlFor: name } });
-    expect(first.input).toEqual({ props: { id: name, name } });
-    expect(first.changed).toEqual(true);
-    expect(first.unchanged).toEqual(false);
-    expect(first.empty).toEqual(false);
-
-    act(() => hook.result.current.clear());
-
-    const second = hook.result.current;
-
-    expect(second.defaultValue).toEqual(defaultValue);
-    expect(second.currentValue).toEqual(defaultValue);
-    expect(second.value).toEqual(defaultValue);
-    expect(typeof second.set).toEqual("function");
-    expect(typeof second.handleChange).toEqual("function");
-    expect(typeof second.clear).toEqual("function");
-    expect(second.label).toEqual({ props: { htmlFor: name } });
-    expect(second.input).toEqual({ props: { id: name, name } });
-    expect(second.changed).toEqual(false);
-    expect(second.unchanged).toEqual(true);
-    expect(second.empty).toEqual(false);
-  });
-
-  test.todo("input field set");
-  test.todo("input field clear");
-  test.todo("input field handleChange");
 });
+
+function createWrapper() {
+  // @ts-ignore
+  return ({ children }) => (
+    <MemoryRouter initialEntries={["/"]}>
+      <Routes>
+        <Route path="/" element={children} />
+      </Routes>
+    </MemoryRouter>
+  );
+}
