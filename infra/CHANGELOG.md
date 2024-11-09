@@ -1,4 +1,5 @@
 # Changelog
+- 2024-11-09 23:18 a3b0b32 **fix: value type**
 - 2024-11-09 23:15 1e000b6 **fix: use state in use new field**
 - 2024-11-09 23:09 3ed24e4 **feature: allow for numbers in field**
 - 2024-11-09 23:06 723da89 **refactor: allow for null as default value**
@@ -6,6 +7,7 @@
 - 2024-11-09 22:47 5f241e8 **refactor: allow null as default value**
 - 2024-11-09 22:36 8e6634c **fix: export verified UseNewFieldStrategyEnum**
 - 2024-11-09 22:33 f31335b **step: add tests for use new field local**
+- 2024-11-09 22:15 52d8b30 **docs: generate CHANGELOG**
 - 2024-11-09 22:09 e747a4d **docs: generate CHANGELOG**
 - 2024-11-09 22:06 6e18b70 **docs: generate CHANGELOG**
 - 2024-11-09 22:03 3fced1a **docs: generate CHANGELOG**
