@@ -8,10 +8,33 @@ import { useNewField } from "../hooks/use-new-field";
 import { Field } from "../hooks/field";
 
 describe("useNewField - local", () => {
-  test("empty default value", () => {
+  test("empty default value - undefined", () => {
     const name = "search";
 
     const hook = renderHook(() => useNewField({ name }), {
+      wrapper: createWrapper(),
+    });
+
+    const field = hook.result.current;
+
+    expect(field.defaultValue).toEqual(Field.emptyValue);
+    expect(field.currentValue).toEqual(Field.emptyValue);
+    expect(field.value).toEqual("");
+    expect(typeof field.set).toEqual("function");
+    expect(typeof field.handleChange).toEqual("function");
+    expect(typeof field.clear).toEqual("function");
+    expect(field.label).toEqual({ props: { htmlFor: name } });
+    expect(field.input).toEqual({ props: { id: name, name } });
+    expect(field.changed).toEqual(false);
+    expect(field.unchanged).toEqual(true);
+    expect(field.empty).toEqual(true);
+  });
+
+  test("empty default value - null", () => {
+    const name = "search";
+    const defaultValue = null;
+
+    const hook = renderHook(() => useNewField({ name, defaultValue }), {
       wrapper: createWrapper(),
     });
 

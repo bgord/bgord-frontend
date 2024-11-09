@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { Field, FieldValueType } from "./field";
+import { Field, FieldValueType, FieldInputValueType } from "./field";
 
 type NewFieldNameType = string;
 
@@ -17,7 +17,7 @@ export enum UseNewFieldStrategyEnum {
 
 type UseNewFieldConfigType = {
   name: NewFieldNameType;
-  defaultValue?: FieldValueType;
+  defaultValue?: FieldInputValueType;
   strategy?: UseNewFieldStrategyEnum;
 };
 
@@ -34,8 +34,6 @@ type UseNewFieldReturnType = {
   unchanged: boolean;
   empty: boolean;
 };
-
-// TODO validator function
 
 export function useNewField(
   config: UseNewFieldConfigType,

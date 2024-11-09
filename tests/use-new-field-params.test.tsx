@@ -5,7 +5,7 @@ import { useNewField, UseNewFieldStrategyEnum } from "../hooks/use-new-field";
 import { Field } from "../hooks/field";
 
 describe("useNewField - params", () => {
-  test("empty default value", () => {
+  test("empty default value - undefined", () => {
     const name = "search";
 
     let params = null as unknown as URLSearchParams;
@@ -15,7 +15,43 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
+    );
+
+    const field = hook.result.current;
+
+    expect(field.defaultValue).toEqual(Field.emptyValue);
+    expect(field.currentValue).toEqual(Field.emptyValue);
+    expect(field.value).toEqual("");
+    expect(typeof field.set).toEqual("function");
+    expect(typeof field.handleChange).toEqual("function");
+    expect(typeof field.clear).toEqual("function");
+    expect(field.label).toEqual({ props: { htmlFor: name } });
+    expect(field.input).toEqual({ props: { id: name, name } });
+    expect(field.changed).toEqual(false);
+    expect(field.unchanged).toEqual(true);
+    expect(field.empty).toEqual(true);
+
+    expect(params.get(name)).toEqual(null);
+  });
+
+  test("empty default value - null", () => {
+    const name = "search";
+    const defaultValue = null;
+
+    let params = null as unknown as URLSearchParams;
+    const hook = renderHook(
+      () =>
+        useNewField({
+          name,
+          defaultValue,
+          strategy: UseNewFieldStrategyEnum.params,
+        }),
+      {
+        wrapper: createWrapper((value) => {
+          params = value;
+        }),
+      },
     );
 
     const field = hook.result.current;
@@ -52,7 +88,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -85,7 +121,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -136,7 +172,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -211,7 +247,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -280,7 +316,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -349,7 +385,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -418,7 +454,7 @@ describe("useNewField - params", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -488,9 +524,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`]
+          [`/?${name}=${givenValue}`],
         ),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -529,9 +565,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`]
+          [`/?${name}=${givenValue}`],
         ),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -564,9 +600,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`]
+          [`/?${name}=${givenValue}`],
         ),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -598,9 +634,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=`]
+          [`/?${name}=`],
         ),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -640,9 +676,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`]
+          [`/?${name}=${givenValue}`],
         ),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -699,9 +735,9 @@ describe("useNewField - params", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}&another=value`]
+          [`/?${name}=${givenValue}&another=value`],
         ),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -750,7 +786,7 @@ function ParamsMonitor(props: { onChange: (value: URLSearchParams) => void }) {
 
 function createWrapper(
   onChange: (value: URLSearchParams) => void,
-  initialEntries = ["/"]
+  initialEntries = ["/"],
 ) {
   // @ts-ignore
   return ({ children }) => (
