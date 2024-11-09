@@ -40,9 +40,9 @@ export * from "./use-response-handler";
 
 // VERIFIED ONLY
 import { useParamsField } from "./use-params-field";
-import { ParamsField } from "./params-field";
+import { Field } from "./field";
 
 export const verified = {
   useParamsField,
-  ParamsField,
+  Field: Field,
 };

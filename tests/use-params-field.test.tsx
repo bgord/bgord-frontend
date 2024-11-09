@@ -3,7 +3,7 @@ import { describe, test, expect } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useSearchParams, MemoryRouter, Routes, Route } from "react-router-dom";
 import { useParamsField } from "../hooks/use-params-field";
-import { ParamsField } from "../hooks/params-field";
+import { Field } from "../hooks/field";
 
 describe("useParamsField", () => {
   test("empty default value", () => {
@@ -18,8 +18,8 @@ describe("useParamsField", () => {
 
     const field = hook.result.current;
 
-    expect(field.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(field.currentValue).toEqual(ParamsField.emptyValue);
+    expect(field.defaultValue).toEqual(Field.emptyValue);
+    expect(field.currentValue).toEqual(Field.emptyValue);
     expect(field.value).toEqual("");
     expect(typeof field.set).toEqual("function");
     expect(typeof field.handleChange).toEqual("function");
@@ -81,8 +81,8 @@ describe("useParamsField", () => {
 
     const first = hook.result.current;
 
-    expect(first.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(first.currentValue).toEqual(ParamsField.emptyValue);
+    expect(first.defaultValue).toEqual(Field.emptyValue);
+    expect(first.currentValue).toEqual(Field.emptyValue);
     expect(first.value).toEqual("");
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
@@ -101,7 +101,7 @@ describe("useParamsField", () => {
 
     const second = hook.result.current;
 
-    expect(second.defaultValue).toEqual(ParamsField.emptyValue);
+    expect(second.defaultValue).toEqual(Field.emptyValue);
     expect(second.currentValue).toEqual(changedValue);
     expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
@@ -133,8 +133,8 @@ describe("useParamsField", () => {
 
     const first = hook.result.current;
 
-    expect(first.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(first.currentValue).toEqual(ParamsField.emptyValue);
+    expect(first.defaultValue).toEqual(Field.emptyValue);
+    expect(first.currentValue).toEqual(Field.emptyValue);
     expect(first.value).toEqual("");
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
@@ -153,7 +153,7 @@ describe("useParamsField", () => {
 
     const second = hook.result.current;
 
-    expect(second.defaultValue).toEqual(ParamsField.emptyValue);
+    expect(second.defaultValue).toEqual(Field.emptyValue);
     expect(second.currentValue).toEqual(changedValue);
     expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
@@ -173,8 +173,8 @@ describe("useParamsField", () => {
 
     const third = hook.result.current;
 
-    expect(third.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(third.currentValue).toEqual(ParamsField.emptyValue);
+    expect(third.defaultValue).toEqual(Field.emptyValue);
+    expect(third.currentValue).toEqual(Field.emptyValue);
     expect(third.value).toEqual("");
     expect(typeof third.set).toEqual("function");
     expect(typeof third.handleChange).toEqual("function");
@@ -278,8 +278,8 @@ describe("useParamsField", () => {
 
     const first = hook.result.current;
 
-    expect(first.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(first.currentValue).toEqual(ParamsField.emptyValue);
+    expect(first.defaultValue).toEqual(Field.emptyValue);
+    expect(first.currentValue).toEqual(Field.emptyValue);
     expect(first.value).toEqual("");
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
@@ -298,7 +298,7 @@ describe("useParamsField", () => {
 
     const second = hook.result.current;
 
-    expect(second.defaultValue).toEqual(ParamsField.emptyValue);
+    expect(second.defaultValue).toEqual(Field.emptyValue);
     expect(second.currentValue).toEqual(changedValue);
     expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
@@ -318,8 +318,8 @@ describe("useParamsField", () => {
 
     const third = hook.result.current;
 
-    expect(third.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(third.currentValue).toEqual(ParamsField.emptyValue);
+    expect(third.defaultValue).toEqual(Field.emptyValue);
+    expect(third.currentValue).toEqual(Field.emptyValue);
     expect(third.value).toEqual("");
     expect(typeof third.set).toEqual("function");
     expect(typeof third.handleChange).toEqual("function");
@@ -350,8 +350,8 @@ describe("useParamsField", () => {
 
     const first = hook.result.current;
 
-    expect(first.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(first.currentValue).toEqual(ParamsField.emptyValue);
+    expect(first.defaultValue).toEqual(Field.emptyValue);
+    expect(first.currentValue).toEqual(Field.emptyValue);
     expect(first.value).toEqual("");
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
@@ -370,7 +370,7 @@ describe("useParamsField", () => {
 
     const second = hook.result.current;
 
-    expect(second.defaultValue).toEqual(ParamsField.emptyValue);
+    expect(second.defaultValue).toEqual(Field.emptyValue);
     expect(second.currentValue).toEqual(changedValue);
     expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
@@ -390,8 +390,8 @@ describe("useParamsField", () => {
 
     const third = hook.result.current;
 
-    expect(third.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(third.currentValue).toEqual(ParamsField.emptyValue);
+    expect(third.defaultValue).toEqual(Field.emptyValue);
+    expect(third.currentValue).toEqual(Field.emptyValue);
     expect(third.value).toEqual("");
     expect(typeof third.set).toEqual("function");
     expect(typeof third.handleChange).toEqual("function");
@@ -422,8 +422,8 @@ describe("useParamsField", () => {
 
     const first = hook.result.current;
 
-    expect(first.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(first.currentValue).toEqual(ParamsField.emptyValue);
+    expect(first.defaultValue).toEqual(Field.emptyValue);
+    expect(first.currentValue).toEqual(Field.emptyValue);
     expect(first.value).toEqual("");
     expect(typeof first.set).toEqual("function");
     expect(typeof first.handleChange).toEqual("function");
@@ -442,7 +442,7 @@ describe("useParamsField", () => {
 
     const second = hook.result.current;
 
-    expect(second.defaultValue).toEqual(ParamsField.emptyValue);
+    expect(second.defaultValue).toEqual(Field.emptyValue);
     expect(second.currentValue).toEqual(changedValue);
     expect(second.value).toEqual(changedValue);
     expect(typeof second.set).toEqual("function");
@@ -463,8 +463,8 @@ describe("useParamsField", () => {
 
     const third = hook.result.current;
 
-    expect(third.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(third.currentValue).toEqual(ParamsField.emptyValue);
+    expect(third.defaultValue).toEqual(Field.emptyValue);
+    expect(third.currentValue).toEqual(Field.emptyValue);
     expect(third.value).toEqual("");
     expect(typeof third.set).toEqual("function");
     expect(typeof third.handleChange).toEqual("function");
@@ -491,13 +491,13 @@ describe("useParamsField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=${givenValue}`]
+        [`/?${name}=${givenValue}`],
       ),
     });
 
     const field = hook.result.current;
 
-    expect(field.defaultValue).toEqual(ParamsField.emptyValue);
+    expect(field.defaultValue).toEqual(Field.emptyValue);
     expect(field.currentValue).toEqual(givenValue);
     expect(field.value).toEqual(givenValue);
     expect(typeof field.set).toEqual("function");
@@ -526,7 +526,7 @@ describe("useParamsField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=${givenValue}`]
+        [`/?${name}=${givenValue}`],
       ),
     });
 
@@ -560,14 +560,14 @@ describe("useParamsField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=${givenValue}`]
+        [`/?${name}=${givenValue}`],
       ),
     });
 
     const field = hook.result.current;
 
-    expect(field.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(field.currentValue).toEqual(ParamsField.emptyValue);
+    expect(field.defaultValue).toEqual(Field.emptyValue);
+    expect(field.currentValue).toEqual(Field.emptyValue);
     expect(field.value).toEqual("");
     expect(typeof field.set).toEqual("function");
     expect(typeof field.handleChange).toEqual("function");
@@ -593,14 +593,14 @@ describe("useParamsField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=`]
+        [`/?${name}=`],
       ),
     });
 
     const field = hook.result.current;
 
-    expect(field.defaultValue).toEqual(ParamsField.emptyValue);
-    expect(field.currentValue).toEqual(ParamsField.emptyValue);
+    expect(field.defaultValue).toEqual(Field.emptyValue);
+    expect(field.currentValue).toEqual(Field.emptyValue);
     expect(field.value).toEqual("");
     expect(typeof field.set).toEqual("function");
     expect(typeof field.handleChange).toEqual("function");
@@ -629,7 +629,7 @@ describe("useParamsField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=${givenValue}`]
+        [`/?${name}=${givenValue}`],
       ),
     });
 
@@ -684,7 +684,7 @@ describe("useParamsField", () => {
         (value) => {
           params = value;
         },
-        [`/?${name}=${givenValue}&another=value`]
+        [`/?${name}=${givenValue}&another=value`],
       ),
     });
 
@@ -742,7 +742,7 @@ function ParamsMonitor(props: { onChange: (value: URLSearchParams) => void }) {
 
 function createWrapper(
   onChange: (value: URLSearchParams) => void,
-  initialEntries = ["/"]
+  initialEntries = ["/"],
 ) {
   return ({ children }) => (
     <MemoryRouter initialEntries={initialEntries}>

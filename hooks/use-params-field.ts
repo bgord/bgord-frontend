@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { ParamsField, ParamsFieldValueType } from "./params-field";
+import { Field, FieldValueType } from "./field";
 
 type ParamsFieldNameType = string;
 
@@ -12,14 +12,14 @@ export type FieldElementType =
 
 type UseParamsFieldConfigType = {
   name: ParamsFieldNameType;
-  defaultValue?: ParamsFieldValueType;
+  defaultValue?: FieldValueType;
 };
 
 type UseParamsReturnType = {
-  defaultValue: ParamsFieldValueType;
-  currentValue: ParamsFieldValueType;
+  defaultValue: FieldValueType;
+  currentValue: FieldValueType;
   value: string;
-  set: (value: ParamsFieldValueType) => void;
+  set: (value: FieldValueType) => void;
   handleChange: (event: React.ChangeEvent<FieldElementType>) => void;
   clear: () => void;
   label: { props: { htmlFor: ParamsFieldNameType } };
@@ -36,20 +36,20 @@ export function useParamsField(
 ): UseParamsReturnType {
   const [params, setParams] = useSearchParams();
 
-  const givenValue = new ParamsField(params.get(config.name));
-  const defaultValue = new ParamsField(config.defaultValue);
+  const givenValue = new Field(params.get(config.name));
+  const defaultValue = new Field(config.defaultValue);
 
   const [currentValue, _setCurrentValue] = useState(
     givenValue.isEmpty() ? defaultValue.get() : givenValue.get(),
   );
 
-  const setCurrentValue = (value: ParamsFieldValueType) => {
-    const candidate = new ParamsField(value);
+  const setCurrentValue = (value: FieldValueType) => {
+    const candidate = new Field(value);
     _setCurrentValue(candidate.get());
   };
 
   useEffect(() => {
-    const current = new ParamsField(currentValue);
+    const current = new Field(currentValue);
 
     if (current.isEmpty()) {
       params.delete(config.name);
@@ -64,15 +64,15 @@ export function useParamsField(
     defaultValue: defaultValue.get(),
     currentValue,
     // To account for React's controlled component's empty value.
-    value: ParamsField.isEmpty(currentValue) ? "" : (currentValue as string),
+    value: Field.isEmpty(currentValue) ? "" : (currentValue as string),
     set: setCurrentValue,
     handleChange: (event: React.ChangeEvent<FieldElementType>) =>
       setCurrentValue(event.currentTarget.value),
     clear: () => setCurrentValue(defaultValue.get()),
     label: { props: { htmlFor: config.name } },
     input: { props: { id: config.name, name: config.name } },
-    changed: !ParamsField.compare(currentValue, defaultValue.get()),
-    unchanged: ParamsField.compare(currentValue, defaultValue.get()),
-    empty: ParamsField.isEmpty(currentValue),
+    changed: !Field.compare(currentValue, defaultValue.get()),
+    unchanged: Field.compare(currentValue, defaultValue.get()),
+    empty: Field.isEmpty(currentValue),
   };
 }
