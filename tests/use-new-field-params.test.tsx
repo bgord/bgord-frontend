@@ -491,7 +491,6 @@ describe("useNewField - params", () => {
 
     expect(params.get(name)).toEqual(changedValue);
 
-    // @ts-expect-error
     act(() => hook.result.current.set(null));
 
     const third = hook.result.current;

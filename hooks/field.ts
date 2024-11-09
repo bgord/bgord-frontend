@@ -1,12 +1,11 @@
-export type FieldValueAllowedTypes = string | undefined;
-export type FieldInputValueType<T extends FieldValueAllowedTypes> = T | null;
+export type FieldValueAllowedTypes = string | undefined | null;
 
 export class Field<T extends FieldValueAllowedTypes> {
   // Chose `undefined` here instead of `null`,
   // because HTML elements accept it as an empty value.
   static readonly emptyValue = undefined;
 
-  static isEmpty(value: FieldInputValueType<FieldValueAllowedTypes>): boolean {
+  static isEmpty(value: FieldValueAllowedTypes): boolean {
     return value === undefined || value === "" || value === null;
   }
 
@@ -22,7 +21,7 @@ export class Field<T extends FieldValueAllowedTypes> {
 
   private readonly value: T = Field.emptyValue as T;
 
-  constructor(value: FieldInputValueType<T>) {
+  constructor(value: FieldValueAllowedTypes) {
     this.value = Field.isEmpty(value) ? (Field.emptyValue as T) : (value as T);
   }
 

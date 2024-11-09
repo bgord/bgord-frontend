@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { Field, FieldValueAllowedTypes, FieldInputValueType } from "./field";
+import { Field, FieldValueAllowedTypes } from "./field";
 
 type NewFieldNameType = string;
 
@@ -17,7 +17,7 @@ export enum UseNewFieldStrategyEnum {
 
 type UseNewFieldConfigType<T extends FieldValueAllowedTypes> = {
   name: NewFieldNameType;
-  defaultValue?: FieldInputValueType<T>;
+  defaultValue?: T;
   strategy?: UseNewFieldStrategyEnum;
 };
 
