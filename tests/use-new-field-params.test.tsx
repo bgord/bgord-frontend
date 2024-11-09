@@ -5,7 +5,7 @@ import { useSearchParams, MemoryRouter, Routes, Route } from "react-router-dom";
 import { useNewField, UseNewFieldStrategyEnum } from "../hooks/use-new-field";
 import { Field } from "../hooks/field";
 
-describe("useNewField", () => {
+describe("useNewField - params", () => {
   test("empty default value", () => {
     const name = "search";
 
@@ -16,7 +16,7 @@ describe("useNewField", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -28,9 +28,7 @@ describe("useNewField", () => {
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
     expect(field.label).toEqual({ props: { htmlFor: name } });
-    expect(field.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(field.input).toEqual({ props: { id: name, name } });
     expect(field.changed).toEqual(false);
     expect(field.unchanged).toEqual(true);
     expect(field.empty).toEqual(true);
@@ -55,7 +53,7 @@ describe("useNewField", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -67,9 +65,7 @@ describe("useNewField", () => {
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
     expect(field.label).toEqual({ props: { htmlFor: name } });
-    expect(field.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(field.input).toEqual({ props: { id: name, name } });
     expect(field.changed).toEqual(false);
     expect(field.unchanged).toEqual(true);
     expect(field.empty).toEqual(false);
@@ -90,7 +86,7 @@ describe("useNewField", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -102,9 +98,7 @@ describe("useNewField", () => {
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
     expect(first.label).toEqual({ props: { htmlFor: name } });
-    expect(first.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(first.input).toEqual({ props: { id: name, name } });
     expect(first.changed).toEqual(false);
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(true);
@@ -122,9 +116,7 @@ describe("useNewField", () => {
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
     expect(second.label).toEqual({ props: { htmlFor: name } });
-    expect(second.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(second.input).toEqual({ props: { id: name, name } });
     expect(second.changed).toEqual(true);
     expect(second.unchanged).toEqual(false);
     expect(second.empty).toEqual(false);
@@ -145,7 +137,7 @@ describe("useNewField", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -157,9 +149,7 @@ describe("useNewField", () => {
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
     expect(first.label).toEqual({ props: { htmlFor: name } });
-    expect(first.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(first.input).toEqual({ props: { id: name, name } });
     expect(first.changed).toEqual(false);
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(true);
@@ -177,9 +167,7 @@ describe("useNewField", () => {
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
     expect(second.label).toEqual({ props: { htmlFor: name } });
-    expect(second.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(second.input).toEqual({ props: { id: name, name } });
     expect(second.changed).toEqual(true);
     expect(second.unchanged).toEqual(false);
     expect(second.empty).toEqual(false);
@@ -197,9 +185,7 @@ describe("useNewField", () => {
     expect(typeof third.handleChange).toEqual("function");
     expect(typeof third.clear).toEqual("function");
     expect(third.label).toEqual({ props: { htmlFor: name } });
-    expect(third.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(third.input).toEqual({ props: { id: name, name } });
     expect(third.changed).toEqual(false);
     expect(third.unchanged).toEqual(true);
     expect(third.empty).toEqual(true);
@@ -226,7 +212,7 @@ describe("useNewField", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -238,9 +224,7 @@ describe("useNewField", () => {
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
     expect(first.label).toEqual({ props: { htmlFor: name } });
-    expect(first.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(first.input).toEqual({ props: { id: name, name } });
     expect(first.changed).toEqual(false);
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(false);
@@ -258,9 +242,7 @@ describe("useNewField", () => {
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
     expect(second.label).toEqual({ props: { htmlFor: name } });
-    expect(second.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(second.input).toEqual({ props: { id: name, name } });
     expect(second.changed).toEqual(true);
     expect(second.unchanged).toEqual(false);
     expect(second.empty).toEqual(false);
@@ -278,9 +260,7 @@ describe("useNewField", () => {
     expect(typeof third.handleChange).toEqual("function");
     expect(typeof third.clear).toEqual("function");
     expect(third.label).toEqual({ props: { htmlFor: name } });
-    expect(third.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(third.input).toEqual({ props: { id: name, name } });
     expect(third.changed).toEqual(false);
     expect(third.unchanged).toEqual(true);
     expect(third.empty).toEqual(false);
@@ -301,7 +281,7 @@ describe("useNewField", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -313,9 +293,7 @@ describe("useNewField", () => {
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
     expect(first.label).toEqual({ props: { htmlFor: name } });
-    expect(first.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(first.input).toEqual({ props: { id: name, name } });
     expect(first.changed).toEqual(false);
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(true);
@@ -333,9 +311,7 @@ describe("useNewField", () => {
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
     expect(second.label).toEqual({ props: { htmlFor: name } });
-    expect(second.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(second.input).toEqual({ props: { id: name, name } });
     expect(second.changed).toEqual(true);
     expect(second.unchanged).toEqual(false);
     expect(second.empty).toEqual(false);
@@ -353,9 +329,7 @@ describe("useNewField", () => {
     expect(typeof third.handleChange).toEqual("function");
     expect(typeof third.clear).toEqual("function");
     expect(third.label).toEqual({ props: { htmlFor: name } });
-    expect(third.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(third.input).toEqual({ props: { id: name, name } });
     expect(third.changed).toEqual(false);
     expect(third.unchanged).toEqual(true);
     expect(third.empty).toEqual(true);
@@ -376,7 +350,7 @@ describe("useNewField", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -388,9 +362,7 @@ describe("useNewField", () => {
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
     expect(first.label).toEqual({ props: { htmlFor: name } });
-    expect(first.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(first.input).toEqual({ props: { id: name, name } });
     expect(first.changed).toEqual(false);
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(true);
@@ -408,9 +380,7 @@ describe("useNewField", () => {
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
     expect(second.label).toEqual({ props: { htmlFor: name } });
-    expect(second.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(second.input).toEqual({ props: { id: name, name } });
     expect(second.changed).toEqual(true);
     expect(second.unchanged).toEqual(false);
     expect(second.empty).toEqual(false);
@@ -428,9 +398,7 @@ describe("useNewField", () => {
     expect(typeof third.handleChange).toEqual("function");
     expect(typeof third.clear).toEqual("function");
     expect(third.label).toEqual({ props: { htmlFor: name } });
-    expect(third.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(third.input).toEqual({ props: { id: name, name } });
     expect(third.changed).toEqual(false);
     expect(third.unchanged).toEqual(true);
     expect(third.empty).toEqual(true);
@@ -451,7 +419,7 @@ describe("useNewField", () => {
         wrapper: createWrapper((value) => {
           params = value;
         }),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -463,9 +431,7 @@ describe("useNewField", () => {
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
     expect(first.label).toEqual({ props: { htmlFor: name } });
-    expect(first.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(first.input).toEqual({ props: { id: name, name } });
     expect(first.changed).toEqual(false);
     expect(first.unchanged).toEqual(true);
     expect(first.empty).toEqual(true);
@@ -483,9 +449,7 @@ describe("useNewField", () => {
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
     expect(second.label).toEqual({ props: { htmlFor: name } });
-    expect(second.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(second.input).toEqual({ props: { id: name, name } });
     expect(second.changed).toEqual(true);
     expect(second.unchanged).toEqual(false);
     expect(second.empty).toEqual(false);
@@ -504,9 +468,7 @@ describe("useNewField", () => {
     expect(typeof third.handleChange).toEqual("function");
     expect(typeof third.clear).toEqual("function");
     expect(third.label).toEqual({ props: { htmlFor: name } });
-    expect(third.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(third.input).toEqual({ props: { id: name, name } });
     expect(third.changed).toEqual(false);
     expect(third.unchanged).toEqual(true);
     expect(third.empty).toEqual(true);
@@ -527,9 +489,9 @@ describe("useNewField", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`]
+          [`/?${name}=${givenValue}`],
         ),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -541,9 +503,7 @@ describe("useNewField", () => {
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
     expect(field.label).toEqual({ props: { htmlFor: name } });
-    expect(field.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(field.input).toEqual({ props: { id: name, name } });
     expect(field.changed).toEqual(true);
     expect(field.unchanged).toEqual(false);
     expect(field.empty).toEqual(false);
@@ -570,9 +530,9 @@ describe("useNewField", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`]
+          [`/?${name}=${givenValue}`],
         ),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -584,9 +544,7 @@ describe("useNewField", () => {
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
     expect(field.label).toEqual({ props: { htmlFor: name } });
-    expect(field.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(field.input).toEqual({ props: { id: name, name } });
     expect(field.changed).toEqual(true);
     expect(field.unchanged).toEqual(false);
     expect(field.empty).toEqual(false);
@@ -607,9 +565,9 @@ describe("useNewField", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`]
+          [`/?${name}=${givenValue}`],
         ),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -621,9 +579,7 @@ describe("useNewField", () => {
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
     expect(field.label).toEqual({ props: { htmlFor: name } });
-    expect(field.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(field.input).toEqual({ props: { id: name, name } });
     expect(field.changed).toEqual(false);
     expect(field.unchanged).toEqual(true);
     expect(field.empty).toEqual(true);
@@ -643,9 +599,9 @@ describe("useNewField", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=`]
+          [`/?${name}=`],
         ),
-      }
+      },
     );
 
     const field = hook.result.current;
@@ -657,9 +613,7 @@ describe("useNewField", () => {
     expect(typeof field.handleChange).toEqual("function");
     expect(typeof field.clear).toEqual("function");
     expect(field.label).toEqual({ props: { htmlFor: name } });
-    expect(field.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(field.input).toEqual({ props: { id: name, name } });
     expect(field.changed).toEqual(false);
     expect(field.unchanged).toEqual(true);
     expect(field.empty).toEqual(true);
@@ -687,9 +641,9 @@ describe("useNewField", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}`]
+          [`/?${name}=${givenValue}`],
         ),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -701,9 +655,7 @@ describe("useNewField", () => {
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
     expect(first.label).toEqual({ props: { htmlFor: name } });
-    expect(first.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(first.input).toEqual({ props: { id: name, name } });
     expect(first.changed).toEqual(true);
     expect(first.unchanged).toEqual(false);
     expect(first.empty).toEqual(false);
@@ -721,9 +673,7 @@ describe("useNewField", () => {
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
     expect(second.label).toEqual({ props: { htmlFor: name } });
-    expect(second.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(second.input).toEqual({ props: { id: name, name } });
     expect(second.changed).toEqual(false);
     expect(second.unchanged).toEqual(true);
     expect(second.empty).toEqual(false);
@@ -750,9 +700,9 @@ describe("useNewField", () => {
           (value) => {
             params = value;
           },
-          [`/?${name}=${givenValue}&another=value`]
+          [`/?${name}=${givenValue}&another=value`],
         ),
-      }
+      },
     );
 
     const first = hook.result.current;
@@ -764,9 +714,7 @@ describe("useNewField", () => {
     expect(typeof first.handleChange).toEqual("function");
     expect(typeof first.clear).toEqual("function");
     expect(first.label).toEqual({ props: { htmlFor: name } });
-    expect(first.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(first.input).toEqual({ props: { id: name, name } });
     expect(first.changed).toEqual(true);
     expect(first.unchanged).toEqual(false);
     expect(first.empty).toEqual(false);
@@ -785,9 +733,7 @@ describe("useNewField", () => {
     expect(typeof second.handleChange).toEqual("function");
     expect(typeof second.clear).toEqual("function");
     expect(second.label).toEqual({ props: { htmlFor: name } });
-    expect(second.input).toEqual({
-      props: { id: name, name },
-    });
+    expect(second.input).toEqual({ props: { id: name, name } });
     expect(second.changed).toEqual(false);
     expect(second.unchanged).toEqual(true);
     expect(second.empty).toEqual(false);
@@ -809,7 +755,7 @@ function ParamsMonitor(props: { onChange: (value: URLSearchParams) => void }) {
 
 function createWrapper(
   onChange: (value: URLSearchParams) => void,
-  initialEntries = ["/"]
+  initialEntries = ["/"],
 ) {
   return ({ children }) => (
     <MemoryRouter initialEntries={initialEntries}>
