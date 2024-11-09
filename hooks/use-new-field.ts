@@ -12,12 +12,13 @@ export type FieldElementType =
 
 export enum UseNewFieldStrategyEnum {
   params = "params",
+  local = "local",
 }
 
 type UseNewFieldConfigType = {
   name: NewFieldNameType;
   defaultValue?: FieldValueType;
-  strategy: UseNewFieldStrategyEnum;
+  strategy?: UseNewFieldStrategyEnum;
 };
 
 type UseNewFieldReturnType = {
@@ -37,15 +38,17 @@ type UseNewFieldReturnType = {
 // TODO validator function
 
 export function useNewField(
-  config: UseNewFieldConfigType
+  config: UseNewFieldConfigType,
 ): UseNewFieldReturnType {
+  const strategy = config.strategy ?? UseNewFieldStrategyEnum.local;
+
   const [params, setParams] = useSearchParams();
 
   const givenValue = new Field(params.get(config.name));
   const defaultValue = new Field(config.defaultValue);
 
   const [currentValue, _setCurrentValue] = useState(
-    givenValue.isEmpty() ? defaultValue.get() : givenValue.get()
+    givenValue.isEmpty() ? defaultValue.get() : givenValue.get(),
   );
 
   const setCurrentValue = (value: FieldValueType) => {
@@ -56,7 +59,7 @@ export function useNewField(
   useEffect(() => {
     const current = new Field(currentValue);
 
-    if (config.strategy === UseNewFieldStrategyEnum.params) {
+    if (strategy === UseNewFieldStrategyEnum.params) {
       if (current.isEmpty()) {
         params.delete(config.name);
         setParams(params);
@@ -64,6 +67,9 @@ export function useNewField(
         params.set(config.name, current.get() as string);
         setParams(params);
       }
+    }
+
+    if (strategy === UseNewFieldStrategyEnum.local) {
     }
   }, [currentValue, params, setParams, config.name]);
 
