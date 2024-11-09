@@ -1,4 +1,4 @@
-export type FieldValueAllowedTypes = string | undefined | null;
+export type FieldValueAllowedTypes = string | number | undefined | null;
 
 export class Field<T extends FieldValueAllowedTypes> {
   // Chose `undefined` here instead of `null`,
