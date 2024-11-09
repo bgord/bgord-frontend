@@ -9,5 +9,5 @@
     "incremental": true,
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "exclude": ["bgord-scripts", "tests", "vite.config.ts"],
+  "exclude": ["bgord-scripts", "vite.config.ts"]
 }

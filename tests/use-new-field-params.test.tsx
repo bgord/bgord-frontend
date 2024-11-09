@@ -1,4 +1,3 @@
-import React from "react";
 import { describe, test, expect } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useSearchParams, MemoryRouter, Routes, Route } from "react-router-dom";
@@ -757,6 +756,7 @@ function createWrapper(
   onChange: (value: URLSearchParams) => void,
   initialEntries = ["/"],
 ) {
+  // @ts-ignore
   return ({ children }) => (
     <MemoryRouter initialEntries={initialEntries}>
       <Routes>
