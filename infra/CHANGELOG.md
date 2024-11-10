@@ -1,4 +1,7 @@
 # Changelog
+- 2024-11-10 22:15 61158b9 **fix: linter**
+- 2024-11-10 22:07 01d0138 **fix: add missing strategy in hook deps array**
+- 2024-11-10 21:05 4af1e8f **docs: generate CHANGELOG**
 - 2024-11-10 20:30 846cc9d **refactor: lint error use response handler**
 - 2024-11-10 20:25 adf2a0f **refactor: lint error use response handler**
 - 2024-11-10 20:21 52452b3 **step: bump bgord/scripts**
