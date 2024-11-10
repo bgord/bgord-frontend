@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import * as rrd from "react-router-dom";
 
 export type ResponseType =
@@ -33,10 +33,15 @@ export function withTimeZoneOffset(headers: Headers): Headers {
 export function useResponseHandler(
   intent: string,
   key: string | string[],
-  config?: { success?: () => void; error?: () => void },
+  config?: { success?: () => void; error?: () => void }
 ) {
   const response = rrd.useActionData() as ResponseType;
   const lastHandledKey = useRef<string | null>(null);
+
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
+  const onSuccess = useCallback(() => config?.success?.(), []);
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
+  const onError = useCallback(() => config?.error?.(), []);
 
   // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => {
@@ -48,7 +53,7 @@ export function useResponseHandler(
       return;
     }
     if (response.result === "success") {
-      config?.success?.();
+      onSuccess();
       lastHandledKey.current = response.id;
 
       setTimeout(() => {
@@ -56,7 +61,7 @@ export function useResponseHandler(
       }, 500);
     }
     if (response.result === "error") {
-      config?.error?.();
+      onError();
       lastHandledKey.current = response.id;
 
       setTimeout(() => {
@@ -70,8 +75,8 @@ export function useResponseHandler(
     response?.id,
     intent,
     key,
-    config?.success,
-    config?.error,
+    onSuccess,
+    onError,
   ]);
 }
 
