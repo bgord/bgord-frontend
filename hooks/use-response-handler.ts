@@ -38,6 +38,7 @@ export function useResponseHandler(
   const response = rrd.useActionData() as ResponseType;
   const lastHandledKey = useRef<string | null>(null);
 
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => {
     if (
       response?.intent !== intent ||
@@ -64,10 +65,13 @@ export function useResponseHandler(
     }
   }, [
     response?.result,
+    response?.intent,
     response?.timestamp,
+    response?.id,
     intent,
     key,
-    lastHandledKey.current,
+    config?.success,
+    config?.error,
   ]);
 }
 
