@@ -94,6 +94,7 @@ export function useClientFilter<T = string>(
     return query.equals(value);
   }
 
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(
     () => onUpdate(query.get(), previousQuery?.get()),
     [previousQuery?.get(), query.get()],

@@ -54,6 +54,7 @@ export function useUrlField<T>(
   const [params, setParams] = useSearchParams();
   const field = useField(name, defaultValue);
 
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => {
     const query = new QueryValue(field.value as QueryValueType);
 
