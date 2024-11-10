@@ -27,9 +27,7 @@ export function useLanguageSelector(
       const previous = new QueryValue(_previous);
 
       if (
-        !current.isEmpty() &&
-        !previous.isEmpty() &&
-        !previous.equals(current)
+        !(current.isEmpty() || previous.isEmpty() || previous.equals(current))
       ) {
         Cookies.set("accept-language", String(current.get()));
         safeWindow.document.location.reload();

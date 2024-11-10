@@ -22,6 +22,7 @@ type UseNewFieldConfigType<T extends FieldValueAllowedTypes> = {
 };
 
 type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
+  strategy: UseNewFieldStrategyEnum;
   defaultValue: T;
   currentValue: T;
   value: NonNullable<T>;
@@ -72,10 +73,13 @@ export function useNewField<T extends FieldValueAllowedTypes>(
   }, [currentValue, params, setParams, config.name, strategy]);
 
   return {
+    strategy,
     defaultValue: defaultValue.get(),
     currentValue,
     // To account for React's controlled component's empty value.
-    value: Field.isEmpty(currentValue) ? ("" as NonNullable<T>) : (currentValue as NonNullable<T>),
+    value: Field.isEmpty(currentValue)
+      ? ("" as NonNullable<T>)
+      : (currentValue as NonNullable<T>),
     set: setCurrentValue,
     handleChange: (event: React.ChangeEvent<FieldElementType>) =>
       setCurrentValue(event.currentTarget.value as T),
@@ -86,4 +90,30 @@ export function useNewField<T extends FieldValueAllowedTypes>(
     unchanged: Field.compare(currentValue, defaultValue.get()),
     empty: Field.isEmpty(currentValue),
   };
+}
+
+export class Fields {
+  static allUnchanged(fields: { unchanged: boolean }[]): boolean {
+    return fields.every((field) => field.unchanged);
+  }
+
+  static anyUnchanged(fields: { unchanged: boolean }[]): boolean {
+    return fields.some((field) => field.unchanged);
+  }
+
+  static anyChanged(fields: { changed: boolean }[]): boolean {
+    return fields.some((field) => field.changed);
+  }
+}
+
+export class LocalFields {
+  static clearAll(
+    fields: { clear: VoidFunction; strategy: UseNewFieldStrategyEnum.local }[],
+  ) {
+    return () => {
+      for (const field of fields) {
+        field.clear();
+      }
+    };
+  }
 }

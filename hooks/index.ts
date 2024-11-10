@@ -39,11 +39,18 @@ export * from "./use-window-dimensions";
 export * from "./use-response-handler";
 
 // VERIFIED ONLY
-import { useNewField, UseNewFieldStrategyEnum } from "./use-new-field";
+import {
+  useNewField,
+  UseNewFieldStrategyEnum,
+  LocalFields,
+  Fields,
+} from "./use-new-field";
 import { Field } from "./field";
 
 export const verified = {
   useNewField,
   Field: Field,
   UseNewFieldStrategyEnum,
+  LocalFields,
+  Fields,
 };
