@@ -1,6 +1,9 @@
 # Changelog
+- 2024-11-10 20:25 adf2a0f **refactor: lint error use response handler**
+- 2024-11-10 20:21 52452b3 **step: bump bgord/scripts**
 - 2024-11-10 19:14 f6fffa5 **refactor: try fixing use response handler with constant keys**
 - 2024-11-10 18:27 31c7fde **fix: value type in use new field**
+- 2024-11-10 18:14 0b4bda1 **docs: generate CHANGELOG**
 - 2024-11-10 17:27 af0daef **docs: generate CHANGELOG**
 - 2024-11-09 23:18 a3b0b32 **fix: value type**
 - 2024-11-09 23:15 1e000b6 **fix: use state in use new field**
