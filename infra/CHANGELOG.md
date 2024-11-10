@@ -1,7 +1,9 @@
 # Changelog
+- 2024-11-10 22:31 03d0647 **refactor: disable strategy check in local fields clear for now**
 - 2024-11-10 22:28 45aecf0 **refactor: move fields**
 - 2024-11-10 22:15 61158b9 **fix: linter**
 - 2024-11-10 22:07 01d0138 **fix: add missing strategy in hook deps array**
+- 2024-11-10 21:29 4bc26b1 **docs: generate CHANGELOG**
 - 2024-11-10 21:15 3b436bf **docs: generate CHANGELOG**
 - 2024-11-10 21:05 4af1e8f **docs: generate CHANGELOG**
 - 2024-11-10 20:30 846cc9d **refactor: lint error use response handler**
