@@ -6,6 +6,7 @@ export type ResponseType =
       result: "success" | "error";
       intent: string;
       id: string;
+      timestamp: number;
     }
   | undefined;
 
@@ -31,32 +32,48 @@ export function withTimeZoneOffset(headers: Headers): Headers {
 
 export function useResponseHandler(
   intent: string,
-  key: string,
-  config?: { success?: () => void; error?: () => void }
+  key: string | string[],
+  config?: { success?: () => void; error?: () => void },
 ) {
   const response = rrd.useActionData() as ResponseType;
-  const lastHandledId = useRef<string | null>(null);
+  const lastHandledKey = useRef<string | null>(null);
 
   useEffect(() => {
     if (
       response?.intent !== intent ||
-      response.id === lastHandledId.current ||
+      response.id === lastHandledKey.current ||
       response.id !== key
     ) {
       return;
     }
     if (response.result === "success") {
       config?.success?.();
-      lastHandledId.current = response.id;
+      lastHandledKey.current = response.id;
+
+      setTimeout(() => {
+        lastHandledKey.current = null;
+      }, 500);
     }
     if (response.result === "error") {
       config?.error?.();
-      lastHandledId.current = response.id;
+      lastHandledKey.current = response.id;
+
+      setTimeout(() => {
+        lastHandledKey.current = null;
+      }, 500);
     }
-  }, [response?.result, intent, key]);
+  }, [
+    response?.result,
+    response?.timestamp,
+    intent,
+    key,
+    lastHandledKey.current,
+  ]);
 }
 
 export function respond(response: Response, intent: string, key: string) {
-  if (response.ok) return { result: "success", intent, id: key };
-  return { result: "error", intent, id: key };
+  const timestamp = Date.now();
+
+  if (response.ok) return { result: "success", intent, id: key, timestamp };
+  return { result: "error", intent, id: key, timestamp };
 }
