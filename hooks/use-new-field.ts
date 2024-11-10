@@ -69,7 +69,7 @@ export function useNewField<T extends FieldValueAllowedTypes>(
 
     if (strategy === UseNewFieldStrategyEnum.local) {
     }
-  }, [currentValue, params, setParams, config.name]);
+  }, [currentValue, params, setParams, config.name, strategy]);
 
   return {
     defaultValue: defaultValue.get(),
