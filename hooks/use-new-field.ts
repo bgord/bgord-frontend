@@ -24,7 +24,7 @@ type UseNewFieldConfigType<T extends FieldValueAllowedTypes> = {
 type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
   defaultValue: T;
   currentValue: T;
-  value: T;
+  value: NonNullable<T>;
   set: (value: T) => void;
   handleChange: (event: React.ChangeEvent<FieldElementType>) => void;
   clear: () => void;
@@ -75,7 +75,7 @@ export function useNewField<T extends FieldValueAllowedTypes>(
     defaultValue: defaultValue.get(),
     currentValue,
     // To account for React's controlled component's empty value.
-    value: Field.isEmpty(currentValue) ? ("" as T) : (currentValue as T),
+    value: Field.isEmpty(currentValue) ? ("" as NonNullable<T>) : (currentValue as NonNullable<T>),
     set: setCurrentValue,
     handleChange: (event: React.ChangeEvent<FieldElementType>) =>
       setCurrentValue(event.currentTarget.value as T),
