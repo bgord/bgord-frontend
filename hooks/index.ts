@@ -56,3 +56,5 @@ export const verified = {
   Fields,
   useNewClientSearch,
 };
+
+export { UseNewClientSearchReturnType } from "./use-new-client-search";
