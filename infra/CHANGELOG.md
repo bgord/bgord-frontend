@@ -1,8 +1,10 @@
 # Changelog
+- 2024-11-11 15:03 268eeba **fix: export UseNewClientSearchReturnType**
 - 2024-11-11 14:59 ff4744c **refactor: export UseNewClientSearchReturnType**
 - 2024-11-11 14:57 b29f3ee **refactor: rewrite use client search**
 - 2024-11-11 14:34 9086830 **refactor: addWeakEtagRevision**
 - 2024-11-11 14:29 de97395 **refactor: improve filter url**
+- 2024-11-11 13:59 e6a35ea **docs: generate CHANGELOG**
 - 2024-11-11 13:57 b8e811a **docs: generate CHANGELOG**
 - 2024-11-11 13:34 a160637 **docs: generate CHANGELOG**
 - 2024-11-11 13:30 d433968 **docs: generate CHANGELOG**
