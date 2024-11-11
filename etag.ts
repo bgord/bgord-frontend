@@ -13,3 +13,7 @@ export class WeakETag {
     return { "if-match": `W/${revision}` };
   }
 }
+
+export function addWeakEtagRevision(revision: Schema.RevisionType) {
+  return WeakETag.fromRevision(revision)["if-match"];
+}
