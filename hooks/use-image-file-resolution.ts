@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { useField } from "./use-field";
+import { useNewField } from "./use-new-field";
 import { UseFileReturnType, UseFileState } from "./use-file";
 import {
   getImageResolution,
@@ -9,12 +9,17 @@ import {
 } from "../get-image-resolution";
 
 export function useImageFileResolution(
-  file: UseFileReturnType
+  file: UseFileReturnType,
 ): ImageResolutionType {
-  const resolution = useField<ImageResolutionType>(
-    "resolution",
-    emptyImageResolution
-  );
+  const width = useNewField<ImageResolutionType["width"]>({
+    name: "width",
+    defaultValue: emptyImageResolution.width,
+  });
+
+  const height = useNewField<ImageResolutionType["height"]>({
+    name: "height",
+    defaultValue: emptyImageResolution.height,
+  });
 
   // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => {
@@ -23,23 +28,29 @@ export function useImageFileResolution(
         try {
           const result = await getImageResolution(file.preview);
 
-          return resolution.set(result);
+          width.set(result.width);
+          height.set(result.height);
+          return;
         } catch (error) {
-          return resolution.clear();
+          width.clear();
+          height.clear();
+          return;
         }
       }
 
       if (
         [UseFileState.error, UseFileState.idle].includes(file.state) &&
-        resolution.value.width !== null &&
-        resolution.value.height !== null
+        width.currentValue !== null &&
+        width.currentValue !== null
       ) {
-        resolution.clear();
+        width.clear();
+        height.clear();
+        return;
       }
     }
 
     execute();
   }, [file.state, file.data?.name]);
 
-  return resolution.value;
+  return { width: width.value, height: height.value };
 }

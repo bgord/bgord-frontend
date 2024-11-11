@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { useWindowDimensions } from "../hooks/use-window-dimensions";
 import { useToggle } from "../hooks/use-toggle";
-import { useField } from "../hooks/use-field";
+import { useNewField } from "../hooks/use-new-field";
 import { exec } from "../exec";
 
 function Dimensions(props: JSX.IntrinsicElements["div"]) {
@@ -17,7 +17,10 @@ function Dimensions(props: JSX.IntrinsicElements["div"]) {
 
 function Truncates() {
   const enabled = useToggle();
-  const length = useField("length", 128);
+  const length = useNewField<number>({
+    name: "length",
+    defaultValue: 128,
+  });
 
   const [cache, setCache] = useState(new Map());
 

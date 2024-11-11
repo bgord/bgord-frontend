@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 
+import { useNewField } from "./use-new-field";
 import { DurationFormatter } from "../durations";
-import { useField } from "./use-field";
 
 export type UseAudioSrcType = string;
 
@@ -87,9 +87,18 @@ export function useAudio(src: UseAudioSrcType): UseAudioReturnType {
 
   const ref = useRef<HTMLAudioElement | null>(null);
 
-  const duration = useField<AudioDurationType>("duration", 0);
-  const currentTime = useField<AudioCurrentTimeType>("currentTime", 0);
-  const volume = useField<AudioVolumeType>("volume", AUDIO_DEFAULT_VOLUME);
+  const duration = useNewField<AudioDurationType>({
+    name: "duration",
+    defaultValue: 0,
+  });
+  const currentTime = useNewField<AudioCurrentTimeType>({
+    name: "currentTime",
+    defaultValue: 0,
+  });
+  const volume = useNewField<AudioVolumeType>({
+    name: "volume",
+    defaultValue: AUDIO_DEFAULT_VOLUME,
+  });
 
   const muted = volume.value === 0;
 

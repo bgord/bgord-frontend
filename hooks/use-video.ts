@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-import { useField } from "./use-field";
+import { useNewField } from "./use-new-field";
 import { DurationFormatter } from "../durations";
 
 export type UseVideoSrcType = string;
@@ -88,9 +88,18 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
 
   const ref = useRef<HTMLVideoElement | null>(null);
 
-  const duration = useField<VideoDurationType>("duration", 0);
-  const currentTime = useField<VideoCurrentTimeType>("currentTime", 0);
-  const volume = useField<VideoVolumeType>("volume", VIDEO_DEFAULT_VOLUME);
+  const duration = useNewField<VideoDurationType>({
+    name: "duration",
+    defaultValue: 0,
+  });
+  const currentTime = useNewField<VideoCurrentTimeType>({
+    name: "currentTime",
+    defaultValue: 0,
+  });
+  const volume = useNewField<VideoVolumeType>({
+    name: "volume",
+    defaultValue: VIDEO_DEFAULT_VOLUME,
+  });
 
   const muted = volume.value === 0;
 
