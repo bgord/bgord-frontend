@@ -1,5 +1,7 @@
 # Changelog
+- 2024-11-11 14:34 9086830 **refactor: addWeakEtagRevision**
 - 2024-11-11 14:29 de97395 **refactor: improve filter url**
+- 2024-11-11 13:30 d433968 **docs: generate CHANGELOG**
 - 2024-11-10 22:31 03d0647 **refactor: disable strategy check in local fields clear for now**
 - 2024-11-10 22:28 45aecf0 **refactor: move fields**
 - 2024-11-10 22:15 61158b9 **fix: linter**
