@@ -45,6 +45,7 @@ import {
   LocalFields,
   Fields,
 } from "./use-new-field";
+import { useNewClientSearch } from "./use-new-client-search";
 import { Field } from "./field";
 
 export const verified = {
@@ -53,4 +54,5 @@ export const verified = {
   UseNewFieldStrategyEnum,
   LocalFields,
   Fields,
+  useNewClientSearch,
 };

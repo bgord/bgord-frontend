@@ -15,13 +15,13 @@ export enum UseNewFieldStrategyEnum {
   local = "local",
 }
 
-type UseNewFieldConfigType<T extends FieldValueAllowedTypes> = {
+export type UseNewFieldConfigType<T extends FieldValueAllowedTypes> = {
   name: NewFieldNameType;
   defaultValue?: T;
   strategy?: UseNewFieldStrategyEnum;
 };
 
-type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
+export type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
   strategy: UseNewFieldStrategyEnum;
   defaultValue: T;
   currentValue: T;
@@ -37,7 +37,7 @@ type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
 };
 
 export function useNewField<T extends FieldValueAllowedTypes>(
-  config: UseNewFieldConfigType<T>
+  config: UseNewFieldConfigType<T>,
 ): UseNewFieldReturnType<T> {
   const strategy = config.strategy ?? UseNewFieldStrategyEnum.local;
 
@@ -47,7 +47,7 @@ export function useNewField<T extends FieldValueAllowedTypes>(
   const defaultValue = new Field<T>(config.defaultValue as T);
 
   const [currentValue, _setCurrentValue] = useState<T>(
-    givenValue.isEmpty() ? defaultValue.get() : givenValue.get()
+    givenValue.isEmpty() ? defaultValue.get() : givenValue.get(),
   );
 
   const setCurrentValue = (value: T) => {
@@ -110,7 +110,7 @@ export class LocalFields {
   static clearAll(
     // TODO
     // fields: { clear: VoidFunction; strategy: UseNewFieldStrategyEnum.local }[],
-    fields: { clear: VoidFunction }[]
+    fields: { clear: VoidFunction }[],
   ) {
     return () => {
       for (const field of fields) {
