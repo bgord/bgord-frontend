@@ -2,7 +2,6 @@ export * from "./use-audio";
 export * from "./use-autofocus";
 export * from "./use-breakpoint";
 export * from "./use-click-outside";
-export * from "./use-client-filter";
 export * from "./use-client-sort";
 export * from "./use-current-timestamp";
 export * from "./use-debounce";
@@ -44,6 +43,7 @@ import {
   LocalFields,
   Fields,
 } from "./use-new-field";
+import { useNewClientFilter } from "./use-new-client-filter";
 import { useNewClientSearch } from "./use-new-client-search";
 import { Field } from "./field";
 
@@ -54,6 +54,7 @@ export const verified = {
   LocalFields,
   Fields,
   useNewClientSearch,
+  useNewClientFilter,
 };
 
 export type { UseNewClientSearchReturnType } from "./use-new-client-search";

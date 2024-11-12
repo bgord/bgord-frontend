@@ -5,22 +5,25 @@ import {
 } from "./use-new-field";
 import { FieldValueAllowedTypes, Field } from "./field";
 
-export type UseClientFilterQueryType = string | undefined;
+export type UseNewClientFilterQueryType = string | undefined;
 
-export type UseClientFilterConfigType<T extends FieldValueAllowedTypes> =
+export type UseNewClientFilterConfigType<T extends FieldValueAllowedTypes> =
   UseNewFieldConfigType<T> & {
-    enum: { [key: string]: UseClientFilterQueryType };
+    enum: { [key: string]: UseNewClientFilterQueryType };
     filterFn?: (value: T) => boolean;
   };
 
 export type UseClientFilterReturnType<T extends FieldValueAllowedTypes> =
   UseNewFieldReturnType<T> & {
-    filterFn: NonNullable<UseClientFilterConfigType<T>["filterFn"]>;
-    options: { name: string; value: UseClientFilterConfigType<T>["enum"][0] }[];
+    filterFn: NonNullable<UseNewClientFilterConfigType<T>["filterFn"]>;
+    options: {
+      name: string;
+      value: UseNewClientFilterConfigType<T>["enum"][0];
+    }[];
   };
 
-export function useClientFilter<T extends FieldValueAllowedTypes>(
-  config: UseClientFilterConfigType<T>,
+export function useNewClientFilter<T extends FieldValueAllowedTypes>(
+  config: UseNewClientFilterConfigType<T>
 ): UseClientFilterReturnType<T> {
   const query = useNewField(config);
 
