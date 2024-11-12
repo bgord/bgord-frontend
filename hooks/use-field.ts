@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { QueryValue, QueryValueType } from "./use-client-filter";
 
 export type HTMLElementType =
   | HTMLInputElement
@@ -45,29 +43,6 @@ export function useField<T>(
     changed: value !== evaluatedDefaultValue,
     unchanged: value === evaluatedDefaultValue,
   };
-}
-
-export function useUrlField<T>(
-  name: UseFieldNameType,
-  defaultValue: UseFieldDefaultValueType<T>,
-): FieldState<T> {
-  const [params, setParams] = useSearchParams();
-  const field = useField(name, defaultValue);
-
-  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
-  useEffect(() => {
-    const query = new QueryValue(field.value as QueryValueType);
-
-    if (query.isEmpty()) {
-      params.delete(name);
-      setParams(params);
-    } else {
-      params.set(name, String(query.get()));
-      setParams(params);
-    }
-  }, [field.value]);
-
-  return field;
 }
 
 export function extractUseField<T, X>(
