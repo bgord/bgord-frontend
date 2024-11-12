@@ -1,4 +1,7 @@
 # Changelog
+- 2024-11-12 22:33 4dcb29b **refactor: remove use language selector implementation**
+- 2024-11-12 22:32 5328227 **refactor: remove old use url field**
+- 2024-11-12 22:29 b4ba11b **refactor: rewrite use client filter**
 - 2024-11-11 15:22 9fae471 **refactor: rewrite some old useField usages**
 - 2024-11-11 15:12 8870682 **refactor: remove old use client search**
 - 2024-11-11 15:03 268eeba **fix: export UseNewClientSearchReturnType**
@@ -6,6 +9,7 @@
 - 2024-11-11 14:57 b29f3ee **refactor: rewrite use client search**
 - 2024-11-11 14:34 9086830 **refactor: addWeakEtagRevision**
 - 2024-11-11 14:29 de97395 **refactor: improve filter url**
+- 2024-11-11 14:22 2a00508 **docs: generate CHANGELOG**
 - 2024-11-11 14:03 c6f8b1a **docs: generate CHANGELOG**
 - 2024-11-11 13:59 e6a35ea **docs: generate CHANGELOG**
 - 2024-11-11 13:57 b8e811a **docs: generate CHANGELOG**
