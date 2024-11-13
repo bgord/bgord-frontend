@@ -22,7 +22,9 @@ type UseNewClientSortConfigType<T extends FieldValueAllowedTypes> = Omit<
 export type UseNewClientSortReturnType<T extends FieldValueAllowedTypes> = {
   sortFn: UseNewClientSortFnType<T>;
   options: UseNewClientSortOptionType[];
-} & UseNewFieldReturnType<UseNewClientSortOptionType>;
+} & UseNewFieldReturnType<UseNewClientSortOptionType> & {
+    strategy: UseNewFieldStrategyEnum.local;
+  };
 
 export type UseNewClientSortOptionType = string;
 
@@ -53,6 +55,7 @@ export function useNewClientSort<T extends FieldValueAllowedTypes>(
       options: Object.keys(config.options) as UseNewClientSortOptionType[],
       ...field,
       handleChange,
+      strategy: UseNewFieldStrategyEnum.local,
     };
   }
   return {
@@ -60,5 +63,6 @@ export function useNewClientSort<T extends FieldValueAllowedTypes>(
     options: Object.keys(config.options) as UseNewClientSortOptionType[],
     ...field,
     handleChange,
+    strategy: UseNewFieldStrategyEnum.local,
   };
 }

@@ -16,6 +16,8 @@ export type UseNewClientSearchConfigType = Pick<
 export type UseNewClientSearchReturnType =
   UseNewFieldReturnType<UseNewClientSearchQueryType> & {
     filterFn: (value: string) => boolean;
+  } & {
+    strategy: UseNewFieldStrategyEnum.local;
   };
 
 export function useNewClientSearch(
@@ -37,5 +39,5 @@ export function useNewClientSearch(
     return given?.toLowerCase().includes(currentQuery.get().toLowerCase());
   }
 
-  return { ...query, filterFn };
+  return { ...query, filterFn, strategy: UseNewFieldStrategyEnum.local };
 }

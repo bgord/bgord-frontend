@@ -21,6 +21,8 @@ export type UseNewClientFilterReturnType<T extends FieldValueAllowedTypes> =
       name: string;
       value: UseNewClientFilterConfigType<T>["enum"][0];
     }[];
+  } & {
+    strategy: UseNewFieldStrategyEnum.local;
   };
 
 export function useNewClientFilter<T extends FieldValueAllowedTypes>(
@@ -42,5 +44,10 @@ export function useNewClientFilter<T extends FieldValueAllowedTypes>(
     value,
   }));
 
-  return { filterFn, options, ...query };
+  return {
+    ...query,
+    filterFn,
+    options,
+    strategy: UseNewFieldStrategyEnum.local,
+  };
 }
