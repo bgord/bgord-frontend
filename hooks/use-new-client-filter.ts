@@ -1,6 +1,7 @@
 import {
   UseNewFieldConfigType,
   UseNewFieldReturnType,
+  UseNewFieldStrategyEnum,
   useNewField,
 } from "./use-new-field";
 import { FieldValueAllowedTypes, Field } from "./field";
@@ -8,7 +9,7 @@ import { FieldValueAllowedTypes, Field } from "./field";
 export type UseNewClientFilterQueryType = string | undefined;
 
 export type UseNewClientFilterConfigType<T extends FieldValueAllowedTypes> =
-  UseNewFieldConfigType<T> & {
+  Omit<UseNewFieldConfigType<T>, "strategy"> & {
     enum: { [key: string]: UseNewClientFilterQueryType };
     filterFn?: (value: T) => boolean;
   };
@@ -25,7 +26,10 @@ export type UseNewClientFilterReturnType<T extends FieldValueAllowedTypes> =
 export function useNewClientFilter<T extends FieldValueAllowedTypes>(
   config: UseNewClientFilterConfigType<T>,
 ): UseNewClientFilterReturnType<T> {
-  const query = useNewField(config);
+  const query = useNewField({
+    ...config,
+    strategy: UseNewFieldStrategyEnum.local,
+  });
 
   function defaultFilterFn(given: T) {
     if (query.empty) return true;
