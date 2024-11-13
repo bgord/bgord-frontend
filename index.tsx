@@ -1,3 +1,5 @@
+import type { Params } from "react-router-dom";
+
 export * from "./api";
 export * from "./components";
 export * from "./copy-to-clipboard";
@@ -25,3 +27,8 @@ export * from "./thousands-separator";
 export * from "./time";
 export * from "./toasts";
 export * from "./translations";
+
+export type Context = { request: Request };
+export type ContextWithParams<T extends string> = Context & {
+  params: Params<T>;
+};
