@@ -1,4 +1,5 @@
 # Changelog
+- 2024-11-13 12:37 dea6d34 **step: add extract page function**
 - 2024-11-13 12:31 83427b2 **fix: use new client types**
 - 2024-11-13 12:18 02973a9 **refactor: remove old use field**
 - 2024-11-13 12:13 f75936c **refactor: always set local strategy for use new client hooks**
@@ -10,6 +11,7 @@
 - 2024-11-13 11:38 98c69e4 **refactor: rewrite use language selector**
 - 2024-11-13 11:38 5590d23 **refactor: rewrite use language selector**
 - 2024-11-13 11:34 2333b6e **refactor: fix use new client filter return type**
+- 2024-11-13 11:31 1c2f746 **docs: generate CHANGELOG**
 - 2024-11-13 11:14 c045ab2 **docs: generate CHANGELOG**
 - 2024-11-13 11:09 50b1956 **docs: generate CHANGELOG**
 - 2024-11-13 11:07 e043056 **docs: generate CHANGELOG**
