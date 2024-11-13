@@ -7,33 +7,33 @@ import {
 } from "./use-new-field";
 import { FieldValueAllowedTypes, Field } from "./field";
 
-export type UseNewClientSortFnType<T> = (a: T, b: T) => number;
+type UseNewClientSortOptionType = string;
 
-type UseNewClientSortConfigType<T extends FieldValueAllowedTypes> = Omit<
-  UseNewFieldConfigType<T>,
+export type UseNewClientSortFnType<X> = (a: X, b: X) => number;
+
+type UseNewClientSortConfigType<X> = Omit<
+  UseNewFieldConfigType<UseNewClientSortOptionType>,
   "strategy"
 > & {
   enum: Record<UseNewClientSortOptionType, UseNewClientSortOptionType> & {
     default: UseNewClientSortOptionType;
   };
-  options: Record<UseNewClientSortOptionType, UseNewClientSortFnType<T>>;
+  options: Record<UseNewClientSortOptionType, UseNewClientSortFnType<X>>;
 };
 
-export type UseNewClientSortReturnType<T extends FieldValueAllowedTypes> = {
-  sortFn: UseNewClientSortFnType<T>;
+export type UseNewClientSortReturnType<X, T extends FieldValueAllowedTypes> = {
+  sortFn: UseNewClientSortFnType<X>;
   options: UseNewClientSortOptionType[];
-} & UseNewFieldReturnType<UseNewClientSortOptionType> & {
+} & UseNewFieldReturnType<T> & {
     strategy: UseNewFieldStrategyEnum.local;
   };
-
-export type UseNewClientSortOptionType = string;
 
 /** @public */
 export const defaultSortFn = () => 0;
 
-export function useNewClientSort<T extends FieldValueAllowedTypes>(
-  config: UseNewClientSortConfigType<T>,
-): UseNewClientSortReturnType<T> {
+export function useNewClientSort<X>(
+  config: UseNewClientSortConfigType<X>,
+): UseNewClientSortReturnType<X, UseNewClientSortOptionType> {
   const field = useNewField<UseNewClientSortOptionType>({
     name: config.name,
     defaultValue: config.enum.default,
