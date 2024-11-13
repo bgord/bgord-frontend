@@ -108,9 +108,7 @@ export class Fields {
 
 export class LocalFields {
   static clearAll(
-    // TODO
-    // fields: { clear: VoidFunction; strategy: UseNewFieldStrategyEnum.local }[],
-    fields: { clear: VoidFunction }[],
+    fields: { clear: VoidFunction; strategy: UseNewFieldStrategyEnum.local }[],
   ) {
     return () => {
       for (const field of fields) {
