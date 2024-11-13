@@ -78,3 +78,9 @@ export function usePagination(
     },
   };
 }
+
+export function extractPage(searchParams: URLSearchParams): PageType {
+  return Number(searchParams.get("page"))
+    ? Number(searchParams.get("page"))
+    : 1;
+}
