@@ -1,8 +1,12 @@
 # Changelog
+- 2024-11-13 12:06 359fea1 **refactor: rewrite use new client sort**
+- 2024-11-13 11:55 a6f589f **refactor: preset use new client filter strategy**
+- 2024-11-13 11:55 67ff38d **refactor: improve LocalFields.clear**
 - 2024-11-13 11:40 3cff402 **refactor: reexport UseNewClientFilterQueryType**
 - 2024-11-13 11:38 98c69e4 **refactor: rewrite use language selector**
 - 2024-11-13 11:38 5590d23 **refactor: rewrite use language selector**
 - 2024-11-13 11:34 2333b6e **refactor: fix use new client filter return type**
+- 2024-11-13 10:41 6230cd7 **docs: generate CHANGELOG**
 - 2024-11-13 10:39 95e4a19 **docs: generate CHANGELOG**
 - 2024-11-12 22:42 c8af607 **refactor: reexport use client filter**
 - 2024-11-12 22:33 4dcb29b **refactor: remove use language selector implementation**
