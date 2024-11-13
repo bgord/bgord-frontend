@@ -32,7 +32,7 @@ export function useLanguageSelector(
       Cookies.set("accept-language", String(current.get()));
       safeWindow.document.location.reload();
     }
-  }, [field.currentValue]);
+  }, [field.currentValue, field.changed]);
 
   return field;
 }
