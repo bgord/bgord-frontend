@@ -1,5 +1,7 @@
 # Changelog
+- 2024-11-13 17:36 a478dc0 **refactor: remove local strategy from local fields**
 - 2024-11-13 17:19 d336838 **refactor: export context types**
+- 2024-11-13 16:19 e1e8a55 **docs: generate CHANGELOG**
 - 2024-11-13 13:59 cdd955b **step: bump bgord/scripts**
 - 2024-11-13 13:17 7582aaa **refactor: reformat all files**
 - 2024-11-13 13:16 11e1627 **step: bump bgord/scripts**
