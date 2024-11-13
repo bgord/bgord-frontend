@@ -26,7 +26,7 @@ type UsePaginationReturnType = {
 };
 
 export function usePagination(
-  meta: PagedMetaType | null
+  meta: PagedMetaType | null,
 ): UsePaginationReturnType {
   const firstPage = 1;
   const previousPage = meta?.previousPage;
@@ -79,7 +79,9 @@ export function usePagination(
   };
 }
 
-export function extractPage(searchParams: URLSearchParams): PageType {
+export function extractPage(url: URL): PageType {
+  const searchParams = url.searchParams;
+
   return Number(searchParams.get("page"))
     ? Number(searchParams.get("page"))
     : 1;
