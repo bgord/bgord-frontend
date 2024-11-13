@@ -58,3 +58,4 @@ export const verified = {
 };
 
 export type { UseNewClientSearchReturnType } from "./use-new-client-search";
+export type { UseNewClientFilterQueryType } from "./use-new-client-filter";
