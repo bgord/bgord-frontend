@@ -33,9 +33,9 @@ export function usePagination(
   const nextPage = meta?.nextPage;
   const lastPage = meta?.lastPage || firstPage;
 
-  const page = useNewField({
+  const page = useNewField<PageType>({
     name: "page",
-    defaultValue: String(meta?.currentPage ?? firstPage),
+    defaultValue: meta?.currentPage ?? firstPage,
     strategy: UseNewFieldStrategyEnum.params,
   });
 
@@ -48,7 +48,7 @@ export function usePagination(
         active: !previousPage,
         disabled: false,
         exists: true,
-        go: () => page.set(String(firstPage)),
+        go: () => page.set(firstPage),
         value: firstPage,
       },
 
@@ -56,7 +56,7 @@ export function usePagination(
         active: false,
         disabled: !previousPage,
         exists: Boolean(previousPage),
-        go: () => page.set(String(previousPage ?? page.value)),
+        go: () => page.set(previousPage ?? page.value),
         value: previousPage,
       },
 
@@ -64,7 +64,7 @@ export function usePagination(
         active: false,
         disabled: !nextPage,
         exists: Boolean(nextPage),
-        go: () => page.set(String(nextPage ?? page.value)),
+        go: () => page.set(nextPage ?? page.value),
         value: nextPage,
       },
 
@@ -72,7 +72,7 @@ export function usePagination(
         active: Number(page.value) === lastPage,
         disabled: !nextPage,
         exists: true,
-        go: () => page.set(String(lastPage ?? page.value)),
+        go: () => page.set(lastPage ?? page.value),
         value: lastPage,
       },
     },
