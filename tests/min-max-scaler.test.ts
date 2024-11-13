@@ -121,28 +121,28 @@ describe("MinMaxScaler", () => {
     test("should throw an error for an invalid min/max config", () => {
       const config = { min: 100, max: 0, bound: { lower: 0, upper: 10 } };
       expect(() => new MinMaxScaler(config)).toThrow(
-        "Invalid MinMaxScaler min-max config"
+        "Invalid MinMaxScaler min-max config",
       );
     });
 
     test("should throw an error for an invalid lower/upper config", () => {
       const config = { min: 0, max: 10, bound: { lower: 20, upper: 10 } };
       expect(() => new MinMaxScaler(config)).toThrow(
-        "Invalid MinMaxScaler bound config"
+        "Invalid MinMaxScaler bound config",
       );
     });
 
     test("should throw an error for an equal lower/upper config", () => {
       const config = { min: 0, max: 10, bound: { lower: 10, upper: 10 } };
       expect(() => new MinMaxScaler(config)).toThrow(
-        "Invalid MinMaxScaler bound config"
+        "Invalid MinMaxScaler bound config",
       );
     });
 
     test("should throw an error on a value out of min/max", () => {
       const config = { min: 0, max: 10 };
       expect(() => new MinMaxScaler(config).scale(15)).toThrow(
-        "Value out of min/max range"
+        "Value out of min/max range",
       );
     });
   });
@@ -161,7 +161,7 @@ describe("MinMaxScaler", () => {
     test("should handle empty arrays", () => {
       const values: [] = [];
       expect(() => MinMaxScaler.getMinMax(values)).toThrow(
-        "An empty array supplied"
+        "An empty array supplied",
       );
     });
 

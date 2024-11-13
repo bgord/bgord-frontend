@@ -33,7 +33,7 @@ export function withTimeZoneOffset(headers: Headers): Headers {
 export function useResponseHandler(
   intent: string,
   key: string | string[],
-  config?: { success?: () => void; error?: () => void }
+  config?: { success?: () => void; error?: () => void },
 ) {
   const response = rrd.useActionData() as ResponseType;
   const lastHandledKey = useRef<string | null>(null);

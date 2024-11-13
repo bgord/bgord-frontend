@@ -16,15 +16,15 @@ type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> = [
     add: (toast: Omit<ToastType, "id">) => void;
     remove: (toast: ToastType) => void;
     clear: VoidFunction;
-  }
+  },
 ];
 
 const ToastsContext = createContext<ToastsContextDataType | undefined>(
-  undefined
+  undefined,
 );
 
 export function ToastsContextProvider(
-  props: { children: JSX.Element | JSX.Element[] } & ToastsConfigType
+  props: { children: JSX.Element | JSX.Element[] } & ToastsConfigType,
 ) {
   function useToastsImplementation(): ToastsContextDataType {
     const timeout = props?.timeout ?? 5000;
@@ -57,10 +57,10 @@ export function ToastsContextProvider(
 }
 
 export function useToastsContext<
-  ToastType extends BaseToastType = BaseToastType
+  ToastType extends BaseToastType = BaseToastType,
 >() {
   const context = useContext<ToastsContextDataType<ToastType>>(
-    ToastsContext as unknown as React.Context<ToastsContextDataType<ToastType>>
+    ToastsContext as unknown as React.Context<ToastsContextDataType<ToastType>>,
   );
 
   if (context === undefined) {
@@ -71,7 +71,7 @@ export function useToastsContext<
 }
 
 export function useToastTrigger<
-  ToastType extends BaseToastType = BaseToastType
+  ToastType extends BaseToastType = BaseToastType,
 >() {
   const [, actions] = useToastsContext<ToastType>();
 

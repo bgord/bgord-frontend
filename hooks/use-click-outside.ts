@@ -3,7 +3,7 @@ import { useEffect } from "react";
 export function useClickOutside(
   ref: React.RefObject<HTMLElement>,
   onClickOutside: VoidFunction,
-  exclude?: React.RefObject<HTMLElement>[]
+  exclude?: React.RefObject<HTMLElement>[],
 ): void {
   useEffect(() => {
     if (!ref.current) return;
@@ -15,7 +15,7 @@ export function useClickOutside(
         // The second check is to check if some `exclude`d node
         // outside the `ref` node has been clicked.
         const isExcludedNodeClicked = exclude?.some((node) =>
-          node.current?.contains(event.target as Node)
+          node.current?.contains(event.target as Node),
         );
 
         // `onClickOutside` callback is fired if the click event

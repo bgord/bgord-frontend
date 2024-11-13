@@ -19,7 +19,7 @@ describe("outbound-link", () => {
     render(
       <OutboundLink href={link} data-display="flex">
         {text}
-      </OutboundLink>
+      </OutboundLink>,
     );
 
     expect(screen.getByText(text)).toHaveAttribute("data-display", "flex");

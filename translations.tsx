@@ -29,7 +29,7 @@ type TranslationsContextPropsType = {
 };
 
 export function TranslationsContextProvider(
-  props: TranslationsContextPropsType
+  props: TranslationsContextPropsType,
 ) {
   return (
     <TranslationsContext.Provider value={props.value}>
@@ -43,13 +43,13 @@ export function useTranslations() {
 
   if (value === undefined) {
     throw new Error(
-      "useTranslations must be used within the TranslationsContext"
+      "useTranslations must be used within the TranslationsContext",
     );
   }
 
   function translate(
     key: TranslationsKeyType,
-    variables?: TranslationVariableType
+    variables?: TranslationVariableType,
   ) {
     const translation = value.translations[key];
 
@@ -63,7 +63,7 @@ export function useTranslations() {
     return Object.entries(variables).reduce(
       (result, [placeholder, value]) =>
         result.replace(`{{${placeholder}}}`, String(value)),
-      translation
+      translation,
     );
   }
 

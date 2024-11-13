@@ -16,11 +16,11 @@ export type UsePersistentToggleReturnType = UseToggleReturnType & {
 
 export function usePersistentToggle(
   key: SafeLocalStorageKeyType,
-  defaultValue: UseToggleValueType = false
+  defaultValue: UseToggleValueType = false,
 ): UsePersistentToggleReturnType {
   const storedValue = SafeLocalStorage.get<UseToggleValueType>(
     key,
-    defaultValue
+    defaultValue,
   );
 
   const toggle = useToggle(storedValue);

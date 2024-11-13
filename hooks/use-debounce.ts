@@ -8,7 +8,7 @@ export function useDebounce<T>(config: UseDebounceConfigType<T>): T {
   useEffect(() => {
     const timer = setTimeout(
       () => setDebouncedValue(config.value),
-      config.delayMs
+      config.delayMs,
     );
 
     return () => clearTimeout(timer);

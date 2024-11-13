@@ -5,7 +5,7 @@ type ReorderingIndexType = number;
 type ReorderingCorrelationIdType = string;
 
 export type ReorderingTransferType<
-  T extends ReorderingBaseItemType = ReorderingBaseItemType
+  T extends ReorderingBaseItemType = ReorderingBaseItemType,
 > = {
   correlationId: ReorderingCorrelationIdType;
   id: T["id"];
@@ -14,7 +14,7 @@ export type ReorderingTransferType<
 };
 
 export type UseReorderingConfigType<
-  T extends ReorderingBaseItemType = ReorderingBaseItemType
+  T extends ReorderingBaseItemType = ReorderingBaseItemType,
 > = {
   correlationId: ReorderingCorrelationIdType;
   initialItems: T[];
@@ -23,7 +23,7 @@ export type UseReorderingConfigType<
 };
 
 export type UseReorderingReturnType<
-  T extends ReorderingBaseItemType = ReorderingBaseItemType
+  T extends ReorderingBaseItemType = ReorderingBaseItemType,
 > = {
   items: T[];
   enabled: boolean;
@@ -40,7 +40,7 @@ export type UseReorderingReturnType<
 };
 
 export function useReordering<
-  T extends ReorderingBaseItemType = ReorderingBaseItemType
+  T extends ReorderingBaseItemType = ReorderingBaseItemType,
 >(config: UseReorderingConfigType<T>): UseReorderingReturnType<T> {
   const enabled = config.enabled ?? true;
 
@@ -49,13 +49,13 @@ export function useReordering<
   // biome-ignore lint: lint/complexity/noForEach
   useEffect(
     () => setItems(config.initialItems),
-    [JSON.stringify(config.initialItems)]
+    [JSON.stringify(config.initialItems)],
   );
 
   const draggedItem = useRef<T | null>(null);
 
   const [startIndex, setStartIndex] = useState<ReorderingIndexType | null>(
-    null
+    null,
   );
   const [toIndex, setToIndex] = useState<ReorderingIndexType | null>(null);
 
@@ -69,12 +69,12 @@ export function useReordering<
       event.dataTransfer.effectAllowed = "move";
       event.dataTransfer.setData(
         "text/html",
-        event.currentTarget.parentNode as unknown as string
+        event.currentTarget.parentNode as unknown as string,
       );
       event.dataTransfer.setDragImage(
         event.currentTarget.parentNode as unknown as Element,
         20,
-        20
+        20,
       );
     };
   }
@@ -96,7 +96,7 @@ export function useReordering<
       setItems(
         items
           .filter((item) => item !== draggedItem.current)
-          .toSpliced(index, 0, draggedItem.current)
+          .toSpliced(index, 0, draggedItem.current),
       );
     };
   }

@@ -7,11 +7,11 @@ export enum KeyNameEnum {
 export type UseKeyHandlerConfigType = Partial<Record<KeyNameEnum, Function>>;
 
 export type UseKeyHandlerReturnType = (
-  event: React.KeyboardEvent<HTMLElement>
+  event: React.KeyboardEvent<HTMLElement>,
 ) => void;
 
 export function useKeyHandler(
-  config: UseKeyHandlerConfigType
+  config: UseKeyHandlerConfigType,
 ): UseKeyHandlerReturnType {
   const keys = Object.keys(config);
 

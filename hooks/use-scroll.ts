@@ -22,7 +22,7 @@ export function useScroll(): UseScrollReturnType {
   // Scroll position always set at the top of the page
   const defaultScrollPosition = 0;
   const [scrollPosition, setScrollPosition] = useState<ScrollPositionType>(
-    defaultScrollPosition
+    defaultScrollPosition,
   );
 
   // Assuming scrollbar is hidden by default

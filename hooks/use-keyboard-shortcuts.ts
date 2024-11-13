@@ -9,7 +9,7 @@ export type UseKeyboardShortcutsOptionsType = { enabled?: boolean };
 
 export function useKeyboardShortcuts(
   config: UseKeyboardShortcutsConfigType,
-  options?: UseKeyboardShortcutsOptionsType
+  options?: UseKeyboardShortcutsOptionsType,
 ): void {
   const enabled = options?.enabled ?? true;
 
