@@ -1,4 +1,5 @@
 # Changelog
+- 2024-11-13 12:41 860d4dc **refactor: convert use pagination to number**
 - 2024-11-13 12:40 a0090af **refactor: smplify extract page interface**
 - 2024-11-13 12:37 dea6d34 **step: add extract page function**
 - 2024-11-13 12:31 83427b2 **fix: use new client types**
@@ -8,6 +9,7 @@
 - 2024-11-13 12:06 359fea1 **refactor: rewrite use new client sort**
 - 2024-11-13 11:55 a6f589f **refactor: preset use new client filter strategy**
 - 2024-11-13 11:55 67ff38d **refactor: improve LocalFields.clear**
+- 2024-11-13 11:40 44992bc **docs: generate CHANGELOG**
 - 2024-11-13 11:40 3cff402 **refactor: reexport UseNewClientFilterQueryType**
 - 2024-11-13 11:38 b51bb7c **docs: generate CHANGELOG**
 - 2024-11-13 11:38 98c69e4 **refactor: rewrite use language selector**
