@@ -6,9 +6,9 @@ import {
   UseNewFieldStrategyEnum,
 } from "./use-new-field";
 
-export type UseNewClientSearchQueryType = string;
+type UseNewClientSearchQueryType = string;
 
-export type UseNewClientSearchConfigType = Pick<
+type UseNewClientSearchConfigType = Pick<
   UseNewFieldConfigType<UseNewClientSearchQueryType>,
   "name"
 >;

@@ -9,7 +9,7 @@ import { FieldValueAllowedTypes, Field } from "./field";
 
 type UseNewClientSortOptionType = string;
 
-export type UseNewClientSortFnType<X> = (a: X, b: X) => number;
+type UseNewClientSortFnType<X> = (a: X, b: X) => number;
 
 type UseNewClientSortConfigType<X> = Omit<
   UseNewFieldConfigType<UseNewClientSortOptionType>,
@@ -21,7 +21,7 @@ type UseNewClientSortConfigType<X> = Omit<
   options: Record<UseNewClientSortOptionType, UseNewClientSortFnType<X>>;
 };
 
-export type UseNewClientSortReturnType<X, T extends FieldValueAllowedTypes> = {
+type UseNewClientSortReturnType<X, T extends FieldValueAllowedTypes> = {
   sortFn: UseNewClientSortFnType<X>;
   options: UseNewClientSortOptionType[];
 } & UseNewFieldReturnType<T> & {

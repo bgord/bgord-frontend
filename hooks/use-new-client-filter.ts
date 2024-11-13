@@ -8,11 +8,13 @@ import { FieldValueAllowedTypes, Field } from "./field";
 
 export type UseNewClientFilterQueryType = string | undefined;
 
-export type UseNewClientFilterConfigType<T extends FieldValueAllowedTypes> =
-  Omit<UseNewFieldConfigType<T>, "strategy"> & {
-    enum: { [key: string]: UseNewClientFilterQueryType };
-    filterFn?: (value: T) => boolean;
-  };
+type UseNewClientFilterConfigType<T extends FieldValueAllowedTypes> = Omit<
+  UseNewFieldConfigType<T>,
+  "strategy"
+> & {
+  enum: { [key: string]: UseNewClientFilterQueryType };
+  filterFn?: (value: T) => boolean;
+};
 
 export type UseNewClientFilterReturnType<T extends FieldValueAllowedTypes> =
   UseNewFieldReturnType<T> & {
