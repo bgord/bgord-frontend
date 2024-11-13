@@ -13,7 +13,7 @@ export type UseNewClientFilterConfigType<T extends FieldValueAllowedTypes> =
     filterFn?: (value: T) => boolean;
   };
 
-export type UseClientFilterReturnType<T extends FieldValueAllowedTypes> =
+export type UseNewClientFilterReturnType<T extends FieldValueAllowedTypes> =
   UseNewFieldReturnType<T> & {
     filterFn: NonNullable<UseNewClientFilterConfigType<T>["filterFn"]>;
     options: {
@@ -23,8 +23,8 @@ export type UseClientFilterReturnType<T extends FieldValueAllowedTypes> =
   };
 
 export function useNewClientFilter<T extends FieldValueAllowedTypes>(
-  config: UseNewClientFilterConfigType<T>
-): UseClientFilterReturnType<T> {
+  config: UseNewClientFilterConfigType<T>,
+): UseNewClientFilterReturnType<T> {
   const query = useNewField(config);
 
   function defaultFilterFn(given: T) {
