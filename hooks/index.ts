@@ -44,7 +44,7 @@ import {
 } from "./use-new-field";
 import { useNewClientFilter } from "./use-new-client-filter";
 import { useNewClientSearch } from "./use-new-client-search";
-import { useNewClientSort } from "./use-new-client-sort";
+import { useNewClientSort, defaultSortFn } from "./use-new-client-sort";
 import { Field } from "./field";
 
 export const verified = {
@@ -56,6 +56,7 @@ export const verified = {
   useNewClientSearch,
   useNewClientFilter,
   useNewClientSort,
+  defaultSortFn,
 };
 
 export type { UseNewClientSearchReturnType } from "./use-new-client-search";

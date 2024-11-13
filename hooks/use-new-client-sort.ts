@@ -26,7 +26,8 @@ export type UseNewClientSortReturnType<T extends FieldValueAllowedTypes> = {
 
 export type UseNewClientSortOptionType = string;
 
-const defaultSortFn = () => 0;
+/** @public */
+export const defaultSortFn = () => 0;
 
 export function useNewClientSort<T extends FieldValueAllowedTypes>(
   config: UseNewClientSortConfigType<T>,
