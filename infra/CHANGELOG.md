@@ -1,6 +1,9 @@
 # Changelog
+- 2024-11-14 21:16 95c9300 **refactor: improve use-toggle hook**
+- 2024-11-14 20:48 b02624a **step: add use toggle tests**
 - 2024-11-13 17:36 a478dc0 **refactor: remove local strategy from local fields**
 - 2024-11-13 17:19 d336838 **refactor: export context types**
+- 2024-11-13 16:36 720c002 **docs: generate CHANGELOG**
 - 2024-11-13 16:19 e1e8a55 **docs: generate CHANGELOG**
 - 2024-11-13 13:59 cdd955b **step: bump bgord/scripts**
 - 2024-11-13 13:17 7582aaa **refactor: reformat all files**
