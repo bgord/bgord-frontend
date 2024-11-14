@@ -23,7 +23,7 @@ export function usePersistentToggle(
     defaultValue,
   );
 
-  const toggle = useToggle(storedValue);
+  const toggle = useToggle({ defaultValue: storedValue, name: key });
 
   useEffect(() => SafeLocalStorage.set(key, toggle.on), [key, toggle.on]);
 

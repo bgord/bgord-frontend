@@ -16,7 +16,7 @@ function Dimensions(props: JSX.IntrinsicElements["div"]) {
 }
 
 function Truncates() {
-  const enabled = useToggle();
+  const enabled = useToggle({ name: "truncates" });
   const length = useNewField<number>({
     name: "length",
     defaultValue: 128,

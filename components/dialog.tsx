@@ -6,7 +6,7 @@ export type DialogPropsType = hooks.UseToggleReturnType &
   JSX.IntrinsicElements["dialog"];
 
 export function Dialog(props: DialogPropsType) {
-  const { toggle: dialog, rest } = hooks.extractUseToggle(props);
+  const { toggle: dialog, rest } = hooks.verified.extractUseToggle(props);
   const ref = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {

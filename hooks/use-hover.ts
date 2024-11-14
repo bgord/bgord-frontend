@@ -15,7 +15,7 @@ export function useHover(config?: UseHoverConfigType): UseHoverReturnType {
   const enabled = config?.enabled ?? true;
 
   const ref = useRef<any>(null);
-  const isHovering = useToggle(false);
+  const isHovering = useToggle({ name: "is-hovering" });
 
   const handleMouseEnter = isHovering.enable;
   const handleMouseLeave = isHovering.disable;

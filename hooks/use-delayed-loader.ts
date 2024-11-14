@@ -7,8 +7,8 @@ export function useDelayedLoader(
   navigation: Navigation,
   delayMs = 500,
 ): UseToggleReturnType {
-  const delayedLoader = useToggle();
-  const delayElapsed = useToggle();
+  const delayedLoader = useToggle({ name: "delayed-loader" });
+  const delayElapsed = useToggle({ name: "delayed-elapsed" });
 
   let timeoutId: NodeJS.Timeout;
 

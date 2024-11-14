@@ -8,7 +8,7 @@ import {
 } from "./use-toggle";
 
 export function useDesignMode(
-  config?: UseToggleConfigType,
+  config: UseToggleConfigType,
 ): UseToggleReturnType {
   const designMode = useToggle(config);
   const safeWindow = getSafeWindow();

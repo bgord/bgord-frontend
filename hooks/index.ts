@@ -29,7 +29,6 @@ export * from "./use-rate-limiter";
 export * from "./use-scroll";
 export * from "./use-scroll-lock";
 export * from "./use-sound";
-export * from "./use-toggle";
 export * from "./use-video";
 export * from "./use-window-dimensions";
 export * from "./use-response-handler";
@@ -45,6 +44,7 @@ import { useNewClientFilter } from "./use-new-client-filter";
 import { useNewClientSearch } from "./use-new-client-search";
 import { useNewClientSort, defaultSortFn } from "./use-new-client-sort";
 import { Field } from "./field";
+import { useToggle, extractUseToggle } from "./use-toggle";
 
 export const verified = {
   useNewField,
@@ -56,7 +56,10 @@ export const verified = {
   useNewClientFilter,
   useNewClientSort,
   defaultSortFn,
+  useToggle,
+  extractUseToggle,
 };
 
+export type { UseToggleReturnType } from "./use-toggle";
 export type { UseNewClientSearchReturnType } from "./use-new-client-search";
 export type { UseNewClientFilterQueryType } from "./use-new-client-filter";

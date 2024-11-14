@@ -4,7 +4,10 @@ import { useToggle } from "./use-toggle";
 type OnlineStatusType = boolean;
 
 export const useIsOnline = (): OnlineStatusType => {
-  const onlineStatus = useToggle(getOnlineStatus());
+  const onlineStatus = useToggle({
+    name: "online-status",
+    defaultValue: getOnlineStatus(),
+  });
 
   // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => {

@@ -26,7 +26,7 @@ export function useScroll(): UseScrollReturnType {
   );
 
   // Assuming scrollbar is hidden by default
-  const scrollbarVisibility = useToggle(false);
+  const scrollbarVisibility = useToggle({ name: "scroll-visibility" });
 
   function goToTop() {
     if (!safeWindow) return;

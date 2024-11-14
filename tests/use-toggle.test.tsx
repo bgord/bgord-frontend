@@ -10,7 +10,7 @@ import { useToggle, extractUseToggle } from "../hooks/use-toggle";
 
 describe("useToggle", () => {
   test("initializes with default false value", () => {
-    const hook = renderHook(() => useToggle());
+    const hook = renderHook(() => useToggle({ name: "test" }));
     const result = hook.result.current;
 
     expect(result.on).toBe(false);
@@ -20,13 +20,21 @@ describe("useToggle", () => {
     expect(typeof result.toggle).toBe("function");
     expect(result.props.controller).toEqual({
       "aria-expanded": "false",
-      "aria-controls": undefined,
+      "aria-controls": "test",
+      role: "button",
+      tabIndex: 0,
     });
-    expect(result.props.target).toEqual({ id: undefined });
+    expect(result.props.target).toEqual({
+      id: "test",
+      "aria-hidden": "true",
+      role: "region",
+    });
   });
 
   test("initializes with explicit default value", () => {
-    const hook = renderHook(() => useToggle(true, "test-id"));
+    const hook = renderHook(() =>
+      useToggle({ name: "test-id", defaultValue: true })
+    );
     const result = hook.result.current;
 
     expect(result.on).toBe(true);
@@ -34,12 +42,18 @@ describe("useToggle", () => {
     expect(result.props.controller).toEqual({
       "aria-expanded": "true",
       "aria-controls": "test-id",
+      role: "button",
+      tabIndex: 0,
     });
-    expect(result.props.target).toEqual({ id: "test-id" });
+    expect(result.props.target).toEqual({
+      id: "test-id",
+      "aria-hidden": "false",
+      role: "region",
+    });
   });
 
   test("toggle changes state", () => {
-    const hook = renderHook(() => useToggle(false));
+    const hook = renderHook(() => useToggle({ name: "test" }));
 
     expect(hook.result.current.on).toBe(false);
 
@@ -55,7 +69,7 @@ describe("useToggle", () => {
   });
 
   test("enable/disable functions work correctly", () => {
-    const hook = renderHook(() => useToggle(false));
+    const hook = renderHook(() => useToggle({ name: "test" }));
 
     act(() => hook.result.current.enable());
     expect(hook.result.current.on).toBe(true);
@@ -76,19 +90,25 @@ describe("useToggle", () => {
 
   test("name parameter affects props correctly", () => {
     const name = "test-toggle";
-    const hook = renderHook(() => useToggle(false, name));
+    const hook = renderHook(() => useToggle({ name }));
 
     expect(hook.result.current.props.controller).toEqual({
       "aria-expanded": "false",
       "aria-controls": name,
+      role: "button",
+      tabIndex: 0,
     });
-    expect(hook.result.current.props.target).toEqual({ id: name });
+    expect(hook.result.current.props.target).toEqual({
+      id: name,
+      "aria-hidden": "true",
+      role: "region",
+    });
   });
 });
 
 describe("extractUseToggle", () => {
   test("correctly separates toggle props from rest", () => {
-    const hook = renderHook(() => useToggle(false, "test"));
+    const hook = renderHook(() => useToggle({ name: "test" }));
     const extraProps = {
       className: "test-class",
       style: { color: "red" },
@@ -120,7 +140,7 @@ describe("extractUseToggle", () => {
 describe("useToggle in components", () => {
   test("controls message visibility with button click", () => {
     function Testcase() {
-      const toggle = useToggle(false, "test-message");
+      const toggle = useToggle({ name: "test-message" });
       return (
         <div>
           <button
@@ -162,7 +182,7 @@ describe("useToggle in components", () => {
 
   test("controlled message visibility with enable/disable", () => {
     function Testcase() {
-      const toggle = useToggle(false, "test-message");
+      const toggle = useToggle({ name: "test-message" });
       return (
         <div>
           <button type="button" onClick={toggle.enable} data-testid="show">
@@ -204,8 +224,12 @@ describe("useToggle in components", () => {
 
   test("multiple independent toggles", () => {
     function Testcase() {
-      const firstToggle = useToggle(false, "first-message");
-      const secondToggle = useToggle(false, "second-message");
+      const firstToggle = useToggle({
+        name: "first-message",
+      });
+      const secondToggle = useToggle({
+        name: "second-message",
+      });
 
       return (
         <div>
@@ -275,7 +299,10 @@ describe("useToggle in components", () => {
 
   test("default open state", () => {
     function Testcase() {
-      const toggle = useToggle(true, "test-message");
+      const toggle = useToggle({
+        defaultValue: true,
+        name: "test-message",
+      });
       return (
         <div>
           <button
