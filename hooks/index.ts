@@ -3,7 +3,6 @@ export * from "./use-autofocus";
 export * from "./use-breakpoint";
 export * from "./use-click-outside";
 export * from "./use-current-timestamp";
-export * from "./use-debounce";
 export * from "./use-delayed-loader";
 export * from "./use-design-mode";
 export * from "./use-disable-pull-to-refresh";
@@ -46,6 +45,7 @@ import {
 import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
+import { useDebounce } from "./use-debounce";
 
 export const verified = {
   useNewField,
@@ -64,6 +64,7 @@ export const verified = {
   useKeyHandler,
   useMetaEnterSubmit,
   useHover,
+  useDebounce,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
