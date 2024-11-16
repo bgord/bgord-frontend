@@ -1,10 +1,4 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  renderHook,
-  screen,
-} from "@testing-library/react";
+import { cleanup, fireEvent, render, renderHook, screen } from "@testing-library/react";
 import { afterEach, describe, expect, test } from "vitest";
 import { useHover } from "../hooks/use-hover";
 
@@ -24,11 +18,7 @@ describe("useHover", () => {
       function TestComponent() {
         const { attach, isHovering } = useHover();
         return (
-          <div
-            ref={attach.ref}
-            data-testid="hover-element"
-            data-hovering={isHovering}
-          >
+          <div ref={attach.ref} data-testid="hover-element" data-hovering={isHovering}>
             Hover me
           </div>
         );

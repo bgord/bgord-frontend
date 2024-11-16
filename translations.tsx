@@ -1,8 +1,4 @@
-import type {
-  Schema,
-  TranslationsKeyType,
-  TranslationsType,
-} from "@bgord/node";
+import type { Schema, TranslationsKeyType, TranslationsType } from "@bgord/node";
 import { PluralizeOptionsType, pluralize } from "./pluralize";
 
 import { createContext, useCallback, useContext } from "react";
@@ -22,10 +18,7 @@ type TranslationPlaceholderValueType = string | number;
  * Dictionary of placeholder replacements for translations
  * @example { name: 'John', count: 5 }
  */
-type TranslationVariableType = Record<
-  TranslationPlaceholderType,
-  TranslationPlaceholderValueType
->;
+type TranslationVariableType = Record<TranslationPlaceholderType, TranslationPlaceholderValueType>;
 
 /**
  * Value type for the translations context
@@ -69,14 +62,8 @@ type TranslationsContextPropsType = {
  * </TranslationsContextProvider>
  * ```
  */
-export function TranslationsContextProvider(
-  props: TranslationsContextPropsType,
-) {
-  return (
-    <TranslationsContext.Provider value={props.value}>
-      {props.children}
-    </TranslationsContext.Provider>
-  );
+export function TranslationsContextProvider(props: TranslationsContextPropsType) {
+  return <TranslationsContext.Provider value={props.value}>{props.children}</TranslationsContext.Provider>;
 }
 
 /**
@@ -102,9 +89,7 @@ export function useTranslations() {
   const value = useContext(TranslationsContext);
 
   if (value === undefined) {
-    throw new Error(
-      "useTranslations must be used within the TranslationsContext",
-    );
+    throw new Error("useTranslations must be used within the TranslationsContext");
   }
 
   const translate = useCallback(
@@ -119,14 +104,11 @@ export function useTranslations() {
       if (!variables) return translation;
 
       // Safe variable replacement with regex
-      return Object.entries(variables).reduce(
-        (result, [placeholder, value]) => {
-          // Create regex for each placeholder to prevent partial replacements
-          const regex = new RegExp(`{{${placeholder}}}`, "g");
-          return result.replace(regex, String(value));
-        },
-        translation,
-      );
+      return Object.entries(variables).reduce((result, [placeholder, value]) => {
+        // Create regex for each placeholder to prevent partial replacements
+        const regex = new RegExp(`{{${placeholder}}}`, "g");
+        return result.replace(regex, String(value));
+      }, translation);
     },
     [value.translations],
   );
@@ -161,6 +143,5 @@ export function useLanguage(): TranslationsContextValueType["language"] {
 export function usePluralize() {
   const language = useLanguage();
 
-  return (options: Omit<PluralizeOptionsType, "language">) =>
-    pluralize({ ...options, language });
+  return (options: Omit<PluralizeOptionsType, "language">) => pluralize({ ...options, language });
 }
