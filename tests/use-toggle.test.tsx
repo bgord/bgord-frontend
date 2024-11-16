@@ -33,7 +33,7 @@ describe("useToggle", () => {
 
   test("initializes with explicit default value", () => {
     const hook = renderHook(() =>
-      useToggle({ name: "test-id", defaultValue: true })
+      useToggle({ name: "test-id", defaultValue: true }),
     );
     const result = hook.result.current;
 
@@ -114,10 +114,7 @@ describe("extractUseToggle", () => {
       style: { color: "red" },
     };
 
-    const combined = {
-      ...hook.result.current,
-      ...extraProps,
-    };
+    const combined = { ...hook.result.current, ...extraProps };
 
     const { toggle, rest } = extractUseToggle(combined);
 
@@ -224,12 +221,8 @@ describe("useToggle in components", () => {
 
   test("multiple independent toggles", () => {
     function Testcase() {
-      const firstToggle = useToggle({
-        name: "first-message",
-      });
-      const secondToggle = useToggle({
-        name: "second-message",
-      });
+      const firstToggle = useToggle({ name: "first-message" });
+      const secondToggle = useToggle({ name: "second-message" });
 
       return (
         <div>
