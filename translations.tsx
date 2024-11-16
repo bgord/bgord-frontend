@@ -6,7 +6,7 @@ import type {
 } from "@bgord/node";
 import { pluralize, PluralizeOptionsType } from "./pluralize";
 
-type TranslationsContextValueType = {
+export type TranslationsContextValueType = {
   translations: TranslationsType;
   language: Schema.LanguageType;
 };
@@ -24,7 +24,7 @@ const TranslationsContext = createContext<TranslationsContextValueType>({
 });
 
 type TranslationsContextPropsType = {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | JSX.Element[] | React.ReactNode;
   value: TranslationsContextValueType;
 };
 
