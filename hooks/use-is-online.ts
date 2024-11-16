@@ -34,8 +34,5 @@ export const useIsOnline = (): OnlineStatusType => {
 // Check if browser supports `navigator.onLine`,
 // otherwise, we assume the user is online.
 function getOnlineStatus(): OnlineStatusType {
-  return typeof navigator !== "undefined" &&
-    typeof navigator.onLine === "boolean"
-    ? navigator.onLine
-    : true;
+  return typeof navigator !== "undefined" && typeof navigator.onLine === "boolean" ? navigator.onLine : true;
 }

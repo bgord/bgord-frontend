@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 
-import { useNewField } from "./use-new-field";
 import { DurationFormatter } from "../durations";
+import { useNewField } from "./use-new-field";
 
 export type UseVideoSrcType = string;
 
@@ -103,10 +103,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
 
   const muted = volume.value === 0;
 
-  const percentage =
-    duration.value === 0
-      ? 0
-      : Math.round((currentTime.value / duration.value) * 100);
+  const percentage = duration.value === 0 ? 0 : Math.round((currentTime.value / duration.value) * 100);
 
   function play() {
     if (!ref.current) return;
@@ -217,8 +214,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
       isReady: state === UseVideoState.ready,
       isPlaying: state === UseVideoState.playing,
       isPaused: state === UseVideoState.paused,
-      matches: (states: UseVideoState[]) =>
-        states.some((given) => given === state),
+      matches: (states: UseVideoState[]) => states.some((given) => given === state),
       percentage: {
         raw: percentage,
         formatted: `${percentage}%`,

@@ -1,5 +1,5 @@
-import { polishPlurals } from "polish-plurals";
 import type { Falsy, Schema } from "@bgord/node";
+import { polishPlurals } from "polish-plurals";
 
 type PluralizeWordType = string;
 type PluralizeValueType = Falsy<number>;
@@ -31,17 +31,10 @@ export function pluralize(options: PluralizeOptionsType): PluralizeWordType {
 
     if (value === 1) return options.singular;
 
-    return polishPlurals(
-      options.singular,
-      String(options.plural),
-      String(options.genitive),
-      value,
-    );
+    return polishPlurals(options.singular, String(options.plural), String(options.genitive), value);
   }
 
-  console.warn(
-    `[@bgord/frontend] missing pluralization function for language ${options.language}.`,
-  );
+  console.warn(`[@bgord/frontend] missing pluralization function for language ${options.language}.`);
 
   return options.singular;
 }

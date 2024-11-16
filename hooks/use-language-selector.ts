@@ -1,14 +1,11 @@
-import React from "react";
 import type { LanguageType } from "@bgord/node/dist/schema";
 import Cookies from "js-cookie";
+import React from "react";
 
 import { getSafeWindow } from "../safe-window";
 import { useLanguage } from "../translations";
 import { Field } from "./field";
-import {
-  useNewClientFilter,
-  UseNewClientFilterReturnType,
-} from "./use-new-client-filter";
+import { UseNewClientFilterReturnType, useNewClientFilter } from "./use-new-client-filter";
 
 export function useLanguageSelector(
   supportedLanguages: Record<LanguageType, LanguageType>,

@@ -10,9 +10,7 @@ export const emptyImageResolution: ImageResolutionType = {
   height: null,
 };
 
-export async function getImageResolution(
-  path: ImagePathType,
-): Promise<ImageResolutionType> {
+export async function getImageResolution(path: ImagePathType): Promise<ImageResolutionType> {
   if (!path) return emptyImageResolution;
 
   const img = document.createElement("img");

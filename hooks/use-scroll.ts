@@ -1,7 +1,7 @@
-import { useState, useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
 
 import { getSafeWindow } from "../safe-window";
-import { useToggle, UseToggleReturnType } from "./use-toggle";
+import { UseToggleReturnType, useToggle } from "./use-toggle";
 
 export type ScrollPositionType = number;
 
@@ -21,9 +21,7 @@ export function useScroll(): UseScrollReturnType {
 
   // Scroll position always set at the top of the page
   const defaultScrollPosition = 0;
-  const [scrollPosition, setScrollPosition] = useState<ScrollPositionType>(
-    defaultScrollPosition,
-  );
+  const [scrollPosition, setScrollPosition] = useState<ScrollPositionType>(defaultScrollPosition);
 
   // Assuming scrollbar is hidden by default
   const scrollbarVisibility = useToggle({ name: "scroll-visibility" });
@@ -42,10 +40,7 @@ export function useScroll(): UseScrollReturnType {
 
       // Checking if the viewport (clientHeight) can fully contain
       // full content height (scrollHeight)
-      if (
-        safeWindow.document.body.clientHeight <
-        safeWindow.document.body.scrollHeight
-      ) {
+      if (safeWindow.document.body.clientHeight < safeWindow.document.body.scrollHeight) {
         scrollbarVisibility.enable();
       } else {
         scrollbarVisibility.disable();

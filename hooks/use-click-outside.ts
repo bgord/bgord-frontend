@@ -14,9 +14,7 @@ export function useClickOutside(
       if (!ref.current?.contains(event.target as Node)) {
         // The second check is to check if some `exclude`d node
         // outside the `ref` node has been clicked.
-        const isExcludedNodeClicked = exclude?.some((node) =>
-          node.current?.contains(event.target as Node),
-        );
+        const isExcludedNodeClicked = exclude?.some((node) => node.current?.contains(event.target as Node));
 
         // `onClickOutside` callback is fired if the click event
         // happened outside both `ref` node and `exclude`d nodes.

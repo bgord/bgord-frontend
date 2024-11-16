@@ -1,11 +1,10 @@
-import { describe, test, expect } from "vitest";
-import { renderHook, act } from "@testing-library/react";
-import { render, screen } from "@testing-library/react";
+import { act, render, renderHook, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter, Routes, Route } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { describe, expect, test } from "vitest";
 
-import { useNewField } from "../hooks/use-new-field";
 import { Field } from "../hooks/field";
+import { useNewField } from "../hooks/use-new-field";
 
 describe("useNewField - local", () => {
   test("empty default value - undefined", () => {

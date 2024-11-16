@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export enum UseExpandableListState {
   contracted = "contracted",
@@ -19,16 +19,12 @@ export type UseExpandableListReturnType = {
   filterFn: (element: unknown, index: number) => void;
 };
 
-export function useExpandableList(
-  config: UseExpandableListConfigType,
-): UseExpandableListReturnType {
+export function useExpandableList(config: UseExpandableListConfigType): UseExpandableListReturnType {
   const numberOfExcessiveElements = config.length - config.max;
   const areThereExcessiveElements = config.length > config.max;
 
   function getState() {
-    return areThereExcessiveElements
-      ? UseExpandableListState.contracted
-      : UseExpandableListState.expanded;
+    return areThereExcessiveElements ? UseExpandableListState.contracted : UseExpandableListState.expanded;
   }
 
   const [state, setState] = useState<UseExpandableListState>(getState);
@@ -56,8 +52,7 @@ export function useExpandableList(
   return {
     state,
     displayShowMore: state === UseExpandableListState.contracted,
-    displayShowLess:
-      state === UseExpandableListState.expanded && areThereExcessiveElements,
+    displayShowLess: state === UseExpandableListState.expanded && areThereExcessiveElements,
     actions: {
       showMore,
       showLess,

@@ -39,10 +39,7 @@ export function useScrollLock(options?: ScrollLockOptions): void {
     }
 
     // Get original overflow with fallbacks
-    const originalHtmlOverflow =
-      html.style.overflow ||
-      window.getComputedStyle(html)?.overflow ||
-      "visible";
+    const originalHtmlOverflow = html.style.overflow || window.getComputedStyle(html)?.overflow || "visible";
 
     // Set overflow to hidden
     html.style.overflow = "hidden";

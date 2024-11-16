@@ -9,10 +9,7 @@ export class Field<T extends FieldValueAllowedTypes> {
     return value === undefined || value === "" || value === null;
   }
 
-  static compare(
-    one: FieldValueAllowedTypes,
-    another: FieldValueAllowedTypes,
-  ): boolean {
+  static compare(one: FieldValueAllowedTypes, another: FieldValueAllowedTypes): boolean {
     if (Field.isEmpty(one) && Field.isEmpty(another)) {
       return true;
     }

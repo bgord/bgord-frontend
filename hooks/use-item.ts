@@ -18,23 +18,16 @@ export type UseItemConfigType<T> = {
   comparisonFn?: (a: UseItemValueType<T>, b: UseItemValueType<T>) => boolean;
 };
 
-function defaultComparisonFn<T>(
-  a: UseItemValueType<T>,
-  b: UseItemValueType<T>,
-) {
+function defaultComparisonFn<T>(a: UseItemValueType<T>, b: UseItemValueType<T>) {
   return a === b;
 }
 
 const defaultItem = null;
 
-export function useItem<T>(
-  config?: UseItemConfigType<T>,
-): UseItemReturnType<T> {
+export function useItem<T>(config?: UseItemConfigType<T>): UseItemReturnType<T> {
   const comparisonFn = config?.comparisonFn ?? defaultComparisonFn;
 
-  const [item, setItem] = useState<UseItemValueType<T>>(
-    config?.defaultItem ?? defaultItem,
-  );
+  const [item, setItem] = useState<UseItemValueType<T>>(config?.defaultItem ?? defaultItem);
 
   return {
     clear: () => setItem(defaultItem),

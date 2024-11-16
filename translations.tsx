@@ -1,10 +1,6 @@
+import type { Schema, TranslationsKeyType, TranslationsType } from "@bgord/node";
 import { createContext, useContext } from "react";
-import type {
-  TranslationsType,
-  TranslationsKeyType,
-  Schema,
-} from "@bgord/node";
-import { pluralize, PluralizeOptionsType } from "./pluralize";
+import { PluralizeOptionsType, pluralize } from "./pluralize";
 
 export type TranslationsContextValueType = {
   translations: TranslationsType;
@@ -13,10 +9,7 @@ export type TranslationsContextValueType = {
 
 type TranslationPlaceholderType = string;
 type TranslationPlaceholderValueType = string | number;
-type TranslationVariableType = Record<
-  TranslationPlaceholderType,
-  TranslationPlaceholderValueType
->;
+type TranslationVariableType = Record<TranslationPlaceholderType, TranslationPlaceholderValueType>;
 
 const TranslationsContext = createContext<TranslationsContextValueType>({
   translations: {},
@@ -28,29 +21,18 @@ type TranslationsContextPropsType = {
   value: TranslationsContextValueType;
 };
 
-export function TranslationsContextProvider(
-  props: TranslationsContextPropsType,
-) {
-  return (
-    <TranslationsContext.Provider value={props.value}>
-      {props.children}
-    </TranslationsContext.Provider>
-  );
+export function TranslationsContextProvider(props: TranslationsContextPropsType) {
+  return <TranslationsContext.Provider value={props.value}>{props.children}</TranslationsContext.Provider>;
 }
 
 export function useTranslations() {
   const value = useContext(TranslationsContext);
 
   if (value === undefined) {
-    throw new Error(
-      "useTranslations must be used within the TranslationsContext",
-    );
+    throw new Error("useTranslations must be used within the TranslationsContext");
   }
 
-  function translate(
-    key: TranslationsKeyType,
-    variables?: TranslationVariableType,
-  ) {
+  function translate(key: TranslationsKeyType, variables?: TranslationVariableType) {
     const translation = value.translations[key];
 
     if (!translation) {
@@ -61,8 +43,7 @@ export function useTranslations() {
     if (!variables) return translation;
 
     return Object.entries(variables).reduce(
-      (result, [placeholder, value]) =>
-        result.replace(`{{${placeholder}}}`, String(value)),
+      (result, [placeholder, value]) => result.replace(`{{${placeholder}}}`, String(value)),
       translation,
     );
   }
@@ -83,6 +64,5 @@ export function useLanguage(): TranslationsContextValueType["language"] {
 export function usePluralize() {
   const language = useLanguage();
 
-  return (options: Omit<PluralizeOptionsType, "language">) =>
-    pluralize({ ...options, language });
+  return (options: Omit<PluralizeOptionsType, "language">) => pluralize({ ...options, language });
 }

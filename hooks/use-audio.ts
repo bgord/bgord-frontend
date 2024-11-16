@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 
-import { useNewField } from "./use-new-field";
 import { DurationFormatter } from "../durations";
+import { useNewField } from "./use-new-field";
 
 export type UseAudioSrcType = string;
 
@@ -102,10 +102,7 @@ export function useAudio(src: UseAudioSrcType): UseAudioReturnType {
 
   const muted = volume.value === 0;
 
-  const percentage =
-    duration.value === 0
-      ? 0
-      : Math.round((currentTime.value / duration.value) * 100);
+  const percentage = duration.value === 0 ? 0 : Math.round((currentTime.value / duration.value) * 100);
 
   function play() {
     if (ref.current) {
@@ -209,8 +206,7 @@ export function useAudio(src: UseAudioSrcType): UseAudioReturnType {
       isReady: state === UseAudioState.ready,
       isPlaying: state === UseAudioState.playing,
       isPaused: state === UseAudioState.paused,
-      matches: (states: UseAudioState[]) =>
-        states.some((given) => given === state),
+      matches: (states: UseAudioState[]) => states.some((given) => given === state),
       percentage: {
         raw: percentage,
         formatted: `${percentage}%`,

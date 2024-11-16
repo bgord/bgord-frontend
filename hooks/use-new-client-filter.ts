@@ -1,10 +1,10 @@
+import { Field, FieldValueAllowedTypes } from "./field";
 import {
   UseNewFieldConfigType,
   UseNewFieldReturnType,
   UseNewFieldStrategyEnum,
   useNewField,
 } from "./use-new-field";
-import { FieldValueAllowedTypes, Field } from "./field";
 
 export type UseNewClientFilterQueryType = string | undefined;
 
@@ -16,16 +16,15 @@ type UseNewClientFilterConfigType<T extends FieldValueAllowedTypes> = Omit<
   filterFn?: (value: T) => boolean;
 };
 
-export type UseNewClientFilterReturnType<T extends FieldValueAllowedTypes> =
-  UseNewFieldReturnType<T> & {
-    filterFn: NonNullable<UseNewClientFilterConfigType<T>["filterFn"]>;
-    options: {
-      name: string;
-      value: UseNewClientFilterConfigType<T>["enum"][0];
-    }[];
-  } & {
-    strategy: UseNewFieldStrategyEnum.local;
-  };
+export type UseNewClientFilterReturnType<T extends FieldValueAllowedTypes> = UseNewFieldReturnType<T> & {
+  filterFn: NonNullable<UseNewClientFilterConfigType<T>["filterFn"]>;
+  options: {
+    name: string;
+    value: UseNewClientFilterConfigType<T>["enum"][0];
+  }[];
+} & {
+  strategy: UseNewFieldStrategyEnum.local;
+};
 
 export function useNewClientFilter<T extends FieldValueAllowedTypes>(
   config: UseNewClientFilterConfigType<T>,

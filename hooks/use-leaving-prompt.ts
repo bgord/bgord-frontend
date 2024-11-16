@@ -2,9 +2,7 @@ import { useEffect } from "react";
 
 export type UseLeavingPromptConditionType = boolean;
 
-export function useLeavingPrompt(
-  condition: UseLeavingPromptConditionType = false,
-): void {
+export function useLeavingPrompt(condition: UseLeavingPromptConditionType = false): void {
   useEffect(() => {
     if (!condition) return;
 

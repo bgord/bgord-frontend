@@ -1,10 +1,6 @@
 import { useRef } from "react";
 
-import {
-  RateLimiterOptionsType,
-  RateLimiterResultErrorType,
-  RateLimiter,
-} from "../rate-limiter";
+import { RateLimiter, RateLimiterOptionsType, RateLimiterResultErrorType } from "../rate-limiter";
 
 export type UseRateLimiterActionType<T> = (...args: T[]) => void;
 
@@ -15,9 +11,7 @@ export type UseRateLimiterOptionsType<T> = RateLimiterOptionsType & {
 
 export type UseRateLimiterReturnType<T> = UseRateLimiterActionType<T>;
 
-export function useRateLimiter<T>(
-  options: UseRateLimiterOptionsType<T>,
-): UseRateLimiterReturnType<T> {
+export function useRateLimiter<T>(options: UseRateLimiterOptionsType<T>): UseRateLimiterReturnType<T> {
   const rateLimiter = useRef<RateLimiter>(new RateLimiter(options));
 
   return function executor(...args: T[]) {

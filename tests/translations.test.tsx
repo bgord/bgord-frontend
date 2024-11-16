@@ -1,11 +1,11 @@
+import { cleanup, render, renderHook, screen } from "@testing-library/react";
 import React from "react";
-import { renderHook, render, cleanup, screen } from "@testing-library/react";
-import { describe, test, expect, vi, beforeEach, afterEach } from "vitest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import {
-  TranslationsContextValueType,
   TranslationsContextProvider,
-  useTranslations,
+  TranslationsContextValueType,
   useLanguage,
+  useTranslations,
 } from "../translations";
 
 describe("Translations Context and Hooks", () => {
@@ -53,11 +53,7 @@ describe("Translations Context and Hooks", () => {
     const wrapper = (props: {
       children: React.ReactNode;
       value: TranslationsContextValueType;
-    }) => (
-      <TranslationsContextProvider value={props.value}>
-        {props.children}
-      </TranslationsContextProvider>
-    );
+    }) => <TranslationsContextProvider value={props.value}>{props.children}</TranslationsContextProvider>;
 
     test("returns translation for existing key", () => {
       const value = {
@@ -81,9 +77,7 @@ describe("Translations Context and Hooks", () => {
 
       const missingKey = "missing.key";
       expect(result.current(missingKey)).toBe(missingKey);
-      expect(mockWarn).toHaveBeenCalledWith(
-        expect.stringContaining(missingKey),
-      );
+      expect(mockWarn).toHaveBeenCalledWith(expect.stringContaining(missingKey));
     });
 
     test("replaces variables in translation", () => {
@@ -98,9 +92,7 @@ describe("Translations Context and Hooks", () => {
         wrapper: ({ children }) => wrapper({ children, value }),
       });
 
-      expect(result.current("welcome", { name: "John", count: 5 })).toBe(
-        "Hello, John! You have 5 messages.",
-      );
+      expect(result.current("welcome", { name: "John", count: 5 })).toBe("Hello, John! You have 5 messages.");
     });
 
     test("handles numeric variable values", () => {
@@ -134,11 +126,7 @@ describe("Translations Context and Hooks", () => {
     const wrapper = (props: {
       children: React.ReactNode;
       value: TranslationsContextValueType;
-    }) => (
-      <TranslationsContextProvider value={props.value}>
-        {props.children}
-      </TranslationsContextProvider>
-    );
+    }) => <TranslationsContextProvider value={props.value}>{props.children}</TranslationsContextProvider>;
 
     test("returns current language", () => {
       const value = { translations: {}, language: "fr" as const };
@@ -175,9 +163,7 @@ describe("Translations Context and Hooks", () => {
 
         return (
           <div>
-            <span data-testid="translation">
-              {translate("welcome", { name: "Test" })}
-            </span>
+            <span data-testid="translation">{translate("welcome", { name: "Test" })}</span>
             <span data-testid="language">{language}</span>
           </div>
         );
@@ -194,9 +180,7 @@ describe("Translations Context and Hooks", () => {
         </TranslationsContextProvider>,
       );
 
-      expect(screen.getByTestId("translation")).toHaveTextContent(
-        "Welcome, Test!",
-      );
+      expect(screen.getByTestId("translation")).toHaveTextContent("Welcome, Test!");
       expect(screen.getByTestId("language")).toHaveTextContent("en");
     });
   });

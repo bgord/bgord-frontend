@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 export type UseToggleValueType = boolean;
 
@@ -79,10 +79,7 @@ export type UseToggleReturnType = {
  * });
  * ```
  */
-export function useToggle({
-  name,
-  defaultValue = false,
-}: UseToggleConfigType): UseToggleReturnType {
+export function useToggle({ name, defaultValue = false }: UseToggleConfigType): UseToggleReturnType {
   const [on, setIsOn] = useState<UseToggleValueType>(defaultValue);
 
   // Memoize callbacks for better performance
@@ -108,8 +105,8 @@ export function useToggle({
           role: "region" as const,
           "aria-hidden": on ? "false" : "true",
         },
-      } as UseToggleProps),
-    [on, name]
+      }) as UseToggleProps,
+    [on, name],
   );
 
   return {

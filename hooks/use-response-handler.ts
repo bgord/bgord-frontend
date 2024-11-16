@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import * as rrd from "react-router-dom";
 
 export type ResponseType =
@@ -45,11 +45,7 @@ export function useResponseHandler(
 
   // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   useEffect(() => {
-    if (
-      response?.intent !== intent ||
-      response.id === lastHandledKey.current ||
-      response.id !== key
-    ) {
+    if (response?.intent !== intent || response.id === lastHandledKey.current || response.id !== key) {
       return;
     }
     if (response.result === "success") {

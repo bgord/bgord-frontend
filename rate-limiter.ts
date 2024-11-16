@@ -1,5 +1,5 @@
-import type { TimestampType } from "@bgord/node/dist/schema";
 import type { Falsy } from "@bgord/node";
+import type { TimestampType } from "@bgord/node/dist/schema";
 
 export type RateLimiterOptionsType = {
   limitMs: TimestampType;
@@ -14,9 +14,7 @@ export type RateLimiterResultErrorType = {
 };
 
 /** @public */
-export type RateLimiterResultType =
-  | RateLimiterResultSuccessType
-  | RateLimiterResultErrorType;
+export type RateLimiterResultType = RateLimiterResultSuccessType | RateLimiterResultErrorType;
 
 export class RateLimiter {
   private lastInvocationTimestamp: Falsy<TimestampType> = null;
@@ -34,8 +32,7 @@ export class RateLimiter {
       return { allowed: true };
     }
 
-    const nextAllowedTimestamp =
-      this.lastInvocationTimestamp + this.options.limitMs;
+    const nextAllowedTimestamp = this.lastInvocationTimestamp + this.options.limitMs;
 
     if (nextAllowedTimestamp <= currentTimestamp) {
       this.lastInvocationTimestamp = currentTimestamp;

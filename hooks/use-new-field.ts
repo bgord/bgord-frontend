@@ -1,14 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { Field, FieldValueAllowedTypes } from "./field";
 
 type NewFieldNameType = string;
 
-export type FieldElementType =
-  | HTMLInputElement
-  | HTMLSelectElement
-  | HTMLTextAreaElement;
+export type FieldElementType = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
 export enum UseNewFieldStrategyEnum {
   params = "params",
@@ -77,9 +74,7 @@ export function useNewField<T extends FieldValueAllowedTypes>(
     defaultValue: defaultValue.get(),
     currentValue,
     // To account for React's controlled component's empty value.
-    value: Field.isEmpty(currentValue)
-      ? ("" as NonNullable<T>)
-      : (currentValue as NonNullable<T>),
+    value: Field.isEmpty(currentValue) ? ("" as NonNullable<T>) : (currentValue as NonNullable<T>),
     set: setCurrentValue,
     handleChange: (event: React.ChangeEvent<FieldElementType>) =>
       setCurrentValue(event.currentTarget.value as T),
