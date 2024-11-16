@@ -1,20 +1,55 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
-export function useScrollLock(condition = true): void {
+/**
+ * Options for the useScrollLock hook
+ */
+interface ScrollLockOptions {
+  /** Whether scrolling should be locked */
+  condition?: boolean;
+}
+
+/**
+ * React hook that prevents scrolling on the html element when active.
+ * Used typically for modals, drawers, and other overlays.
+ *
+ * @param options - Configuration options for the scroll lock
+ * @example
+ * ```tsx
+ * // Basic usage
+ * useScrollLock();
+ *
+ * // With condition
+ * useScrollLock({ condition: isModalOpen });
+ * ```
+ */
+export function useScrollLock(options?: ScrollLockOptions): void {
+  const { condition = true } = options || {};
+
+  // SSR guard - don't run on server
+  if (typeof document === "undefined") return;
+
+  // Memoize element selection
+  const html = useMemo(() => document.querySelector("html"), []);
+
   useEffect(() => {
-    if (!condition) return;
+    // Skip if condition is false or element not found
+    if (!(condition && html)) {
+      if (!html) console.warn("useScrollLock: HTML element not found");
+      return;
+    }
 
-    const html = document.querySelector("html") as HTMLElement;
+    // Get original overflow with fallbacks
+    const originalHtmlOverflow =
+      html.style.overflow ||
+      window.getComputedStyle(html)?.overflow ||
+      "visible";
 
-    if (!html) return;
-    const originalHtmlOverflow = window.getComputedStyle(html).overflow;
-
-    // Prevent scrolling on mount
+    // Set overflow to hidden
     html.style.overflow = "hidden";
 
-    // Re-enable scrolling when component unmounts
-    return () => {
+    // Cleanup function with explicit void return type
+    return (): void => {
       html.style.overflow = originalHtmlOverflow;
     };
-  }, [condition]);
+  }, [condition, html]); // Include html in dependencies since it's memoized
 }

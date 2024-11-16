@@ -27,7 +27,6 @@ export * from "./use-persistent-toggle";
 export * from "./use-previous-value";
 export * from "./use-rate-limiter";
 export * from "./use-scroll";
-export * from "./use-scroll-lock";
 export * from "./use-sound";
 export * from "./use-video";
 export * from "./use-window-dimensions";
@@ -45,6 +44,7 @@ import { useNewClientSearch } from "./use-new-client-search";
 import { useNewClientSort, defaultSortFn } from "./use-new-client-sort";
 import { Field } from "./field";
 import { useToggle, extractUseToggle } from "./use-toggle";
+import { useScrollLock } from "./use-scroll-lock";
 
 export const verified = {
   useNewField,
@@ -58,6 +58,7 @@ export const verified = {
   defaultSortFn,
   useToggle,
   extractUseToggle,
+  useScrollLock,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";

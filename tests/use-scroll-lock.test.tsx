@@ -29,14 +29,14 @@ describe("useScrollLock", () => {
   });
 
   test("respects condition parameter when false", () => {
-    renderHook(() => useScrollLock(false));
+    renderHook(() => useScrollLock({ condition: false }));
 
     expect(mockHtmlElement.style.overflow).toEqual("");
   });
 
   test("changes overflow style when condition changes", () => {
     const { rerender } = renderHook(
-      ({ condition }) => useScrollLock(condition),
+      ({ condition }) => useScrollLock({ condition }),
       { initialProps: { condition: false } },
     );
 
@@ -61,7 +61,7 @@ describe("useScrollLock", () => {
   test("preserves original style when condition is false", () => {
     mockHtmlElement.style.overflow = "scroll";
 
-    const { unmount } = renderHook(() => useScrollLock(false));
+    const { unmount } = renderHook(() => useScrollLock({ condition: false }));
 
     expect(mockHtmlElement.style.overflow).toEqual("scroll");
 
