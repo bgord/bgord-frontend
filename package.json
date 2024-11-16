@@ -14,8 +14,7 @@
   "scripts": {
     "build": "microbundle --jsx React.createElement --jsxFragment React.Fragment --external react,react-router-dom --globals react=React,react-router-dom=ReactRouterDOM --format modern,cjs",
     "test": "vitest run",
-    "preinstall": "npx only-allow npm",
-    "prepare": "husky"
+    "preinstall": "npx only-allow npm"
   },
   "sideEffects": false,
   "keywords": [],
@@ -45,7 +44,6 @@
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-react": "4.3.3",
     "cspell": "8.15.5",
-    "husky": "9.1.6",
     "jsdom": "25.0.1",
     "microbundle": "0.15.1",
     "only-allow": "1.2.1",
