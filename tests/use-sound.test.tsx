@@ -1,14 +1,18 @@
-import { fireEvent, renderHook, render } from "@testing-library/react";
+import { fireEvent, renderHook, render, cleanup } from "@testing-library/react";
 import { describe, test, expect, vi, beforeEach, afterEach } from "vitest";
 import { useSound } from "../hooks/use-sound";
 
 describe("useSound", () => {
   // Mock for audio.play method
   const mockPlay = vi.fn();
+  const mockPause = vi.fn();
+  const mockLoad = vi.fn();
 
   // Mock Audio constructor
   const mockAudio = vi.fn(() => ({
     play: mockPlay,
+    pause: mockPause,
+    load: mockLoad,
   }));
 
   beforeEach(() => {
@@ -19,6 +23,7 @@ describe("useSound", () => {
   afterEach(() => {
     // Clear all mocks after each test
     vi.clearAllMocks();
+    cleanup();
   });
 
   test("initializes with audio source", () => {
@@ -35,7 +40,7 @@ describe("useSound", () => {
 
     // Should return object with play function
     expect(result.current).toHaveProperty("play");
-    expect(typeof result.current.play).toBe("function");
+    expect(typeof result.current.play).toEqual("function");
   });
 
   test("play function calls audio.play", () => {
