@@ -1,12 +1,6 @@
-import {
-  fireEvent,
-  screen,
-  renderHook,
-  act,
-  render,
-} from "@testing-library/react";
-import { describe, test, expect } from "vitest";
-import { useToggle, extractUseToggle } from "../hooks/use-toggle";
+import { act, fireEvent, render, renderHook, screen } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
+import { extractUseToggle, useToggle } from "../hooks/use-toggle";
 
 describe("useToggle", () => {
   test("initializes with default false value", () => {
@@ -32,9 +26,7 @@ describe("useToggle", () => {
   });
 
   test("initializes with explicit default value", () => {
-    const hook = renderHook(() =>
-      useToggle({ name: "test-id", defaultValue: true }),
-    );
+    const hook = renderHook(() => useToggle({ name: "test-id", defaultValue: true }));
     const result = hook.result.current;
 
     expect(result.on).toBe(true);
@@ -140,17 +132,10 @@ describe("useToggle in components", () => {
       const toggle = useToggle({ name: "test-message" });
       return (
         <div>
-          <button
-            type="button"
-            onClick={toggle.toggle}
-            {...toggle.props.controller}
-          >
+          <button type="button" onClick={toggle.toggle} {...toggle.props.controller}>
             Toggle Message
           </button>
-          <div
-            {...toggle.props.target}
-            style={{ display: toggle.on ? "block" : "none" }}
-          >
+          <div {...toggle.props.target} style={{ display: toggle.on ? "block" : "none" }}>
             Hidden Message
           </div>
         </div>
@@ -188,10 +173,7 @@ describe("useToggle in components", () => {
           <button type="button" onClick={toggle.disable} data-testid="hide">
             Hide
           </button>
-          <div
-            {...toggle.props.target}
-            style={{ display: toggle.on ? "block" : "none" }}
-          >
+          <div {...toggle.props.target} style={{ display: toggle.on ? "block" : "none" }}>
             Controlled Message
           </div>
         </div>
@@ -298,17 +280,10 @@ describe("useToggle in components", () => {
       });
       return (
         <div>
-          <button
-            type="button"
-            onClick={toggle.toggle}
-            {...toggle.props.controller}
-          >
+          <button type="button" onClick={toggle.toggle} {...toggle.props.controller}>
             Toggle
           </button>
-          <div
-            {...toggle.props.target}
-            style={{ display: toggle.on ? "block" : "none" }}
-          >
+          <div {...toggle.props.target} style={{ display: toggle.on ? "block" : "none" }}>
             Initially Visible Message
           </div>
         </div>

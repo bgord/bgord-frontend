@@ -1,5 +1,5 @@
-import { useNewField, UseNewFieldStrategyEnum } from "./use-new-field";
-import type { Paged, PageType } from "@bgord/node";
+import type { PageType, Paged } from "@bgord/node";
+import { UseNewFieldStrategyEnum, useNewField } from "./use-new-field";
 
 export type { Paged, PageType } from "@bgord/node";
 
@@ -25,9 +25,7 @@ type UsePaginationReturnType = {
   };
 };
 
-export function usePagination(
-  meta: PagedMetaType | null,
-): UsePaginationReturnType {
+export function usePagination(meta: PagedMetaType | null): UsePaginationReturnType {
   const firstPage = 1;
   const previousPage = meta?.previousPage;
   const nextPage = meta?.nextPage;
@@ -82,7 +80,5 @@ export function usePagination(
 export function extractPage(url: URL): PageType {
   const searchParams = url.searchParams;
 
-  return Number(searchParams.get("page"))
-    ? Number(searchParams.get("page"))
-    : 1;
+  return Number(searchParams.get("page")) ? Number(searchParams.get("page")) : 1;
 }

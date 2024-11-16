@@ -1,0 +1,37 @@
+assert_lefthook_installed: true
+
+pre-push:
+  parallel: true
+  commands:
+    typecheck:
+      run: ./bgord-scripts/typecheck.sh
+    typecheck-prune:
+      run: ./bgord-scripts/typecheck-prune.sh
+    test-run:
+      run: ./bgord-scripts/test-run.sh
+
+pre-commit:
+  parallel: true
+  commands:
+    format-staged:
+      run: ./bgord-scripts/format-staged.sh
+      stage_fixed: true
+    lint:
+      run: ./bgord-scripts/lint.sh
+    cspell:
+      run: ./bgord-scripts/cspell.sh
+    shellcheck:
+      glob: "*.{sh}"
+      run: ./bgord-scripts/shellcheck.sh
+    biome-check:
+      run: ./bgord-scripts/bun-biome-check.sh
+
+skip_output:
+  - meta
+  - summary
+  - empty_summary
+  - success
+  - execution
+  - execution_out
+  - execution_info
+  - skips

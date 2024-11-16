@@ -1,5 +1,5 @@
-import { renderHook, cleanup } from "@testing-library/react";
-import { describe, test, expect, beforeEach, afterEach, vi } from "vitest";
+import { cleanup, renderHook } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { useScrollLock } from "../hooks/use-scroll-lock";
 
 describe("useScrollLock", () => {
@@ -35,10 +35,9 @@ describe("useScrollLock", () => {
   });
 
   test("changes overflow style when condition changes", () => {
-    const { rerender } = renderHook(
-      ({ condition }) => useScrollLock({ condition }),
-      { initialProps: { condition: false } },
-    );
+    const { rerender } = renderHook(({ condition }) => useScrollLock({ condition }), {
+      initialProps: { condition: false },
+    });
 
     expect(mockHtmlElement.style.overflow).toEqual("");
 

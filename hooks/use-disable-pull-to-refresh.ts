@@ -8,10 +8,8 @@ export function useDisablePullToRefresh(condition = true): void {
     const body = document.body;
 
     // Get original overscroll behaviors
-    const originalHtmlOverscrollBehavior =
-      window.getComputedStyle(html).overscrollBehavior;
-    const originalBodyOverflowBehavior =
-      window.getComputedStyle(body).overscrollBehavior;
+    const originalHtmlOverscrollBehavior = window.getComputedStyle(html).overscrollBehavior;
+    const originalBodyOverflowBehavior = window.getComputedStyle(body).overscrollBehavior;
 
     // Disable pull to refresh
     body.style.overscrollBehavior = "none";

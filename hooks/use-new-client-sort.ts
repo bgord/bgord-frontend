@@ -1,3 +1,4 @@
+import { Field, FieldValueAllowedTypes } from "./field";
 import {
   FieldElementType,
   UseNewFieldConfigType,
@@ -5,16 +6,12 @@ import {
   UseNewFieldStrategyEnum,
   useNewField,
 } from "./use-new-field";
-import { FieldValueAllowedTypes, Field } from "./field";
 
 type UseNewClientSortOptionType = string;
 
 type UseNewClientSortFnType<X> = (a: X, b: X) => number;
 
-type UseNewClientSortConfigType<X> = Omit<
-  UseNewFieldConfigType<UseNewClientSortOptionType>,
-  "strategy"
-> & {
+type UseNewClientSortConfigType<X> = Omit<UseNewFieldConfigType<UseNewClientSortOptionType>, "strategy"> & {
   enum: Record<UseNewClientSortOptionType, UseNewClientSortOptionType> & {
     default: UseNewClientSortOptionType;
   };
@@ -40,9 +37,7 @@ export function useNewClientSort<X>(
     strategy: UseNewFieldStrategyEnum.local,
   });
 
-  const handleChange: (event: React.ChangeEvent<FieldElementType>) => void = (
-    event,
-  ) => {
+  const handleChange: (event: React.ChangeEvent<FieldElementType>) => void = (event) => {
     const newSort = event.currentTarget.value;
     const isNewSortInEnum = Boolean(config.enum[String(newSort)]);
 

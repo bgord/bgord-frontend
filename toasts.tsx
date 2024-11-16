@@ -19,13 +19,9 @@ type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> = [
   },
 ];
 
-const ToastsContext = createContext<ToastsContextDataType | undefined>(
-  undefined,
-);
+const ToastsContext = createContext<ToastsContextDataType | undefined>(undefined);
 
-export function ToastsContextProvider(
-  props: { children: JSX.Element | JSX.Element[] } & ToastsConfigType,
-) {
+export function ToastsContextProvider(props: { children: JSX.Element | JSX.Element[] } & ToastsConfigType) {
   function useToastsImplementation(): ToastsContextDataType {
     const timeout = props?.timeout ?? 5000;
 
@@ -41,24 +37,15 @@ export function ToastsContextProvider(
       setTimeout(() => actions.remove(toast), timeout);
     }
 
-    return [
-      toasts.toReversed(),
-      { add, remove: actions.remove, clear: actions.clear },
-    ];
+    return [toasts.toReversed(), { add, remove: actions.remove, clear: actions.clear }];
   }
 
   const [toasts, actions] = useToastsImplementation();
 
-  return (
-    <ToastsContext.Provider value={[toasts, actions]}>
-      {props.children}
-    </ToastsContext.Provider>
-  );
+  return <ToastsContext.Provider value={[toasts, actions]}>{props.children}</ToastsContext.Provider>;
 }
 
-export function useToastsContext<
-  ToastType extends BaseToastType = BaseToastType,
->() {
+export function useToastsContext<ToastType extends BaseToastType = BaseToastType>() {
   const context = useContext<ToastsContextDataType<ToastType>>(
     ToastsContext as unknown as React.Context<ToastsContextDataType<ToastType>>,
   );
@@ -70,9 +57,7 @@ export function useToastsContext<
   return context;
 }
 
-export function useToastTrigger<
-  ToastType extends BaseToastType = BaseToastType,
->() {
+export function useToastTrigger<ToastType extends BaseToastType = BaseToastType>() {
   const [, actions] = useToastsContext<ToastType>();
 
   return actions.add;

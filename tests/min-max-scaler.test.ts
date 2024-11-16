@@ -1,4 +1,4 @@
-import { test, expect, describe } from "vitest";
+import { describe, expect, test } from "vitest";
 
 import { MinMaxScaler } from "../min-max-scaler";
 
@@ -120,30 +120,22 @@ describe("MinMaxScaler", () => {
 
     test("should throw an error for an invalid min/max config", () => {
       const config = { min: 100, max: 0, bound: { lower: 0, upper: 10 } };
-      expect(() => new MinMaxScaler(config)).toThrow(
-        "Invalid MinMaxScaler min-max config",
-      );
+      expect(() => new MinMaxScaler(config)).toThrow("Invalid MinMaxScaler min-max config");
     });
 
     test("should throw an error for an invalid lower/upper config", () => {
       const config = { min: 0, max: 10, bound: { lower: 20, upper: 10 } };
-      expect(() => new MinMaxScaler(config)).toThrow(
-        "Invalid MinMaxScaler bound config",
-      );
+      expect(() => new MinMaxScaler(config)).toThrow("Invalid MinMaxScaler bound config");
     });
 
     test("should throw an error for an equal lower/upper config", () => {
       const config = { min: 0, max: 10, bound: { lower: 10, upper: 10 } };
-      expect(() => new MinMaxScaler(config)).toThrow(
-        "Invalid MinMaxScaler bound config",
-      );
+      expect(() => new MinMaxScaler(config)).toThrow("Invalid MinMaxScaler bound config");
     });
 
     test("should throw an error on a value out of min/max", () => {
       const config = { min: 0, max: 10 };
-      expect(() => new MinMaxScaler(config).scale(15)).toThrow(
-        "Value out of min/max range",
-      );
+      expect(() => new MinMaxScaler(config).scale(15)).toThrow("Value out of min/max range");
     });
   });
 
@@ -160,9 +152,7 @@ describe("MinMaxScaler", () => {
   describe("getMinMax", () => {
     test("should handle empty arrays", () => {
       const values: [] = [];
-      expect(() => MinMaxScaler.getMinMax(values)).toThrow(
-        "An empty array supplied",
-      );
+      expect(() => MinMaxScaler.getMinMax(values)).toThrow("An empty array supplied");
     });
 
     test("should return one value arrays", () => {

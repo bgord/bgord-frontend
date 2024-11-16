@@ -1,5 +1,5 @@
-import { expect, describe, test } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
 
 import { OutboundLink } from "../components/outbound-link";
 

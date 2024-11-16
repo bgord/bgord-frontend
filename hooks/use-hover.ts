@@ -1,6 +1,6 @@
-import { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-import { useToggle, UseToggleReturnType } from "./use-toggle";
+import { UseToggleReturnType, useToggle } from "./use-toggle";
 
 export type UseHoverConfigType = {
   enabled: boolean;

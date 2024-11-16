@@ -1,5 +1,5 @@
 import type { TimestampType } from "@bgord/node/dist/schema";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Time } from "../time";
 
 export function getCurrentTimestamp(): TimestampType {
@@ -7,14 +7,10 @@ export function getCurrentTimestamp(): TimestampType {
 }
 
 export function useCurrentTimestamp(): TimestampType {
-  const [timestamp, setTimestamp] =
-    useState<TimestampType>(getCurrentTimestamp);
+  const [timestamp, setTimestamp] = useState<TimestampType>(getCurrentTimestamp);
 
   useEffect(() => {
-    const timer = setInterval(
-      () => setTimestamp(getCurrentTimestamp()),
-      Time.Seconds(1).ms,
-    );
+    const timer = setInterval(() => setTimestamp(getCurrentTimestamp()), Time.Seconds(1).ms);
 
     return () => clearInterval(timer);
   }, []);

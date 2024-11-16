@@ -1,5 +1,5 @@
-import { describe, test, expect } from "vitest";
-import { FilterUrl, FilterType } from "../filter-url";
+import { describe, expect, test } from "vitest";
+import { FilterType, FilterUrl } from "../filter-url";
 
 describe("FilterUrl", () => {
   test("should create URL with string filters", () => {

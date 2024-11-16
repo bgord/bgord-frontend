@@ -6,13 +6,9 @@ export enum KeyNameEnum {
 // biome-ignore lint: lint/complexity/noBannedTypes
 export type UseKeyHandlerConfigType = Partial<Record<KeyNameEnum, Function>>;
 
-export type UseKeyHandlerReturnType = (
-  event: React.KeyboardEvent<HTMLElement>,
-) => void;
+export type UseKeyHandlerReturnType = (event: React.KeyboardEvent<HTMLElement>) => void;
 
-export function useKeyHandler(
-  config: UseKeyHandlerConfigType,
-): UseKeyHandlerReturnType {
+export function useKeyHandler(config: UseKeyHandlerConfigType): UseKeyHandlerReturnType {
   const keys = Object.keys(config);
 
   return function handleKey(event: React.KeyboardEvent<HTMLElement>) {

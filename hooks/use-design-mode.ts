@@ -1,15 +1,9 @@
 import { useEffect } from "react";
 
 import { getSafeWindow } from "../safe-window";
-import {
-  useToggle,
-  UseToggleConfigType,
-  UseToggleReturnType,
-} from "./use-toggle";
+import { UseToggleConfigType, UseToggleReturnType, useToggle } from "./use-toggle";
 
-export function useDesignMode(
-  config: UseToggleConfigType,
-): UseToggleReturnType {
+export function useDesignMode(config: UseToggleConfigType): UseToggleReturnType {
   const designMode = useToggle(config);
   const safeWindow = getSafeWindow();
 

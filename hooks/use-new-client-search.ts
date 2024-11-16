@@ -1,28 +1,22 @@
 import { Field } from "./field";
 import {
-  useNewField,
-  UseNewFieldReturnType,
   UseNewFieldConfigType,
+  UseNewFieldReturnType,
   UseNewFieldStrategyEnum,
+  useNewField,
 } from "./use-new-field";
 
 type UseNewClientSearchQueryType = string;
 
-type UseNewClientSearchConfigType = Pick<
-  UseNewFieldConfigType<UseNewClientSearchQueryType>,
-  "name"
->;
+type UseNewClientSearchConfigType = Pick<UseNewFieldConfigType<UseNewClientSearchQueryType>, "name">;
 
-export type UseNewClientSearchReturnType =
-  UseNewFieldReturnType<UseNewClientSearchQueryType> & {
-    filterFn: (value: string) => boolean;
-  } & {
-    strategy: UseNewFieldStrategyEnum.local;
-  };
+export type UseNewClientSearchReturnType = UseNewFieldReturnType<UseNewClientSearchQueryType> & {
+  filterFn: (value: string) => boolean;
+} & {
+  strategy: UseNewFieldStrategyEnum.local;
+};
 
-export function useNewClientSearch(
-  config: UseNewClientSearchConfigType,
-): UseNewClientSearchReturnType {
+export function useNewClientSearch(config: UseNewClientSearchConfigType): UseNewClientSearchReturnType {
   const query = useNewField<UseNewClientSearchQueryType>({
     name: config.name,
     defaultValue: "",
@@ -30,9 +24,7 @@ export function useNewClientSearch(
   });
 
   function filterFn(given: string) {
-    const currentQuery = new Field<UseNewClientSearchQueryType>(
-      query.currentValue,
-    );
+    const currentQuery = new Field<UseNewClientSearchQueryType>(query.currentValue);
 
     if (currentQuery.isEmpty()) return true;
 
