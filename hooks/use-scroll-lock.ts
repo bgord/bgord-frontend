@@ -5,6 +5,8 @@ export function useScrollLock(condition = true): void {
     if (!condition) return;
 
     const html = document.querySelector("html") as HTMLElement;
+
+    if (!html) return;
     const originalHtmlOverflow = window.getComputedStyle(html).overflow;
 
     // Prevent scrolling on mount
