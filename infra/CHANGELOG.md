@@ -1,6 +1,9 @@
 # Changelog
+- 2024-11-16 15:20 966258c **refactor: improve use scroll lock**
+- 2024-11-16 15:11 c0bab53 **step: add basic use scroll lock tests**
 - 2024-11-14 21:16 95c9300 **refactor: improve use-toggle hook**
 - 2024-11-14 20:48 b02624a **step: add use toggle tests**
+- 2024-11-14 20:24 3f642ba **docs: generate CHANGELOG**
 - 2024-11-13 17:36 a478dc0 **refactor: remove local strategy from local fields**
 - 2024-11-13 17:19 d336838 **refactor: export context types**
 - 2024-11-13 16:36 720c002 **docs: generate CHANGELOG**
