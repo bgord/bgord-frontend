@@ -51,9 +51,7 @@ export function useHover(config?: UseHoverConfigType): UseHoverReturnType {
 
   // Memoize event handlers
   const handleMouseEnter = useCallback(isHovering.enable, [isHovering.enable]);
-  const handleMouseLeave = useCallback(isHovering.disable, [
-    isHovering.disable,
-  ]);
+  const handleMouseLeave = useCallback(isHovering.disable, [isHovering.disable]);
 
   useEffect(() => {
     const node = ref.current;

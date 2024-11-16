@@ -1,11 +1,57 @@
+import { useCallback, useMemo } from "react";
+
+/**
+ * Hook for handling Meta+Enter form submission in textareas.
+ * Provides a keyboard shortcut to submit forms when Meta (Command on Mac, Ctrl on Windows)
+ * and Enter keys are pressed together.
+ *
+ * @returns Object containing onKeyDown handler to be attached to a textarea
+ *
+ * @example
+ * ```tsx
+ * // Basic usage
+ * function MyForm() {
+ *   const { onKeyDown } = useMetaEnterSubmit();
+ *   return (
+ *     <form>
+ *       <textarea
+ *         onKeyDown={onKeyDown}
+ *         placeholder="Press Meta+Enter to submit"
+ *       />
+ *     </form>
+ *   );
+ * }
+ *
+ * // With additional handlers
+ * function MyFormWithHandlers() {
+ *   const { onKeyDown } = useMetaEnterSubmit();
+ *   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+ *     onKeyDown(event);
+ *     // Your additional keyboard handling logic
+ *   };
+ *   return (
+ *     <form>
+ *       <textarea onKeyDown={handleKeyDown} />
+ *     </form>
+ *   );
+ * }
+ * ```
+ */
 export function useMetaEnterSubmit() {
-  const handleMetaEnterSubmit = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key !== "Enter" || !event.metaKey) return;
+  // Memoize the event handler to prevent unnecessary re-renders
+  const handleMetaEnterSubmit = useCallback(
+    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (event.key !== "Enter" || !event.metaKey) return;
 
-    event.preventDefault();
+      event.preventDefault();
+      event.currentTarget.form?.requestSubmit();
+    },
+    []
+  );
 
-    event.currentTarget.form?.requestSubmit();
-  };
-
-  return { onKeyDown: handleMetaEnterSubmit };
+  // Memoize the return value to maintain reference equality
+  return useMemo(
+    () => ({ onKeyDown: handleMetaEnterSubmit }),
+    [handleMetaEnterSubmit]
+  );
 }
