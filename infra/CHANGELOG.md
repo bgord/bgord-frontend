@@ -1,7 +1,11 @@
 # Changelog
+- 2024-11-16 15:57 1022feb **refactor: move use sound to verified**
+- 2024-11-16 15:50 8983193 **refactor: improve use sound**
+- 2024-11-16 15:39 b800278 **step: add use sound tests**
 - 2024-11-16 15:27 377bb22 **refactor: improve use toggle hook**
 - 2024-11-16 15:20 966258c **refactor: improve use scroll lock**
 - 2024-11-16 15:11 c0bab53 **step: add basic use scroll lock tests**
+- 2024-11-16 14:29 caf7811 **docs: generate CHANGELOG**
 - 2024-11-16 14:20 3391117 **docs: generate CHANGELOG**
 - 2024-11-14 21:16 95c9300 **refactor: improve use-toggle hook**
 - 2024-11-14 20:48 b02624a **step: add use toggle tests**
