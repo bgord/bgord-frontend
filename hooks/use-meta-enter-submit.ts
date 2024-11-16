@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 
 /**
- * Hook for handling Meta+Enter form submission in textareas.
+ * Hook for handling Meta+Enter form submission in text areas.
  * Provides a keyboard shortcut to submit forms when Meta (Command on Mac, Ctrl on Windows)
  * and Enter keys are pressed together.
  *
@@ -46,12 +46,12 @@ export function useMetaEnterSubmit() {
       event.preventDefault();
       event.currentTarget.form?.requestSubmit();
     },
-    []
+    [],
   );
 
   // Memoize the return value to maintain reference equality
   return useMemo(
     () => ({ onKeyDown: handleMetaEnterSubmit }),
-    [handleMetaEnterSubmit]
+    [handleMetaEnterSubmit],
   );
 }

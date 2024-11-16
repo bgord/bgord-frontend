@@ -16,12 +16,10 @@ export * from "./use-image-file-resolution";
 export * from "./use-is-online";
 export * from "./use-is-visible";
 export * from "./use-item";
-export * from "./use-keyboard-handler";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
 export * from "./use-leaving-prompt";
 export * from "./use-list";
-export * from "./use-meta-enter-submit";
 export * from "./use-pagination";
 export * from "./use-persistent-toggle";
 export * from "./use-previous-value";
@@ -32,11 +30,19 @@ export * from "./use-window-dimensions";
 export * from "./use-response-handler";
 
 import { Field } from "./field";
+import { useHover } from "./use-hover";
+import { useKeyHandler } from "./use-key-handler";
+import { useMetaEnterSubmit } from "./use-meta-enter-submit";
 import { useNewClientFilter } from "./use-new-client-filter";
 import { useNewClientSearch } from "./use-new-client-search";
 import { defaultSortFn, useNewClientSort } from "./use-new-client-sort";
 // VERIFIED ONLY
-import { Fields, LocalFields, UseNewFieldStrategyEnum, useNewField } from "./use-new-field";
+import {
+  Fields,
+  LocalFields,
+  UseNewFieldStrategyEnum,
+  useNewField,
+} from "./use-new-field";
 import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
@@ -55,6 +61,9 @@ export const verified = {
   extractUseToggle,
   useScrollLock,
   useSound,
+  useKeyHandler,
+  useMetaEnterSubmit,
+  useHover,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
