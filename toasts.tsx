@@ -37,16 +37,16 @@ type ToastActions = Readonly<{
  * First element is the readonly array of toasts
  * Second element is the readonly object of actions
  */
-type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> =
-  readonly [ReadonlyArray<ToastType>, ToastActions];
+type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> = readonly [
+  ReadonlyArray<ToastType>,
+  ToastActions,
+];
 
 /**
  * React Context for the toast system
  * @internal
  */
-const ToastsContext = createContext<ToastsContextDataType | undefined>(
-  undefined
-);
+const ToastsContext = createContext<ToastsContextDataType | undefined>(undefined);
 
 /**
  * Provider component for the toast notification system
@@ -70,7 +70,7 @@ const ToastsContext = createContext<ToastsContextDataType | undefined>(
 export function ToastsContextProvider(
   props: {
     readonly children: JSX.Element | JSX.Element[];
-  } & ToastsConfigType
+  } & ToastsConfigType,
 ) {
   /**
    * Internal hook for toast state management
@@ -87,7 +87,7 @@ export function ToastsContextProvider(
       (toast: BaseToastType) => {
         listActions.remove(toast);
       },
-      [listActions]
+      [listActions],
     );
 
     // Optimized add callback
@@ -98,7 +98,7 @@ export function ToastsContextProvider(
         listActions.add(toast);
         setTimeout(() => remove(toast), timeout);
       },
-      [listActions, timeout, remove]
+      [listActions, timeout, remove],
     );
 
     const clear = useCallback(() => {
@@ -111,27 +111,17 @@ export function ToastsContextProvider(
         remove,
         clear,
       }),
-      [add, remove, clear]
+      [add, remove, clear],
     );
 
-    const reversedToasts = useMemo(
-      () => toasts.slice().reverse() as ReadonlyArray<BaseToastType>,
-      [toasts]
-    );
+    const reversedToasts = useMemo(() => toasts.slice().reverse() as ReadonlyArray<BaseToastType>, [toasts]);
 
-    return useMemo(
-      () => [reversedToasts, actions] as const,
-      [reversedToasts, actions]
-    );
+    return useMemo(() => [reversedToasts, actions] as const, [reversedToasts, actions]);
   }
 
   const contextValue = useToastsImplementation();
 
-  return (
-    <ToastsContext.Provider value={contextValue}>
-      {props.children}
-    </ToastsContext.Provider>
-  );
+  return <ToastsContext.Provider value={contextValue}>{props.children}</ToastsContext.Provider>;
 }
 
 /**
@@ -160,10 +150,10 @@ export function ToastsContextProvider(
  * ```
  */
 export function useToastsContext<
-  ToastType extends BaseToastType = BaseToastType
+  ToastType extends BaseToastType = BaseToastType,
 >(): ToastsContextDataType<ToastType> {
   const context = useContext<ToastsContextDataType<ToastType>>(
-    ToastsContext as unknown as React.Context<ToastsContextDataType<ToastType>>
+    ToastsContext as unknown as React.Context<ToastsContextDataType<ToastType>>,
   );
 
   if (context === undefined) {
@@ -212,9 +202,9 @@ export function useToastsContext<
  * }
  * ```
  */
-export function useToastTrigger<
-  ToastType extends BaseToastType = BaseToastType
->(): (toast: Omit<ToastType, "id">) => void {
+export function useToastTrigger<ToastType extends BaseToastType = BaseToastType>(): (
+  toast: Omit<ToastType, "id">,
+) => void {
   const [, actions] = useToastsContext<ToastType>();
   return actions.add;
 }

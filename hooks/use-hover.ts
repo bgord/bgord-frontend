@@ -50,8 +50,8 @@ export function useHover(config?: UseHoverConfigType): UseHoverReturnType {
   const isHovering = useToggle({ name: "is-hovering" });
 
   // Memoize event handlers
-  const handleMouseEnter = useCallback(isHovering.enable, [isHovering.enable]);
-  const handleMouseLeave = useCallback(isHovering.disable, [isHovering.disable]);
+  const handleMouseEnter = useCallback(isHovering.enable, []);
+  const handleMouseLeave = useCallback(isHovering.disable, []);
 
   useEffect(() => {
     const node = ref.current;
@@ -73,6 +73,6 @@ export function useHover(config?: UseHoverConfigType): UseHoverReturnType {
       attach: { ref },
       isHovering: isHovering.on && enabled,
     }),
-    [isHovering.on, enabled],
+    [isHovering.on, enabled]
   );
 }

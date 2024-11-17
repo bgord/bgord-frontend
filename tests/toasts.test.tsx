@@ -1,10 +1,6 @@
 import { act, render, renderHook, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
-import {
-  type BaseToastType,
-  ToastsContextProvider,
-  useToastsContext,
-} from "../toasts";
+import { type BaseToastType, ToastsContextProvider, useToastsContext } from "../toasts";
 
 describe("Toast Context & Hooks", () => {
   beforeEach(() => vi.useFakeTimers());
@@ -75,9 +71,7 @@ describe("Toast Context & Hooks", () => {
         wrapper,
       });
 
-      act(() =>
-        result.current[1].add({ message: "Error Toast", severity: "error" }),
-      );
+      act(() => result.current[1].add({ message: "Error Toast", severity: "error" }));
 
       expect(result.current[0][0]?.severity).toBe("error");
     });

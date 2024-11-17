@@ -115,14 +115,14 @@ export type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
  * ```
  */
 export function useNewField<T extends FieldValueAllowedTypes>(
-  config: UseNewFieldConfigType<T>
+  config: UseNewFieldConfigType<T>,
 ): UseNewFieldReturnType<T> {
   const strategy = config.strategy ?? UseNewFieldStrategyEnum.local;
   const [params, setParams] = useSearchParams();
   const givenValue = new Field<T>(params.get(config.name) as T);
   const defaultValue = new Field<T>(config.defaultValue as T);
   const [currentValue, _setCurrentValue] = useState<T>(
-    givenValue.isEmpty() ? defaultValue.get() : givenValue.get()
+    givenValue.isEmpty() ? defaultValue.get() : givenValue.get(),
   );
 
   const setCurrentValue = (value: T) => {
