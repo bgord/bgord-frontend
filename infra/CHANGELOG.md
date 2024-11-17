@@ -1,4 +1,5 @@
 # Changelog
+- 2024-11-17 21:09 409e06f **refactor: rename new hooks**
 - 2024-11-17 21:07 538fbdf **fix: export key name enum**
 - 2024-11-17 21:01 12b191d **step: add silent to vite config**
 - 2024-11-17 20:59 62c5210 **fix: toasts type**
@@ -6,6 +7,7 @@
 - 2024-11-17 20:57 3ce6dac **step: add jsdocs for use new field**
 - 2024-11-17 20:52 9a5744b **step: improve toasts**
 - 2024-11-17 20:46 2347fd0 **step: add toasts tests**
+- 2024-11-17 20:08 2d05b9b **docs: generate CHANGELOG**
 - 2024-11-17 20:06 6d4bc72 **docs: generate CHANGELOG**
 - 2024-11-16 23:47 1d9eda0 **step: add tests for use debounce**
 - 2024-11-16 23:21 1d271f0 **step: add tests for use key handler**
