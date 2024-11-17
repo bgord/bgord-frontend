@@ -32,7 +32,7 @@ export * from "./use-response-handler";
 import { Field } from "./field";
 import { useDebounce } from "./use-debounce";
 import { useHover } from "./use-hover";
-import { useKeyHandler } from "./use-key-handler";
+import { useKeyHandler,KeyNameEnum } from "./use-key-handler";
 import { useMetaEnterSubmit } from "./use-meta-enter-submit";
 import { useNewClientFilter } from "./use-new-client-filter";
 import { useNewClientSearch } from "./use-new-client-search";
@@ -57,6 +57,7 @@ export const verified = {
   useScrollLock,
   useSound,
   useKeyHandler,
+  KeyNameEnum,
   useMetaEnterSubmit,
   useHover,
   useDebounce,
