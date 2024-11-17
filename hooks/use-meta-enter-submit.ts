@@ -39,19 +39,13 @@ import { useCallback, useMemo } from "react";
  */
 export function useMetaEnterSubmit() {
   // Memoize the event handler to prevent unnecessary re-renders
-  const handleMetaEnterSubmit = useCallback(
-    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-      if (event.key !== "Enter" || !event.metaKey) return;
+  const handleMetaEnterSubmit = useCallback((event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key !== "Enter" || !event.metaKey) return;
 
-      event.preventDefault();
-      event.currentTarget.form?.requestSubmit();
-    },
-    [],
-  );
+    event.preventDefault();
+    event.currentTarget.form?.requestSubmit();
+  }, []);
 
   // Memoize the return value to maintain reference equality
-  return useMemo(
-    () => ({ onKeyDown: handleMetaEnterSubmit }),
-    [handleMetaEnterSubmit],
-  );
+  return useMemo(() => ({ onKeyDown: handleMetaEnterSubmit }), [handleMetaEnterSubmit]);
 }

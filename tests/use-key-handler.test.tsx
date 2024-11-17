@@ -11,9 +11,7 @@ describe("useKeyHandler", () => {
 
   test("executes handler for Enter key", () => {
     const enterHandler = vi.fn();
-    const { result } = renderHook(() =>
-      useKeyHandler({ [KeyNameEnum.Enter]: enterHandler }),
-    );
+    const { result } = renderHook(() => useKeyHandler({ [KeyNameEnum.Enter]: enterHandler }));
 
     result.current({
       key: KeyNameEnum.Enter,
@@ -23,9 +21,7 @@ describe("useKeyHandler", () => {
 
   test("executes handler for Space key", () => {
     const spaceHandler = vi.fn();
-    const { result } = renderHook(() =>
-      useKeyHandler({ [KeyNameEnum.Space]: spaceHandler }),
-    );
+    const { result } = renderHook(() => useKeyHandler({ [KeyNameEnum.Space]: spaceHandler }));
 
     result.current({
       key: KeyNameEnum.Space,
@@ -61,18 +57,14 @@ describe("useKeyHandler", () => {
 
   test("ignores unregistered keys", () => {
     const enterHandler = vi.fn();
-    const { result } = renderHook(() =>
-      useKeyHandler({ [KeyNameEnum.Enter]: enterHandler }),
-    );
+    const { result } = renderHook(() => useKeyHandler({ [KeyNameEnum.Enter]: enterHandler }));
 
     result.current({ key: "a" } as React.KeyboardEvent<HTMLElement>);
     expect(enterHandler).not.toHaveBeenCalled();
   });
 
   test("handles undefined handlers gracefully", () => {
-    const { result } = renderHook(() =>
-      useKeyHandler({ [KeyNameEnum.Enter]: undefined }),
-    );
+    const { result } = renderHook(() => useKeyHandler({ [KeyNameEnum.Enter]: undefined }));
 
     expect(() => {
       result.current({

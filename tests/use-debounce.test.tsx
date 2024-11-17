@@ -1,13 +1,7 @@
-import {
-  renderHook,
-  act,
-  render,
-  screen,
-  fireEvent,
-} from "@testing-library/react";
-import { describe, test, expect, beforeEach, vi, afterEach } from "vitest";
-import { useDebounce } from "../hooks/use-debounce";
+import { act, fireEvent, render, renderHook, screen } from "@testing-library/react";
 import React, { useState } from "react";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { useDebounce } from "../hooks/use-debounce";
 
 describe("useDebounce", () => {
   beforeEach(() => {
@@ -19,9 +13,7 @@ describe("useDebounce", () => {
   });
 
   test("should initialize with initial value", () => {
-    const { result } = renderHook(() =>
-      useDebounce({ value: "initial", delayMs: 500 })
-    );
+    const { result } = renderHook(() => useDebounce({ value: "initial", delayMs: 500 }));
 
     expect(result.current).toBe("initial");
   });
@@ -69,29 +61,21 @@ describe("useDebounce", () => {
 
   test("should handle different value types", () => {
     // Number type
-    const { result: numResult } = renderHook(() =>
-      useDebounce({ value: 42, delayMs: 500 })
-    );
+    const { result: numResult } = renderHook(() => useDebounce({ value: 42, delayMs: 500 }));
     expect(numResult.current).toBe(42);
 
     // Object type
-    const { result: objResult } = renderHook(() =>
-      useDebounce({ value: { key: "value" }, delayMs: 500 })
-    );
+    const { result: objResult } = renderHook(() => useDebounce({ value: { key: "value" }, delayMs: 500 }));
     expect(objResult.current).toEqual({ key: "value" });
 
     // Array type
-    const { result: arrResult } = renderHook(() =>
-      useDebounce({ value: [1, 2, 3], delayMs: 500 })
-    );
+    const { result: arrResult } = renderHook(() => useDebounce({ value: [1, 2, 3], delayMs: 500 }));
     expect(arrResult.current).toEqual([1, 2, 3]);
   });
 
   test("should cleanup on unmount", () => {
     const clearTimeoutSpy = vi.spyOn(window, "clearTimeout");
-    const { unmount } = renderHook(() =>
-      useDebounce({ value: "test", delayMs: 500 })
-    );
+    const { unmount } = renderHook(() => useDebounce({ value: "test", delayMs: 500 }));
 
     unmount();
     expect(clearTimeoutSpy).toHaveBeenCalled();

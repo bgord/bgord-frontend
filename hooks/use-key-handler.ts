@@ -56,9 +56,7 @@ export type UseKeyHandlerReturn = (event: KeyHandlerEvent) => void;
  * });
  * ```
  */
-export function useKeyHandler(
-  config: UseKeyHandlerConfigType,
-): UseKeyHandlerReturn {
+export function useKeyHandler(config: UseKeyHandlerConfigType): UseKeyHandlerReturn {
   // Memoize keys array for performance
   const keys = useMemo(() => Object.keys(config), [config]);
 
