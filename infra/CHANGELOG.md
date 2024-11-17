@@ -1,8 +1,20 @@
 # Changelog
+- 2024-11-17 21:01 12b191d **step: add silent to vite config**
+- 2024-11-17 20:59 62c5210 **fix: toasts type**
+- 2024-11-17 20:58 37a665b **fix: use hover deps array**
+- 2024-11-17 20:57 3ce6dac **step: add jsdocs for use new field**
+- 2024-11-17 20:52 9a5744b **step: improve toasts**
+- 2024-11-17 20:46 2347fd0 **step: add toasts tests**
+- 2024-11-16 23:47 1d9eda0 **step: add tests for use debounce**
+- 2024-11-16 23:21 1d271f0 **step: add tests for use key handler**
+- 2024-11-16 23:08 c950016 **refactor: use meta enter submit**
+- 2024-11-16 22:55 64fe3f8 **step: add use hover tests**
+- 2024-11-16 22:50 a5bbe15 **step: add use hover tests**
 - 2024-11-16 16:33 78bf5ab **step: setup lefthook**
 - 2024-11-16 16:30 98c886c **step: bump bgord/scripts**
 - 2024-11-16 16:30 0a16501 **step: add translations tests**
 - 2024-11-16 15:57 1022feb **refactor: move use sound to verified**
+- 2024-11-16 15:51 a909e34 **docs: generate CHANGELOG**
 - 2024-11-16 15:50 8983193 **refactor: improve use sound**
 - 2024-11-16 15:39 b800278 **step: add use sound tests**
 - 2024-11-16 15:27 377bb22 **refactor: improve use toggle hook**
