@@ -38,7 +38,7 @@ type ToastActions = Readonly<{
  * Second element is the readonly object of actions
  */
 type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> = readonly [
-  ReadonlyArray<ToastType>,
+  Readonly<ToastType[]>,
   ToastActions,
 ];
 
@@ -69,7 +69,7 @@ const ToastsContext = createContext<ToastsContextDataType | undefined>(undefined
  */
 export function ToastsContextProvider(
   props: {
-    readonly children: JSX.Element | JSX.Element[];
+    readonly children: JSX.Element | JSX.Element[] | React.ReactNode;
   } & ToastsConfigType,
 ) {
   /**
@@ -114,7 +114,7 @@ export function ToastsContextProvider(
       [add, remove, clear],
     );
 
-    const reversedToasts = useMemo(() => toasts.slice().reverse() as ReadonlyArray<BaseToastType>, [toasts]);
+    const reversedToasts = useMemo(() => toasts.slice().reverse() as Readonly<BaseToastType[]>, [toasts]);
 
     return useMemo(() => [reversedToasts, actions] as const, [reversedToasts, actions]);
   }

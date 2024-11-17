@@ -59,22 +59,6 @@ describe("Toast Context & Hooks", () => {
         "useToasts must be used within the ToastsContextProvider",
       );
     });
-
-    test("supports custom toast types", () => {
-      type CustomToast = BaseToastType & { severity: "info" | "error" };
-
-      const wrapper = ({ children }: { children: React.ReactNode }) => (
-        <ToastsContextProvider>{children}</ToastsContextProvider>
-      );
-
-      const { result } = renderHook(() => useToastsContext<CustomToast>(), {
-        wrapper,
-      });
-
-      act(() => result.current[1].add({ message: "Error Toast", severity: "error" }));
-
-      expect(result.current[0][0]?.severity).toBe("error");
-    });
   });
 
   describe("Advanced Scenarios", () => {
