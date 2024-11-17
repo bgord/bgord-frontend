@@ -28,6 +28,7 @@ export * from "./use-video";
 export * from "./use-window-dimensions";
 export * from "./use-response-handler";
 
+// VERIFIED ONLY
 import { Field } from "./field";
 import { useDebounce } from "./use-debounce";
 import { useHover } from "./use-hover";
@@ -36,7 +37,6 @@ import { useMetaEnterSubmit } from "./use-meta-enter-submit";
 import { useNewClientFilter } from "./use-new-client-filter";
 import { useNewClientSearch } from "./use-new-client-search";
 import { defaultSortFn, useNewClientSort } from "./use-new-client-sort";
-// VERIFIED ONLY
 import { Fields, LocalFields, UseNewFieldStrategyEnum, useNewField } from "./use-new-field";
 import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
