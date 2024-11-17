@@ -15,7 +15,7 @@ export type FieldElementType =
  * Defines the strategy for field value persistence
  * @enum {string}
  */
-export enum UseNewFieldStrategyEnum {
+export enum useFieldStrategyEnum {
   /** Store field value in URL parameters */
   params = "params",
   /** Store field value in local state */
@@ -23,25 +23,25 @@ export enum UseNewFieldStrategyEnum {
 }
 
 /**
- * Configuration options for the useNewField hook
+ * Configuration options for the useField hook
  * @template T - Type of the field value
  */
-export type UseNewFieldConfigType<T extends FieldValueAllowedTypes> = {
+export type useFieldConfigType<T extends FieldValueAllowedTypes> = {
   /** Unique identifier for the field */
   name: NewFieldNameType;
   /** Initial value for the field */
   defaultValue?: T;
   /** Strategy for value persistence */
-  strategy?: UseNewFieldStrategyEnum;
+  strategy?: useFieldStrategyEnum;
 };
 
 /**
- * Return type for the useNewField hook
+ * Return type for the useField hook
  * @template T - Type of the field value
  */
-export type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
+export type useFieldReturnType<T extends FieldValueAllowedTypes> = {
   /** Current persistence strategy */
-  strategy: UseNewFieldStrategyEnum;
+  strategy: useFieldStrategyEnum;
   /** Initial field value */
   defaultValue: T;
   /** Current field value */
@@ -70,17 +70,17 @@ export type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
  * Hook for managing form field state with URL parameters or local state
  *
  * @template T - Type of the field value
- * @param {UseNewFieldConfigType<T>} config - Field configuration
- * @returns {UseNewFieldReturnType<T>} Field state and handlers
+ * @param {useFieldConfigType<T>} config - Field configuration
+ * @returns {useFieldReturnType<T>} Field state and handlers
  *
  * @example
  * ```tsx
  * // Using local strategy
  * function NameField() {
- *   const field = useNewField({
+ *   const field = useField({
  *     name: "username",
  *     defaultValue: "",
- *     strategy: UseNewFieldStrategyEnum.local
+ *     strategy: useFieldStrategyEnum.local
  *   });
  *
  *   return (
@@ -98,9 +98,9 @@ export type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
  *
  * // Using URL parameters strategy
  * function SearchField() {
- *   const field = useNewField({
+ *   const field = useField({
  *     name: "q",
- *     strategy: UseNewFieldStrategyEnum.params
+ *     strategy: useFieldStrategyEnum.params
  *   });
  *
  *   return (
@@ -114,10 +114,10 @@ export type UseNewFieldReturnType<T extends FieldValueAllowedTypes> = {
  * }
  * ```
  */
-export function useNewField<T extends FieldValueAllowedTypes>(
-  config: UseNewFieldConfigType<T>,
-): UseNewFieldReturnType<T> {
-  const strategy = config.strategy ?? UseNewFieldStrategyEnum.local;
+export function useField<T extends FieldValueAllowedTypes>(
+  config: useFieldConfigType<T>,
+): useFieldReturnType<T> {
+  const strategy = config.strategy ?? useFieldStrategyEnum.local;
   const [params, setParams] = useSearchParams();
   const givenValue = new Field<T>(params.get(config.name) as T);
   const defaultValue = new Field<T>(config.defaultValue as T);
@@ -132,7 +132,7 @@ export function useNewField<T extends FieldValueAllowedTypes>(
 
   useEffect(() => {
     const current = new Field(currentValue);
-    if (strategy === UseNewFieldStrategyEnum.params) {
+    if (strategy === useFieldStrategyEnum.params) {
       if (current.isEmpty()) {
         params.delete(config.name);
         setParams(params);
@@ -141,7 +141,7 @@ export function useNewField<T extends FieldValueAllowedTypes>(
         setParams(params);
       }
     }
-    if (strategy === UseNewFieldStrategyEnum.local) {
+    if (strategy === useFieldStrategyEnum.local) {
     }
   }, [currentValue, params, setParams, config.name, strategy]);
 

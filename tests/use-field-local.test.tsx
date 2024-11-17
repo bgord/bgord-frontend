@@ -4,13 +4,13 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { describe, expect, test } from "vitest";
 
 import { Field } from "../hooks/field";
-import { useNewField } from "../hooks/use-new-field";
+import { useField } from "../hooks/use-field";
 
-describe("useNewField - local", () => {
+describe("useField - local", () => {
   test("empty default value - undefined", () => {
     const name = "search";
 
-    const hook = renderHook(() => useNewField({ name }), {
+    const hook = renderHook(() => useField({ name }), {
       wrapper: createWrapper(),
     });
 
@@ -33,7 +33,7 @@ describe("useNewField - local", () => {
     const name = "search";
     const defaultValue = null;
 
-    const hook = renderHook(() => useNewField({ name, defaultValue }), {
+    const hook = renderHook(() => useField({ name, defaultValue }), {
       wrapper: createWrapper(),
     });
 
@@ -56,7 +56,7 @@ describe("useNewField - local", () => {
     const name = "search";
     const defaultValue = "abc";
 
-    const hook = renderHook(() => useNewField({ name, defaultValue }), {
+    const hook = renderHook(() => useField({ name, defaultValue }), {
       wrapper: createWrapper(),
     });
 
@@ -80,7 +80,7 @@ describe("useNewField - local", () => {
 
     const changedValue = "abc";
 
-    const hook = renderHook(() => useNewField({ name }), {
+    const hook = renderHook(() => useField({ name }), {
       wrapper: createWrapper(),
     });
 
@@ -120,7 +120,7 @@ describe("useNewField - local", () => {
 
     const changedValue = "abc";
 
-    const hook = renderHook(() => useNewField({ name }), {
+    const hook = renderHook(() => useField({ name }), {
       wrapper: createWrapper(),
     });
 
@@ -177,7 +177,7 @@ describe("useNewField - local", () => {
 
     const changedValue = "def";
 
-    const hook = renderHook(() => useNewField<string>({ name, defaultValue }), {
+    const hook = renderHook(() => useField<string>({ name, defaultValue }), {
       wrapper: createWrapper(),
     });
 
@@ -232,7 +232,7 @@ describe("useNewField - local", () => {
     const name = "fullname";
 
     function Testcase() {
-      const field = useNewField({ name });
+      const field = useField({ name });
 
       return (
         <form>
@@ -256,7 +256,7 @@ describe("useNewField - local", () => {
     const defaultValue = "John";
 
     function Testcase() {
-      const field = useNewField({ name, defaultValue });
+      const field = useField({ name, defaultValue });
 
       return (
         <form>
@@ -279,7 +279,7 @@ describe("useNewField - local", () => {
     const name = "fullname";
 
     function Testcase() {
-      const field = useNewField({ name });
+      const field = useField({ name });
 
       return (
         <form>
@@ -303,7 +303,7 @@ describe("useNewField - local", () => {
     const name = "fullname";
 
     function Testcase() {
-      const field = useNewField({ name });
+      const field = useField({ name });
 
       return (
         <form>

@@ -2,15 +2,15 @@ import { useEffect } from "react";
 
 import { ImageResolutionType, emptyImageResolution, getImageResolution } from "../get-image-resolution";
 import { UseFileReturnType, UseFileState } from "./use-file";
-import { useNewField } from "./use-new-field";
+import { useField } from "./use-field";
 
 export function useImageFileResolution(file: UseFileReturnType): ImageResolutionType {
-  const width = useNewField<ImageResolutionType["width"]>({
+  const width = useField<ImageResolutionType["width"]>({
     name: "width",
     defaultValue: emptyImageResolution.width,
   });
 
-  const height = useNewField<ImageResolutionType["height"]>({
+  const height = useField<ImageResolutionType["height"]>({
     name: "height",
     defaultValue: emptyImageResolution.height,
   });

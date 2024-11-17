@@ -34,23 +34,23 @@ import { useDebounce } from "./use-debounce";
 import { useHover } from "./use-hover";
 import { useKeyHandler,KeyNameEnum } from "./use-key-handler";
 import { useMetaEnterSubmit } from "./use-meta-enter-submit";
-import { useNewClientFilter } from "./use-new-client-filter";
-import { useNewClientSearch } from "./use-new-client-search";
-import { defaultSortFn, useNewClientSort } from "./use-new-client-sort";
-import { Fields, LocalFields, UseNewFieldStrategyEnum, useNewField } from "./use-new-field";
+import { useClientFilter } from "./use-client-filter";
+import { useClientSearch } from "./use-client-search";
+import { defaultSortFn, useClientSort } from "./use-client-sort";
+import { Fields, LocalFields, useFieldStrategyEnum, useField } from "./use-field";
 import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
 
 export const verified = {
-  useNewField,
-  Field: Field,
-  UseNewFieldStrategyEnum,
+  useField,
+  Field,
+  useFieldStrategyEnum,
   LocalFields,
   Fields,
-  useNewClientSearch,
-  useNewClientFilter,
-  useNewClientSort,
+  useClientSearch,
+  useClientFilter,
+  useClientSort,
   defaultSortFn,
   useToggle,
   extractUseToggle,
@@ -64,5 +64,5 @@ export const verified = {
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
-export type { UseNewClientSearchReturnType } from "./use-new-client-search";
-export type { UseNewClientFilterQueryType } from "./use-new-client-filter";
+export type { useClientSearchReturnType } from "./use-client-search";
+export type { useClientFilterQueryType } from "./use-client-filter";

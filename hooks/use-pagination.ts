@@ -1,5 +1,5 @@
 import type { PageType, Paged } from "@bgord/node";
-import { UseNewFieldStrategyEnum, useNewField } from "./use-new-field";
+import { useFieldStrategyEnum, useField } from "./use-field";
 
 export type { Paged, PageType } from "@bgord/node";
 
@@ -31,10 +31,10 @@ export function usePagination(meta: PagedMetaType | null): UsePaginationReturnTy
   const nextPage = meta?.nextPage;
   const lastPage = meta?.lastPage || firstPage;
 
-  const page = useNewField<PageType>({
+  const page = useField<PageType>({
     name: "page",
     defaultValue: meta?.currentPage ?? firstPage,
-    strategy: UseNewFieldStrategyEnum.params,
+    strategy: useFieldStrategyEnum.params,
   });
 
   return {

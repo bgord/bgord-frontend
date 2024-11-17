@@ -5,14 +5,14 @@ import React from "react";
 import { getSafeWindow } from "../safe-window";
 import { useLanguage } from "../translations";
 import { Field } from "./field";
-import { UseNewClientFilterReturnType, useNewClientFilter } from "./use-new-client-filter";
+import { useClientFilterReturnType, useClientFilter } from "./use-client-filter";
 
 export function useLanguageSelector(
   supportedLanguages: Record<LanguageType, LanguageType>,
-): UseNewClientFilterReturnType<LanguageType> {
+): useClientFilterReturnType<LanguageType> {
   const language = useLanguage();
 
-  const field = useNewClientFilter<LanguageType>({
+  const field = useClientFilter<LanguageType>({
     enum: supportedLanguages,
     defaultValue: language,
     name: "language",
