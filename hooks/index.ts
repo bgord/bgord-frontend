@@ -12,7 +12,6 @@ export * from "./use-persistent-toggle";
 export * from "./use-rate-limiter";
 export * from "./use-scroll";
 export * from "./use-video";
-export * from "./use-window-dimensions";
 
 // VERIFIED ONLY
 import { Field } from "./field";
@@ -53,6 +52,8 @@ import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
 
+import { useWindowDimensions } from "./use-window-dimensions";
+
 export const verified = {
   useField,
   Field,
@@ -91,6 +92,7 @@ export const verified = {
   useIsVisible,
   useDesignMode,
   useDisablePullToRefresh,
+  useWindowDimensions,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
