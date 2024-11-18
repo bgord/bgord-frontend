@@ -3,7 +3,6 @@ import type { Params } from "react-router-dom";
 export * from "./hooks";
 export * from "./components";
 
-export * from "./min-max-scaler";
 export * from "./reordering";
 export * from "./server-error";
 
@@ -48,6 +47,7 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
+import { MinMaxScaler, Approximation } from "./min-max-scaler";
 
 export const tested = {
   LineClamp,
@@ -81,6 +81,8 @@ export const tested = {
   WeakETag,
   addWeakEtagRevision,
   getImageResolution,
+  MinMaxScaler,
+  Approximation,
 };
 
 export type { BaseToastType } from "./toasts";
