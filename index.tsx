@@ -3,8 +3,6 @@ import type { Params } from "react-router-dom";
 export * from "./hooks";
 export * from "./components";
 
-export * from "./server-error";
-
 export type Context = { request: Request };
 export type ContextWithParams<T extends string> = Context & {
   params: Params<T>;
@@ -48,6 +46,7 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
+import { ServerError } from "./server-error";
 
 export const tested = {
   LineClamp,
@@ -84,6 +83,7 @@ export const tested = {
   MinMaxScaler,
   Approximation,
   useReordering,
+  ServerError,
 };
 
 export type { BaseToastType } from "./toasts";
