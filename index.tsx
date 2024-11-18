@@ -4,7 +4,6 @@ export * from "./hooks";
 export * from "./components";
 
 export * from "./etag";
-export * from "./feature-flags";
 export * from "./get-image-resolution";
 export * from "./min-max-scaler";
 export * from "./reordering";
@@ -43,6 +42,12 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
+import {
+  FeatureFlagEnum,
+  useFeatureFlag,
+  useFeatureFlags,
+  FeatureFlagsContextProvider,
+} from "./feature-flags";
 
 export const tested = {
   LineClamp,
@@ -67,6 +72,10 @@ export const tested = {
   DurationFormatter,
   exec,
   pluralize,
+  FeatureFlagEnum,
+  useFeatureFlag,
+  useFeatureFlags,
+  FeatureFlagsContextProvider,
 };
 
 export type { BaseToastType } from "./toasts";
