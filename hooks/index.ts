@@ -1,5 +1,4 @@
 export * from "./use-audio";
-export * from "./use-autofocus";
 export * from "./use-breakpoint";
 export * from "./use-click-outside";
 export * from "./use-current-timestamp";
@@ -53,6 +52,7 @@ import {
 import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
+import { useAutofocus } from "./use-autofocus";
 
 export const verified = {
   useField,
@@ -85,6 +85,7 @@ export const verified = {
   extractPage,
   useIsOnline,
   useDocumentTitle,
+  useAutofocus,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
