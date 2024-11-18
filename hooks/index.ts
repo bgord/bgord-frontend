@@ -9,7 +9,6 @@ export * from "./use-disable-pull-to-refresh";
 export * from "./use-document-title";
 export * from "./use-expandable-list";
 export * from "./use-file";
-export * from "./use-focus-keyboard-shortcut";
 export * from "./use-hover";
 export * from "./use-image-file-resolution";
 export * from "./use-is-online";
@@ -53,6 +52,7 @@ import {
   withAutoContentType,
   withRevision,
 } from "./use-response-handler";
+import { useFocusKeyboardShortcut } from "./use-focus-keyboard-shortcut";
 
 export const verified = {
   useField,
@@ -79,6 +79,7 @@ export const verified = {
   prepareBody,
   withAutoContentType,
   withRevision,
+  useFocusKeyboardShortcut,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
