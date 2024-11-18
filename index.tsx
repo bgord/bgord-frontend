@@ -3,7 +3,6 @@ import type { Params } from "react-router-dom";
 export * from "./hooks";
 export * from "./components";
 
-export * from "./reordering";
 export * from "./server-error";
 
 export type Context = { request: Request };
@@ -28,8 +27,10 @@ import { Form } from "./form";
 import { getImageResolution } from "./get-image-resolution";
 import { isClient } from "./is-client";
 import { LineClamp } from "./line-clamp";
+import { Approximation, MinMaxScaler } from "./min-max-scaler";
 import { noop } from "./noop";
 import { pluralize } from "./pluralize";
+import { useReordering } from "./reordering";
 import { Rhythm } from "./rhythm";
 import { SafeLocalStorage } from "./safe-local-storage";
 import { getSafeWindow } from "./safe-window";
@@ -47,7 +48,6 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
-import { MinMaxScaler, Approximation } from "./min-max-scaler";
 
 export const tested = {
   LineClamp,
@@ -83,6 +83,7 @@ export const tested = {
   getImageResolution,
   MinMaxScaler,
   Approximation,
+  useReordering,
 };
 
 export type { BaseToastType } from "./toasts";

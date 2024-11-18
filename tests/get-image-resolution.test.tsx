@@ -1,8 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from "vitest";
-import {
-  emptyImageResolution,
-  getImageResolution,
-} from "../get-image-resolution";
+import { emptyImageResolution, getImageResolution } from "../get-image-resolution";
 
 describe("getImageResolution", () => {
   let imgElement: HTMLImageElement;

@@ -1,11 +1,13 @@
-import { describe, test, expect } from "vitest";
+import { describe, expect, test } from "vitest";
 import { Approximation, MinMaxScaler } from "../min-max-scaler";
 
 describe("Approximation", () => {
   test("rounds to specified decimal places", () => {
-    expect(Approximation.float(3.14159)).toBe(3.14);
-    expect(Approximation.float(3.14159, 3)).toBe(3.142);
-    expect(Approximation.float(3.14159, 0)).toBe(3);
+    expect(Approximation.float(Math.PI)).toBe(3.14);
+
+    // biome-ignore lint: lint/suspicious/noApproximativeNumericConstant
+    expect(Approximation.float(Math.PI, 3)).toBe(3.142);
+    expect(Approximation.float(Math.PI, 0)).toBe(3);
   });
 });
 
