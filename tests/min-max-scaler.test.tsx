@@ -21,14 +21,12 @@ describe("MinMaxScaler", () => {
             min: 0,
             max: 100,
             bound: { lower: 0, upper: 1 },
-          })
+          }),
       ).not.toThrow();
     });
 
     test("throws error for invalid min-max", () => {
-      expect(() => new MinMaxScaler({ min: 100, max: 0 })).toThrow(
-        "Invalid MinMaxScaler min-max config"
-      );
+      expect(() => new MinMaxScaler({ min: 100, max: 0 })).toThrow("Invalid MinMaxScaler min-max config");
     });
 
     test("throws error for invalid bounds", () => {
@@ -38,7 +36,7 @@ describe("MinMaxScaler", () => {
             min: 0,
             max: 100,
             bound: { lower: 1, upper: 0 },
-          })
+          }),
       ).toThrow("Invalid MinMaxScaler bound config");
     });
   });
@@ -108,9 +106,7 @@ describe("MinMaxScaler", () => {
     });
 
     test("throws for empty array", () => {
-      expect(() => MinMaxScaler.getMinMax([])).toThrow(
-        "An empty array supplied"
-      );
+      expect(() => MinMaxScaler.getMinMax([])).toThrow("An empty array supplied");
     });
   });
 });

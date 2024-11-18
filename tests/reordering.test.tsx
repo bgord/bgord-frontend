@@ -1,11 +1,4 @@
-import {
-  act,
-  createEvent,
-  fireEvent,
-  render,
-  renderHook,
-  screen,
-} from "@testing-library/react";
+import { act, createEvent, fireEvent, render, renderHook, screen } from "@testing-library/react";
 import { describe, expect, test, vi } from "vitest";
 import { useReordering } from "../reordering";
 
@@ -49,9 +42,7 @@ describe("useReordering", () => {
   });
 
   test("respects enabled flag", () => {
-    const { result } = renderHook(() =>
-      useReordering({ ...defaultConfig, enabled: false }),
-    );
+    const { result } = renderHook(() => useReordering({ ...defaultConfig, enabled: false }));
     expect(result.current.enabled).toBe(false);
     expect(result.current.props.handle(0).draggable).toBe(false);
   });
@@ -88,15 +79,8 @@ function ReorderableList() {
   return (
     <ul>
       {reordering.items.map((item, index) => (
-        <li
-          key={item.id}
-          {...reordering.props.item(index)}
-          data-testid={`item-${item.id}`}
-        >
-          <div
-            {...reordering.props.handle(index)}
-            data-testid={`handle-${item.id}`}
-          >
+        <li key={item.id} {...reordering.props.item(index)} data-testid={`item-${item.id}`}>
+          <div {...reordering.props.handle(index)} data-testid={`handle-${item.id}`}>
             ⋮ {item.name}
           </div>
         </li>

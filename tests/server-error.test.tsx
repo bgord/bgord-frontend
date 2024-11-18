@@ -1,4 +1,4 @@
-import { describe, test, expect } from "vitest";
+import { describe, expect, test } from "vitest";
 import { ServerError } from "../server-error";
 
 describe("ServerError", () => {
@@ -30,30 +30,26 @@ describe("ServerError", () => {
     });
 
     test("throws ServerError for non-ok response with server error", async () => {
-      const errorResponse = new Response(
-        JSON.stringify(new ServerError({ message: "custom error" })),
-        { status: 400 }
-      );
+      const errorResponse = new Response(JSON.stringify(new ServerError({ message: "custom error" })), {
+        status: 400,
+      });
 
       await expect(ServerError.extract(errorResponse)).rejects.toEqual(
         expect.objectContaining({
           message: "custom error",
           _known: true,
-        })
+        }),
       );
     });
 
     test("throws generic error for non-ok response without server error", async () => {
-      const errorResponse = new Response(
-        JSON.stringify({ someField: "value" }),
-        { status: 400 }
-      );
+      const errorResponse = new Response(JSON.stringify({ someField: "value" }), { status: 400 });
 
       await expect(ServerError.extract(errorResponse)).rejects.toEqual(
         expect.objectContaining({
           message: "app.error.general",
           _known: true,
-        })
+        }),
       );
     });
   });
@@ -66,7 +62,7 @@ describe("ServerError", () => {
         expect.objectContaining({
           message: "custom error",
           _known: true,
-        })
+        }),
       );
     });
 
@@ -75,7 +71,7 @@ describe("ServerError", () => {
         expect.objectContaining({
           message: "app.error.general",
           _known: true,
-        })
+        }),
       );
     });
   });

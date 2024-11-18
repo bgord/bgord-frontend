@@ -1,14 +1,14 @@
-import { describe, test, expect, vi, beforeEach } from "vitest";
 import { renderHook } from "@testing-library/react";
-import {
-  useResponseHandler,
-  withRevision,
-  withAutoContentType,
-  prepareBody,
-  withTimeZoneOffset,
-  respond,
-} from "../hooks/use-response-handler";
 import * as rrd from "react-router-dom";
+import { beforeEach, describe, expect, test, vi } from "vitest";
+import {
+  prepareBody,
+  respond,
+  useResponseHandler,
+  withAutoContentType,
+  withRevision,
+  withTimeZoneOffset,
+} from "../hooks/use-response-handler";
 
 vi.mock("react-router-dom", () => ({
   useActionData: vi.fn(),
@@ -30,9 +30,7 @@ describe("Response Handlers", () => {
       };
       vi.mocked(rrd.useActionData).mockReturnValue(mockResponse);
 
-      renderHook(() =>
-        useResponseHandler("test", "123", { success: mockSuccess })
-      );
+      renderHook(() => useResponseHandler("test", "123", { success: mockSuccess }));
 
       expect(mockSuccess).toHaveBeenCalledTimes(1);
     });
@@ -62,9 +60,7 @@ describe("Response Handlers", () => {
       };
       vi.mocked(rrd.useActionData).mockReturnValue(mockResponse);
 
-      renderHook(() =>
-        useResponseHandler("test", "123", { success: mockSuccess })
-      );
+      renderHook(() => useResponseHandler("test", "123", { success: mockSuccess }));
 
       expect(mockSuccess).not.toHaveBeenCalled();
     });
@@ -79,9 +75,7 @@ describe("Response Handlers", () => {
       };
       vi.mocked(rrd.useActionData).mockReturnValue(mockResponse);
 
-      const { rerender } = renderHook(() =>
-        useResponseHandler("test", "123", { success: mockSuccess })
-      );
+      const { rerender } = renderHook(() => useResponseHandler("test", "123", { success: mockSuccess }));
       rerender();
 
       expect(mockSuccess).toHaveBeenCalledTimes(1);

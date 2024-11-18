@@ -16,7 +16,6 @@ export * from "./use-is-visible";
 export * from "./use-item";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
-export * from "./use-leaving-prompt";
 export * from "./use-list";
 export * from "./use-pagination";
 export * from "./use-persistent-toggle";
@@ -38,21 +37,22 @@ import {
   useField,
   useFieldStrategyEnum,
 } from "./use-field";
+import { useFocusKeyboardShortcut } from "./use-focus-keyboard-shortcut";
 import { useHover } from "./use-hover";
 import { KeyNameEnum, useKeyHandler } from "./use-key-handler";
+import { useLeavingPrompt } from "./use-leaving-prompt";
 import { useMetaEnterSubmit } from "./use-meta-enter-submit";
+import {
+  prepareBody,
+  respond,
+  useResponseHandler,
+  withAutoContentType,
+  withRevision,
+  withTimeZoneOffset,
+} from "./use-response-handler";
 import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
-import {
-  respond,
-  useResponseHandler,
-  withTimeZoneOffset,
-  prepareBody,
-  withAutoContentType,
-  withRevision,
-} from "./use-response-handler";
-import { useFocusKeyboardShortcut } from "./use-focus-keyboard-shortcut";
 
 export const verified = {
   useField,
@@ -80,6 +80,7 @@ export const verified = {
   withAutoContentType,
   withRevision,
   useFocusKeyboardShortcut,
+  useLeavingPrompt,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
