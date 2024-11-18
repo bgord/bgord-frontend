@@ -13,7 +13,6 @@ export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
 export * from "./use-list";
 export * from "./use-persistent-toggle";
-export * from "./use-previous-value";
 export * from "./use-rate-limiter";
 export * from "./use-scroll";
 export * from "./use-video";
@@ -53,6 +52,7 @@ import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
 import { useClickOutside } from "./use-click-outside";
 import { useCurrentTimestamp } from "./use-current-timestamp";
+import { usePreviousValue } from "./use-previous-value";
 
 export const verified = {
   useField,
@@ -88,6 +88,7 @@ export const verified = {
   useAutofocus,
   useClickOutside,
   useCurrentTimestamp,
+  usePreviousValue,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
