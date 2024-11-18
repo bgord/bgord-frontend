@@ -5,9 +5,7 @@ export * from "./use-design-mode";
 export * from "./use-disable-pull-to-refresh";
 export * from "./use-expandable-list";
 export * from "./use-file";
-export * from "./use-hover";
 export * from "./use-image-file-resolution";
-export * from "./use-is-visible";
 export * from "./use-item";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
@@ -53,6 +51,7 @@ import { extractUseToggle, useToggle } from "./use-toggle";
 import { useClickOutside } from "./use-click-outside";
 import { useCurrentTimestamp } from "./use-current-timestamp";
 import { usePreviousValue } from "./use-previous-value";
+import { useIsVisible } from "./use-is-visible";
 
 export const verified = {
   useField,
@@ -89,6 +88,7 @@ export const verified = {
   useClickOutside,
   useCurrentTimestamp,
   usePreviousValue,
+  useIsVisible,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
