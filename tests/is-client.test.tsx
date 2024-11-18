@@ -6,7 +6,9 @@ describe("Window utilities", () => {
 
   beforeEach(() => vi.resetModules());
 
-  afterEach(() => (global.window = originalWindow));
+  afterEach(() => {
+    global.window = originalWindow;
+  });
 
   describe("isClient", () => {
     test("returns false when window is available", () => {

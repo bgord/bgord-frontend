@@ -6,7 +6,9 @@ describe("Window utilities", () => {
 
   beforeEach(() => vi.resetModules());
 
-  afterEach(() => (global.window = originalWindow));
+  afterEach(() => {
+    global.window = originalWindow;
+  });
 
   describe("getSafeWindow", () => {
     test("returns window when available", () => {

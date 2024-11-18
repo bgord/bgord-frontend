@@ -4,7 +4,6 @@ export * from "./hooks";
 export * from "./components";
 
 export * from "./etag";
-export * from "./exec";
 export * from "./feature-flags";
 export * from "./get-image-resolution";
 export * from "./min-max-scaler";
@@ -43,6 +42,7 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
+import { exec } from "./exec";
 
 export const tested = {
   LineClamp,
@@ -65,6 +65,7 @@ export const tested = {
   getSafeWindow,
   isClient,
   DurationFormatter,
+  exec,
 };
 
 export type { BaseToastType } from "./toasts";
