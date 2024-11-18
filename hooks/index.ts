@@ -6,7 +6,6 @@ export * from "./use-current-timestamp";
 export * from "./use-delayed-loader";
 export * from "./use-design-mode";
 export * from "./use-disable-pull-to-refresh";
-export * from "./use-document-title";
 export * from "./use-expandable-list";
 export * from "./use-file";
 export * from "./use-hover";
@@ -29,7 +28,13 @@ import { useClientFilter } from "./use-client-filter";
 import { useClientSearch } from "./use-client-search";
 import { defaultSortFn, useClientSort } from "./use-client-sort";
 import { useDebounce } from "./use-debounce";
-import { Fields, LocalFields, useField, useFieldStrategyEnum } from "./use-field";
+import { useDocumentTitle } from "./use-document-title";
+import {
+  Fields,
+  LocalFields,
+  useField,
+  useFieldStrategyEnum,
+} from "./use-field";
 import { useFocusKeyboardShortcut } from "./use-focus-keyboard-shortcut";
 import { useHover } from "./use-hover";
 import { useIsOnline } from "./use-is-online";
@@ -79,6 +84,7 @@ export const verified = {
   usePagination,
   extractPage,
   useIsOnline,
+  useDocumentTitle,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
