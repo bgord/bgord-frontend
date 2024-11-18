@@ -6,13 +6,9 @@ describe("DateFormatter", () => {
   const date = new Date(timestamp);
 
   test("datetime formats date correctly", () => {
-    expect(DateFormatter.datetime(timestamp)).toBe(
-      new Date(timestamp).toLocaleString(),
-    );
+    expect(DateFormatter.datetime(timestamp)).toBe(new Date(timestamp).toLocaleString());
     expect(DateFormatter.datetime(null)).toBe("N/A");
-    expect(DateFormatter.datetime(undefined, "Custom Default")).toBe(
-      "Custom Default",
-    );
+    expect(DateFormatter.datetime(undefined, "Custom Default")).toBe("Custom Default");
   });
 
   test("monthDay formats correctly", () => {
@@ -57,9 +53,7 @@ describe("HourFormatter", () => {
   beforeEach(() => {
     // Mock timezone offset for consistent testing
     timezoneOffset = -120; // Example: UTC+2
-    vi.spyOn(Date.prototype, "getTimezoneOffset").mockReturnValue(
-      timezoneOffset,
-    );
+    vi.spyOn(Date.prototype, "getTimezoneOffset").mockReturnValue(timezoneOffset);
   });
 
   test("convertUtcToLocal converts hours correctly", () => {

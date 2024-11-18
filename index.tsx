@@ -2,7 +2,6 @@ import type { Params } from "react-router-dom";
 
 export * from "./api";
 export * from "./components";
-export * from "./copy-to-clipboard";
 export * from "./durations";
 export * from "./etag";
 export * from "./exec";
@@ -22,6 +21,7 @@ export type ContextWithParams<T extends string> = Context & {
   params: Params<T>;
 };
 
+import { copyToClipboard } from "./copy-to-clipboard";
 import { DateFormatter } from "./date-formatter";
 import { FilterUrl } from "./filter-url";
 import { Form } from "./form";
@@ -61,6 +61,7 @@ export const tested = {
   ThousandsSeparator,
   Time,
   Sorts,
+  copyToClipboard,
 };
 
 export type { BaseToastType } from "./toasts";

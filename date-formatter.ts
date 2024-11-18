@@ -61,8 +61,7 @@ export class DateFormatter {
   }
 
   static formDatetimeLocal(timestamp: number) {
-    const localTimestamp =
-      timestamp - Time.Minutes(new Date().getTimezoneOffset()).ms;
+    const localTimestamp = timestamp - Time.Minutes(new Date().getTimezoneOffset()).ms;
 
     return new Date(localTimestamp).toISOString().slice(0, 16);
   }
