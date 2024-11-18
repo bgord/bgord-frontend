@@ -19,12 +19,9 @@ describe("useDocumentTitle", () => {
   });
 
   test("updates title when prop changes", () => {
-    const { rerender } = renderHook(
-      (title: string) => useDocumentTitle(title),
-      {
-        initialProps: "Initial Title",
-      },
-    );
+    const { rerender } = renderHook((title: string) => useDocumentTitle(title), {
+      initialProps: "Initial Title",
+    });
 
     expect(document.title).toBe("Initial Title");
 

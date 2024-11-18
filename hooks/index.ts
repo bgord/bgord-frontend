@@ -1,6 +1,5 @@
 export * from "./use-audio";
 export * from "./use-breakpoint";
-export * from "./use-click-outside";
 export * from "./use-current-timestamp";
 export * from "./use-delayed-loader";
 export * from "./use-design-mode";
@@ -23,6 +22,7 @@ export * from "./use-window-dimensions";
 
 // VERIFIED ONLY
 import { Field } from "./field";
+import { useAutofocus } from "./use-autofocus";
 import { useClientFilter } from "./use-client-filter";
 import { useClientSearch } from "./use-client-search";
 import { defaultSortFn, useClientSort } from "./use-client-sort";
@@ -52,7 +52,7 @@ import {
 import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
-import { useAutofocus } from "./use-autofocus";
+import { useClickOutside } from "./use-click-outside";
 
 export const verified = {
   useField,
@@ -86,6 +86,7 @@ export const verified = {
   useIsOnline,
   useDocumentTitle,
   useAutofocus,
+  useClickOutside,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
