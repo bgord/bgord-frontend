@@ -1,6 +1,5 @@
 export * from "./use-audio";
 export * from "./use-breakpoint";
-export * from "./use-current-timestamp";
 export * from "./use-delayed-loader";
 export * from "./use-design-mode";
 export * from "./use-disable-pull-to-refresh";
@@ -53,6 +52,7 @@ import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
 import { useClickOutside } from "./use-click-outside";
+import { useCurrentTimestamp } from "./use-current-timestamp";
 
 export const verified = {
   useField,
@@ -87,6 +87,7 @@ export const verified = {
   useDocumentTitle,
   useAutofocus,
   useClickOutside,
+  useCurrentTimestamp,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
