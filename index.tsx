@@ -3,7 +3,6 @@ import type { Params } from "react-router-dom";
 export * from "./hooks";
 export * from "./components";
 
-export * from "./api";
 export * from "./etag";
 export * from "./exec";
 export * from "./feature-flags";
