@@ -15,7 +15,6 @@ export * from "./min-max-scaler";
 export * from "./noop";
 export * from "./pluralize";
 export * from "./reordering";
-export * from "./rhythm";
 export * from "./safe-local-storage";
 export * from "./safe-window";
 export * from "./server-error";
@@ -30,13 +29,15 @@ export type ContextWithParams<T extends string> = Context & {
   params: Params<T>;
 };
 
+// TESTED
 import { FilterUrl } from "./filter-url";
 import { Form } from "./form";
-// TESTED
 import { LineClamp } from "./line-clamp";
+import { Rhythm } from "./rhythm";
 
 export const tested = {
   LineClamp,
   FilterUrl,
   Form,
+  Rhythm,
 };
