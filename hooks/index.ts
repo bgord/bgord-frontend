@@ -17,7 +17,6 @@ export * from "./use-item";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
 export * from "./use-list";
-export * from "./use-pagination";
 export * from "./use-persistent-toggle";
 export * from "./use-previous-value";
 export * from "./use-rate-limiter";
@@ -31,12 +30,18 @@ import { useClientFilter } from "./use-client-filter";
 import { useClientSearch } from "./use-client-search";
 import { defaultSortFn, useClientSort } from "./use-client-sort";
 import { useDebounce } from "./use-debounce";
-import { Fields, LocalFields, useField, useFieldStrategyEnum } from "./use-field";
+import {
+  Fields,
+  LocalFields,
+  useField,
+  useFieldStrategyEnum,
+} from "./use-field";
 import { useFocusKeyboardShortcut } from "./use-focus-keyboard-shortcut";
 import { useHover } from "./use-hover";
 import { KeyNameEnum, useKeyHandler } from "./use-key-handler";
 import { useLeavingPrompt } from "./use-leaving-prompt";
 import { useMetaEnterSubmit } from "./use-meta-enter-submit";
+import { extractPage, usePagination } from "./use-pagination";
 import {
   prepareBody,
   respond,
@@ -76,6 +81,8 @@ export const verified = {
   withRevision,
   useFocusKeyboardShortcut,
   useLeavingPrompt,
+  usePagination,
+  extractPage,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
