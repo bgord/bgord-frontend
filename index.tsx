@@ -17,7 +17,6 @@ export * from "./safe-local-storage";
 export * from "./safe-window";
 export * from "./server-error";
 export * from "./sorts";
-export * from "./thousands-separator";
 export * from "./time";
 
 export type Context = { request: Request };
@@ -43,6 +42,7 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
+import { ThousandsSeparator } from "./thousands-separator";
 
 export const tested = {
   LineClamp,
@@ -58,6 +58,7 @@ export const tested = {
   useToastsContext,
   ToastsContextProvider,
   noop,
+  ThousandsSeparator,
 };
 
 export type { BaseToastType } from "./toasts";
