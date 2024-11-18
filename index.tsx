@@ -3,7 +3,6 @@ import type { Params } from "react-router-dom";
 export * from "./api";
 export * from "./components";
 export * from "./copy-to-clipboard";
-export * from "./dates";
 export * from "./durations";
 export * from "./etag";
 export * from "./exec";
@@ -29,6 +28,7 @@ export type ContextWithParams<T extends string> = Context & {
   params: Params<T>;
 };
 
+import { DateFormatter } from "./date-formatter";
 // TESTED
 import { FilterUrl } from "./filter-url";
 import { Form } from "./form";
@@ -40,4 +40,5 @@ export const tested = {
   FilterUrl,
   Form,
   Rhythm,
+  DateFormatter,
 };
