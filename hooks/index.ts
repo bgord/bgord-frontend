@@ -29,14 +29,10 @@ import { useClientFilter } from "./use-client-filter";
 import { useClientSearch } from "./use-client-search";
 import { defaultSortFn, useClientSort } from "./use-client-sort";
 import { useDebounce } from "./use-debounce";
-import {
-  Fields,
-  LocalFields,
-  useField,
-  useFieldStrategyEnum,
-} from "./use-field";
+import { Fields, LocalFields, useField, useFieldStrategyEnum } from "./use-field";
 import { useFocusKeyboardShortcut } from "./use-focus-keyboard-shortcut";
 import { useHover } from "./use-hover";
+import { useIsOnline } from "./use-is-online";
 import { KeyNameEnum, useKeyHandler } from "./use-key-handler";
 import { useLeavingPrompt } from "./use-leaving-prompt";
 import { useMetaEnterSubmit } from "./use-meta-enter-submit";
@@ -52,7 +48,6 @@ import {
 import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
-import { useIsOnline } from "./use-is-online";
 
 export const verified = {
   useField,

@@ -23,28 +23,16 @@ describe("useIsOnline", () => {
   test("sets up online/offline event listeners", () => {
     renderHook(() => useIsOnline());
 
-    expect(addEventListenerSpy).toHaveBeenCalledWith(
-      "online",
-      expect.any(Function),
-    );
-    expect(addEventListenerSpy).toHaveBeenCalledWith(
-      "offline",
-      expect.any(Function),
-    );
+    expect(addEventListenerSpy).toHaveBeenCalledWith("online", expect.any(Function));
+    expect(addEventListenerSpy).toHaveBeenCalledWith("offline", expect.any(Function));
   });
 
   test("cleans up event listeners on unmount", () => {
     const { unmount } = renderHook(() => useIsOnline());
     unmount();
 
-    expect(removeEventListenerSpy).toHaveBeenCalledWith(
-      "online",
-      expect.any(Function),
-    );
-    expect(removeEventListenerSpy).toHaveBeenCalledWith(
-      "offline",
-      expect.any(Function),
-    );
+    expect(removeEventListenerSpy).toHaveBeenCalledWith("online", expect.any(Function));
+    expect(removeEventListenerSpy).toHaveBeenCalledWith("offline", expect.any(Function));
   });
 
   test("handles online event", () => {

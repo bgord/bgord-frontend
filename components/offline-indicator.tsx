@@ -1,8 +1,8 @@
 import React from "react";
-import { useIsOnline } from "../hooks";
+import * as hooks from "../hooks";
 
-export function OfflineIndicator(props: { children: React.ReactChild }) {
-  const isOnline = useIsOnline();
+export function OfflineIndicator(props: { children: React.ReactNode }) {
+  const isOnline = hooks.verified.useIsOnline();
 
   if (isOnline) return null;
 
