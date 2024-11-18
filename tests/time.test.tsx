@@ -1,5 +1,5 @@
-import { describe, test, expect } from "vitest";
-import { Time, Days, Hours, Minutes, Seconds } from "../time";
+import { describe, expect, test } from "vitest";
+import { Days, Hours, Minutes, Seconds, Time } from "../time";
 
 describe("Time utilities", () => {
   describe("Days", () => {

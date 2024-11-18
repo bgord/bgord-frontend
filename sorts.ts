@@ -1,17 +1,29 @@
 export class Sorts {
-  static updatedAtMostRecent<T extends { updatedAt: { raw: number } }>(a: T, b: T): number {
+  static updatedAtMostRecent<T extends { updatedAt: { raw: number } }>(
+    a: T,
+    b: T,
+  ): number {
     return Sorts.descending(a.updatedAt.raw, b.updatedAt.raw);
   }
 
-  static updatedAtLeastRecent<T extends { updatedAt: { raw: number } }>(a: T, b: T): number {
+  static updatedAtLeastRecent<T extends { updatedAt: { raw: number } }>(
+    a: T,
+    b: T,
+  ): number {
     return Sorts.ascending(a.updatedAt.raw, b.updatedAt.raw);
   }
 
-  static createdAtMostRecent<T extends { createdAt: { raw: number } }>(a: T, b: T): number {
+  static createdAtMostRecent<T extends { createdAt: { raw: number } }>(
+    a: T,
+    b: T,
+  ): number {
     return Sorts.descending(a.createdAt.raw, b.createdAt.raw);
   }
 
-  static createdAtLeastRecent<T extends { createdAt: { raw: number } }>(a: T, b: T): number {
+  static createdAtLeastRecent<T extends { createdAt: { raw: number } }>(
+    a: T,
+    b: T,
+  ): number {
     return Sorts.ascending(a.createdAt.raw, b.createdAt.raw);
   }
 
@@ -24,10 +36,12 @@ export class Sorts {
   }
 
   static ascending(a: number, b: number): number {
-    return a > b ? 1 : 0;
+    if (a === b) return 0;
+    return a > b ? 1 : -1;
   }
 
   static descending(a: number, b: number): number {
-    return a < b ? 1 : 0;
+    if (a === b) return 0;
+    return a < b ? 1 : -1;
   }
 }

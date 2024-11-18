@@ -16,20 +16,22 @@ export * from "./reordering";
 export * from "./safe-local-storage";
 export * from "./safe-window";
 export * from "./server-error";
-export * from "./sorts";
 
 export type Context = { request: Request };
 export type ContextWithParams<T extends string> = Context & {
   params: Params<T>;
 };
 
-// TESTED
-import { noop } from "./noop";
 import { DateFormatter } from "./date-formatter";
 import { FilterUrl } from "./filter-url";
 import { Form } from "./form";
 import { LineClamp } from "./line-clamp";
+// TESTED
+import { noop } from "./noop";
 import { Rhythm } from "./rhythm";
+import { Sorts } from "./sorts";
+import { ThousandsSeparator } from "./thousands-separator";
+import { Time } from "./time";
 import {
   ToastsContextProvider,
   useToastTrigger,
@@ -41,8 +43,6 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
-import { ThousandsSeparator } from "./thousands-separator";
-import { Time } from "./time";
 
 export const tested = {
   LineClamp,
@@ -60,6 +60,7 @@ export const tested = {
   noop,
   ThousandsSeparator,
   Time,
+  Sorts,
 };
 
 export type { BaseToastType } from "./toasts";
