@@ -3,7 +3,6 @@ import type { Params } from "react-router-dom";
 export * from "./hooks";
 export * from "./components";
 
-export * from "./etag";
 export * from "./get-image-resolution";
 export * from "./min-max-scaler";
 export * from "./reordering";
@@ -48,6 +47,7 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
+import { ETag, WeakETag, addWeakEtagRevision } from "./etag";
 
 export const tested = {
   LineClamp,
@@ -77,6 +77,9 @@ export const tested = {
   useFeatureFlags,
   FeatureFlagsContextProvider,
   SafeLocalStorage,
+  ETag,
+  WeakETag,
+  addWeakEtagRevision,
 };
 
 export type { BaseToastType } from "./toasts";
