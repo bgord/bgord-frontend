@@ -53,9 +53,7 @@ describe("copyToClipboard", () => {
 
     await copyToClipboard({ text: "test" });
 
-    expect(consoleSpy).toHaveBeenCalledWith(
-      "Copying to clipboard not supported",
-    );
+    expect(consoleSpy).toHaveBeenCalledWith("Copying to clipboard not supported");
   });
 
   test("uses noop success handler when not provided", async () => {

@@ -1,13 +1,13 @@
 import type { Params } from "react-router-dom";
 
-export * from "./api";
+export * from "./hooks";
 export * from "./components";
-export * from "./durations";
+
+export * from "./api";
 export * from "./etag";
 export * from "./exec";
 export * from "./feature-flags";
 export * from "./get-image-resolution";
-export * from "./hooks";
 export * from "./min-max-scaler";
 export * from "./pluralize";
 export * from "./reordering";
@@ -22,11 +22,14 @@ export type ContextWithParams<T extends string> = Context & {
 // TESTED
 import { copyToClipboard } from "./copy-to-clipboard";
 import { DateFormatter } from "./date-formatter";
+import { DurationFormatter } from "./durations";
 import { FilterUrl } from "./filter-url";
 import { Form } from "./form";
+import { isClient } from "./is-client";
 import { LineClamp } from "./line-clamp";
 import { noop } from "./noop";
 import { Rhythm } from "./rhythm";
+import { getSafeWindow } from "./safe-window";
 import { Sorts } from "./sorts";
 import { ThousandsSeparator } from "./thousands-separator";
 import { Time } from "./time";
@@ -41,8 +44,6 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
-import { getSafeWindow } from "./safe-window";
-import { isClient } from "./is-client";
 
 export const tested = {
   LineClamp,
@@ -64,6 +65,7 @@ export const tested = {
   copyToClipboard,
   getSafeWindow,
   isClient,
+  DurationFormatter,
 };
 
 export type { BaseToastType } from "./toasts";

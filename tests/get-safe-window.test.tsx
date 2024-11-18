@@ -1,4 +1,4 @@
-import { vi, describe, test, expect, beforeEach, afterEach } from "vitest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { getSafeWindow } from "../safe-window";
 
 describe("Window utilities", () => {
