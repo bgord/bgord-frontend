@@ -8,12 +8,10 @@ export * from "./exec";
 export * from "./feature-flags";
 export * from "./get-image-resolution";
 export * from "./hooks";
-export * from "./is-client";
 export * from "./min-max-scaler";
 export * from "./pluralize";
 export * from "./reordering";
 export * from "./safe-local-storage";
-export * from "./safe-window";
 export * from "./server-error";
 
 export type Context = { request: Request };
@@ -21,12 +19,12 @@ export type ContextWithParams<T extends string> = Context & {
   params: Params<T>;
 };
 
+// TESTED
 import { copyToClipboard } from "./copy-to-clipboard";
 import { DateFormatter } from "./date-formatter";
 import { FilterUrl } from "./filter-url";
 import { Form } from "./form";
 import { LineClamp } from "./line-clamp";
-// TESTED
 import { noop } from "./noop";
 import { Rhythm } from "./rhythm";
 import { Sorts } from "./sorts";
@@ -43,6 +41,8 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
+import { getSafeWindow } from "./safe-window";
+import { isClient } from "./is-client";
 
 export const tested = {
   LineClamp,
@@ -62,6 +62,8 @@ export const tested = {
   Time,
   Sorts,
   copyToClipboard,
+  getSafeWindow,
+  isClient,
 };
 
 export type { BaseToastType } from "./toasts";
