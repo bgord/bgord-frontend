@@ -1,6 +1,6 @@
-import React from "react";
 import { fireEvent, render, renderHook } from "@testing-library/react";
-import { describe, test, expect } from "vitest";
+import React from "react";
+import { describe, expect, test } from "vitest";
 import { usePreviousValue } from "../hooks/use-previous-value";
 
 describe("usePreviousValue", () => {
@@ -42,7 +42,11 @@ function Counter() {
 
   return (
     <div>
-      <button onClick={() => setCount((c) => c + 1)} data-testid="increment">
+      <button
+        type="button"
+        onClick={() => setCount((c) => c + 1)}
+        data-testid="increment"
+      >
         Increment
       </button>
       <span data-testid="current">Current: {count}</span>

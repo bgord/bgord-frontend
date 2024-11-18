@@ -1,9 +1,6 @@
-import { render, renderHook, act } from "@testing-library/react";
-import { describe, test, expect, vi, beforeEach, afterEach } from "vitest";
-import {
-  useCurrentTimestamp,
-  getCurrentTimestamp,
-} from "../hooks/use-current-timestamp";
+import { act, render, renderHook } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { getCurrentTimestamp, useCurrentTimestamp } from "../hooks/use-current-timestamp";
 import { Time } from "../time";
 
 describe("getCurrentTimestamp", () => {
@@ -66,10 +63,7 @@ describe("useCurrentTimestamp", () => {
     const setIntervalSpy = vi.spyOn(window, "setInterval");
     renderHook(() => useCurrentTimestamp());
 
-    expect(setIntervalSpy).toHaveBeenCalledWith(
-      expect.any(Function),
-      Time.Seconds(1).ms
-    );
+    expect(setIntervalSpy).toHaveBeenCalledWith(expect.any(Function), Time.Seconds(1).ms);
   });
 });
 
@@ -93,9 +87,7 @@ describe("CurrentTimestamp Component Integration", () => {
     vi.spyOn(Date, "now").mockImplementation(() => initialTimestamp);
 
     const { getByTestId } = render(<TimestampDisplay />);
-    expect(getByTestId("timestamp")).toHaveTextContent(
-      initialTimestamp.toString()
-    );
+    expect(getByTestId("timestamp")).toHaveTextContent(initialTimestamp.toString());
 
     // Mock new timestamp and advance time
     const newTimestamp = initialTimestamp + 1000;

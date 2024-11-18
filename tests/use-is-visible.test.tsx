@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import { describe, test, expect } from "vitest";
+import { describe, expect, test } from "vitest";
 import { useIsVisible } from "../hooks/use-is-visible";
 
 describe("useIsVisible", () => {

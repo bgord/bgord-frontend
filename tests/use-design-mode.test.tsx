@@ -1,5 +1,5 @@
-import { screen, render } from "@testing-library/react";
-import { describe, test, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
 import { useDesignMode } from "../hooks/use-design-mode";
 
 // Component Integration test
@@ -8,7 +8,11 @@ function EditableContent() {
 
   return (
     <div>
-      <button onClick={designMode.toggle} data-testid="toggle-edit">
+      <button
+        type="button"
+        onClick={designMode.toggle}
+        data-testid="toggle-edit"
+      >
         {designMode.on ? "Disable" : "Enable"} Editing
       </button>
       <div data-testid="content" contentEditable={designMode.on}>
