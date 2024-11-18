@@ -2,7 +2,7 @@ import { act, renderHook } from "@testing-library/react";
 import { MemoryRouter, Route, Routes, useSearchParams } from "react-router-dom";
 import { describe, expect, test } from "vitest";
 import { Field } from "../hooks/field";
-import { useFieldStrategyEnum, useField } from "../hooks/use-field";
+import { useField, useFieldStrategyEnum } from "../hooks/use-field";
 
 describe("useField - params", () => {
   test("empty default value - undefined", () => {

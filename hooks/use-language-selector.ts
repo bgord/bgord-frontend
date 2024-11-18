@@ -5,7 +5,7 @@ import React from "react";
 import { getSafeWindow } from "../safe-window";
 import { useLanguage } from "../translations";
 import { Field } from "./field";
-import { useClientFilterReturnType, useClientFilter } from "./use-client-filter";
+import { useClientFilter, useClientFilterReturnType } from "./use-client-filter";
 
 export function useLanguageSelector(
   supportedLanguages: Record<LanguageType, LanguageType>,

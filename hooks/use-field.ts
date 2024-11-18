@@ -6,10 +6,7 @@ import { Field, FieldValueAllowedTypes } from "./field";
 type NewFieldNameType = string;
 
 /** Valid HTML elements that can be used as field inputs */
-export type FieldElementType =
-  | HTMLInputElement
-  | HTMLSelectElement
-  | HTMLTextAreaElement;
+export type FieldElementType = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
 /**
  * Defines the strategy for field value persistence
@@ -149,9 +146,7 @@ export function useField<T extends FieldValueAllowedTypes>(
     strategy,
     defaultValue: defaultValue.get(),
     currentValue,
-    value: Field.isEmpty(currentValue)
-      ? ("" as NonNullable<T>)
-      : (currentValue as NonNullable<T>),
+    value: Field.isEmpty(currentValue) ? ("" as NonNullable<T>) : (currentValue as NonNullable<T>),
     set: setCurrentValue,
     handleChange: (event: React.ChangeEvent<FieldElementType>) =>
       setCurrentValue(event.currentTarget.value as T),

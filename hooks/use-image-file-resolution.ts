@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
 import { ImageResolutionType, emptyImageResolution, getImageResolution } from "../get-image-resolution";
-import { UseFileReturnType, UseFileState } from "./use-file";
 import { useField } from "./use-field";
+import { UseFileReturnType, UseFileState } from "./use-file";
 
 export function useImageFileResolution(file: UseFileReturnType): ImageResolutionType {
   const width = useField<ImageResolutionType["width"]>({

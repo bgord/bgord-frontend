@@ -1,17 +1,9 @@
 import { Field, FieldValueAllowedTypes } from "./field";
-import {
-  useFieldConfigType,
-  useFieldReturnType,
-  useFieldStrategyEnum,
-  useField,
-} from "./use-field";
+import { useField, useFieldConfigType, useFieldReturnType, useFieldStrategyEnum } from "./use-field";
 
 export type useClientFilterQueryType = string | undefined;
 
-type useClientFilterConfigType<T extends FieldValueAllowedTypes> = Omit<
-  useFieldConfigType<T>,
-  "strategy"
-> & {
+type useClientFilterConfigType<T extends FieldValueAllowedTypes> = Omit<useFieldConfigType<T>, "strategy"> & {
   enum: { [key: string]: useClientFilterQueryType };
   filterFn?: (value: T) => boolean;
 };

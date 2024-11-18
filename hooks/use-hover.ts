@@ -73,6 +73,6 @@ export function useHover(config?: UseHoverConfigType): UseHoverReturnType {
       attach: { ref },
       isHovering: isHovering.on && enabled,
     }),
-    [isHovering.on, enabled]
+    [isHovering.on, enabled],
   );
 }

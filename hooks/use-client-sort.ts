@@ -1,10 +1,10 @@
 import { Field, FieldValueAllowedTypes } from "./field";
 import {
   FieldElementType,
+  useField,
   useFieldConfigType,
   useFieldReturnType,
   useFieldStrategyEnum,
-  useField,
 } from "./use-field";
 
 type useClientSortOptionType = string;

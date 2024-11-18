@@ -1,10 +1,5 @@
 import { Field } from "./field";
-import {
-  useFieldConfigType,
-  useFieldReturnType,
-  useFieldStrategyEnum,
-  useField,
-} from "./use-field";
+import { useField, useFieldConfigType, useFieldReturnType, useFieldStrategyEnum } from "./use-field";
 
 type useClientSearchQueryType = string;
 
