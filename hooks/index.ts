@@ -1,5 +1,4 @@
 export * from "./use-audio";
-export * from "./use-breakpoint";
 export * from "./use-delayed-loader";
 export * from "./use-expandable-list";
 export * from "./use-file";
@@ -52,6 +51,7 @@ import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
 
+import { useBreakpoint } from "./use-breakpoint";
 import { useWindowDimensions } from "./use-window-dimensions";
 
 export const verified = {
@@ -93,6 +93,7 @@ export const verified = {
   useDesignMode,
   useDisablePullToRefresh,
   useWindowDimensions,
+  useBreakpoint,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";

@@ -8,11 +8,7 @@ function EditableContent() {
 
   return (
     <div>
-      <button
-        type="button"
-        onClick={designMode.toggle}
-        data-testid="toggle-edit"
-      >
+      <button type="button" onClick={designMode.toggle} data-testid="toggle-edit">
         {designMode.on ? "Disable" : "Enable"} Editing
       </button>
       <div data-testid="content" contentEditable={designMode.on}>
@@ -26,12 +22,7 @@ describe("Design Mode Component Integration", () => {
   test("reads edit mode", () => {
     render(<EditableContent />);
 
-    expect(screen.getByTestId("toggle-edit")).toHaveTextContent(
-      "Enable Editing"
-    );
-    expect(screen.getByTestId("content")).toHaveAttribute(
-      "contenteditable",
-      "false"
-    );
+    expect(screen.getByTestId("toggle-edit")).toHaveTextContent("Enable Editing");
+    expect(screen.getByTestId("content")).toHaveAttribute("contenteditable", "false");
   });
 });

@@ -1,5 +1,5 @@
-import { render, renderHook, act } from "@testing-library/react";
-import { describe, test, expect, vi, beforeEach } from "vitest";
+import { act, render, renderHook } from "@testing-library/react";
+import { beforeEach, describe, expect, test, vi } from "vitest";
 import { useWindowDimensions } from "../hooks/use-window-dimensions";
 import { getSafeWindow } from "../safe-window";
 
@@ -53,17 +53,11 @@ describe("useWindowDimensions", () => {
   test("adds and removes event listener", () => {
     const { unmount } = renderHook(() => useWindowDimensions());
 
-    expect(mockWindow.addEventListener).toHaveBeenCalledWith(
-      "resize",
-      expect.any(Function)
-    );
+    expect(mockWindow.addEventListener).toHaveBeenCalledWith("resize", expect.any(Function));
 
     unmount();
 
-    expect(mockWindow.removeEventListener).toHaveBeenCalledWith(
-      "resize",
-      expect.any(Function)
-    );
+    expect(mockWindow.removeEventListener).toHaveBeenCalledWith("resize", expect.any(Function));
   });
 
   test("handles missing window safely", () => {
@@ -82,11 +76,7 @@ describe("useWindowDimensions", () => {
 function ResponsiveComponent() {
   const { width, height } = useWindowDimensions();
 
-  return (
-    <div data-testid="dimensions">
-      {width && height ? `${width}x${height}` : "Loading..."}
-    </div>
-  );
+  return <div data-testid="dimensions">{width && height ? `${width}x${height}` : "Loading..."}</div>;
 }
 
 describe("Window Dimensions Component Integration", () => {

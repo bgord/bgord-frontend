@@ -51,24 +51,16 @@ describe("ScrollableContent Integration", () => {
   test("applies correct styles when mounted", () => {
     render(<ScrollableContent />);
 
-    expect(document.querySelector("html")?.style.overscrollBehavior).toEqual(
-      "none",
-    );
+    expect(document.querySelector("html")?.style.overscrollBehavior).toEqual("none");
     expect(document.body.style.overscrollBehavior).toEqual("none");
   });
 
   test("respects disablePullToRefresh prop", () => {
-    const { rerender } = render(
-      <ScrollableContent disablePullToRefresh={false} />,
-    );
+    const { rerender } = render(<ScrollableContent disablePullToRefresh={false} />);
 
-    expect(
-      document.querySelector("html")?.style.overscrollBehavior,
-    ).not.toEqual("none");
+    expect(document.querySelector("html")?.style.overscrollBehavior).not.toEqual("none");
 
     rerender(<ScrollableContent disablePullToRefresh={true} />);
-    expect(document.querySelector("html")?.style.overscrollBehavior).toEqual(
-      "none",
-    );
+    expect(document.querySelector("html")?.style.overscrollBehavior).toEqual("none");
   });
 });
