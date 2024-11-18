@@ -1,7 +1,6 @@
 export * from "./use-audio";
 export * from "./use-breakpoint";
 export * from "./use-delayed-loader";
-export * from "./use-design-mode";
 export * from "./use-disable-pull-to-refresh";
 export * from "./use-expandable-list";
 export * from "./use-file";
@@ -52,6 +51,7 @@ import { useClickOutside } from "./use-click-outside";
 import { useCurrentTimestamp } from "./use-current-timestamp";
 import { usePreviousValue } from "./use-previous-value";
 import { useIsVisible } from "./use-is-visible";
+import { useDesignMode } from "./use-design-mode";
 
 export const verified = {
   useField,
@@ -89,6 +89,7 @@ export const verified = {
   useCurrentTimestamp,
   usePreviousValue,
   useIsVisible,
+  useDesignMode,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
