@@ -7,7 +7,6 @@ export * from "./etag";
 export * from "./get-image-resolution";
 export * from "./min-max-scaler";
 export * from "./reordering";
-export * from "./safe-local-storage";
 export * from "./server-error";
 
 export type Context = { request: Request };
@@ -20,6 +19,12 @@ import { copyToClipboard } from "./copy-to-clipboard";
 import { DateFormatter } from "./date-formatter";
 import { DurationFormatter } from "./durations";
 import { exec } from "./exec";
+import {
+  FeatureFlagEnum,
+  FeatureFlagsContextProvider,
+  useFeatureFlag,
+  useFeatureFlags,
+} from "./feature-flags";
 import { FilterUrl } from "./filter-url";
 import { Form } from "./form";
 import { isClient } from "./is-client";
@@ -27,6 +32,7 @@ import { LineClamp } from "./line-clamp";
 import { noop } from "./noop";
 import { pluralize } from "./pluralize";
 import { Rhythm } from "./rhythm";
+import { SafeLocalStorage } from "./safe-local-storage";
 import { getSafeWindow } from "./safe-window";
 import { Sorts } from "./sorts";
 import { ThousandsSeparator } from "./thousands-separator";
@@ -42,12 +48,6 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
-import {
-  FeatureFlagEnum,
-  useFeatureFlag,
-  useFeatureFlags,
-  FeatureFlagsContextProvider,
-} from "./feature-flags";
 
 export const tested = {
   LineClamp,
@@ -76,6 +76,7 @@ export const tested = {
   useFeatureFlag,
   useFeatureFlags,
   FeatureFlagsContextProvider,
+  SafeLocalStorage,
 };
 
 export type { BaseToastType } from "./toasts";

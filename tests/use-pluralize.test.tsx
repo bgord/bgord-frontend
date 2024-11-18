@@ -4,18 +4,12 @@ import { pluralize } from "../pluralize";
 describe("pluralize", () => {
   describe("English pluralization", () => {
     test("returns singular form for value 1", () => {
-      expect(pluralize({ value: 1, singular: "book", language: "en" })).toBe(
-        "book",
-      );
+      expect(pluralize({ value: 1, singular: "book", language: "en" })).toBe("book");
     });
 
     test("returns plural form for values other than 1", () => {
-      expect(pluralize({ value: 2, singular: "book", language: "en" })).toBe(
-        "books",
-      );
-      expect(pluralize({ value: 0, singular: "book", language: "en" })).toBe(
-        "books",
-      );
+      expect(pluralize({ value: 2, singular: "book", language: "en" })).toBe("books");
+      expect(pluralize({ value: 0, singular: "book", language: "en" })).toBe("books");
     });
 
     test("uses custom plural form if provided", () => {
@@ -79,9 +73,7 @@ describe("pluralize", () => {
       ).toBe("libro");
 
       expect(consoleSpy).toHaveBeenCalledWith(
-        expect.stringContaining(
-          "missing pluralization function for language es",
-        ),
+        expect.stringContaining("missing pluralization function for language es"),
       );
     });
   });
