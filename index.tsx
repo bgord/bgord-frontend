@@ -8,7 +8,6 @@ export * from "./durations";
 export * from "./etag";
 export * from "./exec";
 export * from "./feature-flags";
-export * from "./form";
 export * from "./get-image-resolution";
 export * from "./hooks";
 export * from "./is-client";
@@ -31,11 +30,13 @@ export type ContextWithParams<T extends string> = Context & {
   params: Params<T>;
 };
 
+import { FilterUrl } from "./filter-url";
+import { Form } from "./form";
 // TESTED
 import { LineClamp } from "./line-clamp";
-import { FilterUrl } from "./filter-url";
 
 export const tested = {
   LineClamp,
   FilterUrl,
+  Form,
 };
