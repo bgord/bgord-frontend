@@ -31,12 +31,7 @@ import { useClientFilter } from "./use-client-filter";
 import { useClientSearch } from "./use-client-search";
 import { defaultSortFn, useClientSort } from "./use-client-sort";
 import { useDebounce } from "./use-debounce";
-import {
-  Fields,
-  LocalFields,
-  useField,
-  useFieldStrategyEnum,
-} from "./use-field";
+import { Fields, LocalFields, useField, useFieldStrategyEnum } from "./use-field";
 import { useFocusKeyboardShortcut } from "./use-focus-keyboard-shortcut";
 import { useHover } from "./use-hover";
 import { KeyNameEnum, useKeyHandler } from "./use-key-handler";

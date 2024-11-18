@@ -13,10 +13,7 @@ describe("useLeavingPrompt", () => {
 
   test("adds event listener when condition is true", () => {
     renderHook(() => useLeavingPrompt(true));
-    expect(addEventListenerSpy).toHaveBeenCalledWith(
-      "beforeunload",
-      expect.any(Function),
-    );
+    expect(addEventListenerSpy).toHaveBeenCalledWith("beforeunload", expect.any(Function));
   });
 
   test("does not add event listener when condition is false", () => {
@@ -27,19 +24,13 @@ describe("useLeavingPrompt", () => {
   test("removes event listener on cleanup", () => {
     const { unmount } = renderHook(() => useLeavingPrompt(true));
     unmount();
-    expect(removeEventListenerSpy).toHaveBeenCalledWith(
-      "beforeunload",
-      expect.any(Function),
-    );
+    expect(removeEventListenerSpy).toHaveBeenCalledWith("beforeunload", expect.any(Function));
   });
 
   test("updates listener when condition changes", () => {
-    const { rerender } = renderHook(
-      ({ condition }) => useLeavingPrompt(condition),
-      {
-        initialProps: { condition: false },
-      },
-    );
+    const { rerender } = renderHook(({ condition }) => useLeavingPrompt(condition), {
+      initialProps: { condition: false },
+    });
 
     expect(addEventListenerSpy).not.toHaveBeenCalled();
 
