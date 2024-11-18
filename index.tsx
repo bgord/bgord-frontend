@@ -3,7 +3,6 @@ import type { Params } from "react-router-dom";
 export * from "./hooks";
 export * from "./components";
 
-export * from "./get-image-resolution";
 export * from "./min-max-scaler";
 export * from "./reordering";
 export * from "./server-error";
@@ -17,6 +16,7 @@ export type ContextWithParams<T extends string> = Context & {
 import { copyToClipboard } from "./copy-to-clipboard";
 import { DateFormatter } from "./date-formatter";
 import { DurationFormatter } from "./durations";
+import { ETag, WeakETag, addWeakEtagRevision } from "./etag";
 import { exec } from "./exec";
 import {
   FeatureFlagEnum,
@@ -26,6 +26,7 @@ import {
 } from "./feature-flags";
 import { FilterUrl } from "./filter-url";
 import { Form } from "./form";
+import { getImageResolution } from "./get-image-resolution";
 import { isClient } from "./is-client";
 import { LineClamp } from "./line-clamp";
 import { noop } from "./noop";
@@ -47,7 +48,6 @@ import {
   usePluralize,
   useTranslations,
 } from "./translations";
-import { ETag, WeakETag, addWeakEtagRevision } from "./etag";
 
 export const tested = {
   LineClamp,
@@ -80,6 +80,7 @@ export const tested = {
   ETag,
   WeakETag,
   addWeakEtagRevision,
+  getImageResolution,
 };
 
 export type { BaseToastType } from "./toasts";
