@@ -1,11 +1,7 @@
 import { render, renderHook } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { describe, expect, test, vi } from "vitest";
-import {
-  PagedMetaType,
-  extractPage,
-  usePagination,
-} from "../hooks/use-pagination";
+import { PagedMetaType, extractPage, usePagination } from "../hooks/use-pagination";
 
 describe("usePagination", () => {
   beforeEach(() => vi.clearAllMocks());

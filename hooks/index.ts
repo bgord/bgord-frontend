@@ -11,7 +11,6 @@ export * from "./use-expandable-list";
 export * from "./use-file";
 export * from "./use-hover";
 export * from "./use-image-file-resolution";
-export * from "./use-is-online";
 export * from "./use-is-visible";
 export * from "./use-item";
 export * from "./use-keyboard-shortcuts";
@@ -53,6 +52,7 @@ import {
 import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
+import { useIsOnline } from "./use-is-online";
 
 export const verified = {
   useField,
@@ -83,6 +83,7 @@ export const verified = {
   useLeavingPrompt,
   usePagination,
   extractPage,
+  useIsOnline,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
