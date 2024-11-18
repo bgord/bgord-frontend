@@ -17,7 +17,6 @@ export * from "./safe-local-storage";
 export * from "./safe-window";
 export * from "./server-error";
 export * from "./sorts";
-export * from "./time";
 
 export type Context = { request: Request };
 export type ContextWithParams<T extends string> = Context & {
@@ -43,6 +42,7 @@ import {
   useTranslations,
 } from "./translations";
 import { ThousandsSeparator } from "./thousands-separator";
+import { Time } from "./time";
 
 export const tested = {
   LineClamp,
@@ -59,6 +59,7 @@ export const tested = {
   ToastsContextProvider,
   noop,
   ThousandsSeparator,
+  Time,
 };
 
 export type { BaseToastType } from "./toasts";
