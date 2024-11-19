@@ -4,7 +4,6 @@ export * from "./use-image-file-resolution";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
 export * from "./use-list";
-export * from "./use-persistent-toggle";
 export * from "./use-rate-limiter";
 
 // VERIFIED ONLY
@@ -49,10 +48,11 @@ import { extractUseToggle, useToggle } from "./use-toggle";
 import { useAudio } from "./use-audio";
 import { useBreakpoint } from "./use-breakpoint";
 import { useFile } from "./use-file";
+import { useItem } from "./use-item";
+import { usePersistentToggle } from "./use-persistent-toggle";
 import { useScroll } from "./use-scroll";
 import { useVideo } from "./use-video";
 import { useWindowDimensions } from "./use-window-dimensions";
-import { useItem } from "./use-item";
 
 export const verified = {
   useField,
@@ -99,6 +99,7 @@ export const verified = {
   useVideo,
   useScroll,
   useItem,
+  usePersistentToggle,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";

@@ -1,5 +1,5 @@
-import { render, fireEvent, renderHook, act } from "@testing-library/react";
-import { describe, test, expect } from "vitest";
+import { act, fireEvent, render, renderHook } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
 import { useItem } from "../hooks/use-item";
 
 describe("useItem", () => {
@@ -32,9 +32,7 @@ describe("useItem", () => {
   });
 
   test("clear resets to default", () => {
-    const { result } = renderHook(() =>
-      useItem<string>({ defaultItem: "initial" })
-    );
+    const { result } = renderHook(() => useItem<string>({ defaultItem: "initial" }));
 
     act(() => {
       result.current.clear();
@@ -69,8 +67,7 @@ describe("useItem", () => {
 
   test("custom comparison function", () => {
     type TestItem = { id: number; value: string };
-    const comparisonFn = (a: TestItem | null, b: TestItem | null) =>
-      a?.id === b?.id;
+    const comparisonFn = (a: TestItem | null, b: TestItem | null) => a?.id === b?.id;
 
     const { result } = renderHook(() => useItem<TestItem>({ comparisonFn }));
 
@@ -119,13 +116,13 @@ describe("useItem", () => {
       const item = useItem<string>();
       return (
         <div>
-          <button onClick={() => item.set("selected")} data-testid="select">
+          <button type="button" onClick={() => item.set("selected")} data-testid="select">
             Select
           </button>
-          <button onClick={() => item.clear()} data-testid="clear">
+          <button type="button" onClick={() => item.clear()} data-testid="clear">
             Clear
           </button>
-          <button onClick={() => item.toggle("toggled")} data-testid="toggle">
+          <button type="button" onClick={() => item.toggle("toggled")} data-testid="toggle">
             Toggle
           </button>
           <div data-testid="value">{item.value || "none"}</div>

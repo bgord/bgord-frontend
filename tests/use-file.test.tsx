@@ -1,10 +1,4 @@
-import {
-  act,
-  fireEvent,
-  render,
-  renderHook,
-  screen,
-} from "@testing-library/react";
+import { act, fireEvent, render, renderHook, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { UseFileState, useFile } from "../hooks/use-file";
 

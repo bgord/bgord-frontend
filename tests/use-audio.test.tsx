@@ -1,10 +1,4 @@
-import {
-  act,
-  fireEvent,
-  render,
-  renderHook,
-  screen,
-} from "@testing-library/react";
+import { act, fireEvent, render, renderHook, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { UseAudioState, useAudio } from "../hooks/use-audio";
@@ -21,9 +15,7 @@ describe("useAudio", () => {
       volume: 1,
     } as unknown as HTMLAudioElement;
 
-    vi.spyOn(HTMLAudioElement.prototype, "play").mockImplementation(() =>
-      Promise.resolve()
-    );
+    vi.spyOn(HTMLAudioElement.prototype, "play").mockImplementation(() => Promise.resolve());
     vi.spyOn(HTMLAudioElement.prototype, "pause").mockImplementation(() => {});
 
     vi.spyOn(window, "Audio").mockImplementation(() => mockAudio);
@@ -170,9 +162,7 @@ describe("AudioPlayer component", () => {
       volume: 1,
     } as unknown as HTMLAudioElement;
 
-    vi.spyOn(HTMLAudioElement.prototype, "play").mockImplementation(() =>
-      Promise.resolve()
-    );
+    vi.spyOn(HTMLAudioElement.prototype, "play").mockImplementation(() => Promise.resolve());
     vi.spyOn(HTMLAudioElement.prototype, "pause").mockImplementation(() => {});
   });
 
@@ -187,9 +177,7 @@ describe("AudioPlayer component", () => {
 
           <button
             type="button"
-            onClick={
-              audio.meta.isPlaying ? audio.actions.pause : audio.actions.play
-            }
+            onClick={audio.meta.isPlaying ? audio.actions.pause : audio.actions.play}
             aria-label={audio.meta.isPlaying ? "Pause" : "Play"}
           >
             {audio.meta.isPlaying ? "Pause" : "Play"}
@@ -200,9 +188,7 @@ describe("AudioPlayer component", () => {
 
           <button
             type="button"
-            onClick={
-              audio.meta.muted ? audio.actions.unmute : audio.actions.mute
-            }
+            onClick={audio.meta.muted ? audio.actions.unmute : audio.actions.mute}
             aria-label={audio.meta.muted ? "Unmute" : "Mute"}
           >
             {audio.meta.muted ? "Unmute" : "Mute"}
@@ -225,8 +211,8 @@ describe("AudioPlayer component", () => {
           bubbles: true,
           // @ts-ignore
           currentTarget: mockAudio,
-        })
-      )
+        }),
+      ),
     );
 
     // Test play/pause
@@ -243,9 +229,7 @@ describe("AudioPlayer component", () => {
 
     // Test volume
     const volumeSlider = screen.getByRole("slider", { name: "Volume" });
-    act(() =>
-      fireEvent.input(volumeSlider, { target: { valueAsNumber: 0.5 } })
-    );
+    act(() => fireEvent.input(volumeSlider, { target: { valueAsNumber: 0.5 } }));
 
     const muteButton = screen.getByRole("button", { name: "Mute" });
     act(() => fireEvent.click(muteButton));
