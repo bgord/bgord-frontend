@@ -1,10 +1,6 @@
-import { useEffect, useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { getSafeWindow } from "../safe-window";
-import {
-  UseToggleConfigType,
-  UseToggleReturnType,
-  useToggle,
-} from "./use-toggle";
+import { UseToggleConfigType, UseToggleReturnType, useToggle } from "./use-toggle";
 
 /**
  * Hook to toggle document design mode with safety checks
@@ -59,9 +55,7 @@ import {
  * @param config - Configuration object for the toggle state
  * @returns Toggle state and controls for design mode
  */
-export function useDesignMode(
-  config: UseToggleConfigType
-): UseToggleReturnType {
+export function useDesignMode(config: UseToggleConfigType): UseToggleReturnType {
   // Initialize toggle state
   const designMode = useToggle(config);
 
@@ -74,7 +68,7 @@ export function useDesignMode(
       if (!safeWindow) return;
       safeWindow.document.designMode = isOn ? "on" : "off";
     },
-    [safeWindow]
+    [safeWindow],
   );
 
   // Effect to manage design mode state

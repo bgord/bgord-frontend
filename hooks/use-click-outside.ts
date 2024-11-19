@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 /**
  * Hook to detect clicks outside a specified element with support for excluded areas
@@ -43,7 +43,7 @@ import { useEffect, useCallback } from "react";
 export function useClickOutside(
   ref: React.RefObject<HTMLElement>,
   onClickOutside: VoidFunction,
-  exclude?: React.RefObject<HTMLElement>[]
+  exclude?: React.RefObject<HTMLElement>[],
 ): void {
   // Memoize the click handler to prevent unnecessary recreations
   const handleClickOutside = useCallback(
@@ -53,9 +53,7 @@ export function useClickOutside(
       // Check if click event happened outside the `ref`
       if (!ref.current.contains(event.target as Node)) {
         // Check if some `exclude`d node outside the `ref` node has been clicked
-        const isExcludedNodeClicked = exclude?.some((node) =>
-          node.current?.contains(event.target as Node)
-        );
+        const isExcludedNodeClicked = exclude?.some((node) => node.current?.contains(event.target as Node));
 
         // Fire callback if click happened outside both `ref` and `exclude`d nodes
         if (!isExcludedNodeClicked) {
@@ -63,7 +61,7 @@ export function useClickOutside(
         }
       }
     },
-    [ref, onClickOutside, exclude]
+    [ref, onClickOutside, exclude],
   );
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import type { TimestampType } from "@bgord/node/dist/schema";
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Time } from "../time";
 
 /**
@@ -36,8 +36,7 @@ export function getCurrentTimestamp(): TimestampType {
  */
 export function useCurrentTimestamp(): TimestampType {
   // Initialize state with memoized initial value
-  const [timestamp, setTimestamp] =
-    useState<TimestampType>(getCurrentTimestamp);
+  const [timestamp, setTimestamp] = useState<TimestampType>(getCurrentTimestamp);
 
   // Memoize the timestamp update callback
   const updateTimestamp = useCallback(() => {
