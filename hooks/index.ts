@@ -1,7 +1,6 @@
 export * from "./use-delayed-loader";
 export * from "./use-expandable-list";
 export * from "./use-image-file-resolution";
-export * from "./use-item";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
 export * from "./use-list";
@@ -53,6 +52,7 @@ import { useFile } from "./use-file";
 import { useScroll } from "./use-scroll";
 import { useVideo } from "./use-video";
 import { useWindowDimensions } from "./use-window-dimensions";
+import { useItem } from "./use-item";
 
 export const verified = {
   useField,
@@ -98,6 +98,7 @@ export const verified = {
   useAudio,
   useVideo,
   useScroll,
+  useItem,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
