@@ -35,7 +35,7 @@
   "devDependencies": {
     "@bgord/node": "0.83.3",
     "@biomejs/biome": "1.9.4",
-    "@commitlint/cli": "19.5.0",
+    "@commitlint/cli": "19.6.0",
     "@commitlint/config-conventional": "19.5.0",
     "@testing-library/dom": "10.4.0",
     "@testing-library/react": "16.0.1",
