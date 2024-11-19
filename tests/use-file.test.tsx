@@ -1,12 +1,6 @@
-import {
-  fireEvent,
-  renderHook,
-  act,
-  render,
-  screen,
-} from "@testing-library/react";
-import { describe, test, expect, vi, beforeEach, afterEach } from "vitest";
-import { useFile, UseFileState } from "../hooks/use-file";
+import { act, fireEvent, render, renderHook, screen } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import { UseFileState, useFile } from "../hooks/use-file";
 
 describe("useFile", () => {
   vi.useFakeTimers();
@@ -129,9 +123,7 @@ describe("FileUpload component", () => {
             />
           </label>
 
-          {fileUpload.isSelected && (
-            <button onClick={fileUpload.actions.clearFile}>Remove</button>
-          )}
+          {fileUpload.isSelected && <button onClick={fileUpload.actions.clearFile}>Remove</button>}
 
           {fileUpload.isError && <p role="alert">File size exceeds limit</p>}
         </div>

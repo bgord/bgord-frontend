@@ -1,4 +1,3 @@
-export * from "./use-audio";
 export * from "./use-delayed-loader";
 export * from "./use-expandable-list";
 export * from "./use-image-file-resolution";
@@ -50,9 +49,10 @@ import { useScrollLock } from "./use-scroll-lock";
 import { useSound } from "./use-sound";
 import { extractUseToggle, useToggle } from "./use-toggle";
 
+import { useAudio } from "./use-audio";
 import { useBreakpoint } from "./use-breakpoint";
-import { useWindowDimensions } from "./use-window-dimensions";
 import { useFile } from "./use-file";
+import { useWindowDimensions } from "./use-window-dimensions";
 
 export const verified = {
   useField,
@@ -95,6 +95,7 @@ export const verified = {
   useWindowDimensions,
   useBreakpoint,
   useFile,
+  useAudio,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";

@@ -81,10 +81,7 @@ type UseFileError = {
 
 export type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
 
-export function useFile(
-  name: UseFileNameType,
-  config?: UseFileConfigType
-): UseFileReturnType {
+export function useFile(name: UseFileNameType, config?: UseFileConfigType): UseFileReturnType {
   const maxSize = config?.maxSize ?? Number.POSITIVE_INFINITY;
 
   const [key, setKey] = useState(0);
@@ -115,10 +112,7 @@ export function useFile(
     setState(UseFileState.idle);
   }
 
-  const preview = useMemo(
-    () => (file ? URL.createObjectURL(file) : undefined),
-    [file]
-  );
+  const preview = useMemo(() => (file ? URL.createObjectURL(file) : undefined), [file]);
 
   useEffect(() => {
     return () => {
