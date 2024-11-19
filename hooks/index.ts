@@ -1,6 +1,5 @@
 export * from "./use-delayed-loader";
 export * from "./use-image-file-resolution";
-export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
 
 // VERIFIED ONLY
@@ -53,6 +52,7 @@ import { useRateLimiter } from "./use-rate-limiter";
 import { useScroll } from "./use-scroll";
 import { useVideo } from "./use-video";
 import { useWindowDimensions } from "./use-window-dimensions";
+import { useKeyboardShortcuts } from "./use-keyboard-shortcuts";
 
 export const verified = {
   useField,
@@ -103,6 +103,7 @@ export const verified = {
   useList,
   useExpandableList,
   useRateLimiter,
+  useKeyboardShortcuts,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
