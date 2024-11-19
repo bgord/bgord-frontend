@@ -175,7 +175,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
 
   function triggerFullscreen() {
     if (!ref.current) return;
-    ref.current.requestFullscreen();
+    ref.current.requestFullscreen?.();
   }
 
   return {

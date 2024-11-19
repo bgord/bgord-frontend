@@ -8,7 +8,6 @@ export * from "./use-list";
 export * from "./use-persistent-toggle";
 export * from "./use-rate-limiter";
 export * from "./use-scroll";
-export * from "./use-video";
 
 // VERIFIED ONLY
 import { Field } from "./field";
@@ -53,6 +52,7 @@ import { useAudio } from "./use-audio";
 import { useBreakpoint } from "./use-breakpoint";
 import { useFile } from "./use-file";
 import { useWindowDimensions } from "./use-window-dimensions";
+import { useVideo } from "./use-video";
 
 export const verified = {
   useField,
@@ -96,6 +96,7 @@ export const verified = {
   useBreakpoint,
   useFile,
   useAudio,
+  useVideo,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
