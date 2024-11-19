@@ -32,9 +32,7 @@ describe("useList", () => {
   });
 
   test("remove functionality", () => {
-    const { result } = renderHook(() =>
-      useList<string>({ defaultItems: ["a", "b", "c"] })
-    );
+    const { result } = renderHook(() => useList<string>({ defaultItems: ["a", "b", "c"] }));
     const [, actions] = result.current;
 
     act(() => {
@@ -44,9 +42,7 @@ describe("useList", () => {
   });
 
   test("clear functionality", () => {
-    const { result } = renderHook(() =>
-      useList<string>({ defaultItems: ["a", "b"] })
-    );
+    const { result } = renderHook(() => useList<string>({ defaultItems: ["a", "b"] }));
     const [, actions] = result.current;
 
     act(() => {
@@ -72,9 +68,7 @@ describe("useList", () => {
   });
 
   test("isAdded functionality", () => {
-    const { result } = renderHook(() =>
-      useList<string>({ defaultItems: ["test"] })
-    );
+    const { result } = renderHook(() => useList<string>({ defaultItems: ["test"] }));
     const [, actions] = result.current;
 
     expect(actions.isAdded("test")).toBe(true);
@@ -86,9 +80,7 @@ describe("useList", () => {
     const comparisonFn = (a: TestItem, b: TestItem) => a.id === b.id;
     const defaultItems = [{ id: 1, value: "test" }];
 
-    const { result } = renderHook(() =>
-      useList<TestItem>({ defaultItems, comparisonFn })
-    );
+    const { result } = renderHook(() => useList<TestItem>({ defaultItems, comparisonFn }));
     const [, actions] = result.current;
 
     expect(actions.isAdded({ id: 1, value: "different" })).toBe(true);
@@ -114,25 +106,13 @@ describe("useList", () => {
       const [items, actions] = useList<string>();
       return (
         <div>
-          <button
-            type="button"
-            onClick={() => actions.add("item")}
-            data-testid="add"
-          >
+          <button type="button" onClick={() => actions.add("item")} data-testid="add">
             Add
           </button>
-          <button
-            type="button"
-            onClick={() => actions.remove("item")}
-            data-testid="remove"
-          >
+          <button type="button" onClick={() => actions.remove("item")} data-testid="remove">
             Remove
           </button>
-          <button
-            type="button"
-            onClick={() => actions.toggle("item")}
-            data-testid="toggle"
-          >
+          <button type="button" onClick={() => actions.toggle("item")} data-testid="toggle">
             Toggle
           </button>
           <button type="button" onClick={actions.clear} data-testid="clear">

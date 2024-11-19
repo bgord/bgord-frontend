@@ -2,7 +2,6 @@ export * from "./use-delayed-loader";
 export * from "./use-image-file-resolution";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
-export * from "./use-rate-limiter";
 
 // VERIFIED ONLY
 import { Field } from "./field";
@@ -50,6 +49,7 @@ import { useFile } from "./use-file";
 import { useItem } from "./use-item";
 import { useList } from "./use-list";
 import { usePersistentToggle } from "./use-persistent-toggle";
+import { useRateLimiter } from "./use-rate-limiter";
 import { useScroll } from "./use-scroll";
 import { useVideo } from "./use-video";
 import { useWindowDimensions } from "./use-window-dimensions";
@@ -102,6 +102,7 @@ export const verified = {
   usePersistentToggle,
   useList,
   useExpandableList,
+  useRateLimiter,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
