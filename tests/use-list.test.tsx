@@ -1,5 +1,5 @@
-import { renderHook, act, render, fireEvent } from "@testing-library/react";
-import { describe, test, expect } from "vitest";
+import { act, fireEvent, render, renderHook } from "@testing-library/react";
+import { describe, expect, test } from "vitest";
 import { useList } from "../hooks/use-list";
 
 describe("useList", () => {
@@ -114,16 +114,28 @@ describe("useList", () => {
       const [items, actions] = useList<string>();
       return (
         <div>
-          <button onClick={() => actions.add("item")} data-testid="add">
+          <button
+            type="button"
+            onClick={() => actions.add("item")}
+            data-testid="add"
+          >
             Add
           </button>
-          <button onClick={() => actions.remove("item")} data-testid="remove">
+          <button
+            type="button"
+            onClick={() => actions.remove("item")}
+            data-testid="remove"
+          >
             Remove
           </button>
-          <button onClick={() => actions.toggle("item")} data-testid="toggle">
+          <button
+            type="button"
+            onClick={() => actions.toggle("item")}
+            data-testid="toggle"
+          >
             Toggle
           </button>
-          <button onClick={actions.clear} data-testid="clear">
+          <button type="button" onClick={actions.clear} data-testid="clear">
             Clear
           </button>
           <div data-testid="items">{items.join(",")}</div>

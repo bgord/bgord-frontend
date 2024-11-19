@@ -16,9 +16,7 @@ export type UseListConfigType<T> = {
   comparisonFn?: (a: T, b: T) => boolean;
 };
 
-export function useList<T>(
-  config?: UseListConfigType<T>
-): UseListReturnType<T> {
+export function useList<T>(config?: UseListConfigType<T>): UseListReturnType<T> {
   const defaultItems = config?.defaultItems ?? [];
   const defaultComparisonFn = (a: T, b: T) => a === b;
   const comparisonFn = config?.comparisonFn ?? defaultComparisonFn;
@@ -49,7 +47,7 @@ export function useList<T>(
     setItems((currentItems) =>
       currentItems.some((x) => comparisonFn(x, item))
         ? currentItems.filter((x) => !comparisonFn(x, item))
-        : [...currentItems, item]
+        : [...currentItems, item],
     );
   }
 

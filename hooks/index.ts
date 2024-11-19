@@ -1,5 +1,4 @@
 export * from "./use-delayed-loader";
-export * from "./use-expandable-list";
 export * from "./use-image-file-resolution";
 export * from "./use-keyboard-shortcuts";
 export * from "./use-language-selector";
@@ -46,13 +45,14 @@ import { extractUseToggle, useToggle } from "./use-toggle";
 
 import { useAudio } from "./use-audio";
 import { useBreakpoint } from "./use-breakpoint";
+import { useExpandableList } from "./use-expandable-list";
 import { useFile } from "./use-file";
 import { useItem } from "./use-item";
+import { useList } from "./use-list";
 import { usePersistentToggle } from "./use-persistent-toggle";
 import { useScroll } from "./use-scroll";
 import { useVideo } from "./use-video";
 import { useWindowDimensions } from "./use-window-dimensions";
-import { useList } from "./use-list";
 
 export const verified = {
   useField,
@@ -101,6 +101,7 @@ export const verified = {
   useItem,
   usePersistentToggle,
   useList,
+  useExpandableList,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";
