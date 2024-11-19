@@ -1,17 +1,29 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 
+/**
+ * Type for file input name attribute
+ */
 type UseFileNameType = string;
 
+/**
+ * Configuration options for the file hook
+ */
 export type UseFileConfigType = {
   maxSize?: number;
 };
 
+/**
+ * Possible states for the file input
+ */
 export enum UseFileState {
   idle = "idle",
   selected = "selected",
   error = "error",
 }
 
+/**
+ * Props for the idle state
+ */
 type UseFileIdle = {
   state: UseFileState.idle;
   matches: (states: UseFileState[]) => boolean;
@@ -34,6 +46,9 @@ type UseFileIdle = {
   };
 };
 
+/**
+ * Props for the selected state
+ */
 type UseFileSelected = {
   state: UseFileState.selected;
   matches: (states: UseFileState[]) => boolean;
@@ -57,6 +72,9 @@ type UseFileSelected = {
   };
 };
 
+/**
+ * Props for the error state
+ */
 type UseFileError = {
   state: UseFileState.error;
   matches: (states: UseFileState[]) => boolean;
@@ -81,38 +99,89 @@ type UseFileError = {
 
 export type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
 
-export function useFile(name: UseFileNameType, config?: UseFileConfigType): UseFileReturnType {
+/**
+ * Hook for managing file input with state management and preview capabilities
+ *
+ * @description
+ * This hook provides comprehensive file input management including state tracking,
+ * file validation, preview generation, and proper cleanup.
+ *
+ * @example
+ * ```tsx
+ * function FileUploader() {
+ *   const file = useFile("profile-image", { maxSize: 5 * 1024 * 1024 });
+ *
+ *   return (
+ *     <div>
+ *       <label {...file.label.props}>
+ *         Upload File
+ *       </label>
+ *       <input
+ *         type="file"
+ *         {...file.input.props}
+ *         onChange={file.actions.selectFile}
+ *       />
+ *
+ *       {file.isSelected && (
+ *         <>
+ *           <img src={file.preview} alt="Preview" />
+ *           <button onClick={file.actions.clearFile}>
+ *             Clear
+ *           </button>
+ *         </>
+ *       )}
+ *
+ *       {file.isError && (
+ *         <p>File is too large</p>
+ *       )}
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * @param name - Name/ID for the file input
+ * @param config - Optional configuration for file validation
+ */
+export function useFile(
+  name: UseFileNameType,
+  config?: UseFileConfigType
+): UseFileReturnType {
   const maxSize = config?.maxSize ?? Number.POSITIVE_INFINITY;
 
   const [key, setKey] = useState(0);
   const [state, setState] = useState<UseFileState>(UseFileState.idle);
   const [file, setFile] = useState<File | null>(null);
 
-  function selectFile(event: React.ChangeEvent<HTMLInputElement>) {
-    const files = event.currentTarget.files;
+  // Memoize action handlers
+  const actions = useMemo(
+    () => ({
+      selectFile: (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files = event.currentTarget.files;
+        if (!files?.[0]) return;
+        const file = files[0];
 
-    if (!files?.[0]) return;
+        if (file.size > maxSize) {
+          setState(UseFileState.error);
+          return undefined;
+        }
 
-    const file = files[0];
+        setFile(file);
+        setState(UseFileState.selected);
+        return file;
+      },
+      clearFile: () => {
+        setKey((k) => k + 1);
+        setFile(null);
+        setState(UseFileState.idle);
+      },
+    }),
+    [maxSize]
+  );
 
-    if (file.size > maxSize) {
-      setState(UseFileState.error);
-      return undefined;
-    }
-
-    setFile(file);
-    setState(UseFileState.selected);
-
-    return file;
-  }
-
-  function clearFile() {
-    setKey((key) => key + 1);
-    setFile(null);
-    setState(UseFileState.idle);
-  }
-
-  const preview = useMemo(() => (file ? URL.createObjectURL(file) : undefined), [file]);
+  const preview = useMemo(
+    () => (file ? URL.createObjectURL(file) : undefined),
+    [file]
+  );
 
   useEffect(() => {
     return () => {
@@ -120,54 +189,55 @@ export function useFile(name: UseFileNameType, config?: UseFileConfigType): UseF
     };
   }, [preview]);
 
-  function matches(states: UseFileState[]) {
-    return states.some((given) => given === state);
-  }
+  const matches = useCallback(
+    (states: UseFileState[]) => states.some((given) => given === state),
+    [state]
+  );
+
+  // Memoize common props
+  const commonProps = useMemo(
+    () => ({
+      matches,
+      actions,
+      label: { props: { htmlFor: name } },
+      input: {
+        key,
+        props: { id: name, name, multiple: false as const },
+      },
+    }),
+    [matches, actions, name, key]
+  );
 
   if (state === UseFileState.idle) {
     return {
+      ...commonProps,
       state,
-      matches,
       isIdle: true,
       isSelected: false,
       isError: false,
       data: null,
-      actions: { selectFile, clearFile },
-      label: { props: { htmlFor: name } },
-      input: {
-        key,
-        props: { id: name, name, multiple: false },
-      },
     };
   }
 
   if (state === UseFileState.selected) {
     return {
+      ...commonProps,
       state,
-      matches,
       data: file as File,
       isIdle: false,
       isSelected: true,
       isError: false,
-      actions: { selectFile, clearFile },
       preview,
-      label: { props: { htmlFor: name } },
-      input: {
-        key,
-        props: { id: name, name, multiple: false },
-      },
     };
   }
 
   return {
+    ...commonProps,
     state,
-    matches,
     data: null,
     isIdle: false,
     isSelected: false,
     isError: true,
-    actions: { selectFile, clearFile },
-    label: { props: { htmlFor: name } },
     input: {
       props: { id: name, name, multiple: false, key },
     },
