@@ -1,7 +1,6 @@
 export * from "./use-audio";
 export * from "./use-delayed-loader";
 export * from "./use-expandable-list";
-export * from "./use-file";
 export * from "./use-image-file-resolution";
 export * from "./use-item";
 export * from "./use-keyboard-shortcuts";
@@ -53,6 +52,7 @@ import { extractUseToggle, useToggle } from "./use-toggle";
 
 import { useBreakpoint } from "./use-breakpoint";
 import { useWindowDimensions } from "./use-window-dimensions";
+import { useFile } from "./use-file";
 
 export const verified = {
   useField,
@@ -94,6 +94,7 @@ export const verified = {
   useDisablePullToRefresh,
   useWindowDimensions,
   useBreakpoint,
+  useFile,
 };
 
 export type { UseToggleReturnType } from "./use-toggle";

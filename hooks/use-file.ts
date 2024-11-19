@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type UseFileNameType = string;
 
@@ -81,7 +81,10 @@ type UseFileError = {
 
 export type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
 
-export function useFile(name: UseFileNameType, config?: UseFileConfigType): UseFileReturnType {
+export function useFile(
+  name: UseFileNameType,
+  config?: UseFileConfigType
+): UseFileReturnType {
   const maxSize = config?.maxSize ?? Number.POSITIVE_INFINITY;
 
   const [key, setKey] = useState(0);
@@ -112,7 +115,16 @@ export function useFile(name: UseFileNameType, config?: UseFileConfigType): UseF
     setState(UseFileState.idle);
   }
 
-  const preview = useMemo(() => (file ? URL.createObjectURL(file) : undefined), [file]);
+  const preview = useMemo(
+    () => (file ? URL.createObjectURL(file) : undefined),
+    [file]
+  );
+
+  useEffect(() => {
+    return () => {
+      if (preview) URL.revokeObjectURL(preview);
+    };
+  }, [preview]);
 
   function matches(states: UseFileState[]) {
     return states.some((given) => given === state);
