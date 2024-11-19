@@ -13,23 +13,17 @@ describe("usePreviousValue", () => {
   });
 
   test("returns default value on first render when provided", () => {
-    const { result } = renderHook(
-      ({ value }) => usePreviousValue(value, "default"),
-      {
-        initialProps: { value: "initial" },
-      },
-    );
+    const { result } = renderHook(({ value }) => usePreviousValue(value, "default"), {
+      initialProps: { value: "initial" },
+    });
 
     expect(result.current).toBe("default");
   });
 
   test("tracks previous value after updates", () => {
-    const { result, rerender } = renderHook(
-      ({ value }) => usePreviousValue(value),
-      {
-        initialProps: { value: "first" },
-      },
-    );
+    const { result, rerender } = renderHook(({ value }) => usePreviousValue(value), {
+      initialProps: { value: "first" },
+    });
 
     rerender({ value: "second" });
     expect(result.current).toBe("first");
@@ -46,11 +40,7 @@ function Counter() {
 
   return (
     <div>
-      <button
-        type="button"
-        onClick={() => setCount((c) => c + 1)}
-        data-testid="increment"
-      >
+      <button type="button" onClick={() => setCount((c) => c + 1)} data-testid="increment">
         Increment
       </button>
       <span data-testid="current">Current: {count}</span>

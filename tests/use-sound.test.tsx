@@ -1,10 +1,4 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  renderHook,
-  screen,
-} from "@testing-library/react";
+import { cleanup, fireEvent, render, renderHook, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { useSound } from "../hooks/use-sound";
 
@@ -123,13 +117,7 @@ describe("useSound", () => {
   });
 
   test("works with different audio formats", () => {
-    const audioFormats = [
-      "test.mp3",
-      "test.wav",
-      "test.ogg",
-      "test.m4a",
-      "https://example.com/audio.mp3",
-    ];
+    const audioFormats = ["test.mp3", "test.wav", "test.ogg", "test.m4a", "https://example.com/audio.mp3"];
 
     audioFormats.forEach((format) => {
       renderHook(() => useSound(format));
@@ -171,18 +159,10 @@ describe("useSound", () => {
 
         return (
           <div>
-            <button
-              type="button"
-              onClick={sound1.play}
-              data-testid="sound1-button"
-            >
+            <button type="button" onClick={sound1.play} data-testid="sound1-button">
               Play Sound 1
             </button>
-            <button
-              type="button"
-              onClick={sound2.play}
-              data-testid="sound2-button"
-            >
+            <button type="button" onClick={sound2.play} data-testid="sound2-button">
               Play Sound 2
             </button>
           </div>

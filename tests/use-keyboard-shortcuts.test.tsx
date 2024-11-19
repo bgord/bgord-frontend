@@ -23,30 +23,23 @@ describe("useKeyboardShortcuts", () => {
   });
 
   test("unsubscribes on unmount", () => {
-    const { unmount } = renderHook(() =>
-      useKeyboardShortcuts({ "$mod+s": vi.fn() }),
-    );
+    const { unmount } = renderHook(() => useKeyboardShortcuts({ "$mod+s": vi.fn() }));
 
     unmount();
     expect(mockUnsubscribe).toHaveBeenCalled();
   });
 
   test("handles disabled state", () => {
-    renderHook(() =>
-      useKeyboardShortcuts({ "$mod+s": vi.fn() }, { enabled: false }),
-    );
+    renderHook(() => useKeyboardShortcuts({ "$mod+s": vi.fn() }, { enabled: false }));
 
     expect(tinykeys).not.toHaveBeenCalled();
   });
 
   test("resubscribes when enabled state changes", () => {
     const shortcuts = { "$mod+s": vi.fn() };
-    const { rerender } = renderHook(
-      ({ enabled }) => useKeyboardShortcuts(shortcuts, { enabled }),
-      {
-        initialProps: { enabled: false },
-      },
-    );
+    const { rerender } = renderHook(({ enabled }) => useKeyboardShortcuts(shortcuts, { enabled }), {
+      initialProps: { enabled: false },
+    });
 
     expect(tinykeys).not.toHaveBeenCalled();
 

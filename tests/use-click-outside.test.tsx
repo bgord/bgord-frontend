@@ -1,14 +1,6 @@
 import { fireEvent, render, renderHook, screen } from "@testing-library/react";
 import React from "react";
-import {
-  Mock,
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  test,
-  vi,
-} from "vitest";
+import { Mock, afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { useClickOutside } from "../hooks/use-click-outside";
 
 describe("useClickOutside", () => {
@@ -67,9 +59,7 @@ describe("useClickOutside", () => {
     const excludeRef1 = { current: excludedElement };
     const excludeRef2 = { current: document.createElement("div") };
 
-    renderHook(() =>
-      useClickOutside(ref, onClickOutside, [excludeRef1, excludeRef2]),
-    );
+    renderHook(() => useClickOutside(ref, onClickOutside, [excludeRef1, excludeRef2]));
 
     fireEvent.mouseDown(excludedElement);
     expect(onClickOutside).not.toHaveBeenCalled();
@@ -103,10 +93,7 @@ describe("useClickOutside", () => {
     const { unmount } = renderHook(() => useClickOutside(ref, onClickOutside));
 
     unmount();
-    expect(removeEventListenerSpy).toHaveBeenCalledWith(
-      "mousedown",
-      expect.any(Function),
-    );
+    expect(removeEventListenerSpy).toHaveBeenCalledWith("mousedown", expect.any(Function));
   });
 });
 

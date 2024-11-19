@@ -42,22 +42,16 @@ describe("useLanguageSelector", () => {
   });
 
   test("initializes with current language", () => {
-    const { result } = renderHook(
-      () => useLanguageSelector(supportedLanguages),
-      {
-        wrapper: createWrapper(),
-      },
-    );
+    const { result } = renderHook(() => useLanguageSelector(supportedLanguages), {
+      wrapper: createWrapper(),
+    });
     expect(result.current.currentValue).toBe("en");
   });
 
   test("updates language selection", async () => {
-    const { result } = renderHook(
-      () => useLanguageSelector(supportedLanguages),
-      {
-        wrapper: createWrapper(),
-      },
-    );
+    const { result } = renderHook(() => useLanguageSelector(supportedLanguages), {
+      wrapper: createWrapper(),
+    });
 
     await act(async () => {
       result.current.set("pl");
@@ -70,12 +64,9 @@ describe("useLanguageSelector", () => {
   test("handles no window object", async () => {
     // @ts-ignore
     vi.mocked(getSafeWindow).mockReturnValue(null);
-    const { result } = renderHook(
-      () => useLanguageSelector(supportedLanguages),
-      {
-        wrapper: createWrapper(),
-      },
-    );
+    const { result } = renderHook(() => useLanguageSelector(supportedLanguages), {
+      wrapper: createWrapper(),
+    });
 
     await act(async () => {
       result.current.set("pl");
@@ -85,12 +76,9 @@ describe("useLanguageSelector", () => {
   });
 
   test("only updates when value changes", async () => {
-    const { result } = renderHook(
-      () => useLanguageSelector(supportedLanguages),
-      {
-        wrapper: createWrapper(),
-      },
-    );
+    const { result } = renderHook(() => useLanguageSelector(supportedLanguages), {
+      wrapper: createWrapper(),
+    });
 
     await act(async () => {
       result.current.set("en"); // Same as current value
@@ -107,11 +95,7 @@ describe("useLanguageSelector", () => {
         <div>
           <select
             value={languageSelector.currentValue}
-            onChange={(e) =>
-              languageSelector.set(
-                e.target.value as keyof typeof supportedLanguages,
-              )
-            }
+            onChange={(e) => languageSelector.set(e.target.value as keyof typeof supportedLanguages)}
             data-testid="language-select"
           >
             {Object.keys(supportedLanguages).map((lang) => (

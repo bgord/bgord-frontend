@@ -170,17 +170,12 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
     defaultValue: AUDIO_DEFAULT_VOLUME,
   });
 
-  const muted = useMemo(
-    () => volume.value === AUDIO_CONSTANTS.VOLUME.MIN,
-    [volume.value]
-  );
+  const muted = useMemo(() => volume.value === AUDIO_CONSTANTS.VOLUME.MIN, [volume.value]);
 
   const percentage = useMemo(() => {
     return duration.value === AUDIO_CONSTANTS.TIME.MIN
       ? AUDIO_CONSTANTS.PERCENTAGE.MIN
-      : Math.round(
-          (currentTime.value / duration.value) * AUDIO_CONSTANTS.PERCENTAGE.MAX
-        );
+      : Math.round((currentTime.value / duration.value) * AUDIO_CONSTANTS.PERCENTAGE.MAX);
   }, [currentTime.value, duration.value]);
 
   // Memoized callbacks
@@ -230,7 +225,7 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
         currentTime.set(target.valueAsNumber);
       }
     },
-    [currentTime]
+    [currentTime],
   );
 
   const onLoadedMetadata = useCallback(
@@ -244,7 +239,7 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
       volume.set(target.volume);
       setState(UseAudioState.ready);
     },
-    [duration, currentTime, volume]
+    [duration, currentTime, volume],
   );
 
   const onTimeUpdate = useCallback(
@@ -252,7 +247,7 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
       const target = event.target as HTMLAudioElement;
       currentTime.set(Math.round(target.currentTime));
     },
-    [currentTime]
+    [currentTime],
   );
 
   const onEnded = useCallback(() => setState(UseAudioState.paused), []);
@@ -266,13 +261,10 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
         volume.set(target.valueAsNumber);
       }
     },
-    [volume]
+    [volume],
   );
 
-  const matches = useCallback(
-    (states: UseAudioState[]) => states.includes(state),
-    [state]
-  );
+  const matches = useCallback((states: UseAudioState[]) => states.includes(state), [state]);
 
   // Memoized return value
   return useMemo(
@@ -300,7 +292,7 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
           "aria-valuemax": duration.value,
           "aria-valuenow": currentTime.value,
           "aria-valuetext": `${DurationFormatter.format(
-            currentTime.value
+            currentTime.value,
           )} of ${DurationFormatter.format(duration.value)}`,
           role: "slider",
         },
@@ -375,6 +367,6 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
       onTimeUpdate,
       onLoadedMetadata,
       onEnded,
-    ]
+    ],
   );
 }

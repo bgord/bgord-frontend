@@ -16,9 +16,7 @@ describe("VideoPlayer component", () => {
     } as unknown as HTMLVideoElement;
 
     // Mock methods
-    vi.spyOn(HTMLVideoElement.prototype, "play").mockImplementation(() =>
-      Promise.resolve(),
-    );
+    vi.spyOn(HTMLVideoElement.prototype, "play").mockImplementation(() => Promise.resolve());
     vi.spyOn(HTMLVideoElement.prototype, "pause").mockImplementation(() => {});
 
     // Mock requestFullscreen on the element level
@@ -38,9 +36,7 @@ describe("VideoPlayer component", () => {
 
           <button
             type="button"
-            onClick={
-              video.meta.isPlaying ? video.actions.pause : video.actions.play
-            }
+            onClick={video.meta.isPlaying ? video.actions.pause : video.actions.play}
             aria-label={video.meta.isPlaying ? "Pause" : "Play"}
           >
             {video.meta.isPlaying ? "Pause" : "Play"}
@@ -51,9 +47,7 @@ describe("VideoPlayer component", () => {
 
           <button
             type="button"
-            onClick={
-              video.meta.muted ? video.actions.unmute : video.actions.mute
-            }
+            onClick={video.meta.muted ? video.actions.unmute : video.actions.mute}
             aria-label={video.meta.muted ? "Unmute" : "Mute"}
           >
             {video.meta.muted ? "Unmute" : "Mute"}

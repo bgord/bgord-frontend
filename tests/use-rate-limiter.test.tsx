@@ -14,9 +14,7 @@ describe("useRateLimiter", () => {
   });
 
   test("allows first action execution", () => {
-    const { result } = renderHook(() =>
-      useRateLimiter({ limitMs, action, fallback }),
-    );
+    const { result } = renderHook(() => useRateLimiter({ limitMs, action, fallback }));
 
     result.current("test");
     expect(action).toHaveBeenCalledWith("test");
@@ -24,9 +22,7 @@ describe("useRateLimiter", () => {
   });
 
   test("throttles subsequent calls within time limit", () => {
-    const { result } = renderHook(() =>
-      useRateLimiter({ limitMs, action, fallback }),
-    );
+    const { result } = renderHook(() => useRateLimiter({ limitMs, action, fallback }));
 
     result.current("first");
     expect(action).toHaveBeenCalledWith("first");
@@ -39,9 +35,7 @@ describe("useRateLimiter", () => {
   });
 
   test("allows execution after time limit", () => {
-    const { result } = renderHook(() =>
-      useRateLimiter({ limitMs, action, fallback }),
-    );
+    const { result } = renderHook(() => useRateLimiter({ limitMs, action, fallback }));
 
     result.current("first");
     expect(action).toHaveBeenCalledWith("first");
@@ -64,9 +58,7 @@ describe("useRateLimiter", () => {
   });
 
   test("handles multiple arguments", () => {
-    const { result } = renderHook(() =>
-      useRateLimiter<string | number>({ limitMs, action, fallback }),
-    );
+    const { result } = renderHook(() => useRateLimiter<string | number>({ limitMs, action, fallback }));
 
     result.current("test", 123);
     expect(action).toHaveBeenCalledWith("test", 123);

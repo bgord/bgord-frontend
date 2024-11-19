@@ -1,10 +1,4 @@
-import {
-  act,
-  fireEvent,
-  render,
-  renderHook,
-  screen,
-} from "@testing-library/react";
+import { act, fireEvent, render, renderHook, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { usePersistentToggle } from "../hooks/use-persistent-toggle";
 import { SafeLocalStorage } from "../safe-local-storage";

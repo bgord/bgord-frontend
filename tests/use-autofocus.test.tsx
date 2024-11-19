@@ -45,13 +45,10 @@ describe("useAutofocus", () => {
     const mockFocus = vi.fn();
     const ref = { current: { focus: mockFocus } };
 
-    const { rerender } = renderHook(
-      (props: UseAutofocusConfigType) => useAutofocus(props),
-      {
-        // @ts-ignore
-        initialProps: { ref, condition: false },
-      },
-    );
+    const { rerender } = renderHook((props: UseAutofocusConfigType) => useAutofocus(props), {
+      // @ts-ignore
+      initialProps: { ref, condition: false },
+    });
 
     expect(mockFocus).not.toHaveBeenCalled();
 
@@ -66,14 +63,7 @@ function AutofocusInput({ shouldFocus = false }) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   useAutofocus({ ref: inputRef, condition: shouldFocus });
 
-  return (
-    <input
-      ref={inputRef}
-      type="text"
-      data-testid="autofocus-input"
-      placeholder="Autofocus input"
-    />
-  );
+  return <input ref={inputRef} type="text" data-testid="autofocus-input" placeholder="Autofocus input" />;
 }
 
 describe("Autofocus Component Integration", () => {
