@@ -1,4 +1,10 @@
-import { act, fireEvent, render, renderHook, screen } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  renderHook,
+  screen,
+} from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { UseAudioState, useAudio } from "../hooks/use-audio";
@@ -15,16 +21,19 @@ describe("useAudio", () => {
       volume: 1,
     } as unknown as HTMLAudioElement;
 
-    vi.spyOn(HTMLAudioElement.prototype, "play").mockImplementation(() => Promise.resolve());
+    vi.spyOn(HTMLAudioElement.prototype, "play").mockImplementation(() =>
+      Promise.resolve()
+    );
     vi.spyOn(HTMLAudioElement.prototype, "pause").mockImplementation(() => {});
 
     vi.spyOn(window, "Audio").mockImplementation(() => mockAudio);
   });
 
   test("initial state", () => {
-    const { result } = renderHook(() => useAudio("test.mp3"), {
-      wrapper: createWrapper(),
-    });
+    const { result } = renderHook(
+      () => useAudio({ id: "audio", src: "test.mp3" }),
+      { wrapper: createWrapper() }
+    );
 
     expect(result.current.meta.state).toBe(UseAudioState.initial);
     expect(result.current.meta.isInitial).toBe(true);
@@ -35,9 +44,10 @@ describe("useAudio", () => {
   });
 
   test("transitions to ready state on metadata load", () => {
-    const { result } = renderHook(() => useAudio("test.mp3"), {
-      wrapper: createWrapper(),
-    });
+    const { result } = renderHook(
+      () => useAudio({ id: "audio", src: "test.mp3" }),
+      { wrapper: createWrapper() }
+    );
 
     act(() => {
       result.current.props.audio.onLoadedMetadata({
@@ -55,9 +65,10 @@ describe("useAudio", () => {
   });
 
   test("handles play/pause actions", () => {
-    const { result } = renderHook(() => useAudio("test.mp3"), {
-      wrapper: createWrapper(),
-    });
+    const { result } = renderHook(
+      () => useAudio({ id: "audio", src: "test.mp3" }),
+      { wrapper: createWrapper() }
+    );
 
     act(() => {
       result.current.props.audio.onLoadedMetadata({
@@ -77,9 +88,10 @@ describe("useAudio", () => {
   });
 
   test("handles volume changes and mute/unmute", () => {
-    const { result } = renderHook(() => useAudio("test.mp3"), {
-      wrapper: createWrapper(),
-    });
+    const { result } = renderHook(
+      () => useAudio({ id: "audio", src: "test.mp3" }),
+      { wrapper: createWrapper() }
+    );
 
     act(() => {
       result.current.props.audio.onLoadedMetadata({
@@ -108,9 +120,10 @@ describe("useAudio", () => {
   });
 
   test("handles seeking", () => {
-    const { result } = renderHook(() => useAudio("test.mp3"), {
-      wrapper: createWrapper(),
-    });
+    const { result } = renderHook(
+      () => useAudio({ id: "audio", src: "test.mp3" }),
+      { wrapper: createWrapper() }
+    );
 
     act(() => {
       result.current.props.audio.onLoadedMetadata({
@@ -129,9 +142,10 @@ describe("useAudio", () => {
   });
 
   test("handles reset action", () => {
-    const { result } = renderHook(() => useAudio("test.mp3"), {
-      wrapper: createWrapper(),
-    });
+    const { result } = renderHook(
+      () => useAudio({ id: "audio", src: "test.mp3" }),
+      { wrapper: createWrapper() }
+    );
 
     act(() => {
       result.current.props.audio.onLoadedMetadata({
@@ -162,13 +176,15 @@ describe("AudioPlayer component", () => {
       volume: 1,
     } as unknown as HTMLAudioElement;
 
-    vi.spyOn(HTMLAudioElement.prototype, "play").mockImplementation(() => Promise.resolve());
+    vi.spyOn(HTMLAudioElement.prototype, "play").mockImplementation(() =>
+      Promise.resolve()
+    );
     vi.spyOn(HTMLAudioElement.prototype, "pause").mockImplementation(() => {});
   });
 
   test("handles audio controls", () => {
     function AudioPlayer() {
-      const audio = useAudio("test.mp3");
+      const audio = useAudio({ id: "audio", src: "test.mp3" });
 
       return (
         <div>
@@ -177,25 +193,29 @@ describe("AudioPlayer component", () => {
 
           <button
             type="button"
-            onClick={audio.meta.isPlaying ? audio.actions.pause : audio.actions.play}
+            onClick={
+              audio.meta.isPlaying ? audio.actions.pause : audio.actions.play
+            }
             aria-label={audio.meta.isPlaying ? "Pause" : "Play"}
           >
             {audio.meta.isPlaying ? "Pause" : "Play"}
           </button>
 
           {/* @ts-ignore */}
-          <input type="range" {...audio.props.player} aria-label="Progress" />
+          <input type="range" {...audio.props.player} />
 
           <button
             type="button"
-            onClick={audio.meta.muted ? audio.actions.unmute : audio.actions.mute}
+            onClick={
+              audio.meta.muted ? audio.actions.unmute : audio.actions.mute
+            }
             aria-label={audio.meta.muted ? "Unmute" : "Mute"}
           >
             {audio.meta.muted ? "Unmute" : "Mute"}
           </button>
 
           {/* @ts-ignore */}
-          <input type="range" {...audio.props.volume} aria-label="Volume" />
+          <input type="range" {...audio.props.volume} />
         </div>
       );
     }
@@ -211,9 +231,19 @@ describe("AudioPlayer component", () => {
           bubbles: true,
           // @ts-ignore
           currentTarget: mockAudio,
-        }),
-      ),
+        })
+      )
     );
+
+    expect(audioElement).toHaveAttribute(
+      "aria-label",
+      "Audio player for test.mp3"
+    );
+    expect(audioElement).toHaveAttribute(
+      "aria-describedby",
+      "audio-description"
+    );
+    expect(audioElement).toHaveAttribute("role", "application");
 
     // Test play/pause
     const playButton = screen.getByRole("button", { name: "Play" });
@@ -224,12 +254,24 @@ describe("AudioPlayer component", () => {
     expect(screen.getByRole("button", { name: "Play" })).toBeInTheDocument();
 
     // Test seeking
-    const progress = screen.getByRole("slider", { name: "Progress" });
+    const progress = screen.getByRole("slider", {
+      name: "Seek audio position",
+    });
     act(() => fireEvent.input(progress, { target: { valueAsNumber: 50 } }));
 
+    expect(progress).toHaveAttribute("aria-valuemin", "0");
+    expect(progress).toHaveAttribute("aria-valuenow", "50");
+
     // Test volume
-    const volumeSlider = screen.getByRole("slider", { name: "Volume" });
-    act(() => fireEvent.input(volumeSlider, { target: { valueAsNumber: 0.5 } }));
+    const volumeSlider = screen.getByRole("slider", { name: "Volume control" });
+    act(() =>
+      fireEvent.input(volumeSlider, { target: { valueAsNumber: 0.5 } })
+    );
+    expect(volumeSlider).toHaveAttribute("aria-valuemin", "0");
+    expect(volumeSlider).toHaveAttribute("aria-valuemax", "1");
+    expect(volumeSlider).toHaveAttribute("aria-valuenow", "0.5");
+    expect(volumeSlider).toHaveAttribute("aria-valuetext", "Volume 50%");
+    expect(volumeSlider).toHaveAttribute("role", "slider");
 
     const muteButton = screen.getByRole("button", { name: "Mute" });
     act(() => fireEvent.click(muteButton));
