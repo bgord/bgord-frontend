@@ -22,7 +22,7 @@ describe("useAudio", () => {
     } as unknown as HTMLAudioElement;
 
     vi.spyOn(HTMLAudioElement.prototype, "play").mockImplementation(() =>
-      Promise.resolve(),
+      Promise.resolve()
     );
     vi.spyOn(HTMLAudioElement.prototype, "pause").mockImplementation(() => {});
 
@@ -171,7 +171,7 @@ describe("AudioPlayer component", () => {
     } as unknown as HTMLAudioElement;
 
     vi.spyOn(HTMLAudioElement.prototype, "play").mockImplementation(() =>
-      Promise.resolve(),
+      Promise.resolve()
     );
     vi.spyOn(HTMLAudioElement.prototype, "pause").mockImplementation(() => {});
   });
@@ -186,6 +186,7 @@ describe("AudioPlayer component", () => {
           <audio {...audio.props.audio} data-testid="audio" />
 
           <button
+            type="button"
             onClick={
               audio.meta.isPlaying ? audio.actions.pause : audio.actions.play
             }
@@ -198,6 +199,7 @@ describe("AudioPlayer component", () => {
           <input type="range" {...audio.props.player} aria-label="Progress" />
 
           <button
+            type="button"
             onClick={
               audio.meta.muted ? audio.actions.unmute : audio.actions.mute
             }
@@ -223,8 +225,8 @@ describe("AudioPlayer component", () => {
           bubbles: true,
           // @ts-ignore
           currentTarget: mockAudio,
-        }),
-      ),
+        })
+      )
     );
 
     // Test play/pause
@@ -242,7 +244,7 @@ describe("AudioPlayer component", () => {
     // Test volume
     const volumeSlider = screen.getByRole("slider", { name: "Volume" });
     act(() =>
-      fireEvent.input(volumeSlider, { target: { valueAsNumber: 0.5 } }),
+      fireEvent.input(volumeSlider, { target: { valueAsNumber: 0.5 } })
     );
 
     const muteButton = screen.getByRole("button", { name: "Mute" });

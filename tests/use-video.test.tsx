@@ -1,7 +1,7 @@
+import { act, fireEvent, render } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { beforeEach, describe, expect, test, vi } from "vitest";
 import { useVideo } from "../hooks/use-video";
-import { render, fireEvent, act } from "@testing-library/react";
-import { describe, test, expect, vi, beforeEach } from "vitest";
 
 describe("VideoPlayer component", () => {
   let mockVideo: HTMLVideoElement;
@@ -37,6 +37,7 @@ describe("VideoPlayer component", () => {
           <video data-testid="video" {...video.props.video} />
 
           <button
+            type="button"
             onClick={
               video.meta.isPlaying ? video.actions.pause : video.actions.play
             }
@@ -49,6 +50,7 @@ describe("VideoPlayer component", () => {
           <input type="range" {...video.props.player} aria-label="Progress" />
 
           <button
+            type="button"
             onClick={
               video.meta.muted ? video.actions.unmute : video.actions.mute
             }
