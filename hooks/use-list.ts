@@ -16,12 +16,12 @@ export type UseListConfigType<T> = {
   comparisonFn?: (a: T, b: T) => boolean;
 };
 
-export function useList<T>(config?: UseListConfigType<T>): UseListReturnType<T> {
+export function useList<T>(
+  config?: UseListConfigType<T>
+): UseListReturnType<T> {
   const defaultItems = config?.defaultItems ?? [];
-
   const defaultComparisonFn = (a: T, b: T) => a === b;
   const comparisonFn = config?.comparisonFn ?? defaultComparisonFn;
-
   const [items, setItems] = useState<T[]>(defaultItems);
 
   function clear() {
@@ -46,7 +46,11 @@ export function useList<T>(config?: UseListConfigType<T>): UseListReturnType<T> 
   }
 
   function toggle(item: T) {
-    isAdded(item) ? remove(item) : add(item);
+    setItems((currentItems) =>
+      currentItems.some((x) => comparisonFn(x, item))
+        ? currentItems.filter((x) => !comparisonFn(x, item))
+        : [...currentItems, item]
+    );
   }
 
   return [items, { clear, add, remove, toggle, isAdded, update: setItems }];
