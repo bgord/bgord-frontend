@@ -1,4 +1,4 @@
-import { render, renderHook } from "@testing-library/react";
+import { render, renderHook, screen } from "@testing-library/react";
 import React from "react";
 import { describe, expect, test, vi } from "vitest";
 import { UseAutofocusConfigType, useAutofocus } from "../hooks/use-autofocus";
@@ -45,10 +45,13 @@ describe("useAutofocus", () => {
     const mockFocus = vi.fn();
     const ref = { current: { focus: mockFocus } };
 
-    const { rerender } = renderHook((props: UseAutofocusConfigType) => useAutofocus(props), {
-      // @ts-ignore
-      initialProps: { ref, condition: false },
-    });
+    const { rerender } = renderHook(
+      (props: UseAutofocusConfigType) => useAutofocus(props),
+      {
+        // @ts-ignore
+        initialProps: { ref, condition: false },
+      },
+    );
 
     expect(mockFocus).not.toHaveBeenCalled();
 
@@ -63,27 +66,34 @@ function AutofocusInput({ shouldFocus = false }) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   useAutofocus({ ref: inputRef, condition: shouldFocus });
 
-  return <input ref={inputRef} type="text" data-testid="autofocus-input" placeholder="Autofocus input" />;
+  return (
+    <input
+      ref={inputRef}
+      type="text"
+      data-testid="autofocus-input"
+      placeholder="Autofocus input"
+    />
+  );
 }
 
 describe("Autofocus Component Integration", () => {
   test("focuses input when condition is true", () => {
-    const { getByTestId } = render(<AutofocusInput shouldFocus={true} />);
-    const input = getByTestId("autofocus-input");
+    render(<AutofocusInput shouldFocus={true} />);
+    const input = screen.getByTestId("autofocus-input");
 
     expect(document.activeElement).toBe(input);
   });
 
   test("does not focus input when condition is false", () => {
-    const { getByTestId } = render(<AutofocusInput shouldFocus={false} />);
-    const input = getByTestId("autofocus-input");
+    render(<AutofocusInput shouldFocus={false} />);
+    const input = screen.getByTestId("autofocus-input");
 
     expect(document.activeElement).not.toBe(input);
   });
 
   test("updates focus when prop changes", () => {
-    const { getByTestId, rerender } = render(<AutofocusInput shouldFocus={false} />);
-    const input = getByTestId("autofocus-input");
+    const { rerender } = render(<AutofocusInput shouldFocus={false} />);
+    const input = screen.getByTestId("autofocus-input");
 
     expect(document.activeElement).not.toBe(input);
 

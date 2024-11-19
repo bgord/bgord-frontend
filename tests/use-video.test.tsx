@@ -1,4 +1,4 @@
-import { act, fireEvent, render } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { useVideo } from "../hooks/use-video";
@@ -16,7 +16,9 @@ describe("VideoPlayer component", () => {
     } as unknown as HTMLVideoElement;
 
     // Mock methods
-    vi.spyOn(HTMLVideoElement.prototype, "play").mockImplementation(() => Promise.resolve());
+    vi.spyOn(HTMLVideoElement.prototype, "play").mockImplementation(() =>
+      Promise.resolve(),
+    );
     vi.spyOn(HTMLVideoElement.prototype, "pause").mockImplementation(() => {});
 
     // Mock requestFullscreen on the element level
@@ -36,7 +38,9 @@ describe("VideoPlayer component", () => {
 
           <button
             type="button"
-            onClick={video.meta.isPlaying ? video.actions.pause : video.actions.play}
+            onClick={
+              video.meta.isPlaying ? video.actions.pause : video.actions.play
+            }
             aria-label={video.meta.isPlaying ? "Pause" : "Play"}
           >
             {video.meta.isPlaying ? "Pause" : "Play"}
@@ -47,7 +51,9 @@ describe("VideoPlayer component", () => {
 
           <button
             type="button"
-            onClick={video.meta.muted ? video.actions.unmute : video.actions.mute}
+            onClick={
+              video.meta.muted ? video.actions.unmute : video.actions.mute
+            }
             aria-label={video.meta.muted ? "Unmute" : "Mute"}
           >
             {video.meta.muted ? "Unmute" : "Mute"}
@@ -59,11 +65,11 @@ describe("VideoPlayer component", () => {
       );
     }
 
-    const { getByTestId, getByRole } = render(<VideoPlayer />, {
+    render(<VideoPlayer />, {
       wrapper: createWrapper(),
     });
 
-    const videoElement = getByTestId("video");
+    const videoElement = screen.getByTestId("video");
     act(() => {
       fireEvent(
         videoElement,
@@ -76,19 +82,19 @@ describe("VideoPlayer component", () => {
     });
 
     // Test play/pause
-    const playButton = getByRole("button", { name: "Play" });
+    const playButton = screen.getByRole("button", { name: "Play" });
     act(() => {
       fireEvent.click(playButton);
     });
-    expect(getByRole("button", { name: "Pause" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Pause" })).toBeInTheDocument();
 
     act(() => {
-      fireEvent.click(getByRole("button", { name: "Pause" }));
+      fireEvent.click(screen.getByRole("button", { name: "Pause" }));
     });
-    expect(getByRole("button", { name: "Play" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Play" })).toBeInTheDocument();
 
     // Test seeking
-    const progress = getByRole("slider", { name: "Progress" });
+    const progress = screen.getByRole("slider", { name: "Progress" });
     act(() => {
       fireEvent.input(progress, {
         target: { valueAsNumber: 50 },
@@ -96,18 +102,18 @@ describe("VideoPlayer component", () => {
     });
 
     // Test volume
-    const volumeSlider = getByRole("slider", { name: "Volume" });
+    const volumeSlider = screen.getByRole("slider", { name: "Volume" });
     act(() => {
       fireEvent.input(volumeSlider, {
         target: { valueAsNumber: 0.5 },
       });
     });
 
-    const muteButton = getByRole("button", { name: "Mute" });
+    const muteButton = screen.getByRole("button", { name: "Mute" });
     act(() => {
       fireEvent.click(muteButton);
     });
-    expect(getByRole("button", { name: "Unmute" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Unmute" })).toBeInTheDocument();
   });
 });
 

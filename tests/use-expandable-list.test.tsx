@@ -1,10 +1,21 @@
-import { act, fireEvent, render, renderHook } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  renderHook,
+  screen,
+} from "@testing-library/react";
 import { describe, expect, test } from "vitest";
-import { UseExpandableListState, useExpandableList } from "../hooks/use-expandable-list";
+import {
+  UseExpandableListState,
+  useExpandableList,
+} from "../hooks/use-expandable-list";
 
 describe("useExpandableList", () => {
   test("initializes contracted when list exceeds max", () => {
-    const { result } = renderHook(() => useExpandableList({ max: 3, length: 5 }));
+    const { result } = renderHook(() =>
+      useExpandableList({ max: 3, length: 5 }),
+    );
 
     expect(result.current.state).toBe(UseExpandableListState.contracted);
     expect(result.current.numberOfExcessiveElements).toBe(2);
@@ -13,7 +24,9 @@ describe("useExpandableList", () => {
   });
 
   test("initializes expanded when list is within max", () => {
-    const { result } = renderHook(() => useExpandableList({ max: 5, length: 3 }));
+    const { result } = renderHook(() =>
+      useExpandableList({ max: 5, length: 3 }),
+    );
 
     expect(result.current.state).toBe(UseExpandableListState.expanded);
     expect(result.current.numberOfExcessiveElements).toBe(-2);
@@ -22,7 +35,9 @@ describe("useExpandableList", () => {
   });
 
   test("toggles between states correctly", () => {
-    const { result } = renderHook(() => useExpandableList({ max: 2, length: 4 }));
+    const { result } = renderHook(() =>
+      useExpandableList({ max: 2, length: 4 }),
+    );
 
     expect(result.current.state).toBe(UseExpandableListState.contracted);
 
@@ -42,7 +57,9 @@ describe("useExpandableList", () => {
   });
 
   test("filterFn returns correct items based on state", () => {
-    const { result } = renderHook(() => useExpandableList({ max: 2, length: 4 }));
+    const { result } = renderHook(() =>
+      useExpandableList({ max: 2, length: 4 }),
+    );
 
     // Contracted state
     expect(result.current.filterFn({}, 0)).toBe(true);
@@ -62,9 +79,12 @@ describe("useExpandableList", () => {
   });
 
   test("updates state when config changes", () => {
-    const { result, rerender } = renderHook((props) => useExpandableList(props), {
-      initialProps: { max: 3, length: 2 },
-    });
+    const { result, rerender } = renderHook(
+      (props) => useExpandableList(props),
+      {
+        initialProps: { max: 3, length: 2 },
+      },
+    );
 
     expect(result.current.state).toBe(UseExpandableListState.expanded);
 
@@ -79,14 +99,24 @@ describe("useExpandableList", () => {
       const list = useExpandableList({ max: 2, length: items.length });
       return (
         <div>
-          <div data-testid="items">{items.filter((_, i) => list.filterFn(_, i)).join(",")}</div>
+          <div data-testid="items">
+            {items.filter((_, i) => list.filterFn(_, i)).join(",")}
+          </div>
           {list.displayShowMore && (
-            <button type="button" onClick={list.actions.showMore} data-testid="show-more">
+            <button
+              type="button"
+              onClick={list.actions.showMore}
+              data-testid="show-more"
+            >
               Show More
             </button>
           )}
           {list.displayShowLess && (
-            <button type="button" onClick={list.actions.showLess} data-testid="show-less">
+            <button
+              type="button"
+              onClick={list.actions.showLess}
+              data-testid="show-less"
+            >
               Show Less
             </button>
           )}
@@ -94,18 +124,18 @@ describe("useExpandableList", () => {
       );
     }
 
-    const { getByTestId, queryByTestId } = render(<TestComponent />);
+    render(<TestComponent />);
 
-    expect(getByTestId("items")).toHaveTextContent("A,B");
-    expect(getByTestId("show-more")).toBeInTheDocument();
-    expect(queryByTestId("show-less")).not.toBeInTheDocument();
+    expect(screen.getByTestId("items")).toHaveTextContent("A,B");
+    expect(screen.getByTestId("show-more")).toBeInTheDocument();
+    expect(screen.queryByTestId("show-less")).not.toBeInTheDocument();
 
-    fireEvent.click(getByTestId("show-more"));
-    expect(getByTestId("items")).toHaveTextContent("A,B,C,D");
-    expect(queryByTestId("show-more")).not.toBeInTheDocument();
-    expect(getByTestId("show-less")).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId("show-more"));
+    expect(screen.getByTestId("items")).toHaveTextContent("A,B,C,D");
+    expect(screen.queryByTestId("show-more")).not.toBeInTheDocument();
+    expect(screen.getByTestId("show-less")).toBeInTheDocument();
 
-    fireEvent.click(getByTestId("show-less"));
-    expect(getByTestId("items")).toHaveTextContent("A,B");
+    fireEvent.click(screen.getByTestId("show-less"));
+    expect(screen.getByTestId("items")).toHaveTextContent("A,B");
   });
 });

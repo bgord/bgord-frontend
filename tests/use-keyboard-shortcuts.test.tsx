@@ -1,7 +1,7 @@
-import { renderHook, render } from "@testing-library/react";
-import { describe, test, expect, vi, beforeEach } from "vitest";
-import { useKeyboardShortcuts } from "../hooks/use-keyboard-shortcuts";
+import { render, renderHook } from "@testing-library/react";
 import { tinykeys } from "tinykeys";
+import { beforeEach, describe, expect, test, vi } from "vitest";
+import { useKeyboardShortcuts } from "../hooks/use-keyboard-shortcuts";
 
 vi.mock("tinykeys", () => ({
   tinykeys: vi.fn(),
@@ -24,7 +24,7 @@ describe("useKeyboardShortcuts", () => {
 
   test("unsubscribes on unmount", () => {
     const { unmount } = renderHook(() =>
-      useKeyboardShortcuts({ "$mod+s": vi.fn() })
+      useKeyboardShortcuts({ "$mod+s": vi.fn() }),
     );
 
     unmount();
@@ -33,7 +33,7 @@ describe("useKeyboardShortcuts", () => {
 
   test("handles disabled state", () => {
     renderHook(() =>
-      useKeyboardShortcuts({ "$mod+s": vi.fn() }, { enabled: false })
+      useKeyboardShortcuts({ "$mod+s": vi.fn() }, { enabled: false }),
     );
 
     expect(tinykeys).not.toHaveBeenCalled();
@@ -43,7 +43,9 @@ describe("useKeyboardShortcuts", () => {
     const shortcuts = { "$mod+s": vi.fn() };
     const { rerender } = renderHook(
       ({ enabled }) => useKeyboardShortcuts(shortcuts, { enabled }),
-      { initialProps: { enabled: false } }
+      {
+        initialProps: { enabled: false },
+      },
     );
 
     expect(tinykeys).not.toHaveBeenCalled();
@@ -66,9 +68,9 @@ describe("useKeyboardShortcuts", () => {
     const mockSave = vi.fn();
     const { unmount } = render(<TestComponent onSave={mockSave} />);
 
-    const registeredShortcuts = vi.mocked(tinykeys).mock.calls[0][1];
+    const registeredShortcuts = vi.mocked(tinykeys).mock.calls[0]?.[1];
     const mockEvent = new KeyboardEvent("keydown");
-    registeredShortcuts["$mod+s"](mockEvent);
+    registeredShortcuts?.["$mod+s"]?.(mockEvent);
 
     expect(mockSave).toHaveBeenCalled();
     unmount();

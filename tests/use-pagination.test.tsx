@@ -1,7 +1,11 @@
-import { render, renderHook } from "@testing-library/react";
+import { render, renderHook, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { describe, expect, test, vi } from "vitest";
-import { PagedMetaType, extractPage, usePagination } from "../hooks/use-pagination";
+import {
+  PagedMetaType,
+  extractPage,
+  usePagination,
+} from "../hooks/use-pagination";
 
 describe("usePagination", () => {
   beforeEach(() => vi.clearAllMocks());
@@ -201,13 +205,13 @@ describe("Pagination Integration", () => {
       total: 30,
     };
 
-    const { getByTestId } = render(<PaginationControls meta={meta} />, {
+    render(<PaginationControls meta={meta} />, {
       wrapper: createWrapper(),
     });
 
-    expect(getByTestId("current-page")).toHaveTextContent("2");
-    expect(getByTestId("prev-page")).not.toBeDisabled();
-    expect(getByTestId("next-page")).not.toBeDisabled();
+    expect(screen.getByTestId("current-page")).toHaveTextContent("2");
+    expect(screen.getByTestId("prev-page")).not.toBeDisabled();
+    expect(screen.getByTestId("next-page")).not.toBeDisabled();
   });
 });
 

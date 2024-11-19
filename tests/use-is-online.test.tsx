@@ -1,4 +1,4 @@
-import { fireEvent, render, renderHook } from "@testing-library/react";
+import { fireEvent, render, renderHook, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { useIsOnline } from "../hooks/use-is-online";
 
@@ -23,16 +23,28 @@ describe("useIsOnline", () => {
   test("sets up online/offline event listeners", () => {
     renderHook(() => useIsOnline());
 
-    expect(addEventListenerSpy).toHaveBeenCalledWith("online", expect.any(Function));
-    expect(addEventListenerSpy).toHaveBeenCalledWith("offline", expect.any(Function));
+    expect(addEventListenerSpy).toHaveBeenCalledWith(
+      "online",
+      expect.any(Function),
+    );
+    expect(addEventListenerSpy).toHaveBeenCalledWith(
+      "offline",
+      expect.any(Function),
+    );
   });
 
   test("cleans up event listeners on unmount", () => {
     const { unmount } = renderHook(() => useIsOnline());
     unmount();
 
-    expect(removeEventListenerSpy).toHaveBeenCalledWith("online", expect.any(Function));
-    expect(removeEventListenerSpy).toHaveBeenCalledWith("offline", expect.any(Function));
+    expect(removeEventListenerSpy).toHaveBeenCalledWith(
+      "online",
+      expect.any(Function),
+    );
+    expect(removeEventListenerSpy).toHaveBeenCalledWith(
+      "offline",
+      expect.any(Function),
+    );
   });
 
   test("handles online event", () => {
@@ -97,7 +109,7 @@ describe("OnlineStatus Integration", () => {
       value: true,
       configurable: true,
     });
-    const { getByTestId } = render(<OnlineStatus />);
+    render(<OnlineStatus />);
 
     // Simulate going offline
     Object.defineProperty(navigator, "onLine", {
@@ -106,6 +118,6 @@ describe("OnlineStatus Integration", () => {
     });
     fireEvent(window, new Event("offline"));
 
-    expect(getByTestId("status")).toHaveTextContent("Offline");
+    expect(screen.getByTestId("status")).toHaveTextContent("Offline");
   });
 });

@@ -1,7 +1,7 @@
-import { renderHook, act, render, screen } from "@testing-library/react";
-import { describe, test, expect, vi, beforeEach } from "vitest";
-import { useDelayedLoader } from "../hooks/use-delayed-loader";
+import { act, render, renderHook, screen } from "@testing-library/react";
 import { Navigation } from "react-router-dom";
+import { beforeEach, describe, expect, test, vi } from "vitest";
+import { useDelayedLoader } from "../hooks/use-delayed-loader";
 
 describe("useDelayedLoader hook", () => {
   const mockNavigation: Partial<Navigation> = {
@@ -21,25 +21,19 @@ describe("useDelayedLoader hook", () => {
   });
 
   test("initializes with loader disabled", () => {
-    const { result } = renderHook(() =>
-      useDelayedLoader(mockNavigation as Navigation)
-    );
+    const { result } = renderHook(() => useDelayedLoader(mockNavigation as Navigation));
     expect(result.current.on).toBe(false);
   });
 
   test("doesn't show loader before delay elapsed", () => {
     const navigation = { ...mockNavigation, state: "loading" };
-    const { result } = renderHook(() =>
-      useDelayedLoader(navigation as Navigation, 500)
-    );
+    const { result } = renderHook(() => useDelayedLoader(navigation as Navigation, 500));
     expect(result.current.on).toBe(false);
   });
 
   test("shows loader after delay when navigation is loading", () => {
     const navigation = { ...mockNavigation, state: "loading" };
-    const { result } = renderHook(() =>
-      useDelayedLoader(navigation as Navigation, 500)
-    );
+    const { result } = renderHook(() => useDelayedLoader(navigation as Navigation, 500));
 
     act(() => vi.advanceTimersByTime(500));
 
@@ -50,7 +44,7 @@ describe("useDelayedLoader hook", () => {
     const { result, rerender } = renderHook(
       // @ts-ignore
       (props) => useDelayedLoader(props),
-      { initialProps: { ...mockNavigation, state: "loading" } }
+      { initialProps: { ...mockNavigation, state: "loading" } },
     );
 
     act(() => vi.advanceTimersByTime(500));
@@ -61,9 +55,7 @@ describe("useDelayedLoader hook", () => {
   });
 
   test("cleans up timeout on unmount", () => {
-    const { unmount } = renderHook(() =>
-      useDelayedLoader(mockNavigation as Navigation)
-    );
+    const { unmount } = renderHook(() => useDelayedLoader(mockNavigation as Navigation));
     unmount();
     expect(vi.getTimerCount()).toBe(0);
   });

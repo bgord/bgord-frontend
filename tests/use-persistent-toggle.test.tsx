@@ -1,4 +1,10 @@
-import { act, fireEvent, render, renderHook } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  renderHook,
+  screen,
+} from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { usePersistentToggle } from "../hooks/use-persistent-toggle";
 import { SafeLocalStorage } from "../safe-local-storage";
@@ -32,15 +38,15 @@ describe("usePersistentToggle", () => {
       );
     }
 
-    const { getByTestId } = render(<TestComponent />);
+    render(<TestComponent />);
 
-    expect(getByTestId("status")).toHaveTextContent("off");
+    expect(screen.getByTestId("status")).toHaveTextContent("off");
 
-    fireEvent.click(getByTestId("toggle"));
-    expect(getByTestId("status")).toHaveTextContent("on");
+    fireEvent.click(screen.getByTestId("toggle"));
+    expect(screen.getByTestId("status")).toHaveTextContent("on");
     expect(SafeLocalStorage.set).toHaveBeenCalledWith("test-persist", true);
 
-    fireEvent.click(getByTestId("clear"));
+    fireEvent.click(screen.getByTestId("clear"));
     expect(SafeLocalStorage.clear).toHaveBeenCalledWith("test-persist");
   });
 

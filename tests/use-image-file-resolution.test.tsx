@@ -1,8 +1,8 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { describe, test, expect, vi, beforeEach } from "vitest";
-import { useImageFileResolution } from "../hooks/use-image-file-resolution";
+import { beforeEach, describe, expect, test, vi } from "vitest";
 import { UseFileState } from "../hooks/use-file";
+import { useImageFileResolution } from "../hooks/use-image-file-resolution";
 
 vi.mock("../get-image-resolution", () => ({
   getImageResolution: vi.fn(),
@@ -35,12 +35,12 @@ describe("useImageFileResolution", () => {
       );
     }
 
-    const { getByTestId } = render(<TestComponent />, {
+    render(<TestComponent />, {
       wrapper: createWrapper(),
     });
 
-    expect(getByTestId("width")).toHaveTextContent("no width");
-    expect(getByTestId("height")).toHaveTextContent("no height");
+    expect(screen.getByTestId("width")).toHaveTextContent("no width");
+    expect(screen.getByTestId("height")).toHaveTextContent("no height");
   });
 });
 

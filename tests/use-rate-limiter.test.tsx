@@ -1,4 +1,4 @@
-import { fireEvent, render, renderHook } from "@testing-library/react";
+import { fireEvent, render, renderHook, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { useRateLimiter } from "../hooks/use-rate-limiter";
 
@@ -87,8 +87,8 @@ describe("useRateLimiter", () => {
       );
     }
 
-    const { getByText } = render(<TestComponent />);
-    const button = getByText("Click");
+    render(<TestComponent />);
+    const button = screen.getByText("Click");
 
     fireEvent.click(button);
     fireEvent.click(button);
