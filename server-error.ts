@@ -2,7 +2,7 @@
  * Custom server error handling with type checking
  */
 
-export type ServerErrorConfigType = {
+type ServerErrorConfigType = {
   message: string;
 };
 
@@ -45,7 +45,9 @@ export class ServerError {
 
     const error = await response.json();
 
-    const message = ServerError.isServerError(error) ? error.message : "app.error.general";
+    const message = ServerError.isServerError(error)
+      ? error.message
+      : "app.error.general";
 
     throw new ServerError({ message });
   }
@@ -56,7 +58,9 @@ export class ServerError {
    */
   static async handle(payload: unknown): Promise<Response> {
     throw new ServerError({
-      message: ServerError.isServerError(payload) ? payload.message : "app.error.general",
+      message: ServerError.isServerError(payload)
+        ? payload.message
+        : "app.error.general",
     });
   }
 }

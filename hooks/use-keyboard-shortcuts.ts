@@ -1,11 +1,11 @@
 import { useEffect, useMemo } from "react";
 import { tinykeys } from "tinykeys";
 
-export interface UseKeyboardShortcutsConfigType {
+interface UseKeyboardShortcutsConfigType {
   [keybinding: string]: (event: KeyboardEvent) => void;
 }
 
-export type UseKeyboardShortcutsOptionsType = {
+type UseKeyboardShortcutsOptionsType = {
   enabled?: boolean;
 };
 

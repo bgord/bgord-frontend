@@ -13,7 +13,7 @@ describe("OfflineIndicator", () => {
     const { container } = render(
       <OfflineIndicator>
         <div data-testid="offline-content">Offline</div>
-      </OfflineIndicator>
+      </OfflineIndicator>,
     );
 
     expect(container.innerHTML).toBe("");
@@ -26,7 +26,7 @@ describe("OfflineIndicator", () => {
     render(
       <OfflineIndicator>
         <div data-testid="offline-content">Offline</div>
-      </OfflineIndicator>
+      </OfflineIndicator>,
     );
 
     expect(screen.getByTestId("offline-content")).toBeInTheDocument();
@@ -42,7 +42,7 @@ describe("OfflineIndicator", () => {
           <h1>Offline Mode</h1>
           <p>You are currently offline</p>
         </div>
-      </OfflineIndicator>
+      </OfflineIndicator>,
     );
 
     expect(screen.getByTestId("offline-wrapper")).toBeInTheDocument();

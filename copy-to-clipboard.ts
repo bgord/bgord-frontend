@@ -1,6 +1,6 @@
 import { noop } from "./noop";
 
-export type CopyToClipboardTextType = string;
+type CopyToClipboardTextType = string;
 type OnCopyToClipboardFailureType = (error?: unknown) => void;
 type OnCopyToClipboardSuccessType = VoidFunction;
 
@@ -8,7 +8,7 @@ const defaultOnCopyToClipboardFailure: OnCopyToClipboardFailureType = () =>
   console.warn("Copying to clipboard not supported");
 
 export type CopyToClipboardOptionsType = {
-  text: string;
+  text: CopyToClipboardTextType;
   onFailure?: OnCopyToClipboardFailureType;
   onSuccess?: OnCopyToClipboardSuccessType;
 };

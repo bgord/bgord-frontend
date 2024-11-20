@@ -3,7 +3,7 @@ import { useEffect } from "react";
 /**
  * Type defining which HTML elements can receive focus
  */
-export type FocusableElement =
+type FocusableElement =
   | HTMLInputElement
   | HTMLButtonElement
   | HTMLAnchorElement

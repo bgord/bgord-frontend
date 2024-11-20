@@ -11,7 +11,7 @@ export enum UseExpandableListState {
 /**
  * Configuration type for the expandable list
  */
-export type UseExpandableListConfigType = {
+type UseExpandableListConfigType = {
   /** Maximum number of items to show when contracted */
   max: number;
   /** Total length of the list */
@@ -21,7 +21,7 @@ export type UseExpandableListConfigType = {
 /**
  * Return type for the useExpandableList hook
  */
-export type UseExpandableListReturnType = {
+type UseExpandableListReturnType = {
   /** Current state of the list */
   state: UseExpandableListState;
   /** Whether to display "Show More" button */
@@ -79,7 +79,9 @@ export type UseExpandableListReturnType = {
  * @param config - Configuration object for the expandable list
  * @returns Object containing list state and controls
  */
-export function useExpandableList(config: UseExpandableListConfigType): UseExpandableListReturnType {
+export function useExpandableList(
+  config: UseExpandableListConfigType,
+): UseExpandableListReturnType {
   // Memoize computed values
   const { numberOfExcessiveElements, areThereExcessiveElements } = useMemo(
     () => ({
@@ -91,7 +93,10 @@ export function useExpandableList(config: UseExpandableListConfigType): UseExpan
 
   // Memoize initial state calculation
   const getState = useCallback(
-    () => (areThereExcessiveElements ? UseExpandableListState.contracted : UseExpandableListState.expanded),
+    () =>
+      areThereExcessiveElements
+        ? UseExpandableListState.contracted
+        : UseExpandableListState.expanded,
     [areThereExcessiveElements],
   );
 
@@ -130,7 +135,8 @@ export function useExpandableList(config: UseExpandableListConfigType): UseExpan
   const displayFlags = useMemo(
     () => ({
       displayShowMore: state === UseExpandableListState.contracted,
-      displayShowLess: state === UseExpandableListState.expanded && areThereExcessiveElements,
+      displayShowLess:
+        state === UseExpandableListState.expanded && areThereExcessiveElements,
     }),
     [state, areThereExcessiveElements],
   );

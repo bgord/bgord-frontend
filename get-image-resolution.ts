@@ -2,7 +2,7 @@
  * Image resolution utilities
  */
 
-export type ImagePathType = string | undefined;
+type ImagePathType = string | undefined;
 
 export type ImageResolutionType = {
   width: number | null;
@@ -20,7 +20,9 @@ export const emptyImageResolution: ImageResolutionType = {
  * @returns Promise resolving to image dimensions
  * @throws If image fails to load
  */
-export async function getImageResolution(path: ImagePathType): Promise<ImageResolutionType> {
+export async function getImageResolution(
+  path: ImagePathType,
+): Promise<ImageResolutionType> {
   if (!path) return emptyImageResolution;
 
   const img = document.createElement("img");

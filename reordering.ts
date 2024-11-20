@@ -8,21 +8,27 @@ type ReorderingBaseItemType = { id: string };
 type ReorderingIndexType = number;
 type ReorderingCorrelationIdType = string;
 
-export type ReorderingTransferType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
+type ReorderingTransferType<
+  T extends ReorderingBaseItemType = ReorderingBaseItemType,
+> = {
   correlationId: ReorderingCorrelationIdType;
   id: T["id"];
   item: T;
   to: ReorderingIndexType;
 };
 
-export type UseReorderingConfigType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
+type UseReorderingConfigType<
+  T extends ReorderingBaseItemType = ReorderingBaseItemType,
+> = {
   correlationId: ReorderingCorrelationIdType;
   initialItems: T[];
   callback: (transfer: ReorderingTransferType<T>) => void;
   enabled?: boolean;
 };
 
-export type UseReorderingReturnType<T extends ReorderingBaseItemType = ReorderingBaseItemType> = {
+type UseReorderingReturnType<
+  T extends ReorderingBaseItemType = ReorderingBaseItemType,
+> = {
   items: T[];
   enabled: boolean;
   props: {
@@ -45,19 +51,24 @@ export type UseReorderingReturnType<T extends ReorderingBaseItemType = Reorderin
  * @param config.enabled Optional flag to enable/disable reordering
  * @returns Object with items array and event handler props
  */
-export function useReordering<T extends ReorderingBaseItemType = ReorderingBaseItemType>(
-  config: UseReorderingConfigType<T>,
-): UseReorderingReturnType<T> {
+export function useReordering<
+  T extends ReorderingBaseItemType = ReorderingBaseItemType,
+>(config: UseReorderingConfigType<T>): UseReorderingReturnType<T> {
   const enabled = config.enabled ?? true;
 
   const [items, setItems] = useState<T[]>(config.initialItems);
 
   // biome-ignore lint: lint/complexity/noForEach
-  useEffect(() => setItems(config.initialItems), [JSON.stringify(config.initialItems)]);
+  useEffect(
+    () => setItems(config.initialItems),
+    [JSON.stringify(config.initialItems)],
+  );
 
   const draggedItem = useRef<T | null>(null);
 
-  const [startIndex, setStartIndex] = useState<ReorderingIndexType | null>(null);
+  const [startIndex, setStartIndex] = useState<ReorderingIndexType | null>(
+    null,
+  );
   const [toIndex, setToIndex] = useState<ReorderingIndexType | null>(null);
 
   function onDragStartFactory(index: ReorderingIndexType) {
@@ -68,8 +79,15 @@ export function useReordering<T extends ReorderingBaseItemType = ReorderingBaseI
       if (!event?.dataTransfer || event.currentTarget.parentNode) return;
 
       event.dataTransfer.effectAllowed = "move";
-      event.dataTransfer.setData("text/html", event.currentTarget.parentNode as unknown as string);
-      event.dataTransfer.setDragImage(event.currentTarget.parentNode as unknown as Element, 20, 20);
+      event.dataTransfer.setData(
+        "text/html",
+        event.currentTarget.parentNode as unknown as string,
+      );
+      event.dataTransfer.setDragImage(
+        event.currentTarget.parentNode as unknown as Element,
+        20,
+        20,
+      );
     };
   }
 
@@ -87,7 +105,11 @@ export function useReordering<T extends ReorderingBaseItemType = ReorderingBaseI
 
       // filter out the currently dragged item
       // add the dragged item after the dragged over item
-      setItems(items.filter((item) => item !== draggedItem.current).toSpliced(index, 0, draggedItem.current));
+      setItems(
+        items
+          .filter((item) => item !== draggedItem.current)
+          .toSpliced(index, 0, draggedItem.current),
+      );
     };
   }
 

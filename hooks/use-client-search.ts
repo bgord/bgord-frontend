@@ -4,32 +4,23 @@
  */
 import { useCallback, useMemo } from "react";
 import { Field } from "./field";
-import {
-  useField,
-  useFieldConfigType,
-  useFieldReturnType,
-  useFieldStrategyEnum,
-} from "./use-field";
+import { useField, useFieldConfigType, useFieldReturnType, useFieldStrategyEnum } from "./use-field";
 
 type useClientSearchQueryType = string;
 
 /**
  * Configuration options for client search
  */
-type useClientSearchConfigType = Pick<
-  useFieldConfigType<useClientSearchQueryType>,
-  "name"
->;
+type useClientSearchConfigType = Pick<useFieldConfigType<useClientSearchQueryType>, "name">;
 
 /**
  * Return type for useClientSearch hook
  */
-export type useClientSearchReturnType =
-  useFieldReturnType<useClientSearchQueryType> & {
-    filterFn: (value: string) => boolean;
-  } & {
-    strategy: useFieldStrategyEnum.local;
-  };
+export type useClientSearchReturnType = useFieldReturnType<useClientSearchQueryType> & {
+  filterFn: (value: string) => boolean;
+} & {
+  strategy: useFieldStrategyEnum.local;
+};
 
 /**
  * Hook for managing client-side search state and filtering
@@ -63,9 +54,7 @@ export type useClientSearchReturnType =
  * @returns {Function} filterFn - Function to filter items by search query
  * @returns {useFieldStrategyEnum.local} strategy - Search strategy type
  */
-export function useClientSearch(
-  config: useClientSearchConfigType,
-): useClientSearchReturnType {
+export function useClientSearch(config: useClientSearchConfigType): useClientSearchReturnType {
   const query = useField<useClientSearchQueryType>({
     name: config.name,
     defaultValue: "",
@@ -75,9 +64,7 @@ export function useClientSearch(
   // Memoize filter function to prevent recreation on each render
   const filterFn = useCallback(
     (given: string) => {
-      const currentQuery = new Field<useClientSearchQueryType>(
-        query.currentValue,
-      );
+      const currentQuery = new Field<useClientSearchQueryType>(query.currentValue);
       if (currentQuery.isEmpty()) return true;
 
       const searchValue = currentQuery.get().toLowerCase();

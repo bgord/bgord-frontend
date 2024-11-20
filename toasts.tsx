@@ -5,7 +5,7 @@ import { useList } from "./hooks/use-list";
  * Configuration options for the ToastsContextProvider
  * @property {number} [timeout] - Duration in milliseconds before a toast automatically dismisses (default: 5000ms)
  */
-export type ToastsConfigType = {
+type ToastsConfigType = {
   timeout?: number;
 };
 
@@ -37,16 +37,16 @@ type ToastActions = Readonly<{
  * First element is the readonly array of toasts
  * Second element is the readonly object of actions
  */
-type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> = readonly [
-  Readonly<ToastType[]>,
-  ToastActions,
-];
+type ToastsContextDataType<ToastType extends BaseToastType = BaseToastType> =
+  readonly [Readonly<ToastType[]>, ToastActions];
 
 /**
  * React Context for the toast system
  * @internal
  */
-const ToastsContext = createContext<ToastsContextDataType | undefined>(undefined);
+const ToastsContext = createContext<ToastsContextDataType | undefined>(
+  undefined,
+);
 
 /**
  * Provider component for the toast notification system
@@ -114,14 +114,24 @@ export function ToastsContextProvider(
       [add, remove, clear],
     );
 
-    const reversedToasts = useMemo(() => toasts.slice().reverse() as Readonly<BaseToastType[]>, [toasts]);
+    const reversedToasts = useMemo(
+      () => toasts.slice().reverse() as Readonly<BaseToastType[]>,
+      [toasts],
+    );
 
-    return useMemo(() => [reversedToasts, actions] as const, [reversedToasts, actions]);
+    return useMemo(
+      () => [reversedToasts, actions] as const,
+      [reversedToasts, actions],
+    );
   }
 
   const contextValue = useToastsImplementation();
 
-  return <ToastsContext.Provider value={contextValue}>{props.children}</ToastsContext.Provider>;
+  return (
+    <ToastsContext.Provider value={contextValue}>
+      {props.children}
+    </ToastsContext.Provider>
+  );
 }
 
 /**
@@ -202,9 +212,9 @@ export function useToastsContext<
  * }
  * ```
  */
-export function useToastTrigger<ToastType extends BaseToastType = BaseToastType>(): (
-  toast: Omit<ToastType, "id">,
-) => void {
+export function useToastTrigger<
+  ToastType extends BaseToastType = BaseToastType,
+>(): (toast: Omit<ToastType, "id">) => void {
   const [, actions] = useToastsContext<ToastType>();
   return actions.add;
 }

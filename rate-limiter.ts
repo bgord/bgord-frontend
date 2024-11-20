@@ -10,7 +10,7 @@ export type RateLimiterOptionsType = {
 };
 
 /** @public */
-export type RateLimiterResultSuccessType = { allowed: true };
+type RateLimiterResultSuccessType = { allowed: true };
 
 export type RateLimiterResultErrorType = {
   allowed: false;
@@ -18,7 +18,9 @@ export type RateLimiterResultErrorType = {
 };
 
 /** @public */
-export type RateLimiterResultType = RateLimiterResultSuccessType | RateLimiterResultErrorType;
+type RateLimiterResultType =
+  | RateLimiterResultSuccessType
+  | RateLimiterResultErrorType;
 
 export class RateLimiter {
   private lastInvocationTimestamp: Falsy<TimestampType> = null;
@@ -45,7 +47,8 @@ export class RateLimiter {
       return { allowed: true };
     }
 
-    const nextAllowedTimestamp = this.lastInvocationTimestamp + this.options.limitMs;
+    const nextAllowedTimestamp =
+      this.lastInvocationTimestamp + this.options.limitMs;
 
     if (nextAllowedTimestamp <= currentTimestamp) {
       this.lastInvocationTimestamp = currentTimestamp;

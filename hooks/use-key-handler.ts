@@ -11,22 +11,22 @@ export enum KeyNameEnum {
 /**
  * Type for key handler functions
  */
-export type KeyHandler = () => void;
+type KeyHandler = () => void;
 
 /**
  * Type for keyboard events
  */
-export type KeyHandlerEvent = React.KeyboardEvent<HTMLElement>;
+type KeyHandlerEvent = React.KeyboardEvent<HTMLElement>;
 
 /**
  * Configuration type for key handlers
  */
-export type UseKeyHandlerConfigType = Partial<Record<KeyNameEnum, KeyHandler>>;
+type UseKeyHandlerConfigType = Partial<Record<KeyNameEnum, KeyHandler>>;
 
 /**
  * Return type for useKeyHandler hook
  */
-export type UseKeyHandlerReturn = (event: KeyHandlerEvent) => void;
+type UseKeyHandlerReturn = (event: KeyHandlerEvent) => void;
 
 /**
  * Hook for handling keyboard events with predefined handlers
@@ -56,7 +56,9 @@ export type UseKeyHandlerReturn = (event: KeyHandlerEvent) => void;
  * });
  * ```
  */
-export function useKeyHandler(config: UseKeyHandlerConfigType): UseKeyHandlerReturn {
+export function useKeyHandler(
+  config: UseKeyHandlerConfigType,
+): UseKeyHandlerReturn {
   // Memoize keys array for performance
   const keys = useMemo(() => Object.keys(config), [config]);
 

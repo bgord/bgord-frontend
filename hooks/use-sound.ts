@@ -1,8 +1,8 @@
 import { useEffect, useMemo } from "react";
 
-export type SoundSourceType = string;
+type SoundSourceType = string;
 
-export interface UseSoundReturnType {
+interface UseSoundReturnType {
   /** Function to play the audio */
   play: VoidFunction;
 }

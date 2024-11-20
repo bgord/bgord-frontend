@@ -7,8 +7,6 @@ type AudioDurationType = number;
 type AudioCurrentTimeType = number;
 type AudioVolumeType = number;
 
-export const AUDIO_DEFAULT_VOLUME: AudioVolumeType = 1;
-
 /**
  * Audio player state enum
  * @description Represents the possible states of the audio player
@@ -41,7 +39,7 @@ const AUDIO_CONSTANTS = {
 /**
  * useAudio hook configuration options
  */
-export type UseAudioConfig = {
+type UseAudioConfig = {
   id: string;
   src: string;
 };
@@ -49,7 +47,7 @@ export type UseAudioConfig = {
 /**
  * useAudio hook return value
  */
-export type UseAudioReturnType = {
+type UseAudioReturnType = {
   props: {
     audio: {
       src: UseAudioConfig["src"];
@@ -167,15 +165,20 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
   });
   const volume = useField<AudioVolumeType>({
     name: "volume",
-    defaultValue: AUDIO_DEFAULT_VOLUME,
+    defaultValue: AUDIO_CONSTANTS.VOLUME.DEFAULT,
   });
 
-  const muted = useMemo(() => volume.value === AUDIO_CONSTANTS.VOLUME.MIN, [volume.value]);
+  const muted = useMemo(
+    () => volume.value === AUDIO_CONSTANTS.VOLUME.MIN,
+    [volume.value],
+  );
 
   const percentage = useMemo(() => {
     return duration.value === AUDIO_CONSTANTS.TIME.MIN
       ? AUDIO_CONSTANTS.PERCENTAGE.MIN
-      : Math.round((currentTime.value / duration.value) * AUDIO_CONSTANTS.PERCENTAGE.MAX);
+      : Math.round(
+          (currentTime.value / duration.value) * AUDIO_CONSTANTS.PERCENTAGE.MAX,
+        );
   }, [currentTime.value, duration.value]);
 
   // Memoized callbacks
@@ -264,7 +267,10 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
     [volume],
   );
 
-  const matches = useCallback((states: UseAudioState[]) => states.includes(state), [state]);
+  const matches = useCallback(
+    (states: UseAudioState[]) => states.includes(state),
+    [state],
+  );
 
   // Memoized return value
   return useMemo(

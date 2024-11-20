@@ -8,7 +8,7 @@ type UseFileNameType = string;
 /**
  * Configuration options for the file hook
  */
-export type UseFileConfigType = {
+type UseFileConfigType = {
   maxSize?: number;
 };
 
@@ -142,7 +142,10 @@ export type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
  * @param name - Name/ID for the file input
  * @param config - Optional configuration for file validation
  */
-export function useFile(name: UseFileNameType, config?: UseFileConfigType): UseFileReturnType {
+export function useFile(
+  name: UseFileNameType,
+  config?: UseFileConfigType,
+): UseFileReturnType {
   const maxSize = config?.maxSize ?? Number.POSITIVE_INFINITY;
 
   const [key, setKey] = useState(0);
@@ -175,7 +178,10 @@ export function useFile(name: UseFileNameType, config?: UseFileConfigType): UseF
     [maxSize],
   );
 
-  const preview = useMemo(() => (file ? URL.createObjectURL(file) : undefined), [file]);
+  const preview = useMemo(
+    () => (file ? URL.createObjectURL(file) : undefined),
+    [file],
+  );
 
   useEffect(() => {
     return () => {
@@ -183,7 +189,10 @@ export function useFile(name: UseFileNameType, config?: UseFileConfigType): UseF
     };
   }, [preview]);
 
-  const matches = useCallback((states: UseFileState[]) => states.some((given) => given === state), [state]);
+  const matches = useCallback(
+    (states: UseFileState[]) => states.some((given) => given === state),
+    [state],
+  );
 
   // Memoize common props
   const commonProps = useMemo(

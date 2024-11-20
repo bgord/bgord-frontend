@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 
 type UseItemValueType<T> = T | null;
 
-export type UseItemReturnType<T> = {
+type UseItemReturnType<T> = {
   clear: VoidFunction;
   set: (item: NonNullable<UseItemValueType<T>>) => void;
   toggle: (item: NonNullable<UseItemValueType<T>>) => void;
@@ -12,7 +12,7 @@ export type UseItemReturnType<T> = {
   compare: (a: UseItemValueType<T>) => boolean;
 };
 
-export type UseItemConfigType<T> = {
+type UseItemConfigType<T> = {
   defaultItem?: UseItemValueType<T>;
   comparisonFn?: (a: UseItemValueType<T>, b: UseItemValueType<T>) => boolean;
 };
@@ -35,14 +35,21 @@ export type UseItemConfigType<T> = {
  * }
  * ```
  */
-export function useItem<T>(config?: UseItemConfigType<T>): UseItemReturnType<T> {
+export function useItem<T>(
+  config?: UseItemConfigType<T>,
+): UseItemReturnType<T> {
   const defaultItem = null;
   const comparisonFn = config?.comparisonFn ?? defaultComparisonFn;
-  const [item, setItem] = useState<UseItemValueType<T>>(config?.defaultItem ?? defaultItem);
+  const [item, setItem] = useState<UseItemValueType<T>>(
+    config?.defaultItem ?? defaultItem,
+  );
 
   const clear = useCallback(() => setItem(defaultItem), []);
 
-  const set = useCallback((newer: NonNullable<UseItemValueType<T>>) => setItem(newer), []);
+  const set = useCallback(
+    (newer: NonNullable<UseItemValueType<T>>) => setItem(newer),
+    [],
+  );
 
   const toggle = useCallback(
     (newer: NonNullable<UseItemValueType<T>>) => {
@@ -73,6 +80,9 @@ export function useItem<T>(config?: UseItemConfigType<T>): UseItemReturnType<T> 
   );
 }
 
-function defaultComparisonFn<T>(a: UseItemValueType<T>, b: UseItemValueType<T>) {
+function defaultComparisonFn<T>(
+  a: UseItemValueType<T>,
+  b: UseItemValueType<T>,
+) {
   return a === b;
 }

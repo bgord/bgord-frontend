@@ -1,6 +1,6 @@
 import { RefObject, useCallback, useEffect, useMemo, useState } from "react";
 
-export const defaultUseIsVisibleConfig = {
+const defaultUseIsVisibleConfig = {
   threshold: 0,
   root: null,
   rootMargin: "0%",
@@ -10,7 +10,7 @@ export const defaultUseIsVisibleConfig = {
 /**
  * Checks if IntersectionObserver is supported in current environment
  */
-export function isIntersectionObserverSupported() {
+function isIntersectionObserverSupported() {
   return (
     typeof window !== "undefined" &&
     "IntersectionObserver" in window &&
@@ -19,11 +19,11 @@ export function isIntersectionObserverSupported() {
   );
 }
 
-export type UseIsVisibleConfigType = IntersectionObserverInit & {
+type UseIsVisibleConfigType = IntersectionObserverInit & {
   ref: RefObject<Element>;
 };
 
-export type UseIsVisibleReturnType = boolean;
+type UseIsVisibleReturnType = boolean;
 
 /**
  * Hook to track element visibility using IntersectionObserver
@@ -50,9 +50,12 @@ export function useIsVisible(
   const [isVisible, setVisible] = useState<UseIsVisibleReturnType>(false);
 
   // Memoize intersection observer callback
-  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
-    setVisible(Boolean(entries[0]?.isIntersecting));
-  }, []);
+  const handleIntersection = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      setVisible(Boolean(entries[0]?.isIntersecting));
+    },
+    [],
+  );
 
   // Memoize observer configuration
   const observerConfig = useMemo(
@@ -69,7 +72,10 @@ export function useIsVisible(
 
     if (!(isIntersectionObserverSupported() && element)) return;
 
-    const observer = new IntersectionObserver(handleIntersection, observerConfig);
+    const observer = new IntersectionObserver(
+      handleIntersection,
+      observerConfig,
+    );
     observer.observe(element);
 
     return () => observer.disconnect();

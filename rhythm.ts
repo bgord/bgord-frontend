@@ -1,8 +1,8 @@
 /**
  * Utility for consistent spacing/sizing based on a rhythm unit
  */
-export type RhythmBaseType = number;
-export type RhythmTimesType = number;
+type RhythmBaseType = number;
+type RhythmTimesType = number;
 
 const DEFAULT_BASE_PX = 12;
 

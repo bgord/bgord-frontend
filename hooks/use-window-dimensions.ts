@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSafeWindow } from "../safe-window";
 
-export type WindowDimensions = {
+type WindowDimensions = {
   width: number | undefined;
   height: number | undefined;
 };

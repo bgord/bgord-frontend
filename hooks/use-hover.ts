@@ -4,7 +4,7 @@ import { UseToggleReturnType, useToggle } from "./use-toggle";
 /**
  * Configuration options for the useHover hook
  */
-export type UseHoverConfigType = {
+type UseHoverConfigType = {
   /** Whether hover detection is enabled */
   enabled?: boolean;
 };
@@ -12,7 +12,7 @@ export type UseHoverConfigType = {
 /**
  * Return type for the useHover hook
  */
-export type UseHoverReturnType = {
+type UseHoverReturnType = {
   /** Props to attach to the target element */
   attach: {
     ref: React.RefObject<any>;
@@ -68,5 +68,8 @@ export function useHover(config?: UseHoverConfigType): UseHoverReturnType {
   }, [enabled, handleMouseEnter, handleMouseLeave]); // Fixed dependencies array
 
   // Memoize return value
-  return useMemo(() => ({ attach: { ref }, isHovering: isHovering.on && enabled }), [isHovering.on, enabled]);
+  return useMemo(
+    () => ({ attach: { ref }, isHovering: isHovering.on && enabled }),
+    [isHovering.on, enabled],
+  );
 }

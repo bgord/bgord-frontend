@@ -1,6 +1,12 @@
-import { Dispatch, SetStateAction, useCallback, useMemo, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 
-export type UseListActionsType<T> = {
+type UseListActionsType<T> = {
   clear: VoidFunction;
   add: (x: T | T[]) => void;
   remove: (x: T) => void;
@@ -9,9 +15,9 @@ export type UseListActionsType<T> = {
   update: Dispatch<SetStateAction<T[]>>;
 };
 
-export type UseListReturnType<T> = [T[], UseListActionsType<T>];
+type UseListReturnType<T> = [T[], UseListActionsType<T>];
 
-export type UseListConfigType<T> = {
+type UseListConfigType<T> = {
   defaultItems?: T[];
   comparisonFn?: (a: T, b: T) => boolean;
 };
@@ -39,7 +45,9 @@ export type UseListConfigType<T> = {
  * }
  * ```
  */
-export function useList<T>(config?: UseListConfigType<T>): UseListReturnType<T> {
+export function useList<T>(
+  config?: UseListConfigType<T>,
+): UseListReturnType<T> {
   const defaultItems = config?.defaultItems ?? [];
   const defaultComparisonFn = (a: T, b: T) => a === b;
   const comparisonFn = config?.comparisonFn ?? defaultComparisonFn;
@@ -49,15 +57,21 @@ export function useList<T>(config?: UseListConfigType<T>): UseListReturnType<T> 
   const clear = useCallback(() => setItems([]), []);
 
   const add = useCallback((payload: T | T[]) => {
-    setItems((items) => (Array.isArray(payload) ? [...items, ...payload] : [...items, payload]));
+    setItems((items) =>
+      Array.isArray(payload) ? [...items, ...payload] : [...items, payload],
+    );
   }, []);
 
   const remove = useCallback(
-    (item: T) => setItems((items) => items.filter((x) => !comparisonFn(x, item))),
+    (item: T) =>
+      setItems((items) => items.filter((x) => !comparisonFn(x, item))),
     [comparisonFn],
   );
 
-  const isAdded = useCallback((item: T) => items.some((x) => comparisonFn(x, item)), [items, comparisonFn]);
+  const isAdded = useCallback(
+    (item: T) => items.some((x) => comparisonFn(x, item)),
+    [items, comparisonFn],
+  );
 
   const toggle = useCallback(
     (item: T) => {

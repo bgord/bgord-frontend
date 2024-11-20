@@ -4,12 +4,7 @@
  */
 import { useCallback, useMemo } from "react";
 import { Field, FieldValueAllowedTypes } from "./field";
-import {
-  useField,
-  useFieldConfigType,
-  useFieldReturnType,
-  useFieldStrategyEnum,
-} from "./use-field";
+import { useField, useFieldConfigType, useFieldReturnType, useFieldStrategyEnum } from "./use-field";
 
 export type useClientFilterQueryType = string | undefined;
 
@@ -17,10 +12,7 @@ export type useClientFilterQueryType = string | undefined;
  * Configuration for client filter
  * @template T Type of value being filtered
  */
-type useClientFilterConfigType<T extends FieldValueAllowedTypes> = Omit<
-  useFieldConfigType<T>,
-  "strategy"
-> & {
+type useClientFilterConfigType<T extends FieldValueAllowedTypes> = Omit<useFieldConfigType<T>, "strategy"> & {
   enum: { [key: string]: useClientFilterQueryType };
   filterFn?: (value: T) => boolean;
 };
@@ -29,16 +21,15 @@ type useClientFilterConfigType<T extends FieldValueAllowedTypes> = Omit<
  * Return type for useClientFilter hook
  * @template T Type of value being filtered
  */
-export type useClientFilterReturnType<T extends FieldValueAllowedTypes> =
-  useFieldReturnType<T> & {
-    filterFn: NonNullable<useClientFilterConfigType<T>["filterFn"]>;
-    options: {
-      name: string;
-      value: useClientFilterConfigType<T>["enum"][0];
-    }[];
-  } & {
-    strategy: useFieldStrategyEnum.local;
-  };
+export type useClientFilterReturnType<T extends FieldValueAllowedTypes> = useFieldReturnType<T> & {
+  filterFn: NonNullable<useClientFilterConfigType<T>["filterFn"]>;
+  options: {
+    name: string;
+    value: useClientFilterConfigType<T>["enum"][0];
+  }[];
+} & {
+  strategy: useFieldStrategyEnum.local;
+};
 
 /**
  * Hook for managing client-side filtering state and filter functions
@@ -104,10 +95,7 @@ export function useClientFilter<T extends FieldValueAllowedTypes>(
   );
 
   // Memoize filter function (either custom or default)
-  const filterFn = useMemo(
-    () => config.filterFn ?? defaultFilterFn,
-    [config.filterFn, defaultFilterFn],
-  );
+  const filterFn = useMemo(() => config.filterFn ?? defaultFilterFn, [config.filterFn, defaultFilterFn]);
 
   // Memoize options array
   const options = useMemo(

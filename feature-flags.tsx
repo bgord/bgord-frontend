@@ -12,9 +12,9 @@ export enum FeatureFlagEnum {
   no = "no",
 }
 
-export type FeatureFlagNameType = string;
+type FeatureFlagNameType = string;
 
-export type FeatureFlagsContextValueType = {
+type FeatureFlagsContextValueType = {
   flags: Record<FeatureFlagNameType, FeatureFlagEnum>;
 };
 
@@ -23,15 +23,23 @@ type FeatureFlagsContextPropsType = {
   value: FeatureFlagsContextValueType["flags"];
 };
 
-const FeatureFlagsContext = createContext<FeatureFlagsContextValueType["flags"]>({});
+const FeatureFlagsContext = createContext<
+  FeatureFlagsContextValueType["flags"]
+>({});
 
 /**
  * Context provider for feature flags
  * @param props.children - Child components
  * @param props.value - Feature flags configuration object
  */
-export function FeatureFlagsContextProvider(props: FeatureFlagsContextPropsType) {
-  return <FeatureFlagsContext.Provider value={props.value}>{props.children}</FeatureFlagsContext.Provider>;
+export function FeatureFlagsContextProvider(
+  props: FeatureFlagsContextPropsType,
+) {
+  return (
+    <FeatureFlagsContext.Provider value={props.value}>
+      {props.children}
+    </FeatureFlagsContext.Provider>
+  );
 }
 
 /**
@@ -43,7 +51,9 @@ export function useFeatureFlags() {
   const value = useContext(FeatureFlagsContext);
 
   if (value === undefined) {
-    throw new Error("useFeatureFlags must be used within the FeatureFlagsContext");
+    throw new Error(
+      "useFeatureFlags must be used within the FeatureFlagsContext",
+    );
   }
 
   return value;
@@ -59,7 +69,9 @@ export function useFeatureFlag(name: FeatureFlagNameType): boolean {
   const value = useContext(FeatureFlagsContext);
 
   if (value === undefined) {
-    throw new Error("useFeatureFlag must be used within the FeatureFlagsContext");
+    throw new Error(
+      "useFeatureFlag must be used within the FeatureFlagsContext",
+    );
   }
 
   return value[name] === "yes";
