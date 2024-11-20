@@ -1,4 +1,5 @@
 # Changelog
+- 2024-11-21 00:01 9e7692e **refactor: simplify exports**
 - 2024-11-20 23:55 42f9b8d **refactor: improve use client filter**
 - 2024-11-20 23:48 12a938c **step: add tests for use client filter**
 - 2024-11-20 23:43 5897a05 **step: add use client filter**
@@ -6,6 +7,7 @@
 - 2024-11-20 23:33 4b477fe **step: add use client serach test**
 - 2024-11-20 23:17 1e8aa03 **step: add jsdocs for use client search**
 - 2024-11-20 23:10 41a0b29 **refactor: memoize use client sort**
+- 2024-11-20 22:58 f3264b4 **docs: generate CHANGELOG**
 - 2024-11-20 22:48 80231d1 **step: add use client sort tests**
 - 2024-11-20 22:47 e7b8f0a **step: add jsdocs for use client sort**
 - 2024-11-20 14:14 a3d43d3 **refactor: add jsdocs for all files**
