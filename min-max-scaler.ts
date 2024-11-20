@@ -1,8 +1,21 @@
+/**
+ * Math utility functions for approximation and scaling
+ * @module Math
+ */
 type ApproximationValueType = number;
 type ApproximationResultType = number;
 type ApproximationDecimalPlacesType = number;
 
+/**
+ * Handles floating point number approximation
+ */
 export class Approximation {
+  /**
+   * Rounds float to specified decimal places
+   * @param value - Number to approximate
+   * @param decimalPlaces - Decimal places to round to
+   * @returns Rounded number
+   */
   static float(
     value: ApproximationValueType,
     decimalPlaces: ApproximationDecimalPlacesType = 2,
@@ -22,12 +35,19 @@ type MinMaxScalerConfigType = {
   };
 };
 
+/**
+ * MinMax scaling utility for normalizing values
+ */
 export class MinMaxScaler {
   private readonly min: MinMaxScalerValueType;
   private readonly max: MinMaxScalerValueType;
   private readonly lower: MinMaxScalerValueType;
   private readonly upper: MinMaxScalerValueType;
 
+  /**
+   * Creates scaler with defined ranges
+   * @throws {Error} For invalid min/max or bounds
+   */
   constructor(config: MinMaxScalerConfigType) {
     const lower = config.bound?.lower ?? 0;
     const upper = config.bound?.upper ?? 1;
@@ -46,6 +66,11 @@ export class MinMaxScaler {
     this.upper = upper;
   }
 
+  /**
+   * Scales value from original to target range
+   * @throws {Error} If value outside min/max
+   * @returns Scaled value with metadata
+   */
   scale(value: MinMaxScalerValueType) {
     const { min, max, lower, upper } = this;
 
@@ -71,6 +96,11 @@ export class MinMaxScaler {
     };
   }
 
+  /**
+   * Converts scaled value back to original range
+   * @throws {Error} If scaled value outside bounds
+   * @returns Original value with metadata
+   */
   descale(scaled: MinMaxScalerValueType) {
     const { min, max, lower, upper } = this;
 
@@ -88,6 +118,10 @@ export class MinMaxScaler {
     };
   }
 
+  /**
+   * Gets min/max from array of values
+   * @throws {Error} For empty array
+   */
   static getMinMax(values: MinMaxScalerValueType[]) {
     if (values.length === 0) {
       throw new Error("An empty array supplied");

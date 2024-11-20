@@ -1,3 +1,6 @@
+/**
+ * Component that only renders children when offline
+ */
 import React from "react";
 import * as hooks from "../hooks";
 

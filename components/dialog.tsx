@@ -1,9 +1,16 @@
+/**
+ * Modal dialog component with keyboard/click handling and accessibility
+ */
 import { useEffect, useRef } from "react";
 
 import * as hooks from "../hooks";
 
-export type DialogPropsType = hooks.UseToggleReturnType & JSX.IntrinsicElements["dialog"];
+export type DialogPropsType = hooks.UseToggleReturnType &
+  JSX.IntrinsicElements["dialog"];
 
+/**
+ * @param props Combined toggle and dialog props
+ */
 export function Dialog(props: DialogPropsType) {
   const { toggle: dialog, rest } = hooks.verified.extractUseToggle(props);
   const ref = useRef<HTMLDialogElement>(null);

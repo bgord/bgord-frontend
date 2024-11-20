@@ -1,3 +1,7 @@
+/**
+ * Image resolution utilities
+ */
+
 export type ImagePathType = string | undefined;
 
 export type ImageResolutionType = {
@@ -10,6 +14,12 @@ export const emptyImageResolution: ImageResolutionType = {
   height: null,
 };
 
+/**
+ * Gets width/height of an image from its path
+ * @param path - URL/path to image
+ * @returns Promise resolving to image dimensions
+ * @throws If image fails to load
+ */
 export async function getImageResolution(path: ImagePathType): Promise<ImageResolutionType> {
   if (!path) return emptyImageResolution;
 

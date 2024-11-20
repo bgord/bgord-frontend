@@ -1,10 +1,22 @@
+/**
+ * Utility for consistent spacing/sizing based on a rhythm unit
+ */
 export type RhythmBaseType = number;
 export type RhythmTimesType = number;
 
 const DEFAULT_BASE_PX = 12;
 
+/**
+ * Creates rhythm-based sizing utility
+ * @param base - Base unit in pixels
+ */
 export function Rhythm(base: RhythmBaseType = DEFAULT_BASE_PX) {
   return {
+    /**
+     * Multiplies base by given factor
+     * @param times - Multiplication factor
+     * @returns Sizing values in different formats
+     */
     times(times: RhythmTimesType) {
       const result = base * times;
 

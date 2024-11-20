@@ -1,3 +1,6 @@
+/**
+ * Polymorphic external link component with security attributes
+ */
 import React from "react";
 import type { PolymorphicPropsWithoutRef } from "react-polymorphic-types";
 

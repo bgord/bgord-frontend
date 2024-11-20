@@ -79,9 +79,7 @@ export type UseExpandableListReturnType = {
  * @param config - Configuration object for the expandable list
  * @returns Object containing list state and controls
  */
-export function useExpandableList(
-  config: UseExpandableListConfigType,
-): UseExpandableListReturnType {
+export function useExpandableList(config: UseExpandableListConfigType): UseExpandableListReturnType {
   // Memoize computed values
   const { numberOfExcessiveElements, areThereExcessiveElements } = useMemo(
     () => ({
@@ -93,10 +91,7 @@ export function useExpandableList(
 
   // Memoize initial state calculation
   const getState = useCallback(
-    () =>
-      areThereExcessiveElements
-        ? UseExpandableListState.contracted
-        : UseExpandableListState.expanded,
+    () => (areThereExcessiveElements ? UseExpandableListState.contracted : UseExpandableListState.expanded),
     [areThereExcessiveElements],
   );
 
@@ -135,8 +130,7 @@ export function useExpandableList(
   const displayFlags = useMemo(
     () => ({
       displayShowMore: state === UseExpandableListState.contracted,
-      displayShowLess:
-        state === UseExpandableListState.expanded && areThereExcessiveElements,
+      displayShowLess: state === UseExpandableListState.expanded && areThereExcessiveElements,
     }),
     [state, areThereExcessiveElements],
   );

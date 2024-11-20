@@ -1,3 +1,7 @@
+/**
+ * React hook for drag-and-drop reordering of lists
+ */
+
 import { useEffect, useRef, useState } from "react";
 
 type ReorderingBaseItemType = { id: string };
@@ -33,6 +37,14 @@ export type UseReorderingReturnType<T extends ReorderingBaseItemType = Reorderin
   };
 };
 
+/**
+ * @param config Configuration object
+ * @param config.correlationId Unique identifier for reordering session
+ * @param config.initialItems Initial array of items
+ * @param config.callback Function called after successful reorder
+ * @param config.enabled Optional flag to enable/disable reordering
+ * @returns Object with items array and event handler props
+ */
 export function useReordering<T extends ReorderingBaseItemType = ReorderingBaseItemType>(
   config: UseReorderingConfigType<T>,
 ): UseReorderingReturnType<T> {

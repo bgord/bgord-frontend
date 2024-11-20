@@ -1,3 +1,7 @@
+/**
+ * Rate limiting implementation with timestamp-based throttling
+ */
+
 import type { Falsy } from "@bgord/node";
 import type { TimestampType } from "@bgord/node/dist/schema";
 
@@ -21,10 +25,19 @@ export class RateLimiter {
 
   private options: RateLimiterOptionsType;
 
+  /**
+   * @param options - Rate limiter configuration
+   * @param options.limitMs - Minimum time between allowed invocations
+   */
   constructor(options: RateLimiterOptionsType) {
     this.options = options;
   }
 
+  /**
+   * Verifies if operation is allowed at current timestamp
+   * @param currentTimestamp - Current timestamp to check against
+   * @returns Result indicating if operation is allowed
+   */
   verify(currentTimestamp: TimestampType): RateLimiterResultType {
     if (!this.lastInvocationTimestamp) {
       this.lastInvocationTimestamp = currentTimestamp;

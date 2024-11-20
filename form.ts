@@ -1,10 +1,25 @@
+/**
+ * Form validation pattern generator
+ * @module Form
+ */
+
+/**
+ * Configuration for pattern validation
+ */
 export type PatternConfigType = {
   min?: number;
   max?: number;
   required?: JSX.IntrinsicElements["input"]["required"];
 };
-
+/**
+ * Form utilities for HTML inputs
+ */
 export class Form {
+  /**
+   * Generates regex pattern for input length validation
+   * @param config - Pattern configuration
+   * @returns Input/textarea props with pattern and required
+   */
   static pattern(
     config: PatternConfigType,
   ): JSX.IntrinsicElements["textarea"] & JSX.IntrinsicElements["input"] {

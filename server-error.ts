@@ -1,3 +1,7 @@
+/**
+ * Custom server error handling with type checking
+ */
+
 export type ServerErrorConfigType = {
   message: string;
 };
@@ -7,10 +11,16 @@ export class ServerError {
 
   _known = true;
 
+  /**
+   * @param config Error configuration
+   */
   constructor(config: ServerErrorConfigType) {
     this.message = config.message;
   }
 
+  /**
+   * Type guard for ServerError instances
+   */
   static isServerError(value: unknown): value is ServerError {
     if (
       value &&
@@ -26,6 +36,10 @@ export class ServerError {
     return false;
   }
 
+  /**
+   * Extract error from Response object
+   * @throws ServerError
+   */
   static async extract(response: Response) {
     if (response.ok) return response;
 
@@ -36,6 +50,10 @@ export class ServerError {
     throw new ServerError({ message });
   }
 
+  /**
+   * Handle error payload
+   * @throws ServerError
+   */
   static async handle(payload: unknown): Promise<Response> {
     throw new ServerError({
       message: ServerError.isServerError(payload) ? payload.message : "app.error.general",

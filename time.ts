@@ -1,3 +1,10 @@
+/**
+ * Time conversion utilities
+ */
+
+/**
+ * Converts days to other time units
+ */
 export function Days(value: number) {
   return {
     value,
@@ -8,6 +15,9 @@ export function Days(value: number) {
   };
 }
 
+/**
+ * Converts hours to other time units
+ */
 export function Hours(value: number) {
   return {
     value,
@@ -17,10 +27,16 @@ export function Hours(value: number) {
   };
 }
 
+/**
+ * Converts minutes to other time units
+ */
 export function Minutes(value: number) {
   return { value, seconds: value * 60, ms: value * 60 * 1000 };
 }
 
+/**
+ * Converts seconds to milliseconds
+ */
 export function Seconds(value: number) {
   return { value, ms: value * 1000 };
 }

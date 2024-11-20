@@ -66,11 +66,7 @@ export function useResponseHandler(
   const isValidResponse = useMemo(() => {
     if (!response) return false;
 
-    return (
-      response.intent === intent &&
-      response.id !== lastHandledKey.current &&
-      isKeyMatch(response.id)
-    );
+    return response.intent === intent && response.id !== lastHandledKey.current && isKeyMatch(response.id);
   }, [response, intent, isKeyMatch]);
 
   useEffect(() => {
