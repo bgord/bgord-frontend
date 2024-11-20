@@ -1,4 +1,5 @@
 # Changelog
+- 2024-11-21 00:24 0fb95d1 **refactor: export reuqired types**
 - 2024-11-21 00:21 e91b389 **refactor: minimize exported types**
 - 2024-11-21 00:13 92bb4e8 **step: add missing type exports**
 - 2024-11-21 00:01 9e7692e **refactor: simplify exports**
@@ -7,6 +8,7 @@
 - 2024-11-20 23:43 5897a05 **step: add use client filter**
 - 2024-11-20 23:35 7c7e36a **step: add memoization to the use client sort**
 - 2024-11-20 23:33 4b477fe **step: add use client serach test**
+- 2024-11-20 23:22 917fc3a **docs: generate CHANGELOG**
 - 2024-11-20 23:17 1e8aa03 **step: add jsdocs for use client search**
 - 2024-11-20 23:10 41a0b29 **refactor: memoize use client sort**
 - 2024-11-20 23:05 73f6177 **docs: generate CHANGELOG**
