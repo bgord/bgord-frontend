@@ -54,6 +54,7 @@ export function useDelayedLoader(navigation: Navigation, delayMs = 500): UseTogg
 
   // Effect for managing the delay timeout
   useEffect(() => {
+    // @ts-ignore
     timeoutIdRef.current = setTimeout(handleDelayElapsed, delayMs);
 
     return () => {
