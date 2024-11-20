@@ -88,6 +88,7 @@ export function useResponseHandler(
     }
 
     // Set new timeout
+    // @ts-ignore
     timeoutRef.current = setTimeout(() => {
       lastHandledKey.current = null;
     }, 500);
