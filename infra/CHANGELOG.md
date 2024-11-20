@@ -1,4 +1,96 @@
 # Changelog
+- 2024-11-20 23:55 42f9b8d **refactor: improve use client filter**
+- 2024-11-20 23:48 12a938c **step: add tests for use client filter**
+- 2024-11-20 23:43 5897a05 **step: add use client filter**
+- 2024-11-20 23:35 7c7e36a **step: add memoization to the use client sort**
+- 2024-11-20 23:33 4b477fe **step: add use client serach test**
+- 2024-11-20 23:17 1e8aa03 **step: add jsdocs for use client search**
+- 2024-11-20 23:10 41a0b29 **refactor: memoize use client sort**
+- 2024-11-20 22:48 80231d1 **step: add use client sort tests**
+- 2024-11-20 22:47 e7b8f0a **step: add jsdocs for use client sort**
+- 2024-11-20 14:14 a3d43d3 **refactor: add jsdocs for all files**
+- 2024-11-20 13:46 fd24987 **fix: biome linting errors**
+- 2024-11-20 13:41 c3e65a8 **refactor: unify hooks code**
+- 2024-11-20 13:37 2ede75c **refactor: improve use video**
+- 2024-11-20 13:34 7c9712d **refactor: improve use video**
+- 2024-11-20 13:32 a5eb2bd **refactor: improve use list**
+- 2024-11-20 13:31 5d82df8 **refactor: improve use pagination**
+- 2024-11-20 13:30 2b2d0ea **refactor: improve use image file resolution**
+- 2024-11-20 13:28 2fe4824 **refactor: improve use keyboard shortcuts**
+- 2024-11-20 13:27 aee776e **refactor: improve use item**
+- 2024-11-20 13:25 4e25644 **refactor: improve use language selector**
+- 2024-11-20 13:24 a4f840e **refactor: improve use rate limiter**
+- 2024-11-20 13:21 3d0b6cb **refactor: improve use scroll**
+- 2024-11-20 13:20 ba28a8c **refactor: improve use previous value**
+- 2024-11-20 13:20 7c7fbfa **refactor: improve use response handler**
+- 2024-11-20 13:16 9418851 **refactor: improve use persistent toggle**
+- 2024-11-20 13:15 9c0da47 **refactor: improve use is visible**
+- 2024-11-20 13:15 9b8d5e2 **refactor: improve use leaving prompt**
+- 2024-11-20 13:13 8ef867a **refactor: improve use is online**
+- 2024-11-19 22:32 2f06512 **refactor: improve use focus keyboard shortcut**
+- 2024-11-19 22:30 6665717 **refactor: improve use file**
+- 2024-11-19 22:13 8fa9302 **refactor: improve use expandable list**
+- 2024-11-19 22:12 de31b84 **refactor: improve use document title**
+- 2024-11-19 22:11 b98f2c8 **refactor: imporove use disable pull to refresh**
+- 2024-11-19 22:09 4654c6a **refactor: improve use design mode**
+- 2024-11-19 22:07 ba0e9c7 **refactor: improve use delayed loader**
+- 2024-11-19 22:04 8d0d55f **refactor: improve use current timestamp**
+- 2024-11-19 22:02 80e8852 **refactor: improve use click outside**
+- 2024-11-19 21:54 03afc48 **refactor: improve use breakpoint**
+- 2024-11-19 21:52 89f1796 **refactor: improve use autofocus**
+- 2024-11-19 21:43 395119f **refactor: improve use audio**
+- 2024-11-19 16:15 47c2249 **step: test use language selector**
+- 2024-11-19 16:11 3b52d0a **refactor: unify rendering in tests**
+- 2024-11-19 16:03 94786c7 **step: test use image file resolution**
+- 2024-11-19 15:48 8a57aef **step: test use delayed loader**
+- 2024-11-19 15:37 e3e01ff **step: use keyboard shortcuts tests**
+- 2024-11-19 15:35 5074cef **step: use rate limitier tests**
+- 2024-11-19 15:31 4f395aa **step: test use expandable list**
+- 2024-11-19 15:23 9e5a249 **step: test use list**
+- 2024-11-19 15:05 8c24edb **step: test usePersistentToggle**
+- 2024-11-19 15:01 4eec93d **step: test use item**
+- 2024-11-19 14:56 bf51b1f **step: test use scroll**
+- 2024-11-19 14:11 fb009c8 **refactor: test use video**
+- 2024-11-19 13:58 715e89c **refactor: test use audio**
+- 2024-11-19 13:41 89821e5 **refactor: test use file**
+- 2024-11-18 23:14 c1efb7b **refactor: test use breakpoint**
+- 2024-11-18 22:58 9a6033f **refactor: test use window dimensions**
+- 2024-11-18 22:33 defd6a3 **refactor: test use disable pull to refresh**
+- 2024-11-18 22:28 b5fc384 **refactor: test use design mode**
+- 2024-11-18 22:18 fc211ca **refactor: test use is visible**
+- 2024-11-18 22:09 3ae0d92 **refactor: test use previous value**
+- 2024-11-18 22:04 595e861 **refactor: test use current timestamp**
+- 2024-11-18 22:00 e054a3e **refactor: test use click outside**
+- 2024-11-18 21:54 22f62c4 **refactor: test use autofocus**
+- 2024-11-18 21:50 c76b260 **refactor: test use document title**
+- 2024-11-18 21:48 473f8ac **refactor: test offline indicator**
+- 2024-11-18 21:44 9a1be42 **refactor: test use is online**
+- 2024-11-18 21:13 7a30d2a **step: test use pagination**
+- 2024-11-18 21:00 28ea9bd **refactor: remove dev tools**
+- 2024-11-18 20:40 3d802f6 **refactor: test use leaving prompt**
+- 2024-11-18 20:34 7e1fec6 **refactor: test use focus shortcut**
+- 2024-11-18 20:26 44e9e73 **refactor: test use response handler**
+- 2024-11-18 20:22 1e65e7d **refactor: test server error**
+- 2024-11-18 20:19 82439a0 **refactor: test reordering**
+- 2024-11-18 20:12 206637c **refactor: test min max scaler**
+- 2024-11-18 20:09 fcde98c **refactor: test get-image-resolution**
+- 2024-11-18 20:04 ca27dc4 **refactor: test etag**
+- 2024-11-18 20:02 f81ca9d **refactor: test safe storage**
+- 2024-11-18 19:53 987aaae **refactor: test feature flags**
+- 2024-11-18 19:34 114d8ac **refactor: test pluralize**
+- 2024-11-18 19:31 45bec3a **refactor: test exec**
+- 2024-11-18 19:23 bd8b2a5 **refactor: remove api**
+- 2024-11-18 19:21 d89db2a **refactor: add tests to durations**
+- 2024-11-18 19:17 beb439d **refactor: add tests for is client and safe window**
+- 2024-11-18 19:11 9aea9e6 **refactor: test copy to clipboard**
+- 2024-11-18 19:07 9c5d7a8 **step: add tests for test**
+- 2024-11-18 15:38 5df8c49 **step: test time**
+- 2024-11-18 15:37 744c87e **step: test thousands separator**
+- 2024-11-18 15:35 7d29b92 **refactor: move toasta and translations**
+- 2024-11-18 15:33 d2b5bda **refactor: test date formatter**
+- 2024-11-18 15:30 76b3497 **step: test rhythm**
+- 2024-11-18 15:27 213f524 **step: test Form**
+- 2024-11-18 15:22 37c2422 **step: test line clamp**
 - 2024-11-17 21:09 409e06f **refactor: rename new hooks**
 - 2024-11-17 21:07 538fbdf **fix: export key name enum**
 - 2024-11-17 21:01 12b191d **step: add silent to vite config**
@@ -7,6 +99,7 @@
 - 2024-11-17 20:57 3ce6dac **step: add jsdocs for use new field**
 - 2024-11-17 20:52 9a5744b **step: improve toasts**
 - 2024-11-17 20:46 2347fd0 **step: add toasts tests**
+- 2024-11-17 20:09 6d95ca0 **docs: generate CHANGELOG**
 - 2024-11-17 20:08 2d05b9b **docs: generate CHANGELOG**
 - 2024-11-17 20:06 6d4bc72 **docs: generate CHANGELOG**
 - 2024-11-16 23:47 1d9eda0 **step: add tests for use debounce**
