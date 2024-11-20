@@ -88,7 +88,7 @@ export type useClientFilterReturnType<T extends FieldValueAllowedTypes> =
  * @returns {useFieldStrategyEnum.local} strategy - Filter strategy type
  */
 export function useClientFilter<T extends FieldValueAllowedTypes>(
-  config: useClientFilterConfigType<T>
+  config: useClientFilterConfigType<T>,
 ): useClientFilterReturnType<T> {
   const query = useField({
     ...config,
@@ -100,19 +100,19 @@ export function useClientFilter<T extends FieldValueAllowedTypes>(
       if (query.empty) return true;
       return Field.compare(given, query.currentValue);
     },
-    [query.empty, query.currentValue]
+    [query.empty, query.currentValue],
   );
 
   // Memoize filter function (either custom or default)
   const filterFn = useMemo(
     () => config.filterFn ?? defaultFilterFn,
-    [config.filterFn, defaultFilterFn]
+    [config.filterFn, defaultFilterFn],
   );
 
   // Memoize options array
   const options = useMemo(
     () => Object.entries(config.enum).map(([name, value]) => ({ name, value })),
-    [config.enum]
+    [config.enum],
   );
 
   return useMemo(
@@ -122,6 +122,6 @@ export function useClientFilter<T extends FieldValueAllowedTypes>(
       options,
       strategy: useFieldStrategyEnum.local as const,
     }),
-    [query, filterFn, options]
+    [query, filterFn, options],
   );
 }

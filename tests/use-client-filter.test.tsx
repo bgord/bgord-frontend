@@ -1,6 +1,6 @@
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { describe, expect, test } from "vitest";
-import { render, fireEvent, screen } from "@testing-library/react";
 import { useClientFilter } from "../hooks/use-client-filter";
 
 describe("useClientFilter", () => {
@@ -198,7 +198,7 @@ describe("useClientFilter", () => {
 
       const filteredItems = items.filter((item) =>
         // @ts-ignore
-        customFilter.value ? customFilter.filterFn(item.priority) : true
+        customFilter.value ? customFilter.filterFn(item.priority) : true,
       );
 
       return (

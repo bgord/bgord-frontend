@@ -11,7 +11,7 @@ export type DialogPropsType = hooks.UseToggleReturnType & JSX.IntrinsicElements[
  * @param props Combined toggle and dialog props
  */
 export function Dialog(props: DialogPropsType) {
-  const { toggle: dialog, rest } = hooks.verified.extractUseToggle(props);
+  const { toggle: dialog, rest } = hooks.extractUseToggle(props);
   const ref = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -22,10 +22,10 @@ export function Dialog(props: DialogPropsType) {
     }
   }, [props.on]);
 
-  hooks.verified.useKeyboardShortcuts({ Escape: dialog.disable });
-  hooks.verified.useAutofocus({ ref, condition: props.on });
-  hooks.verified.useScrollLock({ condition: props.on });
-  hooks.verified.useClickOutside(ref, dialog.disable);
+  hooks.useKeyboardShortcuts({ Escape: dialog.disable });
+  hooks.useAutofocus({ ref, condition: props.on });
+  hooks.useScrollLock({ condition: props.on });
+  hooks.useClickOutside(ref, dialog.disable);
 
   return (
     <dialog

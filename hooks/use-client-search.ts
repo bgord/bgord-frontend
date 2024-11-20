@@ -64,7 +64,7 @@ export type useClientSearchReturnType =
  * @returns {useFieldStrategyEnum.local} strategy - Search strategy type
  */
 export function useClientSearch(
-  config: useClientSearchConfigType
+  config: useClientSearchConfigType,
 ): useClientSearchReturnType {
   const query = useField<useClientSearchQueryType>({
     name: config.name,
@@ -76,14 +76,14 @@ export function useClientSearch(
   const filterFn = useCallback(
     (given: string) => {
       const currentQuery = new Field<useClientSearchQueryType>(
-        query.currentValue
+        query.currentValue,
       );
       if (currentQuery.isEmpty()) return true;
 
       const searchValue = currentQuery.get().toLowerCase();
       return given?.toLowerCase().includes(searchValue);
     },
-    [query.currentValue]
+    [query.currentValue],
   );
 
   // Memoize return object to maintain reference stability
@@ -93,6 +93,6 @@ export function useClientSearch(
       filterFn,
       strategy: useFieldStrategyEnum.local as const,
     }),
-    [query, filterFn]
+    [query, filterFn],
   );
 }

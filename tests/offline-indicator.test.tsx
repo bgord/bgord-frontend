@@ -4,20 +4,16 @@ import { OfflineIndicator } from "../components/offline-indicator";
 import * as hooks from "../hooks";
 
 // Mock the verified hooks
-vi.mock("../hooks", () => ({
-  verified: {
-    useIsOnline: vi.fn(),
-  },
-}));
+vi.mock("../hooks", () => ({ useIsOnline: vi.fn() }));
 
 describe("OfflineIndicator", () => {
   test("renders nothing when online", () => {
-    vi.mocked(hooks.verified.useIsOnline).mockReturnValue(true);
+    vi.mocked(hooks.useIsOnline).mockReturnValue(true);
 
     const { container } = render(
       <OfflineIndicator>
         <div data-testid="offline-content">Offline</div>
-      </OfflineIndicator>,
+      </OfflineIndicator>
     );
 
     expect(container.innerHTML).toBe("");
@@ -25,12 +21,12 @@ describe("OfflineIndicator", () => {
   });
 
   test("renders children when offline", () => {
-    vi.mocked(hooks.verified.useIsOnline).mockReturnValue(false);
+    vi.mocked(hooks.useIsOnline).mockReturnValue(false);
 
     render(
       <OfflineIndicator>
         <div data-testid="offline-content">Offline</div>
-      </OfflineIndicator>,
+      </OfflineIndicator>
     );
 
     expect(screen.getByTestId("offline-content")).toBeInTheDocument();
@@ -38,7 +34,7 @@ describe("OfflineIndicator", () => {
   });
 
   test("renders complex children when offline", () => {
-    vi.mocked(hooks.verified.useIsOnline).mockReturnValue(false);
+    vi.mocked(hooks.useIsOnline).mockReturnValue(false);
 
     render(
       <OfflineIndicator>
@@ -46,7 +42,7 @@ describe("OfflineIndicator", () => {
           <h1>Offline Mode</h1>
           <p>You are currently offline</p>
         </div>
-      </OfflineIndicator>,
+      </OfflineIndicator>
     );
 
     expect(screen.getByTestId("offline-wrapper")).toBeInTheDocument();
@@ -72,12 +68,12 @@ describe("OfflineIndicator Integration", () => {
     const { rerender } = render(<NetworkStatus />);
 
     // When online
-    vi.mocked(hooks.verified.useIsOnline).mockReturnValue(true);
+    vi.mocked(hooks.useIsOnline).mockReturnValue(true);
     rerender(<NetworkStatus />);
     expect(screen.queryByTestId("offline-banner")).not.toBeInTheDocument();
 
     // When offline
-    vi.mocked(hooks.verified.useIsOnline).mockReturnValue(false);
+    vi.mocked(hooks.useIsOnline).mockReturnValue(false);
     rerender(<NetworkStatus />);
     expect(screen.getByTestId("offline-banner")).toBeInTheDocument();
   });
