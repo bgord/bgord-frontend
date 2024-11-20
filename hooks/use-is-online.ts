@@ -7,10 +7,7 @@ type OnlineStatusType = boolean;
  * Safely checks browser's online status
  */
 function getOnlineStatus(): OnlineStatusType {
-  return typeof navigator !== "undefined" &&
-    typeof navigator.onLine === "boolean"
-    ? navigator.onLine
-    : true;
+  return typeof navigator !== "undefined" && typeof navigator.onLine === "boolean" ? navigator.onLine : true;
 }
 
 /**

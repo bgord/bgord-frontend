@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 /**
  * Hook to prompt user when trying to leave page with unsaved changes
@@ -13,7 +13,7 @@ import { useEffect, useCallback } from "react";
  * }
  * ```
  */
-export function useLeavingPrompt(condition: boolean = false): void {
+export function useLeavingPrompt(condition = false): void {
   const handler = useCallback((e: BeforeUnloadEvent) => {
     e.preventDefault();
   }, []);

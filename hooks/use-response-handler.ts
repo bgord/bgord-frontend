@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import * as rrd from "react-router-dom";
 
 export type ResponseType =
@@ -36,7 +36,7 @@ export function withTimeZoneOffset(headers: Headers): Headers {
 export function useResponseHandler(
   intent: string,
   key: string | string[],
-  config?: { success?: () => void; error?: () => void }
+  config?: { success?: () => void; error?: () => void },
 ) {
   const response = rrd.useActionData() as ResponseType;
   const lastHandledKey = useRef<string | null>(null);
@@ -59,18 +59,14 @@ export function useResponseHandler(
       }
       return responseId === key;
     },
-    [key]
+    [key],
   );
 
   // Memoize response validation
   const isValidResponse = useMemo(() => {
     if (!response) return false;
 
-    return (
-      response.intent === intent &&
-      response.id !== lastHandledKey.current &&
-      isKeyMatch(response.id)
-    );
+    return response.intent === intent && response.id !== lastHandledKey.current && isKeyMatch(response.id);
   }, [response, intent, isKeyMatch]);
 
   useEffect(() => {

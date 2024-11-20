@@ -1,13 +1,6 @@
-import { useEffect, useCallback, useMemo } from "react";
-import {
-  SafeLocalStorage,
-  SafeLocalStorageKeyType,
-} from "../safe-local-storage";
-import {
-  UseToggleReturnType,
-  UseToggleValueType,
-  useToggle,
-} from "./use-toggle";
+import { useCallback, useEffect, useMemo } from "react";
+import { SafeLocalStorage, SafeLocalStorageKeyType } from "../safe-local-storage";
+import { UseToggleReturnType, UseToggleValueType, useToggle } from "./use-toggle";
 
 export type UsePersistentToggleReturnType = UseToggleReturnType & {
   clear: VoidFunction;
@@ -31,11 +24,11 @@ export type UsePersistentToggleReturnType = UseToggleReturnType & {
  */
 export function usePersistentToggle(
   key: SafeLocalStorageKeyType,
-  defaultValue: UseToggleValueType = false
+  defaultValue: UseToggleValueType = false,
 ): UsePersistentToggleReturnType {
   const storedValue = useMemo(
     () => SafeLocalStorage.get<UseToggleValueType>(key, defaultValue),
-    [key, defaultValue]
+    [key, defaultValue],
   );
 
   const toggle = useToggle({ defaultValue: storedValue, name: key });

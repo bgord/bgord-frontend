@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState, useCallback, useMemo } from "react";
+import { RefObject, useCallback, useEffect, useMemo, useState } from "react";
 
 export const defaultUseIsVisibleConfig = {
   threshold: 0,
@@ -45,17 +45,14 @@ export type UseIsVisibleReturnType = boolean;
  * ```
  */
 export function useIsVisible(
-  config: UseIsVisibleConfigType = defaultUseIsVisibleConfig
+  config: UseIsVisibleConfigType = defaultUseIsVisibleConfig,
 ): UseIsVisibleReturnType {
   const [isVisible, setVisible] = useState<UseIsVisibleReturnType>(false);
 
   // Memoize intersection observer callback
-  const handleIntersection = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
-      setVisible(Boolean(entries[0]?.isIntersecting));
-    },
-    []
-  );
+  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
+    setVisible(Boolean(entries[0]?.isIntersecting));
+  }, []);
 
   // Memoize observer configuration
   const observerConfig = useMemo(
@@ -64,7 +61,7 @@ export function useIsVisible(
       root: config.root,
       rootMargin: config.rootMargin,
     }),
-    [config.threshold, config.root, config.rootMargin]
+    [config.threshold, config.root, config.rootMargin],
   );
 
   useEffect(() => {
@@ -74,10 +71,7 @@ export function useIsVisible(
       return;
     }
 
-    const observer = new IntersectionObserver(
-      handleIntersection,
-      observerConfig
-    );
+    const observer = new IntersectionObserver(handleIntersection, observerConfig);
     observer.observe(element);
 
     return () => observer.disconnect();
