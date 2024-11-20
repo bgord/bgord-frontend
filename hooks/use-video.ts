@@ -7,7 +7,25 @@ type VideoDurationType = number;
 type VideoCurrentTimeType = number;
 type VideoVolumeType = number;
 
-export const VIDEO_DEFAULT_VOLUME: VideoVolumeType = 1;
+// Video Constants
+const VIDEO_CONSTANTS = {
+  VOLUME: {
+    MIN: 0,
+    MAX: 1,
+    DEFAULT: 1,
+    STEP: 0.01,
+  },
+  TIME: {
+    MIN: 0,
+    STEP: 1,
+  },
+  PERCENTAGE: {
+    MIN: 0,
+    MAX: 100,
+  },
+} as const;
+
+export const VIDEO_DEFAULT_VOLUME: VideoVolumeType = VIDEO_CONSTANTS.VOLUME.MAX;
 
 export enum UseVideoState {
   initial = "initial",
@@ -105,12 +123,12 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
 
   const duration = useField<VideoDurationType>({
     name: "duration",
-    defaultValue: 0,
+    defaultValue: VIDEO_CONSTANTS.TIME.MIN,
   });
 
   const currentTime = useField<VideoCurrentTimeType>({
     name: "currentTime",
-    defaultValue: 0,
+    defaultValue: VIDEO_CONSTANTS.TIME.MIN,
   });
 
   const volume = useField<VideoVolumeType>({
@@ -118,12 +136,18 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
     defaultValue: VIDEO_DEFAULT_VOLUME,
   });
 
-  const muted = useMemo(() => volume.value === 0, [volume.value]);
+  const muted = useMemo(
+    () => volume.value === VIDEO_CONSTANTS.VOLUME.MIN,
+    [volume.value]
+  );
   const percentage = useMemo(
     () =>
-      duration.value === 0
-        ? 0
-        : Math.round((currentTime.value / duration.value) * 100),
+      duration.value === VIDEO_CONSTANTS.VOLUME.MIN
+        ? VIDEO_CONSTANTS.VOLUME.MIN
+        : Math.round(
+            (currentTime.value / duration.value) *
+              VIDEO_CONSTANTS.PERCENTAGE.MAX
+          ),
     [currentTime.value, duration.value]
   );
 
@@ -141,16 +165,16 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
 
   const reset = useCallback(() => {
     if (!ref.current) return;
-    ref.current.currentTime = 0;
+    ref.current.currentTime = VIDEO_CONSTANTS.TIME.MIN;
     ref.current.pause();
-    currentTime.set(0);
+    currentTime.set(VIDEO_CONSTANTS.TIME.MIN);
     setState(UseVideoState.paused);
   }, [currentTime]);
 
   const mute = useCallback(() => {
     if (!ref.current) return;
-    ref.current.volume = 0;
-    volume.set(0);
+    ref.current.volume = VIDEO_CONSTANTS.VOLUME.MIN;
+    volume.set(VIDEO_CONSTANTS.VOLUME.MIN);
   }, [volume]);
 
   const unmute = useCallback(() => {
@@ -222,20 +246,24 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
           controls: false,
         },
         player: {
-          min: 0,
-          step: 1,
+          min: VIDEO_CONSTANTS.TIME.MIN,
+          step: VIDEO_CONSTANTS.TIME.STEP,
           max: duration.value,
           value: currentTime.value,
           onInput: seek,
           style: { "--percentage": `${percentage}%` },
         },
         volume: {
-          min: 0,
-          max: 1,
-          step: 0.01,
+          min: VIDEO_CONSTANTS.VOLUME.MIN,
+          max: VIDEO_CONSTANTS.VOLUME.MAX,
+          step: VIDEO_CONSTANTS.VOLUME.STEP,
           value: volume.value,
           onInput: changeVolume,
-          style: { "--percentage": `${Math.floor(volume.value * 100)}%` },
+          style: {
+            "--percentage": `${Math.floor(
+              volume.value * VIDEO_CONSTANTS.PERCENTAGE.MAX
+            )}%`,
+          },
         },
       },
       actions: {
@@ -269,8 +297,10 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
         },
         volume: {
           value: volume.value,
-          raw: Math.floor(volume.value * 100),
-          formatted: `${Math.floor(volume.value * 100)}%`,
+          raw: Math.floor(volume.value * VIDEO_CONSTANTS.PERCENTAGE.MAX),
+          formatted: `${Math.floor(
+            volume.value * VIDEO_CONSTANTS.PERCENTAGE.MAX
+          )}%`,
         },
         muted,
       },
