@@ -86,3 +86,4 @@ export {
 };
 
 export type { BaseToastType } from "./toasts";
+export type { CopyToClipboardOptionsType } from "./copy-to-clipboard";
