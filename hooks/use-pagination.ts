@@ -1,8 +1,8 @@
 import type { PageType, Paged } from "@bgord/node";
 import { useField, useFieldStrategyEnum } from "./use-field";
+import { useMemo, useCallback } from "react";
 
 export type { Paged, PageType } from "@bgord/node";
-
 export type PagedMetaType = Paged<unknown>["meta"];
 
 type UsePaginationControlType = {
@@ -16,7 +16,6 @@ type UsePaginationControlType = {
 type UsePaginationReturnType = {
   current: PageType;
   last: PageType;
-
   controls: {
     firstPage: UsePaginationControlType;
     previousPage: UsePaginationControlType;
@@ -25,7 +24,31 @@ type UsePaginationReturnType = {
   };
 };
 
-export function usePagination(meta: PagedMetaType | null): UsePaginationReturnType {
+/**
+ * Hook for managing pagination state and controls
+ *
+ * @example
+ * ```tsx
+ * function PaginatedList() {
+ *   const pagination = usePagination(data.meta);
+ *
+ *   return (
+ *     <>
+ *       <button
+ *         onClick={pagination.controls.previousPage.go}
+ *         disabled={pagination.controls.previousPage.disabled}
+ *       >
+ *         Previous
+ *       </button>
+ *       Page {pagination.current} of {pagination.last}
+ *     </>
+ *   );
+ * }
+ * ```
+ */
+export function usePagination(
+  meta: PagedMetaType | null
+): UsePaginationReturnType {
   const firstPage = 1;
   const previousPage = meta?.previousPage;
   const nextPage = meta?.nextPage;
@@ -37,48 +60,48 @@ export function usePagination(meta: PagedMetaType | null): UsePaginationReturnTy
     strategy: useFieldStrategyEnum.params,
   });
 
-  return {
-    current: Number(page.value),
-    last: lastPage,
+  const createControl = useCallback(
+    (
+      value: PageType | undefined,
+      isActive: boolean,
+      isDisabled: boolean,
+      exists: boolean
+    ): UsePaginationControlType => ({
+      active: isActive,
+      disabled: isDisabled,
+      exists,
+      go: () => page.set(value ?? page.value),
+      value,
+    }),
+    [page]
+  );
 
-    controls: {
-      firstPage: {
-        active: !previousPage,
-        disabled: false,
-        exists: true,
-        go: () => page.set(firstPage),
-        value: firstPage,
+  return useMemo(
+    () => ({
+      current: Number(page.value),
+      last: lastPage,
+      controls: {
+        firstPage: createControl(firstPage, !previousPage, false, true),
+        previousPage: createControl(
+          previousPage,
+          false,
+          !previousPage,
+          Boolean(previousPage)
+        ),
+        nextPage: createControl(nextPage, false, !nextPage, Boolean(nextPage)),
+        lastPage: createControl(
+          lastPage,
+          Number(page.value) === lastPage,
+          !nextPage,
+          true
+        ),
       },
-
-      previousPage: {
-        active: false,
-        disabled: !previousPage,
-        exists: Boolean(previousPage),
-        go: () => page.set(previousPage ?? page.value),
-        value: previousPage,
-      },
-
-      nextPage: {
-        active: false,
-        disabled: !nextPage,
-        exists: Boolean(nextPage),
-        go: () => page.set(nextPage ?? page.value),
-        value: nextPage,
-      },
-
-      lastPage: {
-        active: Number(page.value) === lastPage,
-        disabled: !nextPage,
-        exists: true,
-        go: () => page.set(lastPage ?? page.value),
-        value: lastPage,
-      },
-    },
-  };
+    }),
+    [page.value, lastPage, previousPage, nextPage, createControl]
+  );
 }
 
 export function extractPage(url: URL): PageType {
   const searchParams = url.searchParams;
-
-  return Number(searchParams.get("page")) ? Number(searchParams.get("page")) : 1;
+  return Number(searchParams.get("page")) || 1;
 }
