@@ -1,16 +1,10 @@
 import { useEffect, useMemo } from "react";
 
-import {
-  ImageResolutionType,
-  emptyImageResolution,
-  getImageResolution,
-} from "../get-image-resolution";
+import { ImageResolutionType, emptyImageResolution, getImageResolution } from "../get-image-resolution";
 import { useField } from "./use-field";
 import { UseFileReturnType, UseFileState } from "./use-file";
 
-export function useImageFileResolution(
-  file: UseFileReturnType
-): ImageResolutionType {
+export function useImageFileResolution(file: UseFileReturnType): ImageResolutionType {
   const width = useField<ImageResolutionType["width"]>({
     name: "width",
     defaultValue: emptyImageResolution.width,
@@ -52,8 +46,5 @@ export function useImageFileResolution(
     execute();
   }, [file.state, file.data?.name]);
 
-  return useMemo(
-    () => ({ width: width.value, height: height.value }),
-    [width.value, height.value]
-  );
+  return useMemo(() => ({ width: width.value, height: height.value }), [width.value, height.value]);
 }

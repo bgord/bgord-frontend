@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useMemo } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { DurationFormatter } from "../durations";
 import { useField } from "./use-field";
 
@@ -136,19 +136,13 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
     defaultValue: VIDEO_DEFAULT_VOLUME,
   });
 
-  const muted = useMemo(
-    () => volume.value === VIDEO_CONSTANTS.VOLUME.MIN,
-    [volume.value]
-  );
+  const muted = useMemo(() => volume.value === VIDEO_CONSTANTS.VOLUME.MIN, [volume.value]);
   const percentage = useMemo(
     () =>
       duration.value === VIDEO_CONSTANTS.VOLUME.MIN
         ? VIDEO_CONSTANTS.VOLUME.MIN
-        : Math.round(
-            (currentTime.value / duration.value) *
-              VIDEO_CONSTANTS.PERCENTAGE.MAX
-          ),
-    [currentTime.value, duration.value]
+        : Math.round((currentTime.value / duration.value) * VIDEO_CONSTANTS.PERCENTAGE.MAX),
+    [currentTime.value, duration.value],
   );
 
   const play = useCallback(() => {
@@ -190,7 +184,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
       ref.current.currentTime = target.valueAsNumber;
       currentTime.set(target.valueAsNumber);
     },
-    [currentTime]
+    [currentTime],
   );
 
   const onLoadedMetadata = useCallback(
@@ -202,7 +196,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
       volume.set(target.volume);
       setState(UseVideoState.ready);
     },
-    [duration, currentTime, volume]
+    [duration, currentTime, volume],
   );
 
   const onTimeUpdate = useCallback(
@@ -210,7 +204,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
       const target = event.target as HTMLVideoElement;
       currentTime.set(Math.round(target.currentTime));
     },
-    [currentTime]
+    [currentTime],
   );
 
   const onEnded = useCallback(() => setState(UseVideoState.paused), []);
@@ -222,7 +216,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
       ref.current.volume = target.valueAsNumber;
       volume.set(target.valueAsNumber);
     },
-    [volume]
+    [volume],
   );
 
   const triggerFullscreen = useCallback(() => {
@@ -230,10 +224,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
     ref.current.requestFullscreen?.();
   }, []);
 
-  const matches = useCallback(
-    (states: UseVideoState[]) => states.some((given) => given === state),
-    [state]
-  );
+  const matches = useCallback((states: UseVideoState[]) => states.some((given) => given === state), [state]);
 
   return useMemo(
     () => ({
@@ -260,9 +251,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
           value: volume.value,
           onInput: changeVolume,
           style: {
-            "--percentage": `${Math.floor(
-              volume.value * VIDEO_CONSTANTS.PERCENTAGE.MAX
-            )}%`,
+            "--percentage": `${Math.floor(volume.value * VIDEO_CONSTANTS.PERCENTAGE.MAX)}%`,
           },
         },
       },
@@ -298,9 +287,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
         volume: {
           value: volume.value,
           raw: Math.floor(volume.value * VIDEO_CONSTANTS.PERCENTAGE.MAX),
-          formatted: `${Math.floor(
-            volume.value * VIDEO_CONSTANTS.PERCENTAGE.MAX
-          )}%`,
+          formatted: `${Math.floor(volume.value * VIDEO_CONSTANTS.PERCENTAGE.MAX)}%`,
         },
         muted,
       },
@@ -325,6 +312,6 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
       state,
       matches,
       muted,
-    ]
+    ],
   );
 }

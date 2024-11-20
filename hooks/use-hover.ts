@@ -69,10 +69,7 @@ export function useHover(config?: UseHoverConfigType): UseHoverReturnType {
 
   // Memoize return value
   return useMemo(
-    () => ({
-      attach: { ref },
-      isHovering: isHovering.on && enabled,
-    }),
+    () => ({ attach: { ref }, isHovering: isHovering.on && enabled }),
     [isHovering.on, enabled],
   );
 }

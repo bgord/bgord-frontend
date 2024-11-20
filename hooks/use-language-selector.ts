@@ -1,13 +1,10 @@
 import type { LanguageType } from "@bgord/node/dist/schema";
 import Cookies from "js-cookie";
-import { useEffect, useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { getSafeWindow } from "../safe-window";
 import { useLanguage } from "../translations";
 import { Field } from "./field";
-import {
-  useClientFilter,
-  useClientFilterReturnType,
-} from "./use-client-filter";
+import { useClientFilter, useClientFilterReturnType } from "./use-client-filter";
 
 /**
  * Hook for language selection with cookie persistence
@@ -19,7 +16,7 @@ import {
  * ```
  */
 export function useLanguageSelector(
-  supportedLanguages: Record<LanguageType, LanguageType>
+  supportedLanguages: Record<LanguageType, LanguageType>,
 ): useClientFilterReturnType<LanguageType> {
   const language = useLanguage();
 

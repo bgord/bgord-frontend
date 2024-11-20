@@ -1,6 +1,6 @@
 import type { PageType, Paged } from "@bgord/node";
+import { useCallback, useMemo } from "react";
 import { useField, useFieldStrategyEnum } from "./use-field";
-import { useMemo, useCallback } from "react";
 
 export type { Paged, PageType } from "@bgord/node";
 export type PagedMetaType = Paged<unknown>["meta"];
@@ -46,9 +46,7 @@ type UsePaginationReturnType = {
  * }
  * ```
  */
-export function usePagination(
-  meta: PagedMetaType | null
-): UsePaginationReturnType {
+export function usePagination(meta: PagedMetaType | null): UsePaginationReturnType {
   const firstPage = 1;
   const previousPage = meta?.previousPage;
   const nextPage = meta?.nextPage;
@@ -65,7 +63,7 @@ export function usePagination(
       value: PageType | undefined,
       isActive: boolean,
       isDisabled: boolean,
-      exists: boolean
+      exists: boolean,
     ): UsePaginationControlType => ({
       active: isActive,
       disabled: isDisabled,
@@ -73,7 +71,7 @@ export function usePagination(
       go: () => page.set(value ?? page.value),
       value,
     }),
-    [page]
+    [page],
   );
 
   return useMemo(
@@ -82,22 +80,12 @@ export function usePagination(
       last: lastPage,
       controls: {
         firstPage: createControl(firstPage, !previousPage, false, true),
-        previousPage: createControl(
-          previousPage,
-          false,
-          !previousPage,
-          Boolean(previousPage)
-        ),
+        previousPage: createControl(previousPage, false, !previousPage, Boolean(previousPage)),
         nextPage: createControl(nextPage, false, !nextPage, Boolean(nextPage)),
-        lastPage: createControl(
-          lastPage,
-          Number(page.value) === lastPage,
-          !nextPage,
-          true
-        ),
+        lastPage: createControl(lastPage, Number(page.value) === lastPage, !nextPage, true),
       },
     }),
-    [page.value, lastPage, previousPage, nextPage, createControl]
+    [page.value, lastPage, previousPage, nextPage, createControl],
   );
 }
 

@@ -7,7 +7,10 @@ type OnlineStatusType = boolean;
  * Safely checks browser's online status
  */
 function getOnlineStatus(): OnlineStatusType {
-  return typeof navigator !== "undefined" && typeof navigator.onLine === "boolean" ? navigator.onLine : true;
+  return typeof navigator !== "undefined" &&
+    typeof navigator.onLine === "boolean"
+    ? navigator.onLine
+    : true;
 }
 
 /**
@@ -34,13 +37,12 @@ export const useIsOnline = (): OnlineStatusType => {
     defaultValue: initialStatus,
   });
 
-  const handleOnline = useCallback(() => {
-    onlineStatus.enable();
-  }, [onlineStatus]);
+  const handleOnline = useCallback(() => onlineStatus.enable(), [onlineStatus]);
 
-  const handleOffline = useCallback(() => {
-    onlineStatus.disable();
-  }, [onlineStatus]);
+  const handleOffline = useCallback(
+    () => onlineStatus.disable(),
+    [onlineStatus],
+  );
 
   useEffect(() => {
     if (typeof window === "undefined") return;

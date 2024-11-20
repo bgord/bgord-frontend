@@ -30,7 +30,7 @@ export type UseKeyboardShortcutsOptionsType = {
  */
 export function useKeyboardShortcuts(
   config: UseKeyboardShortcutsConfigType,
-  options?: UseKeyboardShortcutsOptionsType
+  options?: UseKeyboardShortcutsOptionsType,
 ): void {
   const enabled = options?.enabled ?? true;
 
@@ -38,7 +38,7 @@ export function useKeyboardShortcuts(
   const memoizedConfig = useMemo(
     () => config,
     // Using JSON.stringify as a stable way to compare config objects
-    [JSON.stringify(Object.keys(config))]
+    [JSON.stringify(Object.keys(config))],
   );
 
   useEffect(() => {

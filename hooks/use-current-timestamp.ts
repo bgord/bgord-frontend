@@ -36,12 +36,14 @@ export function getCurrentTimestamp(): TimestampType {
  */
 export function useCurrentTimestamp(): TimestampType {
   // Initialize state with memoized initial value
-  const [timestamp, setTimestamp] = useState<TimestampType>(getCurrentTimestamp);
+  const [timestamp, setTimestamp] =
+    useState<TimestampType>(getCurrentTimestamp);
 
   // Memoize the timestamp update callback
-  const updateTimestamp = useCallback(() => {
-    setTimestamp(getCurrentTimestamp());
-  }, []);
+  const updateTimestamp = useCallback(
+    () => setTimestamp(getCurrentTimestamp()),
+    [],
+  );
 
   useEffect(() => {
     // Start the interval with memoized callback

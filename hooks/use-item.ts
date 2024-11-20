@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 type UseItemValueType<T> = T | null;
 
@@ -35,21 +35,14 @@ export type UseItemConfigType<T> = {
  * }
  * ```
  */
-export function useItem<T>(
-  config?: UseItemConfigType<T>
-): UseItemReturnType<T> {
+export function useItem<T>(config?: UseItemConfigType<T>): UseItemReturnType<T> {
   const defaultItem = null;
   const comparisonFn = config?.comparisonFn ?? defaultComparisonFn;
-  const [item, setItem] = useState<UseItemValueType<T>>(
-    config?.defaultItem ?? defaultItem
-  );
+  const [item, setItem] = useState<UseItemValueType<T>>(config?.defaultItem ?? defaultItem);
 
   const clear = useCallback(() => setItem(defaultItem), []);
 
-  const set = useCallback(
-    (newer: NonNullable<UseItemValueType<T>>) => setItem(newer),
-    []
-  );
+  const set = useCallback((newer: NonNullable<UseItemValueType<T>>) => setItem(newer), []);
 
   const toggle = useCallback(
     (newer: NonNullable<UseItemValueType<T>>) => {
@@ -58,12 +51,12 @@ export function useItem<T>(
         return comparisonFn(current, newer) ? defaultItem : newer;
       });
     },
-    [comparisonFn]
+    [comparisonFn],
   );
 
   const compare = useCallback(
     (given: UseItemValueType<T>) => comparisonFn(item, given),
-    [item, comparisonFn]
+    [item, comparisonFn],
   );
 
   return useMemo(
@@ -76,13 +69,10 @@ export function useItem<T>(
       exists: !comparisonFn(item, defaultItem),
       compare,
     }),
-    [clear, set, toggle, item, comparisonFn, compare]
+    [clear, set, toggle, item, comparisonFn, compare],
   );
 }
 
-function defaultComparisonFn<T>(
-  a: UseItemValueType<T>,
-  b: UseItemValueType<T>
-) {
+function defaultComparisonFn<T>(a: UseItemValueType<T>, b: UseItemValueType<T>) {
   return a === b;
 }
