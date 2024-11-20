@@ -67,7 +67,7 @@ export function useDisablePullToRefresh(condition = true): void {
 
   useLayoutEffect(() => {
     // Skip if condition is false or no elements (SSR)
-    if (!condition || !elements) return;
+    if (!(condition && elements)) return;
 
     // Get original styles
     const originalStyles = getOriginalStyles();

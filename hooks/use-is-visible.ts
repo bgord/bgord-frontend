@@ -70,9 +70,7 @@ export function useIsVisible(
   useEffect(() => {
     const element = config.ref.current;
 
-    if (!isIntersectionObserverSupported() || !element) {
-      return;
-    }
+    if (!(isIntersectionObserverSupported() && element)) return;
 
     const observer = new IntersectionObserver(
       handleIntersection,

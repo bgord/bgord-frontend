@@ -37,10 +37,7 @@ type UseDebounceConfigType<T> = { value: T; delayMs: number };
 export function useDebounce<T>(config: UseDebounceConfigType<T>): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(config.value);
 
-  const updateValue = useCallback(
-    () => setDebouncedValue(config.value),
-    [config.value],
-  );
+  const updateValue = useCallback(() => setDebouncedValue(config.value), [config.value]);
 
   useEffect(() => {
     const timer = setTimeout(updateValue, config.delayMs);

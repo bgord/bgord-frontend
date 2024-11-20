@@ -41,10 +41,7 @@ import { UseToggleReturnType, useToggle } from "./use-toggle";
  * @param delayMs - Delay in milliseconds before showing loader (default: 500ms)
  * @returns Toggle state for the delayed loader
  */
-export function useDelayedLoader(
-  navigation: Navigation,
-  delayMs = 500,
-): UseToggleReturnType {
+export function useDelayedLoader(navigation: Navigation, delayMs = 500): UseToggleReturnType {
   // Create refs for toggle instances to maintain stable references
   const delayedLoader = useToggle({ name: "delayed-loader" });
   const delayElapsed = useToggle({ name: "delayed-elapsed" });
@@ -53,10 +50,7 @@ export function useDelayedLoader(
   const timeoutIdRef = useRef<NodeJS.Timeout>();
 
   // Memoize the delay elapsed callback
-  const handleDelayElapsed = useCallback(
-    () => delayElapsed.enable(),
-    [delayElapsed],
-  );
+  const handleDelayElapsed = useCallback(() => delayElapsed.enable(), [delayElapsed]);
 
   // Effect for managing the delay timeout
   useEffect(() => {

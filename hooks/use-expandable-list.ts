@@ -103,9 +103,7 @@ export function useExpandableList(
   const [state, setState] = useState<UseExpandableListState>(getState);
 
   // Update state when config changes
-  useEffect(() => {
-    setState(getState());
-  }, [config.length, config.max, getState]);
+  useEffect(() => setState(getState()), [getState]);
 
   // Memoize action handlers
   const actions = useMemo(

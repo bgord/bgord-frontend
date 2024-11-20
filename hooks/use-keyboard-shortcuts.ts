@@ -35,6 +35,7 @@ export function useKeyboardShortcuts(
   const enabled = options?.enabled ?? true;
 
   // Memoize config to prevent unnecessary effect triggers
+  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
   const memoizedConfig = useMemo(
     () => config,
     // Using JSON.stringify as a stable way to compare config objects
