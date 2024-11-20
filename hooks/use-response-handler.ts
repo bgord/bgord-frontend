@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useMemo } from "react";
 import * as rrd from "react-router-dom";
 
 export type ResponseType =
@@ -30,50 +30,77 @@ export function withTimeZoneOffset(headers: Headers): Headers {
   return headers;
 }
 
+/**
+ * Hook to handle action responses with success/error callbacks
+ */
 export function useResponseHandler(
   intent: string,
   key: string | string[],
-  config?: { success?: () => void; error?: () => void },
+  config?: { success?: () => void; error?: () => void }
 ) {
   const response = rrd.useActionData() as ResponseType;
   const lastHandledKey = useRef<string | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
-  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
-  const onSuccess = useCallback(() => config?.success?.(), []);
-  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
-  const onError = useCallback(() => config?.error?.(), []);
+  // Memoize callbacks with their dependencies
+  const onSuccess = useCallback(() => {
+    config?.success?.();
+  }, [config?.success]);
 
-  // biome-ignore lint: lint/correctness/useExhaustiveDependencies
+  const onError = useCallback(() => {
+    config?.error?.();
+  }, [config?.error]);
+
+  // Memoize key comparison for arrays
+  const isKeyMatch = useCallback(
+    (responseId: string) => {
+      if (Array.isArray(key)) {
+        return key.includes(responseId);
+      }
+      return responseId === key;
+    },
+    [key]
+  );
+
+  // Memoize response validation
+  const isValidResponse = useMemo(() => {
+    if (!response) return false;
+
+    return (
+      response.intent === intent &&
+      response.id !== lastHandledKey.current &&
+      isKeyMatch(response.id)
+    );
+  }, [response, intent, isKeyMatch]);
+
   useEffect(() => {
-    if (response?.intent !== intent || response.id === lastHandledKey.current || response.id !== key) {
-      return;
-    }
-    if (response.result === "success") {
+    if (!isValidResponse) return;
+
+    if (response!.result === "success") {
       onSuccess();
-      lastHandledKey.current = response.id;
-
-      setTimeout(() => {
-        lastHandledKey.current = null;
-      }, 500);
-    }
-    if (response.result === "error") {
+      lastHandledKey.current = response!.id;
+    } else if (response!.result === "error") {
       onError();
-      lastHandledKey.current = response.id;
-
-      setTimeout(() => {
-        lastHandledKey.current = null;
-      }, 500);
+      lastHandledKey.current = response!.id;
     }
-  }, [
-    response?.result,
-    response?.intent,
-    response?.timestamp,
-    response?.id,
-    intent,
-    key,
-    onSuccess,
-    onError,
-  ]);
+
+    // Clear previous timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Set new timeout
+    timeoutRef.current = setTimeout(() => {
+      lastHandledKey.current = null;
+    }, 500);
+
+    // Cleanup function
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [response, isValidResponse, onSuccess, onError]);
 }
 
 export function respond(response: Response, intent: string, key: string) {
