@@ -1,4 +1,10 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useState,
+  useCallback,
+  useMemo,
+} from "react";
 
 export type UseListActionsType<T> = {
   clear: VoidFunction;
@@ -16,40 +22,72 @@ export type UseListConfigType<T> = {
   comparisonFn?: (a: T, b: T) => boolean;
 };
 
-export function useList<T>(config?: UseListConfigType<T>): UseListReturnType<T> {
+/**
+ * Hook for managing a list of items with various operations
+ *
+ * @example
+ * ```tsx
+ * function TagList() {
+ *   const [tags, { add, remove, toggle }] = useList<string>();
+ *
+ *   return (
+ *     <div>
+ *       {tags.map(tag => (
+ *         <Tag
+ *           key={tag}
+ *           onClick={() => toggle(tag)}
+ *         >
+ *           {tag}
+ *         </Tag>
+ *       ))}
+ *     </div>
+ *   );
+ * }
+ * ```
+ */
+export function useList<T>(
+  config?: UseListConfigType<T>
+): UseListReturnType<T> {
   const defaultItems = config?.defaultItems ?? [];
   const defaultComparisonFn = (a: T, b: T) => a === b;
   const comparisonFn = config?.comparisonFn ?? defaultComparisonFn;
+
   const [items, setItems] = useState<T[]>(defaultItems);
 
-  function clear() {
-    setItems([]);
-  }
+  const clear = useCallback(() => setItems([]), []);
 
-  function add(payload: T | T[]) {
-    setItems((items) => {
-      if (Array.isArray(payload)) {
-        return [...items, ...payload];
-      }
-      return [...items, payload];
-    });
-  }
-
-  function remove(item: T) {
-    setItems((items) => items.filter((x) => !comparisonFn(x, item)));
-  }
-
-  function isAdded(item: T) {
-    return items.some((x) => comparisonFn(x, item));
-  }
-
-  function toggle(item: T) {
-    setItems((currentItems) =>
-      currentItems.some((x) => comparisonFn(x, item))
-        ? currentItems.filter((x) => !comparisonFn(x, item))
-        : [...currentItems, item],
+  const add = useCallback((payload: T | T[]) => {
+    setItems((items) =>
+      Array.isArray(payload) ? [...items, ...payload] : [...items, payload]
     );
-  }
+  }, []);
 
-  return [items, { clear, add, remove, toggle, isAdded, update: setItems }];
+  const remove = useCallback(
+    (item: T) =>
+      setItems((items) => items.filter((x) => !comparisonFn(x, item))),
+    [comparisonFn]
+  );
+
+  const isAdded = useCallback(
+    (item: T) => items.some((x) => comparisonFn(x, item)),
+    [items, comparisonFn]
+  );
+
+  const toggle = useCallback(
+    (item: T) => {
+      setItems((currentItems) =>
+        currentItems.some((x) => comparisonFn(x, item))
+          ? currentItems.filter((x) => !comparisonFn(x, item))
+          : [...currentItems, item]
+      );
+    },
+    [comparisonFn]
+  );
+
+  const actions = useMemo(
+    () => ({ clear, add, remove, toggle, isAdded, update: setItems }),
+    [clear, add, remove, toggle, isAdded]
+  );
+
+  return [items, actions];
 }
