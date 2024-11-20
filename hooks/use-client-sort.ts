@@ -2,6 +2,7 @@
  * Hook for client-side sorting with configurable strategies
  * @module useClientSort
  */
+import { useMemo, useCallback } from "react";
 import { Field, FieldValueAllowedTypes } from "./field";
 import {
   FieldElementType,
@@ -61,27 +62,43 @@ export function useClientSort<X>(
     strategy: useFieldStrategyEnum.local,
   });
 
-  const handleChange: (event: React.ChangeEvent<FieldElementType>) => void = (
-    event
-  ) => {
-    const newSort = event.currentTarget.value;
-    const isNewSortInEnum = Boolean(config.enum[String(newSort)]);
+  // Memoize options array to prevent unnecessary rerenders
+  const sortOptions = useMemo(
+    () => Object.keys(config.options) as useClientSortOptionType[],
+    [config.options]
+  );
 
-    field.set(isNewSortInEnum ? newSort : config.enum.default);
-  };
+  // Memoize change handler
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<FieldElementType>) => {
+      const newSort = event.currentTarget.value;
+      const isNewSortInEnum = Boolean(config.enum[String(newSort)]);
+      field.set(isNewSortInEnum ? newSort : config.enum.default);
+    },
+    [config.enum, field.set]
+  );
+
+  // Memoize sort function based on current value
+  const sortFn = useMemo(() => {
+    if (Field.compare(field.currentValue, config.enum.default)) {
+      return defaultSortFn;
+    }
+    return config.options[field.value] ?? defaultSortFn;
+  }, [field.currentValue, field.value, config.enum.default, config.options]);
 
   if (Field.compare(field.currentValue, config.enum.default)) {
     return {
-      sortFn: defaultSortFn,
-      options: Object.keys(config.options) as useClientSortOptionType[],
+      sortFn,
+      options: sortOptions,
       ...field,
       handleChange,
       strategy: useFieldStrategyEnum.local,
     };
   }
+
   return {
-    sortFn: config.options[field.value] ?? defaultSortFn,
-    options: Object.keys(config.options) as useClientSortOptionType[],
+    sortFn,
+    options: sortOptions,
     ...field,
     handleChange,
     strategy: useFieldStrategyEnum.local,
