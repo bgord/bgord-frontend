@@ -1,4 +1,3 @@
-// VERIFIED ONLY
 import { Field } from "./field";
 import { useAutofocus } from "./use-autofocus";
 import { useClickOutside } from "./use-click-outside";

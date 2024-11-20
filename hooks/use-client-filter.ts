@@ -2,6 +2,7 @@
  * Hook for client-side filtering with customizable filter functions
  * @module useClientFilter
  */
+import { useCallback, useMemo } from "react";
 import { Field, FieldValueAllowedTypes } from "./field";
 import {
   useField,
@@ -94,21 +95,33 @@ export function useClientFilter<T extends FieldValueAllowedTypes>(
     strategy: useFieldStrategyEnum.local,
   });
 
-  function defaultFilterFn(given: T) {
-    if (query.empty) return true;
-    return Field.compare(given, query.currentValue);
-  }
+  const defaultFilterFn = useCallback(
+    (given: T) => {
+      if (query.empty) return true;
+      return Field.compare(given, query.currentValue);
+    },
+    [query.empty, query.currentValue]
+  );
 
-  const filterFn = config.filterFn ?? defaultFilterFn;
-  const options = Object.entries(config.enum).map(([name, value]) => ({
-    name,
-    value,
-  }));
+  // Memoize filter function (either custom or default)
+  const filterFn = useMemo(
+    () => config.filterFn ?? defaultFilterFn,
+    [config.filterFn, defaultFilterFn]
+  );
 
-  return {
-    ...query,
-    filterFn,
-    options,
-    strategy: useFieldStrategyEnum.local,
-  };
+  // Memoize options array
+  const options = useMemo(
+    () => Object.entries(config.enum).map(([name, value]) => ({ name, value })),
+    [config.enum]
+  );
+
+  return useMemo(
+    () => ({
+      ...query,
+      filterFn,
+      options,
+      strategy: useFieldStrategyEnum.local as const,
+    }),
+    [query, filterFn, options]
+  );
 }
