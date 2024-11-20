@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 /**
  * Type for file input name attribute
@@ -142,10 +142,7 @@ export type UseFileReturnType = UseFileIdle | UseFileSelected | UseFileError;
  * @param name - Name/ID for the file input
  * @param config - Optional configuration for file validation
  */
-export function useFile(
-  name: UseFileNameType,
-  config?: UseFileConfigType
-): UseFileReturnType {
+export function useFile(name: UseFileNameType, config?: UseFileConfigType): UseFileReturnType {
   const maxSize = config?.maxSize ?? Number.POSITIVE_INFINITY;
 
   const [key, setKey] = useState(0);
@@ -175,13 +172,10 @@ export function useFile(
         setState(UseFileState.idle);
       },
     }),
-    [maxSize]
+    [maxSize],
   );
 
-  const preview = useMemo(
-    () => (file ? URL.createObjectURL(file) : undefined),
-    [file]
-  );
+  const preview = useMemo(() => (file ? URL.createObjectURL(file) : undefined), [file]);
 
   useEffect(() => {
     return () => {
@@ -189,10 +183,7 @@ export function useFile(
     };
   }, [preview]);
 
-  const matches = useCallback(
-    (states: UseFileState[]) => states.some((given) => given === state),
-    [state]
-  );
+  const matches = useCallback((states: UseFileState[]) => states.some((given) => given === state), [state]);
 
   // Memoize common props
   const commonProps = useMemo(
@@ -205,7 +196,7 @@ export function useFile(
         props: { id: name, name, multiple: false as const },
       },
     }),
-    [matches, actions, name, key]
+    [matches, actions, name, key],
   );
 
   if (state === UseFileState.idle) {

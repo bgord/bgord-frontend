@@ -1,4 +1,4 @@
-import { Ref, useRef, useCallback, useMemo } from "react";
+import { Ref, useCallback, useMemo, useRef } from "react";
 import { useKeyboardShortcuts } from "./use-keyboard-shortcuts";
 
 /**
@@ -48,9 +48,9 @@ type FocusableElement = HTMLElement & { focus(): void };
  * @param shortcut - Keyboard shortcut to trigger focus (e.g., 'ctrl+k', 'alt+f')
  * @returns Object containing the ref for the focusable element
  */
-export function useFocusKeyboardShortcut<
-  T extends FocusableElement = HTMLInputElement
->(shortcut: string): { ref: Ref<T> } {
+export function useFocusKeyboardShortcut<T extends FocusableElement = HTMLInputElement>(
+  shortcut: string,
+): { ref: Ref<T> } {
   // Create ref for the focusable element
   const ref = useRef<T>(null);
 

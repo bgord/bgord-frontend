@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 /**
  * Enum representing possible states of the expandable list
@@ -79,23 +79,19 @@ export type UseExpandableListReturnType = {
  * @param config - Configuration object for the expandable list
  * @returns Object containing list state and controls
  */
-export function useExpandableList(
-  config: UseExpandableListConfigType
-): UseExpandableListReturnType {
+export function useExpandableList(config: UseExpandableListConfigType): UseExpandableListReturnType {
   // Memoize computed values
   const { numberOfExcessiveElements, areThereExcessiveElements } = useMemo(
     () => ({
       numberOfExcessiveElements: config.length - config.max,
       areThereExcessiveElements: config.length > config.max,
     }),
-    [config.length, config.max]
+    [config.length, config.max],
   );
 
   // Memoize initial state calculation
   const getState = useCallback(() => {
-    return areThereExcessiveElements
-      ? UseExpandableListState.contracted
-      : UseExpandableListState.expanded;
+    return areThereExcessiveElements ? UseExpandableListState.contracted : UseExpandableListState.expanded;
   }, [areThereExcessiveElements]);
 
   const [state, setState] = useState<UseExpandableListState>(getState);
@@ -119,7 +115,7 @@ export function useExpandableList(
         }
       },
     }),
-    [state]
+    [state],
   );
 
   // Memoize filter function
@@ -128,17 +124,16 @@ export function useExpandableList(
       if (state === UseExpandableListState.expanded) return true;
       return index < config.max;
     },
-    [state, config.max]
+    [state, config.max],
   );
 
   // Memoize display flags
   const displayFlags = useMemo(
     () => ({
       displayShowMore: state === UseExpandableListState.contracted,
-      displayShowLess:
-        state === UseExpandableListState.expanded && areThereExcessiveElements,
+      displayShowLess: state === UseExpandableListState.expanded && areThereExcessiveElements,
     }),
-    [state, areThereExcessiveElements]
+    [state, areThereExcessiveElements],
   );
 
   return {
