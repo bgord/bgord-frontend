@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 
 type UseItemValueType<T> = T | null;
 
-type UseItemReturnType<T> = {
+export type UseItemReturnType<T> = {
   clear: VoidFunction;
   set: (item: NonNullable<UseItemValueType<T>>) => void;
   toggle: (item: NonNullable<UseItemValueType<T>>) => void;

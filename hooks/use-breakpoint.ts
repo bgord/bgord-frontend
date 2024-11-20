@@ -55,9 +55,7 @@ type UseBreakpointReturnType = boolean;
  * Performance note: This hook uses memoization internally to prevent unnecessary
  * recalculations when the window dimensions or breakpoint haven't changed.
  */
-export function useBreakpoint(
-  breakpoint: BreakpointType,
-): UseBreakpointReturnType {
+export function useBreakpoint(breakpoint: BreakpointType): UseBreakpointReturnType {
   // Get window dimensions
   const dimensions = useWindowDimensions();
 

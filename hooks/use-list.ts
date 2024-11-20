@@ -1,10 +1,4 @@
-import {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useMemo,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction, useCallback, useMemo, useState } from "react";
 
 type UseListActionsType<T> = {
   clear: VoidFunction;
@@ -45,9 +39,7 @@ type UseListConfigType<T> = {
  * }
  * ```
  */
-export function useList<T>(
-  config?: UseListConfigType<T>,
-): UseListReturnType<T> {
+export function useList<T>(config?: UseListConfigType<T>): UseListReturnType<T> {
   const defaultItems = config?.defaultItems ?? [];
   const defaultComparisonFn = (a: T, b: T) => a === b;
   const comparisonFn = config?.comparisonFn ?? defaultComparisonFn;
@@ -57,21 +49,15 @@ export function useList<T>(
   const clear = useCallback(() => setItems([]), []);
 
   const add = useCallback((payload: T | T[]) => {
-    setItems((items) =>
-      Array.isArray(payload) ? [...items, ...payload] : [...items, payload],
-    );
+    setItems((items) => (Array.isArray(payload) ? [...items, ...payload] : [...items, payload]));
   }, []);
 
   const remove = useCallback(
-    (item: T) =>
-      setItems((items) => items.filter((x) => !comparisonFn(x, item))),
+    (item: T) => setItems((items) => items.filter((x) => !comparisonFn(x, item))),
     [comparisonFn],
   );
 
-  const isAdded = useCallback(
-    (item: T) => items.some((x) => comparisonFn(x, item)),
-    [items, comparisonFn],
-  );
+  const isAdded = useCallback((item: T) => items.some((x) => comparisonFn(x, item)), [items, comparisonFn]);
 
   const toggle = useCallback(
     (item: T) => {

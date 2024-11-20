@@ -68,8 +68,5 @@ export function useHover(config?: UseHoverConfigType): UseHoverReturnType {
   }, [enabled, handleMouseEnter, handleMouseLeave]); // Fixed dependencies array
 
   // Memoize return value
-  return useMemo(
-    () => ({ attach: { ref }, isHovering: isHovering.on && enabled }),
-    [isHovering.on, enabled],
-  );
+  return useMemo(() => ({ attach: { ref }, isHovering: isHovering.on && enabled }), [isHovering.on, enabled]);
 }

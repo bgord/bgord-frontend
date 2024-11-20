@@ -37,9 +37,7 @@ export function useScroll(): UseScrollReturnType {
   const safeWindow = useMemo(() => getSafeWindow(), []);
   const defaultScrollPosition = 0;
 
-  const [scrollPosition, setScrollPosition] = useState<ScrollPositionType>(
-    defaultScrollPosition,
-  );
+  const [scrollPosition, setScrollPosition] = useState<ScrollPositionType>(defaultScrollPosition);
   const scrollbarVisibility = useToggle({ name: "scroll-visibility" });
 
   const goToTop = useCallback(() => {
@@ -52,9 +50,7 @@ export function useScroll(): UseScrollReturnType {
 
     setScrollPosition(safeWindow.scrollY);
 
-    const shouldShowScrollbar =
-      safeWindow.document.body.clientHeight <
-      safeWindow.document.body.scrollHeight;
+    const shouldShowScrollbar = safeWindow.document.body.clientHeight < safeWindow.document.body.scrollHeight;
 
     if (shouldShowScrollbar) {
       scrollbarVisibility.enable();

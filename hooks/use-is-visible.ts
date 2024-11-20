@@ -50,12 +50,9 @@ export function useIsVisible(
   const [isVisible, setVisible] = useState<UseIsVisibleReturnType>(false);
 
   // Memoize intersection observer callback
-  const handleIntersection = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
-      setVisible(Boolean(entries[0]?.isIntersecting));
-    },
-    [],
-  );
+  const handleIntersection = useCallback((entries: IntersectionObserverEntry[]) => {
+    setVisible(Boolean(entries[0]?.isIntersecting));
+  }, []);
 
   // Memoize observer configuration
   const observerConfig = useMemo(
@@ -72,10 +69,7 @@ export function useIsVisible(
 
     if (!(isIntersectionObserverSupported() && element)) return;
 
-    const observer = new IntersectionObserver(
-      handleIntersection,
-      observerConfig,
-    );
+    const observer = new IntersectionObserver(handleIntersection, observerConfig);
     observer.observe(element);
 
     return () => observer.disconnect();

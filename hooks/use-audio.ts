@@ -168,17 +168,12 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
     defaultValue: AUDIO_CONSTANTS.VOLUME.DEFAULT,
   });
 
-  const muted = useMemo(
-    () => volume.value === AUDIO_CONSTANTS.VOLUME.MIN,
-    [volume.value],
-  );
+  const muted = useMemo(() => volume.value === AUDIO_CONSTANTS.VOLUME.MIN, [volume.value]);
 
   const percentage = useMemo(() => {
     return duration.value === AUDIO_CONSTANTS.TIME.MIN
       ? AUDIO_CONSTANTS.PERCENTAGE.MIN
-      : Math.round(
-          (currentTime.value / duration.value) * AUDIO_CONSTANTS.PERCENTAGE.MAX,
-        );
+      : Math.round((currentTime.value / duration.value) * AUDIO_CONSTANTS.PERCENTAGE.MAX);
   }, [currentTime.value, duration.value]);
 
   // Memoized callbacks
@@ -267,10 +262,7 @@ export function useAudio(config: UseAudioConfig): UseAudioReturnType {
     [volume],
   );
 
-  const matches = useCallback(
-    (states: UseAudioState[]) => states.includes(state),
-    [state],
-  );
+  const matches = useCallback((states: UseAudioState[]) => states.includes(state), [state]);
 
   // Memoized return value
   return useMemo(

@@ -136,18 +136,12 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
     defaultValue: VIDEO_DEFAULT_VOLUME,
   });
 
-  const muted = useMemo(
-    () => volume.value === VIDEO_CONSTANTS.VOLUME.MIN,
-    [volume.value],
-  );
+  const muted = useMemo(() => volume.value === VIDEO_CONSTANTS.VOLUME.MIN, [volume.value]);
   const percentage = useMemo(
     () =>
       duration.value === VIDEO_CONSTANTS.VOLUME.MIN
         ? VIDEO_CONSTANTS.VOLUME.MIN
-        : Math.round(
-            (currentTime.value / duration.value) *
-              VIDEO_CONSTANTS.PERCENTAGE.MAX,
-          ),
+        : Math.round((currentTime.value / duration.value) * VIDEO_CONSTANTS.PERCENTAGE.MAX),
     [currentTime.value, duration.value],
   );
 
@@ -230,10 +224,7 @@ export function useVideo(src: UseVideoSrcType): UseVideoReturnType {
     ref.current.requestFullscreen?.();
   }, []);
 
-  const matches = useCallback(
-    (states: UseVideoState[]) => states.some((given) => given === state),
-    [state],
-  );
+  const matches = useCallback((states: UseVideoState[]) => states.some((given) => given === state), [state]);
 
   return useMemo(
     () => ({

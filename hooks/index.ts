@@ -9,7 +9,12 @@ import { useDebounce } from "./use-debounce";
 import { useDesignMode } from "./use-design-mode";
 import { useDisablePullToRefresh } from "./use-disable-pull-to-refresh";
 import { useDocumentTitle } from "./use-document-title";
-import { Fields, LocalFields, useField, useFieldStrategyEnum } from "./use-field";
+import {
+  Fields,
+  LocalFields,
+  useField,
+  useFieldStrategyEnum,
+} from "./use-field";
 import { useFocusKeyboardShortcut } from "./use-focus-keyboard-shortcut";
 import { useHover } from "./use-hover";
 import { useIsOnline } from "./use-is-online";
@@ -108,3 +113,4 @@ export type { useClientFilterQueryType } from "./use-client-filter";
 export type { ResponseType } from "./use-response-handler";
 export type { Paged } from "./use-pagination";
 export type { UseListReturnType } from "./use-list";
+export type { UseItemReturnType } from "./use-item";
