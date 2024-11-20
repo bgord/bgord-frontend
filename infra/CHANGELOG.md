@@ -1,4 +1,5 @@
 # Changelog
+- 2024-11-21 00:27 083534a **refactor: add ts ignore**
 - 2024-11-21 00:25 97e724a **refactor: export UseItemReturnType**
 - 2024-11-21 00:24 0fb95d1 **refactor: export reuqired types**
 - 2024-11-21 00:21 e91b389 **refactor: minimize exported types**
@@ -9,6 +10,7 @@
 - 2024-11-20 23:43 5897a05 **step: add use client filter**
 - 2024-11-20 23:35 7c7e36a **step: add memoization to the use client sort**
 - 2024-11-20 23:33 4b477fe **step: add use client serach test**
+- 2024-11-20 23:26 2544daf **docs: generate CHANGELOG**
 - 2024-11-20 23:24 3bca726 **docs: generate CHANGELOG**
 - 2024-11-20 23:22 917fc3a **docs: generate CHANGELOG**
 - 2024-11-20 23:17 1e8aa03 **step: add jsdocs for use client search**
