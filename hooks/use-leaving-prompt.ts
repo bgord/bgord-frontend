@@ -1,17 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 
-export type UseLeavingPromptConditionType = boolean;
+/**
+ * Hook to prompt user when trying to leave page with unsaved changes
+ *
+ * @example
+ * ```tsx
+ * function Form() {
+ *   const [isDirty, setIsDirty] = useState(false);
+ *   useLeavingPrompt(isDirty);
+ *
+ *   return <form>...</form>;
+ * }
+ * ```
+ */
+export function useLeavingPrompt(condition: boolean = false): void {
+  const handler = useCallback((e: BeforeUnloadEvent) => {
+    e.preventDefault();
+  }, []);
 
-export function useLeavingPrompt(condition: UseLeavingPromptConditionType = false): void {
   useEffect(() => {
     if (!condition) return;
 
-    function handler(e: BeforeUnloadEvent) {
-      e.preventDefault();
-    }
-
     window.addEventListener("beforeunload", handler);
-
     return () => window.removeEventListener("beforeunload", handler);
-  }, [condition]);
+  }, [condition, handler]);
 }
