@@ -1,14 +1,25 @@
 import type { LanguageType } from "@bgord/node/dist/schema";
 import Cookies from "js-cookie";
-import React from "react";
-
+import { useEffect, useCallback } from "react";
 import { getSafeWindow } from "../safe-window";
 import { useLanguage } from "../translations";
 import { Field } from "./field";
-import { useClientFilter, useClientFilterReturnType } from "./use-client-filter";
+import {
+  useClientFilter,
+  useClientFilterReturnType,
+} from "./use-client-filter";
 
+/**
+ * Hook for language selection with cookie persistence
+ *
+ * @example
+ * ```tsx
+ * const languages = { en: "en", pl: "pl" };
+ * const languageSelector = useLanguageSelector(languages);
+ * ```
+ */
 export function useLanguageSelector(
-  supportedLanguages: Record<LanguageType, LanguageType>,
+  supportedLanguages: Record<LanguageType, LanguageType>
 ): useClientFilterReturnType<LanguageType> {
   const language = useLanguage();
 
@@ -18,18 +29,20 @@ export function useLanguageSelector(
     name: "language",
   });
 
-  React.useEffect(() => {
+  const handleLanguageChange = useCallback(() => {
     const safeWindow = getSafeWindow();
-
     if (!safeWindow) return;
 
     const current = new Field(field.currentValue);
-
     if (!current.isEmpty() && field.changed) {
       Cookies.set("accept-language", String(current.get()));
       safeWindow.document.location.reload();
     }
   }, [field.currentValue, field.changed]);
+
+  useEffect(() => {
+    handleLanguageChange();
+  }, [handleLanguageChange]);
 
   return field;
 }
