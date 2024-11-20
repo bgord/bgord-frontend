@@ -106,3 +106,5 @@ export type { UseToggleReturnType } from "./use-toggle";
 export type { useClientSearchReturnType } from "./use-client-search";
 export type { useClientFilterQueryType } from "./use-client-filter";
 export type { ResponseType } from "./use-response-handler";
+export type { Paged } from "./use-pagination";
+export type { UseListReturnType } from "./use-list";

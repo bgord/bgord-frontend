@@ -15,7 +15,7 @@ type UseListActionsType<T> = {
   update: Dispatch<SetStateAction<T[]>>;
 };
 
-type UseListReturnType<T> = [T[], UseListActionsType<T>];
+export type UseListReturnType<T> = [T[], UseListActionsType<T>];
 
 type UseListConfigType<T> = {
   defaultItems?: T[];
