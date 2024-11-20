@@ -1,6 +1,9 @@
-import { useRef } from "react";
-
-import { RateLimiter, RateLimiterOptionsType, RateLimiterResultErrorType } from "../rate-limiter";
+import { useRef, useCallback } from "react";
+import {
+  RateLimiter,
+  RateLimiterOptionsType,
+  RateLimiterResultErrorType,
+} from "../rate-limiter";
 
 export type UseRateLimiterActionType<T> = (...args: T[]) => void;
 
@@ -9,19 +12,43 @@ export type UseRateLimiterOptionsType<T> = RateLimiterOptionsType & {
   fallback?: (remainingMs: RateLimiterResultErrorType["remainingMs"]) => void;
 };
 
-export type UseRateLimiterReturnType<T> = UseRateLimiterActionType<T>;
-
-export function useRateLimiter<T>(options: UseRateLimiterOptionsType<T>): UseRateLimiterReturnType<T> {
+/**
+ * Hook to rate limit function calls
+ *
+ * @example
+ * ```tsx
+ * function SubmitButton() {
+ *   const handleSubmit = useRateLimiter({
+ *     action: () => submitForm(),
+ *     interval: 1000,
+ *     limit: 1,
+ *     fallback: (remainingMs) => {
+ *       alert(`Please wait ${remainingMs}ms`);
+ *     }
+ *   });
+ *
+ *   return <button onClick={handleSubmit}>Submit</button>;
+ * }
+ * ```
+ */
+export function useRateLimiter<T>(
+  options: UseRateLimiterOptionsType<T>
+): UseRateLimiterActionType<T> {
   const rateLimiter = useRef<RateLimiter>(new RateLimiter(options));
 
-  return function executor(...args: T[]) {
-    const currentTimestamp = Date.now();
-    const result = rateLimiter.current.verify(currentTimestamp);
+  const executor = useCallback(
+    (...args: T[]) => {
+      const currentTimestamp = Date.now();
+      const result = rateLimiter.current.verify(currentTimestamp);
 
-    if (result.allowed) {
-      return options.action(...args);
-    }
+      if (result.allowed) {
+        return options.action(...args);
+      }
 
-    return options.fallback?.(result.remainingMs);
-  };
+      return options.fallback?.(result.remainingMs);
+    },
+    [options.action, options.fallback]
+  );
+
+  return executor;
 }
