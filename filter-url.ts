@@ -25,15 +25,11 @@ export class FilterUrl {
 
     if (!filters) return;
 
-    const params = Object.entries(filters).filter(
-      ([, value]) => !Field.isEmpty(value as any)
-    );
+    const params = Object.entries(filters).filter(([, value]) => !Field.isEmpty(value as any));
 
     if (!params.length) return;
 
-    const query = new URLSearchParams(
-      Object.fromEntries(params) as Record<string, string>
-    );
+    const query = new URLSearchParams(Object.fromEntries(params) as Record<string, string>);
 
     this.value = `${url}?${query.toString()}`;
   }

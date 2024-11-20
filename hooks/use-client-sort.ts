@@ -2,7 +2,7 @@
  * Hook for client-side sorting with configurable strategies
  * @module useClientSort
  */
-import { useMemo, useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { Field, FieldValueAllowedTypes } from "./field";
 import {
   FieldElementType,
@@ -20,10 +20,7 @@ type useClientSortFnType<X> = (a: X, b: X) => number;
  * Configuration for sort behavior
  * @template X Type of items being sorted
  */
-type useClientSortConfigType<X> = Omit<
-  useFieldConfigType<useClientSortOptionType>,
-  "strategy"
-> & {
+type useClientSortConfigType<X> = Omit<useFieldConfigType<useClientSortOptionType>, "strategy"> & {
   enum: Record<useClientSortOptionType, useClientSortOptionType> & {
     default: useClientSortOptionType;
   };
@@ -54,7 +51,7 @@ export const defaultSortFn = () => 0;
  * @throws {Error} If invalid sort option provided
  */
 export function useClientSort<X>(
-  config: useClientSortConfigType<X>
+  config: useClientSortConfigType<X>,
 ): useClientSortReturnType<X, useClientSortOptionType> {
   const field = useField<useClientSortOptionType>({
     name: config.name,
@@ -65,7 +62,7 @@ export function useClientSort<X>(
   // Memoize options array to prevent unnecessary rerenders
   const sortOptions = useMemo(
     () => Object.keys(config.options) as useClientSortOptionType[],
-    [config.options]
+    [config.options],
   );
 
   // Memoize change handler
@@ -75,7 +72,7 @@ export function useClientSort<X>(
       const isNewSortInEnum = Boolean(config.enum[String(newSort)]);
       field.set(isNewSortInEnum ? newSort : config.enum.default);
     },
-    [config.enum, field.set]
+    [config.enum, field.set],
   );
 
   // Memoize sort function based on current value

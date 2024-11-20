@@ -1,6 +1,6 @@
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { describe, expect, test } from "vitest";
-import { render, fireEvent, screen } from "@testing-library/react";
 import { useClientSort } from "../hooks/use-client-sort";
 
 describe("useClientSort", () => {
@@ -36,11 +36,7 @@ describe("useClientSort", () => {
 
     return (
       <div>
-        <select
-          data-testid="sort-select"
-          value={sort.value}
-          onChange={sort.handleChange}
-        >
+        <select data-testid="sort-select" value={sort.value} onChange={sort.handleChange}>
           {sort.options.map((option) => (
             <option key={option} value={option}>
               Sort by {option}
